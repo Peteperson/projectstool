@@ -12,7 +12,7 @@
       <table style="width: 100%">
         <tr>
             <td style="background: url(Images/DarkBlueTopBack.png) repeat-x; border-bottom: solid 3px white">
-                <asp:Image ID="Image1" ImageUrl="~/Images/AdvLogoWhiteBack.png" runat="server" Height="71px" />
+                <asp:Image ID="Image1" ImageUrl="~/Images/eurobank.png" runat="server" Height="71px" />
             </td>
         </tr>
         <tr>
