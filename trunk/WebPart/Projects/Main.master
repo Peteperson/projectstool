@@ -26,16 +26,17 @@
             <td colspan="2" style="border-bottom: solid 3px white"></td>
         </tr>
         <tr>
-            <td id="tdMenu" runat="server" style="width: 0%; vertical-align: top;">
+            <td id="tdMenu" runat="server" style="vertical-align: top;">
                 <div id="dvMenu">
                     <div id="mnuHeader">UserName:&nbsp;<asp:Label ID="lblUser" runat="server" Text="user"></asp:Label><br />
-                      Last&nbsp;Login:&nbsp;<asp:Label ID="lblLogin" runat="server" Text="login"></asp:Label><br /></div>
+                      Last&nbsp;Login:&nbsp;<asp:Label ID="lblLogin" runat="server" Text="login"></asp:Label></div>
+                      <br /><br />
                     <asp:GridView ID="gvMenu" runat="server" AutoGenerateColumns="False" DataSourceID="sqldsMenu" 
-                            Width="100%" BorderStyle="None" HeaderStyle-CssClass="BlueGrad">
+                            Width="100%" BorderStyle="None" RowStyle-CssClass="MenuItem" HeaderStyle-CssClass="BlueGrad" BackColor="#355379">
                         <Columns>
-                        <asp:TemplateField HeaderText="Forms:">
+                        <asp:TemplateField HeaderText="Menu" >
                             <ItemTemplate>
-                                <li><asp:HyperLink BorderStyle="None" Width="100%" ID="HyperLink1" NavigateUrl=<%# eval("Path") %> runat="server"><%#Eval("Description")%></asp:HyperLink></li>
+                                <asp:HyperLink Font-Underline="false" style="text-align:center" BorderWidth="0px" BorderStyle="none" Width="100%" ID="HyperLink1" NavigateUrl=<%# eval("Path") %> runat="server"><%#Eval("Description")%></asp:HyperLink>
                             </ItemTemplate>
                         </asp:TemplateField>
                         </Columns>
