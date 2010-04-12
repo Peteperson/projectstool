@@ -1,0 +1,18 @@
+﻿
+<asp:GridView runat="server" SkinId="gridviewSkin" AutoGenerateColumns="False" RowStyle-HorizontalAlign="Left"
+    BackColor="LightGray" BorderColor="Tan" BorderWidth="1px" CellPadding="0"
+    ForeColor="Black" PageSize="15" FooterStyle-Wrap=false >
+    <FooterStyle BackColor="Tan" />
+    <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+    <PagerSettings Mode="NumericFirstLast" />
+    <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+    <HeaderStyle BackColor="#C64221" Font-Bold="True" ForeColor="White" Font-Size="Medium" Height="25px" />
+    <AlternatingRowStyle BackColor="#7593B9" ForeColor="White"/>    
+</asp:GridView>
+
+<asp:Calendar SkinId="clndMain" runat="server" BackColor="#7593B9" DayNameFormat="Shortest" ForeColor="Black" Width="200px">
+    <SelectedDayStyle BackColor="#7593B9" Font-Bold="True" ForeColor="White" />
+    <DayHeaderStyle BackColor="Tan" ForeColor="Black" />
+    <TitleStyle BackColor="#C64221" Font-Bold="True" Font-Size="12pt" ForeColor="White" />
+    <WeekendDayStyle BackColor="LightGray" ForeColor="Black" />
+</asp:Calendar>

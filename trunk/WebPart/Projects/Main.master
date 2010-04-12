@@ -14,36 +14,35 @@
         <table style="width:100%">
         <tr>
             <td>
-                <asp:Image ID="Image1" ImageUrl="~/Images/AdvLogoWhiteBack.png" runat="server" Height="70px" />
+                <asp:Image ID="Image1" ImageUrl="~/Images/eurobank.png" runat="server" Height="70px" />
             </td>
             <td style="width:100%; text-align: right; vertical-align: bottom; background: url(Images/DarkBlueTopBack.png) repeat-x">
-                <asp:ImageButton ID="btnLogoff" runat="server" ImageUrl="~/Images/logout.png" />
+                <asp:ImageButton ID="btnLogoff" runat="server" ImageUrl="~/Images/Logout2.png" ToolTip="Exit application" />
             </td>
         </tr>
         </table>
-        <table style="width:100%">
+        <table style="width:100%" cellpadding="0" cellspacing="0">
         <tr>
-            <td colspan="2" style="border-bottom: solid 3px white"></td>
-        </tr>
-        <tr>
-            <td id="tdMenu" runat="server" style="vertical-align: top;">
+            <td id="tdMenu">
                 <div id="dvMenu">
-                    <div id="mnuHeader">UserName:&nbsp;<asp:Label ID="lblUser" runat="server" Text="user"></asp:Label><br />
-                      Last&nbsp;Login:&nbsp;<asp:Label ID="lblLogin" runat="server" Text="login"></asp:Label></div>
-                      <br /><br />
-                    <asp:GridView ID="gvMenu" runat="server" AutoGenerateColumns="False" DataSourceID="sqldsMenu" 
-                            Width="100%" BorderStyle="None" RowStyle-CssClass="MenuItem" HeaderStyle-CssClass="BlueGrad" BackColor="#355379">
-                        <Columns>
-                        <asp:TemplateField HeaderText="Menu" >
-                            <ItemTemplate>
-                                <asp:HyperLink Font-Underline="false" style="text-align:center" BorderWidth="0px" BorderStyle="none" Width="100%" ID="HyperLink1" NavigateUrl=<%# eval("Path") %> runat="server"><%#Eval("Description")%></asp:HyperLink>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        </Columns>
-                    </asp:GridView>
+                    <div id="mnuHeader"><font class="YellowBold">User:</font>&nbsp;<asp:Label ID="lblUser" runat="server" Text="user"></asp:Label><br />
+                      <font class="YellowBold">Last&nbsp;Login:</font>&nbsp;<asp:Label ID="lblLogin" runat="server" Text="login"></asp:Label></div>
+                    <div id="mnuInterMediate"><br /><br /></div>
+                    <div id="mnuMain">
+                        <asp:GridView ID="gvMenu" runat="server" AutoGenerateColumns="False" DataSourceID="sqldsMenu" 
+                                Width="100%" BorderStyle="None" RowStyle-CssClass="MenuItem" HeaderStyle-CssClass="BlueGrad">
+                            <Columns>
+                            <asp:TemplateField HeaderText="Menu" >
+                                <ItemTemplate>
+                                    <asp:HyperLink Font-Underline="false" style="text-align:center" BorderWidth="0px" BorderStyle="none" Width="100%" ID="MenuLink" NavigateUrl=<%# eval("Path") %> runat="server"><%#Eval("Description")%></asp:HyperLink>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
                 </div>
             </td>
-            <td id="child">
+            <td id="tdChild">
                 <div align="center" style="width: 100%">
                     <asp:ContentPlaceHolder ID="content" runat="server">
                     </asp:ContentPlaceHolder>
@@ -60,7 +59,7 @@
             ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="MenuItems" 
             SelectCommandType="StoredProcedure">
             <SelectParameters>
-                <asp:SessionParameter Name="UserType" SessionField="UserType" Type="Int32" />
+                <asp:SessionParameter Name="UserType" SessionField="UserType" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
     </form>

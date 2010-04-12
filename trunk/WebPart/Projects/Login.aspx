@@ -27,7 +27,7 @@
         <LoginButtonStyle BackColor="White" BorderColor="#CC9966" BorderStyle="Solid" 
             BorderWidth="1px" Font-Names="Tahoma, Verdana" ForeColor="#990000" />
         <LayoutTemplate>
-            <table border="3" cellpadding="4" cellspacing="0" style="border-collapse:collapse;border-style:outset;border-color:#CCCCCC">
+            <table id="tblLogin">
                 <tr>
                     <td>
                         <table border="0" cellpadding="0" style="width:250px;height:115px">
