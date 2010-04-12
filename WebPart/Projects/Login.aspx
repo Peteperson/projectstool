@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Project management tool - Login page</title>
     <link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -21,25 +21,25 @@
                 <br />
                 <br />
                 <asp:Login ID="ctrlLogin" runat="server" DisplayRememberMe="False" 
-        BackColor="#FFFBD6" BorderColor="#FFDFAD" BorderPadding="4" BorderStyle="Solid"
-        BorderWidth="2px" Font-Names="Tahoma, Verdana" ForeColor="#333333" 
+        BackColor="#E4E4C0" BorderColor="#FFDFAD" BorderPadding="4" BorderStyle="None"
+        BorderWidth="0px" Font-Names="Tahoma, Verdana" ForeColor="#333333" 
         TextLayout="TextOnTop">
         <LoginButtonStyle BackColor="White" BorderColor="#CC9966" BorderStyle="Solid" 
             BorderWidth="1px" Font-Names="Tahoma, Verdana" ForeColor="#990000" />
         <LayoutTemplate>
-            <table border="2" cellpadding="4" cellspacing="0" style="border-collapse:collapse">
+            <table border="3" cellpadding="4" cellspacing="0" style="border-collapse:collapse;border-style:outset;border-color:#CCCCCC">
                 <tr>
                     <td>
-                        <table border="0" cellpadding="0">
+                        <table border="0" cellpadding="0" style="width:250px;height:115px">
                             <tr>
-                                <td align="center" colspan="2" style="color:White; padding-bottom: 2px;background-color:#990000;font-weight:bold;">Log In</td>
+                                <td align="center" colspan="2" style="color:White; padding-bottom: 2px;background-color:#842829;font-weight:bold; height:17px">Log In</td>
                             </tr>
                             <tr>
                                 <td>
                                     <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name:</asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="UserName" runat="server" Width="110px"></asp:TextBox>
+                                    <asp:TextBox ID="UserName" runat="server" Width="130px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
                                         ControlToValidate="UserName" ErrorMessage="User Name is required." 
                                         ToolTip="User Name is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
@@ -50,7 +50,7 @@
                                     <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="Password" runat="server" TextMode="Password" Width="110px"></asp:TextBox>
+                                    <asp:TextBox ID="Password" runat="server" TextMode="Password" Width="130px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
                                         ControlToValidate="Password" ErrorMessage="Password is required." 
                                         ToolTip="Password is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
