@@ -6,7 +6,7 @@
     <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
     <PagerSettings Mode="NumericFirstLast" />
     <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
-    <HeaderStyle BackColor="#C64221" Font-Bold="True" ForeColor="White" Font-Size="Medium" Height="25px" />
+    <HeaderStyle BackColor="#C64221" Font-Bold="True" ForeColor="White" Font-Size="11pt" Height="25px" />
     <AlternatingRowStyle BackColor="#7593B9" ForeColor="White"/>    
 </asp:GridView>
 
@@ -16,3 +16,5 @@
     <TitleStyle BackColor="#C64221" Font-Bold="True" Font-Size="12pt" ForeColor="White" />
     <WeekendDayStyle BackColor="LightGray" ForeColor="Black" />
 </asp:Calendar>
+
+<asp:TextBox SkinId="txtDef" runat="server" Width="90%" ></asp:TextBox>
