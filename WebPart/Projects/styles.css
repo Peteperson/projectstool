@@ -14,7 +14,7 @@ a:hover {
 	/*background-color: #355379;*/
 }
 
-.BlueGrad {
+.gvMnuHeader {
     /*background: url(Images/blue.png) repeat-x;    
     height:25px;
     font-size:11pt;*/
@@ -113,8 +113,8 @@ a:hover {
 #mnuHeader {
     vertical-align:bottom;
     width: 100%;
-    border-right: solid 2px white;
-    /*background-color: #788CA5;*/
+    /*border-right: solid 2px white;
+    background-color: #788CA5;*/
 }
 
 .tblInset{
@@ -128,13 +128,21 @@ a:hover {
 }
 
 #mnuMain {
-    border-left: solid 2px white;
+ /*   border-left: solid 2px white;
     border-bottom: solid 2px white;
-    border-top: solid 1px white;
+    border-top: solid 1px white;*/
+    border-bottom: solid 10px #842829;
 }
 
 #mnuInterMediate {
-    border-right: solid 2px white;
-    border-bottom: solid 1px white;
+/*    border-right: solid 2px white;
+    border-bottom: solid 1px white;*/
     width: 100%;
+}
+
+#tdMessage
+{
+    font-size:large;
+    color:Yellow;
+    text-align:center;
 }
