@@ -146,3 +146,7 @@ a:hover {
     color:Yellow;
     text-align:center;
 }
+
+#subPageMainTable {
+    width:90%;
+}
