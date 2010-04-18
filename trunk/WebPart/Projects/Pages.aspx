@@ -41,7 +41,6 @@
                                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>'></asp:Label>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="txtInsId" runat="server" SkinID="txtDef"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Path" SortExpression="Path">

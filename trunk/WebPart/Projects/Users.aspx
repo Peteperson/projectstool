@@ -67,6 +67,17 @@
                                     </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Company" SortExpression="Company">
+                            <ItemTemplate>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("Company") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox2" SkinID="txtDef" runat="server" Text='<%# Bind("Company") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <FooterTemplate>
+                                <asp:TextBox ID="txtInsCompany" SkinID="txtDef" runat="server"></asp:TextBox>
+                            </FooterTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="First Name" SortExpression="FirstName">
                             <ItemTemplate>
                                 <asp:Label ID="Label4" runat="server" Text='<%# Bind("FirstName") %>'></asp:Label>
@@ -89,12 +100,34 @@
                                 <asp:TextBox ID="txtInsLastName" SkinID="txtDef" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Email" SortExpression="Email">
+                        <asp:TemplateField HeaderText="Telephone" SortExpression="Telephone">
                             <ItemTemplate>
-                                <asp:Label ID="Label6" runat="server" Text='<%# Bind("Email") %>'></asp:Label>
+                                <asp:Label ID="Label6" runat="server" Text='<%# Bind("Telephone") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox5" SkinID="txtDef" runat="server" Text='<%# Bind("Email") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBox5" SkinID="txtDef" runat="server" Text='<%# Bind("Telephone") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <FooterTemplate>
+                                <asp:TextBox ID="txtInsTelephone" SkinID="txtDef" runat="server"></asp:TextBox>
+                            </FooterTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Mobile" SortExpression="Mobile">
+                            <ItemTemplate>
+                                <asp:Label ID="Label7" runat="server" Text='<%# Bind("Mobile") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox6" SkinID="txtDef" runat="server" Text='<%# Bind("Mobile") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <FooterTemplate>
+                                <asp:TextBox ID="txtInsMobile" SkinID="txtDef" runat="server"></asp:TextBox>
+                            </FooterTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Email" SortExpression="Email">
+                            <ItemTemplate>
+                                <asp:Label ID="Label8" runat="server" Text='<%# Bind("Email") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox7" SkinID="txtDef" runat="server" Text='<%# Bind("Email") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <FooterTemplate>
                                 <asp:TextBox ID="txtInsEmail" SkinID="txtDef" runat="server"></asp:TextBox>
@@ -128,10 +161,10 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Last Login" SortExpression="LastLogin">
                             <ItemTemplate>
-                                <asp:Label ID="Label8" runat="server" Text='<%# Bind("LastLogin") %>'></asp:Label>
+                                <asp:Label ID="Label9" runat="server" Text='<%# Bind("LastLogin") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox7" SkinID="txtDef" runat="server" Text='<%# Bind("LastLogin") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBox8" SkinID="txtDef" runat="server" Text='<%# Bind("LastLogin") %>'></asp:TextBox>
                             </EditItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -145,17 +178,20 @@
     <asp:SqlDataSource ID="sqldsUsers" runat="server" 
         ConnectionString="<%$ ConnectionStrings:cnMain %>" 
         DeleteCommand="DELETE FROM [Users] WHERE [id] = @id" 
-        InsertCommand="INSERT INTO [Users] ([UserName], [Password], [UserType], [FirstName], [LastName], [Email], [DefaultPage]) VALUES (@UserName, @Password, @UserType, @FirstName, @LastName, @Email, @DefaultPage)" 
-        SelectCommand="SELECT [id], [UserName], [UserType], [FirstName], [LastName], [Email], [DefaultPage], [IsActive], [LastLogin] FROM [Users]" 
-        UpdateCommand="UPDATE [Users] SET [UserName] = @UserName, [UserType] = @UserType, [FirstName] = @FirstName, [LastName] = @LastName, [Email] = @Email, [DefaultPage] = @DefaultPage, [IsActive] = @IsActive, [LastLogin] = @LastLogin WHERE [id] = @id">
+        InsertCommand="INSERT INTO [Users] ([UserName], [Password], [UserType], [Company], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage]) VALUES (@UserName, @Password, @UserType, @Company, @FirstName, @LastName, @Telephone, @Mobile, @Email, @DefaultPage)" 
+        SelectCommand="SELECT [id], [UserName], [UserType], [Company], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsActive], [LastLogin] FROM [Users]" 
+        UpdateCommand="UPDATE [Users] SET [UserName] = @UserName, [UserType] = @UserType, [Company] = @Company, [FirstName] = @FirstName, [LastName] = @LastName, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email, [DefaultPage] = @DefaultPage, [IsActive] = @IsActive, [LastLogin] = @LastLogin WHERE [id] = @id">
         <DeleteParameters>
             <asp:Parameter Name="id" Type="Int32" />
         </DeleteParameters>
         <UpdateParameters>
             <asp:Parameter Name="UserName" Type="String" />
             <asp:Parameter Name="UserType" Type="Byte" />
+            <asp:Parameter Name="Company" Type="String" />
             <asp:Parameter Name="FirstName" Type="String" />
             <asp:Parameter Name="LastName" Type="String" />
+            <asp:Parameter Name="Telephone" Type="String" />
+            <asp:Parameter Name="Mobile" Type="String" />
             <asp:Parameter Name="Email" Type="String" />
             <asp:Parameter Name="DefaultPage" Type="String" />
             <asp:Parameter Name="IsActive" Type="Boolean" />
@@ -166,8 +202,11 @@
             <asp:Parameter Name="UserName" Type="String" />
             <asp:Parameter Name="Password" />
             <asp:Parameter Name="UserType" Type="Byte" />
+            <asp:Parameter Name="Company" Type="String" />
             <asp:Parameter Name="FirstName" Type="String" />
             <asp:Parameter Name="LastName" Type="String" />
+            <asp:Parameter Name="Telephone" Type="String" />
+            <asp:Parameter Name="Mobile" Type="String" />
             <asp:Parameter Name="Email" Type="String" />
             <asp:Parameter Name="DefaultPage" Type="String" />
         </InsertParameters>
@@ -187,7 +226,8 @@
         ConnectionString="<%$ ConnectionStrings:cnMain %>" 
         SelectCommand="SELECT [id], [Description] FROM [Pages]"></asp:SqlDataSource>
                 </td>
-                <td></td>
+                <td>
+                    &nbsp;</td>
             </tr>
         </table>
     </asp:Content>

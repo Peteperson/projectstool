@@ -28,7 +28,6 @@ Partial Class Pages
     End Sub
 
     Protected Sub sqldsPages_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsPages.Inserting
-        e.Command.Parameters("@id").Value = CType(gvPages.FooterRow.FindControl("txtInsId"), TextBox).Text
         e.Command.Parameters("@Path").Value = CType(gvPages.FooterRow.FindControl("txtInsPath"), TextBox).Text
         e.Command.Parameters("@Description").Value = CType(gvPages.FooterRow.FindControl("txtInsDesc"), TextBox).Text
     End Sub
