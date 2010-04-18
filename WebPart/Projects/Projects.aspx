@@ -25,7 +25,7 @@
                             <asp:DetailsView ID="dvProject" runat="server" AutoGenerateRows="False" 
                                 DataKeyNames="id" DataSourceID="sqldsProjects" Width="100%">
                                 <Fields>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="id" InsertVisible="False" SortExpression="id">
+                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="&nbsp;id&nbsp;" InsertVisible="False" SortExpression="id">
                                         <EditItemTemplate>
                                             <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>'></asp:Label>
                                         </EditItemTemplate>
@@ -267,7 +267,7 @@
                         <td>
                             <asp:Menu ID="mnuProjects" Width="168px" runat="server" Orientation="Horizontal" ForeColor="Black" 
                                 StaticEnableDefaultPopOutImage="False" BackColor="#2C486E" OnMenuItemClick="mnuProjects_MenuItemClick" 
-                                StaticMenuItemStyle-CssClass="MenuItem">
+                                StaticMenuItemStyle-CssClass="TabMenuItem">
                                 <Items>
                                     <asp:MenuItem ImageUrl="~/Images/Icons/Action_32x32.png" Text="Action Plan" Value="0"></asp:MenuItem>
                                     <asp:MenuItem ImageUrl="~/Images/Icons/Meetings3_32x32.png" Text="Meetings" Value="1"></asp:MenuItem>
@@ -301,7 +301,7 @@
                                             ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                                     </FooterTemplate>
                                 </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="id" InsertVisible="False" SortExpression="id">
+                                    <asp:TemplateField HeaderText="&nbsp;id&nbsp;" InsertVisible="False" SortExpression="id">
                                         <EditItemTemplate>
                                             <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>'></asp:Label>
                                         </EditItemTemplate>
@@ -386,7 +386,7 @@
                                                 ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                                         </FooterTemplate>
                                     </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="id" InsertVisible="False" SortExpression="id">
+                                    <asp:TemplateField HeaderText="&nbsp;id&nbsp;" InsertVisible="False" SortExpression="id">
                                         <EditItemTemplate>
                                             <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>'></asp:Label>
                                         </EditItemTemplate>
@@ -509,7 +509,7 @@
                                                 ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                                         </FooterTemplate>
                                     </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="id" InsertVisible="False" SortExpression="id">
+                                    <asp:TemplateField HeaderText="&nbsp;id&nbsp;" InsertVisible="False" SortExpression="id">
                                         <EditItemTemplate>
                                             <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>'></asp:Label>
                                         </EditItemTemplate>

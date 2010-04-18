@@ -33,7 +33,7 @@
                                     ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                             </FooterTemplate>
                         </asp:TemplateField> 
-                        <asp:TemplateField HeaderText="id" SortExpression="id">
+                        <asp:TemplateField HeaderText="&nbsp;id&nbsp;" SortExpression="id">
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("id") %>'></asp:Label>
                             </ItemTemplate>
@@ -54,6 +54,17 @@
                                 <asp:TextBox ID="txtInsPath" runat="server" SkinID="txtDef"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Image" SortExpression="Image">
+                            <ItemTemplate>
+                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("Image") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Image") %>' SkinID="txtDef"></asp:TextBox>
+                            </EditItemTemplate>
+                            <FooterTemplate>
+                                <asp:TextBox ID="txtInsImage" runat="server" SkinID="txtDef"></asp:TextBox>
+                            </FooterTemplate>
+                        </asp:TemplateField>                        
                         <asp:TemplateField HeaderText="Description" SortExpression="Description">
                             <ItemTemplate>
                                 <asp:Label ID="Label3" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
@@ -76,21 +87,22 @@
                 <asp:SqlDataSource ID="sqldsPages" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [Pages] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [Pages] ([id], [Path], [Description]) VALUES (@id, @Path, @Description)" 
+                    InsertCommand="INSERT INTO [Pages] ([id], [Path], [Image], [Description]) VALUES (@id, @Path, @Image, @Description)" 
                     SelectCommand="SELECT * FROM [Pages]" 
-                    
-                    UpdateCommand="UPDATE [Pages] SET [Path] = @Path, [Description] = @Description WHERE [id] = @id">
+                    UpdateCommand="UPDATE [Pages] SET [Path] = @Path, [Description] = @Description, [Image] = @Image WHERE [id] = @id">
                     <DeleteParameters>
                         <asp:Parameter Name="id" Type="Int32" />
                     </DeleteParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="Path" Type="String" />
                         <asp:Parameter Name="Description" Type="String" />
+                        <asp:Parameter Name="Image" Type="String" />
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
                     <InsertParameters>
                         <asp:Parameter Name="id" Type="Int32" />
                         <asp:Parameter Name="Path" Type="String" />
+                        <asp:Parameter Name="Image" Type="String" />
                         <asp:Parameter Name="Description" Type="String" />
                     </InsertParameters>
                 </asp:SqlDataSource>
