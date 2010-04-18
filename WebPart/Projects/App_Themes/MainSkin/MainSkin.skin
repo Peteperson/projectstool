@@ -10,6 +10,16 @@
     <AlternatingRowStyle BackColor="#7593B9" ForeColor="White"/>    
 </asp:GridView>
 
+<asp:GridView runat="server" SkinId="gridviewSkinSmall" AutoGenerateColumns="False" RowStyle-HorizontalAlign="Left"
+    ForeColor="Black" BackColor="LightGray" PageSize="15" FooterStyle-Wrap="false" CssClass="NoTopBorderLine">
+    <FooterStyle BackColor="Tan" />
+    <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+    <PagerSettings Mode="NumericFirstLast" />
+    <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+    <HeaderStyle BackColor="#C64221" Font-Bold="True" ForeColor="White" />
+    <AlternatingRowStyle BackColor="#7593B9" ForeColor="White"/>    
+</asp:GridView>
+
 <asp:Calendar SkinId="clndMain" runat="server" BackColor="#7593B9" DayNameFormat="Shortest" ForeColor="Black" Width="200px">
     <SelectedDayStyle BackColor="#7593B9" Font-Bold="True" ForeColor="White" />
     <DayHeaderStyle BackColor="Tan" ForeColor="Black" />
@@ -18,3 +28,12 @@
 </asp:Calendar>
 
 <asp:TextBox SkinId="txtDef" runat="server" Width="90%" ></asp:TextBox>
+<asp:TextBox skinid="txtHour" width="20px" Font-Names="Tahoma,Verdana" style="text-align:center" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtCmnt" width="20px" Font-Names="Tahoma,Verdana" style="text-align:left; background: #CCCCCC" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtDecimal" width="50px" Font-Names="Tahoma,Verdana" style="text-align:right" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtText" width="100px" Font-Names="Tahoma,Verdana" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtTextCenter" width="55px" style="text-align:center" Font-Names="Tahoma,Verdana" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtTextLong" width="150px" Font-Names="Tahoma,Verdana" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtInteger" width="40px" Font-Names="Tahoma,Verdana" style="text-align:right" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtDate" width="70px" Font-Names="Tahoma,Verdana" style="text-align:right" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtTextVeryLong" width="400px" Font-Names="Tahoma,Verdana" runat="server"></asp:TextBox>
