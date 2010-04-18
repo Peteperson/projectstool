@@ -34,7 +34,7 @@
                                     ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                             </FooterTemplate>
                         </asp:TemplateField>                        
-                        <asp:TemplateField HeaderText="id" InsertVisible="False" SortExpression="id">
+                        <asp:TemplateField HeaderText="&nbsp;id&nbsp;" InsertVisible="False" SortExpression="id">
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("id") %>'></asp:Label>
                             </ItemTemplate>
