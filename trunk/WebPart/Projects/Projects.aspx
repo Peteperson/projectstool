@@ -266,7 +266,7 @@
                     <tr>
                         <td>
                             <asp:Menu ID="mnuProjects" Width="168px" runat="server" Orientation="Horizontal" ForeColor="Black" 
-                                StaticEnableDefaultPopOutImage="False" BackColor="#C64221" OnMenuItemClick="mnuProjects_MenuItemClick" 
+                                StaticEnableDefaultPopOutImage="False" BackColor="#2C486E" OnMenuItemClick="mnuProjects_MenuItemClick" 
                                 StaticMenuItemStyle-CssClass="MenuItem">
                                 <Items>
                                     <asp:MenuItem ImageUrl="~/Images/Icons/Action_32x32.png" Text="Action Plan" Value="0"></asp:MenuItem>
