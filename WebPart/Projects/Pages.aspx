@@ -97,10 +97,8 @@
                         <asp:Parameter Name="Path" Type="String" />
                         <asp:Parameter Name="Description" Type="String" />
                         <asp:Parameter Name="Image" Type="String" />
-                        <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
                     <InsertParameters>
-                        <asp:Parameter Name="id" Type="Int32" />
                         <asp:Parameter Name="Path" Type="String" />
                         <asp:Parameter Name="Image" Type="String" />
                         <asp:Parameter Name="Description" Type="String" />
