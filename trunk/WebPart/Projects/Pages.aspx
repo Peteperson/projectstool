@@ -87,7 +87,7 @@
                 <asp:SqlDataSource ID="sqldsPages" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [Pages] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [Pages] ([id], [Path], [Image], [Description]) VALUES (@id, @Path, @Image, @Description)" 
+                    InsertCommand="INSERT INTO [Pages] ([Path], [Image], [Description]) VALUES (@Path, @Image, @Description)" 
                     SelectCommand="SELECT * FROM [Pages]" 
                     UpdateCommand="UPDATE [Pages] SET [Path] = @Path, [Description] = @Description, [Image] = @Image WHERE [id] = @id">
                     <DeleteParameters>
@@ -97,6 +97,7 @@
                         <asp:Parameter Name="Path" Type="String" />
                         <asp:Parameter Name="Description" Type="String" />
                         <asp:Parameter Name="Image" Type="String" />
+                        <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
                     <InsertParameters>
                         <asp:Parameter Name="Path" Type="String" />
