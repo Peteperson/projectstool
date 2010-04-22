@@ -5,7 +5,7 @@
     <FooterStyle BackColor="Tan" />
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
     <PagerSettings Mode="NumericFirstLast" />
-    <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+    <SelectedRowStyle BackColor="#7593B9" ForeColor="White" Font-Bold="true" />
     <HeaderStyle BackColor="#2C486E" Font-Bold="True" ForeColor="White" Font-Size="10pt" Height="25px" />
     <AlternatingRowStyle BackColor="#D3D3D3" />    
 </asp:GridView>
@@ -15,7 +15,7 @@
     <FooterStyle BackColor="Tan" />
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
     <PagerSettings Mode="NumericFirstLast" />
-    <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+    <SelectedRowStyle BackColor="#7593B9" ForeColor="White"  Font-Bold="true" />
     <HeaderStyle BackColor="#2C486E" Font-Bold="True" ForeColor="White" />
     <AlternatingRowStyle BackColor="#D3D3D3" />    
 </asp:GridView>

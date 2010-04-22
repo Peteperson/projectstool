@@ -69,13 +69,19 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Company" SortExpression="Company">
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("Company") %>'></asp:Label>
+                                <asp:DropDownList ID="ddlCompanies" runat="server" 
+                                    Enabled="false" selectedvalue=<%# Bind("Company") %> DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
+                                </asp:DropDownList>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox2" SkinID="txtDef" runat="server" Text='<%# Bind("Company") %>'></asp:TextBox>
+                                <asp:DropDownList ID="ddlCompanies" runat="server" 
+                                    selectedvalue=<%# Bind("Company") %> DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
+                                </asp:DropDownList>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="txtInsCompany" SkinID="txtDef" runat="server"></asp:TextBox>
+                                <asp:DropDownList ID="ddlCompanies" runat="server" 
+                                    DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
+                                </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="First Name" SortExpression="FirstName">
@@ -187,7 +193,7 @@
         <UpdateParameters>
             <asp:Parameter Name="UserName" Type="String" />
             <asp:Parameter Name="UserType" Type="Byte" />
-            <asp:Parameter Name="Company" Type="String" />
+            <asp:Parameter Name="Company" Type="Int32" />
             <asp:Parameter Name="FirstName" Type="String" />
             <asp:Parameter Name="LastName" Type="String" />
             <asp:Parameter Name="Telephone" Type="String" />
@@ -202,7 +208,7 @@
             <asp:Parameter Name="UserName" Type="String" />
             <asp:Parameter Name="Password" />
             <asp:Parameter Name="UserType" Type="Byte" />
-            <asp:Parameter Name="Company" Type="String" />
+            <asp:Parameter Name="Company" Type="Int32" />
             <asp:Parameter Name="FirstName" Type="String" />
             <asp:Parameter Name="LastName" Type="String" />
             <asp:Parameter Name="Telephone" Type="String" />
@@ -227,7 +233,11 @@
         SelectCommand="SELECT [id], [Description] FROM [Pages]"></asp:SqlDataSource>
                 </td>
                 <td>
-                    &nbsp;</td>
+                    <asp:SqlDataSource ID="sqldsCompanies" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                        SelectCommand="SELECT [Id], [Name] FROM [Companies] ORDER BY [Name]">
+                    </asp:SqlDataSource>
+                </td>
             </tr>
         </table>
     </asp:Content>

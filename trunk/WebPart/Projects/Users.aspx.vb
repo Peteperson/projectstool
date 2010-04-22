@@ -19,7 +19,7 @@ Partial Class Users
 
         e.Command.Parameters("@UserName").Value = CType(gvUsers.FooterRow.FindControl("txtInsUserName"), TextBox).Text
         e.Command.Parameters("@Password").Value = SecCrypto.Hash(Password)
-        e.Command.Parameters("@Company").Value = CType(gvUsers.FooterRow.FindControl("txtInsCompany"), TextBox).Text
+        e.Command.Parameters("@Company").Value = CType(gvUsers.FooterRow.FindControl("ddlCompanies"), DropDownList).SelectedValue
         e.Command.Parameters("@UserType").Value = CType(gvUsers.FooterRow.FindControl("ddlInsUserType"), DropDownList).SelectedValue
         e.Command.Parameters("@FirstName").Value = CType(gvUsers.FooterRow.FindControl("txtInsFirstName"), TextBox).Text
         e.Command.Parameters("@LastName").Value = CType(gvUsers.FooterRow.FindControl("txtInsLastName"), TextBox).Text

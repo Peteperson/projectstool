@@ -10,7 +10,11 @@ Partial Class Projects
         '        mnuProjects.Items(i).ImageUrl = ""
         '    End If
         'Next
-        Select Case e.Item.Value
+        ShowTab(e.Item.Value)
+    End Sub
+
+    Private Sub ShowTab(ByVal TabId As Byte)
+        Select Case TabId
             Case 0
                 gvAP.Visible = True
                 gvMeetings.Visible = False
@@ -41,5 +45,18 @@ Partial Class Projects
         gvAP.Visible = True
         gvMeetings.Visible = False
         gvFiles.Visible = False
+    End Sub
+
+    Protected Sub gvFiles_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvFiles.RowCommand
+        If e.CommandName = "Insert" Then sqldsAttachments.Insert()
+        'sqldsAttachments.Select(DataSourceSelectArguments.Empty)
+        gvFiles.DataBind()
+        ShowTab(2)
+    End Sub
+
+    Protected Sub sqldsAttachments_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAttachments.Inserting
+        e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+        e.Command.Parameters("@FileName").Value = CType(gvFiles.FooterRow.FindControl("fuCtrl"), FileUpload).FileName
+        e.Command.Parameters("@FileData").Value = CType(gvFiles.FooterRow.FindControl("fuCtrl"), FileUpload).FileBytes
     End Sub
 End Class
