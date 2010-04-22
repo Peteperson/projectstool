@@ -50,4 +50,16 @@ Public Module Database
         cn.Close()
         Return result
     End Function
+
+    Public Function DownloadFile(ByVal id As Integer) As DataTable
+        Dim cmdCurrentStatementData As New SqlClient.SqlCommand("DownloadFile")
+        cmdCurrentStatementData.CommandType = CommandType.StoredProcedure
+        cmdCurrentStatementData.Parameters.Add("@FileId", SqlDbType.Int).Value = id
+        Dim cn As New SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings("cnMain").ConnectionString)
+        Dim dt As New DataTable
+        Dim da As New SqlClient.SqlDataAdapter(cmdCurrentStatementData)
+        cmdCurrentStatementData.Connection = cn
+        da.Fill(dt)
+        Return dt
+    End Function
 End Module
