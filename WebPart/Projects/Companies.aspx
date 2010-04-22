@@ -23,7 +23,8 @@
                         <td align="center" style="vertical-align:top">
                             <asp:GridView ID="gvCompanies" runat="server" AllowPaging="True"  EmptyDataText="Currently there are no registered companies"
                                 AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id,Name" 
-                                DataSourceID="sqldsCompanies" SkinID="gridviewSkin" ShowFooter="true">
+                                DataSourceID="sqldsCompanies" SkinID="gridviewSkinMainTbl" 
+                                ShowFooter="true">
                                 <Columns>
                                     <asp:TemplateField ShowHeader="True" HeaderText="Action">
                                         <ItemStyle Width="70px" />
@@ -171,7 +172,7 @@
                         Currently there are no registered employees<br />
                         <br />
                         <div class="InsertRow">
-                            <table>
+                            <table width="100%">
                                 <tr class="InsertHeader">
                                     <td>Action</td>
                                     <td>LastName</td>

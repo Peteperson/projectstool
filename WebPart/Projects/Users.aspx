@@ -11,7 +11,7 @@
         <tr>
             <td>
                 <asp:GridView ID="gvUsers" runat="server" AllowPaging="True" 
-                    AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
+                    AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" RowStyle-CssClass="gvRow"
                     DataSourceID="sqldsUsers" SkinID="gridviewSkin" ShowFooter="true">
                     <Columns>
                         <asp:TemplateField ShowHeader="False">
