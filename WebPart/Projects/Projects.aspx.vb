@@ -17,16 +17,19 @@ Partial Class Projects
         Select Case TabId
             Case 0
                 gvAP.Visible = True
+                gvAP.DataBind()
                 gvMeetings.Visible = False
                 gvFiles.Visible = False
             Case 1
                 gvAP.Visible = False
                 gvMeetings.Visible = True
+                gvMeetings.DataBind()
                 gvFiles.Visible = False
             Case 2
                 gvAP.Visible = False
                 gvMeetings.Visible = False
                 gvFiles.Visible = True
+                gvFiles.DataBind()
         End Select
     End Sub
 
@@ -48,15 +51,27 @@ Partial Class Projects
     End Sub
 
     Protected Sub gvFiles_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvFiles.RowCommand
-        If e.CommandName = "Insert" Then sqldsAttachments.Insert()
-        'sqldsAttachments.Select(DataSourceSelectArguments.Empty)
-        gvFiles.DataBind()
+        Select Case e.CommandName
+            Case "Insert"
+                sqldsAttachments.Insert()
+                gvFiles.DataBind()
+            Case "Download"
+                Session("DownloadFileId") = e.CommandArgument
+                Response.Clear()
+                Response.Redirect("~/DownloadFile.ashx")
+        End Select
         ShowTab(2)
     End Sub
 
     Protected Sub sqldsAttachments_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAttachments.Inserting
-        e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
-        e.Command.Parameters("@FileName").Value = CType(gvFiles.FooterRow.FindControl("fuCtrl"), FileUpload).FileName
-        e.Command.Parameters("@FileData").Value = CType(gvFiles.FooterRow.FindControl("fuCtrl"), FileUpload).FileBytes
+        If gvFiles.Rows.Count > 0 Then
+            e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+            e.Command.Parameters("@FileName").Value = CType(gvFiles.FooterRow.FindControl("fuCtrl"), FileUpload).FileName
+            e.Command.Parameters("@FileData").Value = CType(gvFiles.FooterRow.FindControl("fuCtrl"), FileUpload).FileBytes
+        Else
+            e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+            e.Command.Parameters("@FileName").Value = CType(gvFiles.Controls(0).Controls(0).Controls(0).FindControl("fuCtrl"), FileUpload).FileName
+            e.Command.Parameters("@FileData").Value = CType(gvFiles.Controls(0).Controls(0).Controls(0).FindControl("fuCtrl"), FileUpload).FileBytes
+        End If
     End Sub
 End Class

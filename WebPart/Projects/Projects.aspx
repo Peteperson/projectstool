@@ -226,6 +226,21 @@
                                                 Text='<%# Bind("CompletionPercentage") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
+                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="Status" 
+                                        SortExpression="Status">
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="TextBox17" runat="server" 
+                                                Text='<%# Bind("Status") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <InsertItemTemplate>
+                                            <asp:TextBox ID="TextBox17" runat="server" 
+                                                Text='<%# Bind("Status") %>'></asp:TextBox>
+                                        </InsertItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label18" runat="server" 
+                                                Text='<%# Bind("Status") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:TemplateField ShowHeader="False">
                                         <EditItemTemplate>
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
@@ -265,7 +280,7 @@
                 <table width="95%" cellpadding="0" cellspacing="0">
                     <tr>
                         <td>
-                            <asp:Menu ID="mnuProjects" Width="168px" runat="server" Orientation="Horizontal" ForeColor="Black" 
+                            <asp:Menu ID="mnuProjects" runat="server" Orientation="Horizontal" ForeColor="Black" 
                                 StaticEnableDefaultPopOutImage="False" BackColor="#2C486E" OnMenuItemClick="mnuProjects_MenuItemClick" 
                                 StaticMenuItemStyle-CssClass="TabMenuItem">
                                 <Items>
@@ -280,7 +295,7 @@
                         <td>
                             <asp:GridView ID="gvAP" runat="server" AutoGenerateColumns="False" 
                                 AllowPaging="True" AllowSorting="True" DataKeyNames="id" 
-                                DataSourceID="sqldsAP" ShowFooter="true" SkinID="gridviewSkinSmall">
+                                DataSourceID="sqldsAP" ShowFooter="True" SkinID="gridviewSkinSmall">
                             <Columns>
                                 <asp:TemplateField ShowHeader="False">
                                     <ItemStyle Width="40px" />
@@ -307,14 +322,6 @@
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label1" runat="server" Text='<%# Bind("id") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="SubProjectId" SortExpression="SubProjectId">
-                                        <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("SubProjectId") %>'></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("SubProjectId") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="ActionId" SortExpression="ActionId">
@@ -477,15 +484,17 @@
                                 DataSourceID="sqldsAttachments" SkinID="gridviewSkinSmall" 
                                 ShowFooter="True">
                                 <EmptyDataTemplate>
+                                    Currently there are no files uploaded.<br /><br />
                                     <table>
+                                        <tr class="InsertHeader">
+                                            <td colspan="2">File</td>
+                                        </tr>
                                         <tr>
                                             <td>
                                                 <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
                                                 ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                                             </td>
-                                            <td>
-                                                <asp:TextBox ID="txtFileName" runat="server"></asp:TextBox>
-                                            </td>
+                                            <td><asp:FileUpload ID="fuCtrl" runat="server" /></td>
                                         </tr>
                                     </table>
                                 </EmptyDataTemplate>
@@ -526,14 +535,10 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="FileName" SortExpression="FileName">
-                                        <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("FileName") %>'></asp:TextBox>
-                                        </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("FileName") %>'></asp:Label>
+                                            <asp:Button ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
+                                                CommandName="Download" Text='<%# Bind("FileName") %>'/>
                                         </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="File">
                                         <FooterTemplate>
                                             <asp:FileUpload ID="fuCtrl" runat="server" />                                            
                                         </FooterTemplate>
@@ -558,10 +563,10 @@
                 <asp:SqlDataSource ID="sqldsProjects" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [Projects] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [Projects] ([Code], [SubProject], [DateStamp], [Creator], [ModificationDate], [CustomerId], [StartDate], [InitialEndDate], [Title], [Description], [Supervisor], [InitialMeetingsNo], [CriticalIssues], [DesiredOrganization], [CertificationField], [CompletionPercentage]) VALUES (@Code, @SubProject, @DateStamp, @Creator, @ModificationDate, @CustomerId, @StartDate, @InitialEndDate, @Title, @Description, @Supervisor, @InitialMeetingsNo, @CriticalIssues, @DesiredOrganization, @CertificationField, @CompletionPercentage)" 
+                    InsertCommand="INSERT INTO [Projects] ([Code], [SubProject], [DateStamp], [Creator], [ModificationDate], [CustomerId], [StartDate], [InitialEndDate], [Title], [Description], [Supervisor], [InitialMeetingsNo], [CriticalIssues], [DesiredOrganization], [CertificationField], [CompletionPercentage], [Status]) VALUES (@Code, @SubProject, @DateStamp, @Creator, @ModificationDate, @CustomerId, @StartDate, @InitialEndDate, @Title, @Description, @Supervisor, @InitialMeetingsNo, @CriticalIssues, @DesiredOrganization, @CertificationField, @CompletionPercentage, @Status)" 
                     SelectCommand="SELECT * FROM [Projects] WHERE ([id] = @id)" 
                     
-                    UpdateCommand="UPDATE [Projects] SET [Code] = @Code, [SubProject] = @SubProject, [DateStamp] = @DateStamp, [Creator] = @Creator, [ModificationDate] = @ModificationDate, [CustomerId] = @CustomerId, [StartDate] = @StartDate, [InitialEndDate] = @InitialEndDate, [Title] = @Title, [Description] = @Description, [Supervisor] = @Supervisor, [InitialMeetingsNo] = @InitialMeetingsNo, [CriticalIssues] = @CriticalIssues, [DesiredOrganization] = @DesiredOrganization, [CertificationField] = @CertificationField, [CompletionPercentage] = @CompletionPercentage WHERE [id] = @id">
+                    UpdateCommand="UPDATE [Projects] SET [Code] = @Code, [SubProject] = @SubProject, [DateStamp] = @DateStamp, [Creator] = @Creator, [ModificationDate] = @ModificationDate, [CustomerId] = @CustomerId, [StartDate] = @StartDate, [InitialEndDate] = @InitialEndDate, [Title] = @Title, [Description] = @Description, [Supervisor] = @Supervisor, [InitialMeetingsNo] = @InitialMeetingsNo, [CriticalIssues] = @CriticalIssues, [DesiredOrganization] = @DesiredOrganization, [CertificationField] = @CertificationField, [CompletionPercentage] = @CompletionPercentage, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="id" 
                             PropertyName="SelectedValue" Type="Int32" />
@@ -586,6 +591,7 @@
                         <asp:Parameter Name="DesiredOrganization" Type="String" />
                         <asp:Parameter Name="CertificationField" Type="String" />
                         <asp:Parameter Name="CompletionPercentage" Type="Byte" />
+                        <asp:Parameter Name="Status" Type="Byte" />
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
                     <InsertParameters>
@@ -605,6 +611,7 @@
                         <asp:Parameter Name="DesiredOrganization" Type="String" />
                         <asp:Parameter Name="CertificationField" Type="String" />
                         <asp:Parameter Name="CompletionPercentage" Type="Byte" />
+                        <asp:Parameter Name="Status" Type="Byte" />
                     </InsertParameters>
                 </asp:SqlDataSource>
             </td>
