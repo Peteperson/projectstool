@@ -17,7 +17,7 @@
                 <asp:Image ID="Image1" ImageUrl="~/Images/eurobank.png" runat="server" Height="70px" />
             </td>
             <td style="width:100%; text-align: right; vertical-align: bottom; background-color: white">
-                <asp:ImageButton ID="btnLogoff" runat="server" ImageUrl="~/Images/Logout2.png" ToolTip="Exit application" />
+                <asp:ImageButton ID="btnLogoff" runat="server" ImageUrl="~/Images/logout.png" ToolTip="Exit application" />
             </td>
         </tr>
         </table>

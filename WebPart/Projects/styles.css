@@ -69,8 +69,9 @@ a:hover {
     text-align: center;
     background-color:#788CA5;
 	padding: 5px 0px 5px 0px;
-	border: 1px solid #CCCCCC;
+	border: 1px solid #FFFFFF;
 	color: white;
+	font-weight:bold;
 }
 
 .message {
@@ -159,3 +160,18 @@ a:hover {
     width:0%;
     text-align:left;
 }
+
+.ErrorMessage {
+    color: Yellow;
+}
+
+.InsertRow {
+    background-color: #D2B48C; /*This is the colour 'Tan'*/
+}
+
+.InsertHeader {
+    background-color: #355379;
+    color:White;
+    font-weight:bold;
+}
+

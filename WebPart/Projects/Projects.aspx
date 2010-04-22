@@ -533,6 +533,11 @@
                                             <asp:Label ID="Label4" runat="server" Text='<%# Bind("FileName") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="File">
+                                        <FooterTemplate>
+                                            <asp:FileUpload ID="fuCtrl" runat="server" />                                            
+                                        </FooterTemplate>
+                                    </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
                         </td>
@@ -691,7 +696,7 @@
                     
                     SelectCommand="SELECT * FROM [ProjectFiles] WHERE ([ProjectId] = @ProjectId)" 
                     DeleteCommand="DELETE FROM [ProjectFiles] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [ProjectFiles] ([ProjectId], [FileName], [FileData]) VALUES (@Datestamp, @ProjectId, @FileName, @FileData)" 
+                    InsertCommand="INSERT INTO [ProjectFiles] ([ProjectId], [FileName], [FileData]) VALUES (@ProjectId, @FileName, @FileData)" 
                     UpdateCommand="UPDATE [ProjectFiles] SET [FileName] = @FileName, [FileData] = @FileData WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
@@ -706,10 +711,9 @@
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
                     <InsertParameters>
-                        <asp:Parameter Name="Datestamp" />
                         <asp:Parameter Name="ProjectId" Type="Int32" />
                         <asp:Parameter Name="FileName" Type="String" />
-                        <asp:Parameter Name="FileData" Type="Object" />
+                        <asp:Parameter Name="FileData" />
                     </InsertParameters>
                 </asp:SqlDataSource>
             </td>
