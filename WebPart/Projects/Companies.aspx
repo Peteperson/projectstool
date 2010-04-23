@@ -16,7 +16,7 @@
             <td>
                 <table style="width:100%">
                     <tr class="smalltitle">
-                        <td>Companies list</td>
+                        <td>Companies list (select one - <asp:Image ID="Image1" runat="server" ImageUrl="Images/Icons/Approve_16x16.png" /> - to view details)</td>
                         <td><asp:Label ID="lblCompName1" runat="server" Text="..."></asp:Label> users</td>
                     </tr>
                     <tr>                       
@@ -27,7 +27,7 @@
                                 ShowFooter="true">
                                 <Columns>
                                     <asp:TemplateField ShowHeader="True" HeaderText="Action">
-                                        <ItemStyle Width="70px" />
+                                        <ItemStyle Wrap="False" />
                                         <ItemTemplate>                
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
                                                 CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
@@ -97,7 +97,7 @@
                                             DataSourceID="sqldsUsersComp" SkinID="gridviewSkin" Visible="False">
                                             <Columns>
                                                 <asp:TemplateField ShowHeader="False">
-                                                    <ItemStyle Width="40px" />
+                                                    <ItemStyle Wrap="false" />
                                                     <ItemTemplate>                
                                                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
                                                             CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
@@ -199,7 +199,7 @@
                     </EmptyDataTemplate>
                     <Columns>
                         <asp:TemplateField ShowHeader="False">
-                            <ItemStyle Width="40px" />
+                            <ItemStyle Wrap="false" />
                             <ItemTemplate>                
                                 <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
                                     CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />

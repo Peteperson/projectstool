@@ -11,11 +11,11 @@
         <tr>
             <td>
                 <asp:GridView ID="gvUsers" runat="server" AllowPaging="True" 
-                    AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" RowStyle-CssClass="gvRow"
+                    AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id"
                     DataSourceID="sqldsUsers" SkinID="gridviewSkin" ShowFooter="true">
                     <Columns>
                         <asp:TemplateField ShowHeader="False">
-                            <ItemStyle Width="40px" />
+                            <ItemStyle Wrap="false" />
                             <ItemTemplate>                
                                 <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
                                     CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" Text="Edit" />
