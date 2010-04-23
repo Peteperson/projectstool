@@ -25,15 +25,23 @@
                             <asp:DetailsView ID="dvProject" runat="server" AutoGenerateRows="False" 
                                 DataKeyNames="id" DataSourceID="sqldsProjects" Width="100%">
                                 <Fields>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="&nbsp;id&nbsp;" InsertVisible="False" SortExpression="id">
+                                    <asp:TemplateField>
                                         <EditItemTemplate>
                                             <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>'></asp:Label>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("id") %>'></asp:Label>
+                                            <table>
+                                                <tr>
+                                                    <td>ID:</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><asp:Label ID="Label1" runat="server" Text='<%# Bind("id") %>'></asp:Label></td>
+                                                </tr>
+                                            </table>
+                                            
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="Code" SortExpression="Code">
+                                    <asp:TemplateField HeaderText="Code" SortExpression="Code">
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Code") %>'></asp:TextBox>
                                         </EditItemTemplate>
@@ -44,7 +52,7 @@
                                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("Code") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="SubProject" SortExpression="SubProject">
+                                    <asp:TemplateField HeaderText="SubProject" SortExpression="SubProject">
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("SubProject") %>'></asp:TextBox>
                                         </EditItemTemplate>
@@ -55,76 +63,77 @@
                                             <asp:Label ID="Label3" runat="server" Text='<%# Bind("SubProject") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="DateStamp" SortExpression="DateStamp">
+                                    <asp:TemplateField HeaderText="DateStamp" SortExpression="DateStamp">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("DateStamp") %>'></asp:TextBox>
+                                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("DateStamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
                                         </EditItemTemplate>
-                                        <InsertItemTemplate>
-                                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("DateStamp") %>'></asp:TextBox>
-                                        </InsertItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("DateStamp") %>'></asp:Label>
+                                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("DateStamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="Creator" SortExpression="Creator">
+                                    <asp:TemplateField HeaderText="Creator" SortExpression="Creator">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Creator") %>'></asp:TextBox>
+                                            <asp:DropDownList ID="ddlCreators" runat="server" DataSourceID="sqldsCreators" 
+                                               selectedvalue=<%# Bind("Creator") %>  DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
                                         </EditItemTemplate>
                                         <InsertItemTemplate>
-                                            <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Creator") %>'></asp:TextBox>
+                                            <asp:DropDownList ID="ddlCreators" runat="server" DataSourceID="sqldsCreators" 
+                                               DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
                                         </InsertItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("Creator") %>'></asp:Label>
+                                            <asp:DropDownList ID="ddlCreators" runat="server" DataSourceID="sqldsCreators" 
+                                               Enabled="false" selectedvalue=<%# Bind("Creator") %>  DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="ModificationDate" 
+                                    <asp:TemplateField HeaderText="ModificationDate" 
                                         SortExpression="ModificationDate">
-                                        <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox5" runat="server" 
-                                                Text='<%# Bind("ModificationDate") %>'></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <InsertItemTemplate>
-                                            <asp:TextBox ID="TextBox5" runat="server" 
-                                                Text='<%# Bind("ModificationDate") %>'></asp:TextBox>
-                                        </InsertItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label6" runat="server" Text='<%# Bind("ModificationDate") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="CustomerId" SortExpression="CustomerId">
+                                    <asp:TemplateField HeaderText="CustomerId" SortExpression="CustomerId">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("CustomerId") %>'></asp:TextBox>
+                                            <asp:DropDownList ID="ddlCompanies" runat="server" 
+                                               selectedvalue=<%# Bind("CustomerId") %>  DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
+                                            </asp:DropDownList>
                                         </EditItemTemplate>
                                         <InsertItemTemplate>
-                                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("CustomerId") %>'></asp:TextBox>
+                                            <asp:DropDownList ID="ddlCompanies" runat="server" 
+                                               DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
+                                            </asp:DropDownList>
                                         </InsertItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("CustomerId") %>'></asp:Label>
+                                            <asp:DropDownList ID="ddlCompanies" runat="server" 
+                                               Enabled="false" selectedvalue=<%# Bind("CustomerId") %>  DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
+                                            </asp:DropDownList>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="StartDate" SortExpression="StartDate">
+                                    <asp:TemplateField HeaderText="StartDate" SortExpression="StartDate">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("StartDate") %>'></asp:TextBox>
+                                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("StartDate", "{0:dd/MM/yyyy}") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <InsertItemTemplate>
-                                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("StartDate") %>'></asp:TextBox>
+                                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("StartDate", "{0:dd/MM/yyyy}") %>'></asp:TextBox>
                                         </InsertItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("StartDate") %>'></asp:Label>
+                                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("StartDate", "{0:dd/MM/yyyy}") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="InitialEndDate" SortExpression="InitialEndDate">
+                                    <asp:TemplateField HeaderText="InitialEndDate" SortExpression="InitialEndDate">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("InitialEndDate") %>'></asp:TextBox>
+                                            <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("InitialEndDate", "{0:dd/MM/yyyy}") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <InsertItemTemplate>
-                                            <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("InitialEndDate") %>'></asp:TextBox>
+                                            <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("InitialEndDate", "{0:dd/MM/yyyy}") %>'></asp:TextBox>
                                         </InsertItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label9" runat="server" Text='<%# Bind("InitialEndDate") %>'></asp:Label>
+                                            <asp:Label ID="Label9" runat="server" Text='<%# Bind("InitialEndDate", "{0:dd/MM/yyyy}") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="Title" SortExpression="Title">
+                                    <asp:TemplateField HeaderText="Title" SortExpression="Title">
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox>
                                         </EditItemTemplate>
@@ -135,7 +144,7 @@
                                             <asp:Label ID="Label10" runat="server" Text='<%# Bind("Title") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="Description" SortExpression="Description">
+                                    <asp:TemplateField HeaderText="Description" SortExpression="Description">
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox>
                                         </EditItemTemplate>
@@ -146,18 +155,24 @@
                                             <asp:Label ID="Label11" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="Supervisor" SortExpression="Supervisor">
+                                    <asp:TemplateField HeaderText="Supervisor" SortExpression="Supervisor">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("Supervisor") %>'></asp:TextBox>
+                                            <asp:DropDownList ID="ddlSupervisors" runat="server" DataSourceID="sqldsCreators" 
+                                               selectedvalue=<%# Bind("Supervisor") %>  DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
                                         </EditItemTemplate>
                                         <InsertItemTemplate>
-                                            <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("Supervisor") %>'></asp:TextBox>
+                                            <asp:DropDownList ID="ddlSupervisors" runat="server" DataSourceID="sqldsCreators" 
+                                               DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
                                         </InsertItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label12" runat="server" Text='<%# Bind("Supervisor") %>'></asp:Label>
+                                            <asp:DropDownList ID="ddlSupervisors" runat="server" DataSourceID="sqldsCreators" 
+                                               Enabled="false" selectedvalue=<%# Bind("Supervisor") %>  DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="InitialMeetingsNo" 
+                                    <asp:TemplateField HeaderText="InitialMeetingsNo" 
                                         SortExpression="InitialMeetingsNo">
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox12" runat="server" 
@@ -171,7 +186,7 @@
                                             <asp:Label ID="Label13" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="CriticalIssues" SortExpression="CriticalIssues">
+                                    <asp:TemplateField HeaderText="CriticalIssues" SortExpression="CriticalIssues">
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox13" runat="server" Text='<%# Bind("CriticalIssues") %>'></asp:TextBox>
                                         </EditItemTemplate>
@@ -182,7 +197,7 @@
                                             <asp:Label ID="Label14" runat="server" Text='<%# Bind("CriticalIssues") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="DesiredOrganization" 
+                                    <asp:TemplateField HeaderText="DesiredOrganization" 
                                         SortExpression="DesiredOrganization">
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox14" runat="server" 
@@ -197,7 +212,7 @@
                                                 Text='<%# Bind("DesiredOrganization") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="CertificationField" 
+                                    <asp:TemplateField HeaderText="CertificationField" 
                                         SortExpression="CertificationField">
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox15" runat="server" 
@@ -211,7 +226,7 @@
                                             <asp:Label ID="Label16" runat="server" Text='<%# Bind("CertificationField") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="CompletionPercentage" 
+                                    <asp:TemplateField HeaderText="CompletionPercentage" 
                                         SortExpression="CompletionPercentage">
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox16" runat="server" 
@@ -226,19 +241,22 @@
                                                 Text='<%# Bind("CompletionPercentage") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderStyle-CssClass="DetViewHeader" HeaderText="Status" 
+                                    <asp:TemplateField HeaderText="Status" 
                                         SortExpression="Status">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox17" runat="server" 
-                                                Text='<%# Bind("Status") %>'></asp:TextBox>
+                                            <asp:DropDownList ID="ddlProjectStatus" runat="server" DataSourceID="sqldsProjectStatus" 
+                                                selectedvalue=<%# Bind("Status") %>  DataTextField="Description" DataValueField="id">                                                
+                                            </asp:DropDownList>
                                         </EditItemTemplate>
                                         <InsertItemTemplate>
-                                            <asp:TextBox ID="TextBox17" runat="server" 
-                                                Text='<%# Bind("Status") %>'></asp:TextBox>
+                                            <asp:DropDownList ID="ddlProjectStatus" runat="server" DataSourceID="sqldsProjectStatus" 
+                                                DataTextField="Description" DataValueField="id">                                                
+                                            </asp:DropDownList>
                                         </InsertItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label18" runat="server" 
-                                                Text='<%# Bind("Status") %>'></asp:Label>
+                                            <asp:DropDownList ID="ddlProjectStatus" runat="server" DataSourceID="sqldsProjectStatus" 
+                                                Enabled="false" selectedvalue=<%# Bind("Status") %>  DataTextField="Description" DataValueField="id">                                                
+                                            </asp:DropDownList>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField ShowHeader="False">
@@ -279,14 +297,14 @@
             <td align="left" style="border: inset 3px white; padding: 8px 8px 8px 8px; background-color:#842829">
                 <table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td>
+                        <td id="tdSubMenu">
                             <asp:Menu ID="mnuProjects" runat="server" Orientation="Horizontal" ForeColor="Black" 
-                                StaticEnableDefaultPopOutImage="False" BackColor="#2C486E" OnMenuItemClick="mnuProjects_MenuItemClick" 
+                                StaticEnableDefaultPopOutImage="False" BackColor="#842829" OnMenuItemClick="mnuProjects_MenuItemClick" 
                                 StaticMenuItemStyle-CssClass="TabMenuItem">
                                 <Items>
-                                    <asp:MenuItem ImageUrl="~/Images/Icons/Action_32x32.png" Text="Action Plan" Value="0"></asp:MenuItem>
-                                    <asp:MenuItem ImageUrl="~/Images/Icons/Meetings3_32x32.png" Text="Meetings" Value="1"></asp:MenuItem>
-                                    <asp:MenuItem ImageUrl="~/Images/Icons/Files232x32.png" Text="Attachments" Value="2"></asp:MenuItem>
+                                    <asp:MenuItem ImageUrl="~/Images/ActionPlanSelected.png" Text="" Value="0"></asp:MenuItem>
+                                    <asp:MenuItem ImageUrl="~/Images/MeetingsUnselected.png" Text="" Value="1"></asp:MenuItem>
+                                    <asp:MenuItem ImageUrl="~/Images/AttachmentsUnselected.png" Text="" Value="2"></asp:MenuItem>
                                 </Items>
                             </asp:Menu>
                         </td>
@@ -296,6 +314,42 @@
                             <asp:GridView ID="gvAP" runat="server" AutoGenerateColumns="False" 
                                 AllowPaging="True" AllowSorting="True" DataKeyNames="id" 
                                 DataSourceID="sqldsAP" ShowFooter="True" SkinID="gridviewSkinSmall">
+                            <EmptyDataTemplate>
+                                <br />
+                                There are no actions. Insert one using the controls below.<br />
+                                <br />
+                                <table width="100%" style="border-top: solid 1px white">
+                                    <tr class="InsertTabHeader">
+                                        <td>Action</td>
+                                        <td>ActionId</td>
+                                        <td>Responsible1</td>
+                                        <td>Responsible2</td>
+                                        <td>Comments</td>
+                                        <td>Attachment</td>
+                                        <td>Deadline</td>
+                                        <td>Status</td>
+                                    </tr>
+                                    <tr class="InsertRow">
+                                        <td><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
+                                            ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" /></td>
+                                        <td><asp:DropDownList ID="ddlActionType" runat="server" 
+                                               DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
+                                            </asp:DropDownList></td>
+                                        <td><asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
+                                                DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList></td>
+                                        <td><asp:DropDownList ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
+                                                DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList></td>
+                                        <td><asp:TextBox ID="txtAPcomments" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>' ></asp:TextBox></td>
+                                        <td><asp:FileUpload Width="150px" ID="fuAP" runat="server" /></td>
+                                        <td><asp:TextBox SkinID="txtDef" ID="txtAPdead" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>'></asp:TextBox></td>
+                                        <td><asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
+                                                DataTextField="Description" DataValueField="id">
+                                            </asp:DropDownList></td>
+                                    </tr>
+                                </table>
+                            </EmptyDataTemplate>
                             <Columns>
                                 <asp:TemplateField ShowHeader="False">
                                     <ItemStyle Wrap="false" />
@@ -326,51 +380,101 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="ActionId" SortExpression="ActionId">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("ActionId") %>'></asp:TextBox>
+                                            <asp:DropDownList ID="ddlActionType" runat="server" 
+                                               selectedvalue=<%# Bind("ActionId") %> DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
+                                            </asp:DropDownList>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("ActionId") %>'></asp:Label>
+                                            <asp:DropDownList ID="ddlActionType" runat="server" 
+                                               Enabled="false" selectedvalue=<%# Bind("ActionId") %> DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
+                                            </asp:DropDownList>
                                         </ItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:DropDownList ID="ddlActionType" runat="server" 
+                                               DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
+                                            </asp:DropDownList>
+                                        </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Responsible1" SortExpression="Responsible1">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Responsible1") %>'></asp:TextBox>
+                                            <asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
+                                                selectedvalue=<%# Bind("Responsible1") %> DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label6" runat="server" Text='<%# Bind("Responsible1") %>'></asp:Label>
+                                            <asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
+                                                Enabled="false" selectedvalue=<%# Bind("Responsible1") %> DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
                                         </ItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
+                                                DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
+                                        </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Responsible2" SortExpression="Responsible2">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox15" runat="server" Text='<%# Bind("Responsible2") %>'></asp:TextBox>
+                                            <asp:DropDownList ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
+                                                selectedvalue=<%# Bind("Responsible2") %> DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Labe26" runat="server" Text='<%# Bind("Responsible2") %>'></asp:Label>
+                                            <asp:DropDownList ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
+                                                Enabled="false" selectedvalue=<%# Bind("Responsible2") %> DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
                                         </ItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:DropDownList ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
+                                                DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
+                                        </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Comments" SortExpression="Comments">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox>
+                                            <asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label7" runat="server" Text='<%# Bind("Comments") %>'></asp:Label>
                                         </ItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:TextBox ID="txtAPcomments" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>' ></asp:TextBox>
+                                        </FooterTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="AttachmentName" SortExpression="AttachmentName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label18" runat="server" Text='<%# Bind("AttachmentName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:FileUpload Width="150px" ID="fuAP" runat="server" />                                            
+                                        </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Deadline" SortExpression="Deadline">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Deadline") %>'></asp:TextBox>
+                                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("Deadline") %>'></asp:Label>
+                                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:Label>
                                         </ItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:TextBox SkinID="txtDef" ID="txtAPdead" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>'></asp:TextBox>
+                                        </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Status" SortExpression="Status">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("Status") %>'></asp:TextBox>
+                                            <asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
+                                                selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
+                                            </asp:DropDownList>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label9" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
+                                            <asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
+                                                Enabled="false" selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
+                                            </asp:DropDownList>
                                         </ItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
+                                                DataTextField="Description" DataValueField="id">
+                                            </asp:DropDownList>
+                                        </FooterTemplate>
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
@@ -492,12 +596,12 @@
                                 DataSourceID="sqldsAttachments" SkinID="gridviewSkinSmall" 
                                 ShowFooter="True">
                                 <EmptyDataTemplate>
-                                    Currently there are no files uploaded.<br /><br />
+                                    <br />There are no files uploaded.<br /><br />
                                     <table>
                                         <tr class="InsertHeader">
                                             <td colspan="2">File</td>
                                         </tr>
-                                        <tr>
+                                        <tr class="InsertRow">
                                             <td>
                                                 <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
                                                 ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
@@ -510,9 +614,7 @@
                                     <asp:TemplateField ShowHeader="False">
                                         <ItemStyle Wrap="false" />
                                         <ItemTemplate>                
-                                            <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                                                CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" Text="Edit" />
-                                            &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
+                                            <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
                                                 CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" Text="Delete" />
                                         </ItemTemplate>
                                         <EditItemTemplate>
@@ -544,8 +646,13 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="FileName" SortExpression="FileName">
                                         <ItemTemplate>
+                                            <asp:Label  ID="lblfn" runat="server" Text='<%# Bind("FileName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
                                             <asp:Button ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
-                                                CommandName="Download" Text='<%# Bind("FileName") %>'/>
+                                                CommandName="Download" Text="Download file"/>
                                         </ItemTemplate>
                                         <FooterTemplate>
                                             <asp:FileUpload ID="fuCtrl" runat="server" />                                            
@@ -571,10 +678,9 @@
                 <asp:SqlDataSource ID="sqldsProjects" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [Projects] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [Projects] ([Code], [SubProject], [DateStamp], [Creator], [ModificationDate], [CustomerId], [StartDate], [InitialEndDate], [Title], [Description], [Supervisor], [InitialMeetingsNo], [CriticalIssues], [DesiredOrganization], [CertificationField], [CompletionPercentage], [Status]) VALUES (@Code, @SubProject, @DateStamp, @Creator, @ModificationDate, @CustomerId, @StartDate, @InitialEndDate, @Title, @Description, @Supervisor, @InitialMeetingsNo, @CriticalIssues, @DesiredOrganization, @CertificationField, @CompletionPercentage, @Status)" 
+                    InsertCommand="INSERT INTO [Projects] ([Code], [SubProject], [Creator], [CustomerId], [StartDate], [InitialEndDate], [Title], [Description], [Supervisor], [InitialMeetingsNo], [CriticalIssues], [DesiredOrganization], [CertificationField], [CompletionPercentage], [Status]) VALUES (@Code, @SubProject, @Creator, @CustomerId, @StartDate, @InitialEndDate, @Title, @Description, @Supervisor, @InitialMeetingsNo, @CriticalIssues, @DesiredOrganization, @CertificationField, @CompletionPercentage, @Status)" 
                     SelectCommand="SELECT * FROM [Projects] WHERE ([id] = @id)" 
-                    
-                    UpdateCommand="UPDATE [Projects] SET [Code] = @Code, [SubProject] = @SubProject, [DateStamp] = @DateStamp, [Creator] = @Creator, [ModificationDate] = @ModificationDate, [CustomerId] = @CustomerId, [StartDate] = @StartDate, [InitialEndDate] = @InitialEndDate, [Title] = @Title, [Description] = @Description, [Supervisor] = @Supervisor, [InitialMeetingsNo] = @InitialMeetingsNo, [CriticalIssues] = @CriticalIssues, [DesiredOrganization] = @DesiredOrganization, [CertificationField] = @CertificationField, [CompletionPercentage] = @CompletionPercentage, [Status] = @Status WHERE [id] = @id">
+                    UpdateCommand="UPDATE [Projects] SET [Code] = @Code, [SubProject] = @SubProject, [Creator] = @Creator, [ModificationDate] = @ModificationDate, [CustomerId] = @CustomerId, [StartDate] = @StartDate, [InitialEndDate] = @InitialEndDate, [Title] = @Title, [Description] = @Description, [Supervisor] = @Supervisor, [InitialMeetingsNo] = @InitialMeetingsNo, [CriticalIssues] = @CriticalIssues, [DesiredOrganization] = @DesiredOrganization, [CertificationField] = @CertificationField, [CompletionPercentage] = @CompletionPercentage, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="id" 
                             PropertyName="SelectedValue" Type="Int32" />
@@ -585,7 +691,6 @@
                     <UpdateParameters>
                         <asp:Parameter Name="Code" Type="String" />
                         <asp:Parameter Name="SubProject" Type="String" />
-                        <asp:Parameter Name="DateStamp" Type="DateTime" />
                         <asp:Parameter Name="Creator" Type="Int32" />
                         <asp:Parameter Name="ModificationDate" Type="DateTime" />
                         <asp:Parameter Name="CustomerId" Type="Int32" />
@@ -605,9 +710,7 @@
                     <InsertParameters>
                         <asp:Parameter Name="Code" Type="String" />
                         <asp:Parameter Name="SubProject" Type="String" />
-                        <asp:Parameter Name="DateStamp" Type="DateTime" />
                         <asp:Parameter Name="Creator" Type="Int32" />
-                        <asp:Parameter Name="ModificationDate" Type="DateTime" />
                         <asp:Parameter Name="CustomerId" Type="Int32" />
                         <asp:Parameter Name="StartDate" Type="DateTime" />
                         <asp:Parameter Name="InitialEndDate" Type="DateTime" />
@@ -629,8 +732,8 @@
                     
                     SelectCommand="SELECT * FROM [ActionPlans] WHERE ([ProjectId] = @ProjectId)" 
                     DeleteCommand="DELETE FROM [ActionPlans] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [SubProjectId], [ActionId], [Responsible1], [Responsible2], [Comments], [Attachment], [Deadline], [Status]) VALUES (@ProjectId, @SubProjectId, @ActionId, @Responsible1, @Responsible2, @Comments, @Attachment, @Deadline, @Status)" 
-                    UpdateCommand="UPDATE [ActionPlans] SET [SubProjectId] = @SubProjectId, [ActionId] = @ActionId, [Responsible1] = @Responsible1, [Responsible2] = @Responsible2, [Comments] = @Comments, [Attachment] = @Attachment, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
+                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Responsible1], [Responsible2], [Comments], [AttachmentName], [Attachment], [Deadline], [Status]) VALUES (@ProjectId, @ActionId, @Responsible1, @Responsible2, @Comments, @AttachmentName, @Attachment, @Deadline, @Status)" 
+                    UpdateCommand="UPDATE [ActionPlans] SET [ActionId] = @ActionId, [Responsible1] = @Responsible1, [Responsible2] = @Responsible2, [Comments] = @Comments, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
                             PropertyName="SelectedValue" Type="Int32" />
@@ -640,24 +743,22 @@
                     </DeleteParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="ProjectId" Type="Int32" />
-                        <asp:Parameter Name="SubProjectId" Type="String" />
                         <asp:Parameter Name="ActionId" Type="Byte" />
                         <asp:Parameter Name="Responsible1" Type="Int32" />
                         <asp:Parameter Name="Responsible2" Type="Int32" />
                         <asp:Parameter Name="Comments" Type="String" />
-                        <asp:Parameter Name="Attachment" Type="Object" />
                         <asp:Parameter Name="Deadline" Type="DateTime" />
                         <asp:Parameter Name="Status" Type="Byte" />
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
                     <InsertParameters>
                         <asp:Parameter Name="ProjectId" Type="Int32" />
-                        <asp:Parameter Name="SubProjectId" Type="String" />
                         <asp:Parameter Name="ActionId" Type="Byte" />
                         <asp:Parameter Name="Responsible1" Type="Int32" />
                         <asp:Parameter Name="Responsible2" Type="Int32" />
                         <asp:Parameter Name="Comments" Type="String" />
-                        <asp:Parameter Name="Attachment" Type="Object" />
+                        <asp:Parameter Name="AttachmentName" Type="String" />
+                        <asp:Parameter Name="Attachment" />
                         <asp:Parameter Name="Deadline" Type="DateTime" />
                         <asp:Parameter Name="Status" Type="Byte" />
                     </InsertParameters>
@@ -710,11 +811,9 @@
             <td>
                 <asp:SqlDataSource ID="sqldsAttachments" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    
                     SelectCommand="SELECT * FROM [ProjectFiles] WHERE ([ProjectId] = @ProjectId)" 
                     DeleteCommand="DELETE FROM [ProjectFiles] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [ProjectFiles] ([ProjectId], [FileName], [FileData]) VALUES (@ProjectId, @FileName, @FileData)" 
-                    UpdateCommand="UPDATE [ProjectFiles] SET [FileName] = @FileName, [FileData] = @FileData WHERE [id] = @id">
+                    InsertCommand="INSERT INTO [ProjectFiles] ([ProjectId], [FileName], [FileData]) VALUES (@ProjectId, @FileName, @FileData)" >
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
                             PropertyName="SelectedValue" Type="Int32" />
@@ -722,11 +821,6 @@
                     <DeleteParameters>
                         <asp:Parameter Name="id" Type="Int32" />
                     </DeleteParameters>
-                    <UpdateParameters>
-                        <asp:Parameter Name="FileName" Type="String" />
-                        <asp:Parameter Name="FileData" Type="Object" />
-                        <asp:Parameter Name="id" Type="Int32" />
-                    </UpdateParameters>
                     <InsertParameters>
                         <asp:Parameter Name="ProjectId" Type="Int32" />
                         <asp:Parameter Name="FileName" Type="String" />
@@ -760,30 +854,66 @@
                 </asp:SqlDataSource>
             </td>
             <td>
-                <asp:SqlDataSource ID="sqldsStatuses" runat="server" 
+                
+                <asp:SqlDataSource ID="sqldsActionType" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    DeleteCommand="DELETE FROM [ProjectStatuses] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [ProjectStatuses] ([Status], [Comments]) VALUES (@Status, @Comments)" 
-                    SelectCommand="SELECT [id], [Status], [Comments] FROM [ProjectStatuses] WHERE ([ProjectId] = @ProjectId)" 
-                    UpdateCommand="UPDATE [ProjectStatuses] SET [Status] = @Status, [Comments] = @Comments WHERE [id] = @id">
+                    SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [Description]">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="ActionType" Name="Category" Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+                
+            </td>
+            <td>
+                
+                <asp:SqlDataSource ID="sqldsResponsibles" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                    SelectCommand="GetResponsible" SelectCommandType="StoredProcedure">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
-                            PropertyName="SelectedValue" Type="Int32" />
+                            PropertyName="SelectedValue" Type="Int16" />
                     </SelectParameters>
-                    <DeleteParameters>
-                        <asp:Parameter Name="id" Type="Int32" />
-                    </DeleteParameters>
-                    <UpdateParameters>
-                        <asp:Parameter Name="Status" Type="Int32" />
-                        <asp:Parameter Name="Comments" Type="String" />
-                        <asp:Parameter Name="id" Type="Int32" />
-                    </UpdateParameters>
-                    <InsertParameters>
-                        <asp:Parameter Name="Status" Type="Int32" />
-                        <asp:Parameter Name="Comments" Type="String" />
-                    </InsertParameters>
                 </asp:SqlDataSource>
             </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:SqlDataSource ID="sqldsCreators" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                    SelectCommand="SELECT [id], [LastName] + ' ' + [FirstName] as FullName FROM [Users] WHERE [IsActive] = 1">
+                </asp:SqlDataSource>
+            </td>
+            <td>
+                <asp:SqlDataSource ID="sqldsCompanies" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                    SelectCommand="SELECT DISTINCT [Name], [Id] FROM [Companies] ORDER BY [Name]"></asp:SqlDataSource>
+            </td>
+            <td>
+                <asp:SqlDataSource ID="sqldsProjectStatus" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                    SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [Description]">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="ProjectStatus" Name="Category" Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </td>
+            <td>
+                <asp:SqlDataSource ID="sqldsActionStatus" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                    SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [Description]">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="ActionStatus" Name="Category" Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server"></asp:SqlDataSource>
+            </td>
+            <td>
+            </td>
+            <td></td>
             <td></td>
         </tr>
     </table>
