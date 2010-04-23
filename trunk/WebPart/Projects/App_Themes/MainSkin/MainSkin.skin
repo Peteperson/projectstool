@@ -1,7 +1,7 @@
 
 <asp:GridView runat="server" SkinId="gridviewSkin" AutoGenerateColumns="False" RowStyle-HorizontalAlign="Left"
-    BackColor="#EAEAEA" BorderColor="Tan" BorderWidth="1px" CellPadding="0" Width="100%"
-    ForeColor="Black" PageSize="15" FooterStyle-Wrap=false >
+    BackColor="#EAEAEA" BorderColor="Tan" BorderWidth="1px" CellPadding="0" Width="100%" RowStyle-CssClass="gvRow"
+    ForeColor="Black" PageSize="15" FooterStyle-Wrap="false" FooterStyle-CssClass="gvRow">
     <FooterStyle BackColor="Tan" />
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
     <PagerSettings Mode="NumericFirstLast" />
@@ -11,8 +11,8 @@
 </asp:GridView>
 
 <asp:GridView runat="server" SkinId="gridviewSkinMainTbl" AutoGenerateColumns="False" RowStyle-HorizontalAlign="Left"
-    BackColor="#EAEAEA" BorderColor="Tan" BorderWidth="1px" CellPadding="0" Width="100%"
-    ForeColor="Black" PageSize="15" FooterStyle-Wrap=false >
+    BackColor="#EAEAEA" BorderColor="Tan" BorderWidth="1px" CellPadding="0" Width="100%" RowStyle-CssClass="gvRow"
+    ForeColor="Black" PageSize="15" FooterStyle-Wrap="false" FooterStyle-CssClass="gvRow">
     <FooterStyle BackColor="Tan" />
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
     <PagerSettings Mode="NumericFirstLast" />
@@ -21,8 +21,8 @@
     <AlternatingRowStyle BackColor="#FFFBDA" />    
 </asp:GridView>
 
-<asp:GridView runat="server" SkinId="gridviewSkinSmall" AutoGenerateColumns="False" RowStyle-HorizontalAlign="Left"
-    ForeColor="Black" BackColor="#EAEAEA" PageSize="15" FooterStyle-Wrap="false" CssClass="NoTopBorderLine">
+<asp:GridView runat="server" SkinId="gridviewSkinSmall" AutoGenerateColumns="False" RowStyle-HorizontalAlign="Left" RowStyle-CssClass="gvRow"
+    ForeColor="Black" BackColor="#EAEAEA" PageSize="15" Width="100%" FooterStyle-Wrap="false" CssClass="NoTopBorderLine" FooterStyle-CssClass="gvRow">
     <FooterStyle BackColor="Tan" />
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
     <PagerSettings Mode="NumericFirstLast" />

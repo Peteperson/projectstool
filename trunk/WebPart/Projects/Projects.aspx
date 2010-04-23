@@ -276,8 +276,8 @@
             </td>
         </tr>
         <tr>
-            <td align="left" style="border: inset 3px white; padding: 8px 8px 8px 8px">
-                <table width="95%" cellpadding="0" cellspacing="0">
+            <td align="left" style="border: inset 3px white; padding: 8px 8px 8px 8px; background-color:#842829">
+                <table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
                         <td>
                             <asp:Menu ID="mnuProjects" runat="server" Orientation="Horizontal" ForeColor="Black" 
@@ -298,7 +298,7 @@
                                 DataSourceID="sqldsAP" ShowFooter="True" SkinID="gridviewSkinSmall">
                             <Columns>
                                 <asp:TemplateField ShowHeader="False">
-                                    <ItemStyle Width="40px" />
+                                    <ItemStyle Wrap="false" />
                                     <ItemTemplate>                
                                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
                                             CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" Text="Edit" />
@@ -332,12 +332,20 @@
                                             <asp:Label ID="Label5" runat="server" Text='<%# Bind("ActionId") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Responsible" SortExpression="Responsible">
+                                    <asp:TemplateField HeaderText="Responsible1" SortExpression="Responsible1">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Responsible") %>'></asp:TextBox>
+                                            <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Responsible1") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label6" runat="server" Text='<%# Bind("Responsible") %>'></asp:Label>
+                                            <asp:Label ID="Label6" runat="server" Text='<%# Bind("Responsible1") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Responsible2" SortExpression="Responsible2">
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="TextBox15" runat="server" Text='<%# Bind("Responsible2") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Labe26" runat="server" Text='<%# Bind("Responsible2") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Comments" SortExpression="Comments">
@@ -375,7 +383,7 @@
                                 DataSourceID="sqldsMeetings"  SkinID="gridviewSkinSmall" ShowFooter="True">
                                 <Columns>
                                     <asp:TemplateField ShowHeader="False">
-                                        <ItemStyle Width="40px" />
+                                        <ItemStyle Wrap="false" />
                                         <ItemTemplate>                
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
                                                 CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" Text="Edit" />
@@ -500,7 +508,7 @@
                                 </EmptyDataTemplate>
                                 <Columns>
                                     <asp:TemplateField ShowHeader="False">
-                                        <ItemStyle Width="40px" />
+                                        <ItemStyle Wrap="false" />
                                         <ItemTemplate>                
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
                                                 CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" Text="Edit" />
@@ -621,8 +629,8 @@
                     
                     SelectCommand="SELECT * FROM [ActionPlans] WHERE ([ProjectId] = @ProjectId)" 
                     DeleteCommand="DELETE FROM [ActionPlans] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [SubProjectId], [ActionId], [Responsible], [Comments], [Attachment], [Deadline], [Status]) VALUES (@ProjectId, @SubProjectId, @ActionId, @Responsible, @Comments, @Attachment, @Deadline, @Status)" 
-                    UpdateCommand="UPDATE [ActionPlans] SET [SubProjectId] = @SubProjectId, [ActionId] = @ActionId, [Responsible] = @Responsible, [Comments] = @Comments, [Attachment] = @Attachment, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
+                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [SubProjectId], [ActionId], [Responsible1], [Responsible2], [Comments], [Attachment], [Deadline], [Status]) VALUES (@ProjectId, @SubProjectId, @ActionId, @Responsible1, @Responsible2, @Comments, @Attachment, @Deadline, @Status)" 
+                    UpdateCommand="UPDATE [ActionPlans] SET [SubProjectId] = @SubProjectId, [ActionId] = @ActionId, [Responsible1] = @Responsible1, [Responsible2] = @Responsible2, [Comments] = @Comments, [Attachment] = @Attachment, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
                             PropertyName="SelectedValue" Type="Int32" />
@@ -634,7 +642,8 @@
                         <asp:Parameter Name="ProjectId" Type="Int32" />
                         <asp:Parameter Name="SubProjectId" Type="String" />
                         <asp:Parameter Name="ActionId" Type="Byte" />
-                        <asp:Parameter Name="Responsible" Type="Int32" />
+                        <asp:Parameter Name="Responsible1" Type="Int32" />
+                        <asp:Parameter Name="Responsible2" Type="Int32" />
                         <asp:Parameter Name="Comments" Type="String" />
                         <asp:Parameter Name="Attachment" Type="Object" />
                         <asp:Parameter Name="Deadline" Type="DateTime" />
@@ -645,7 +654,8 @@
                         <asp:Parameter Name="ProjectId" Type="Int32" />
                         <asp:Parameter Name="SubProjectId" Type="String" />
                         <asp:Parameter Name="ActionId" Type="Byte" />
-                        <asp:Parameter Name="Responsible" Type="Int32" />
+                        <asp:Parameter Name="Responsible1" Type="Int32" />
+                        <asp:Parameter Name="Responsible2" Type="Int32" />
                         <asp:Parameter Name="Comments" Type="String" />
                         <asp:Parameter Name="Attachment" Type="Object" />
                         <asp:Parameter Name="Deadline" Type="DateTime" />
