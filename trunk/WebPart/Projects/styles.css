@@ -5,6 +5,10 @@
 	color: #FFFFFF;
 }
 
+table {
+    width:100%;
+}
+
 a {
 	color: #EEEEEE;
 }
@@ -104,9 +108,10 @@ a:hover {
 }
 
 .TabMenuItem {
-    /*background: url(Images/GrayButton.png) repeat-x;*/
-    background: url(Images/TabBackImage.png);
+    /*background: url(Images/GrayButton.png) repeat-x;
+    background: url(Images/TabBackImage.png) repeat-x;*/
     border: none 0px;
+    padding: 0px 20px 0px 0px;
 }
 
 .TabMenuItemSelected {
@@ -159,11 +164,6 @@ a:hover {
     border-top: none 0px;
 }
 
-.DetViewHeader {
-    width:0%;
-    text-align:left;
-}
-
 .ErrorMessage {
     color: Yellow;
 }
@@ -178,12 +178,21 @@ a:hover {
     font-weight:bold;
 }
 
+.InsertTabHeader {
+    background-color: #233D63;
+    color:White;
+    font-weight:bold;
+}
+
 .gvRow {
 	height:35px;
 }
 
-#tblSubMenu {
-    border: none 0px;
-    padding: 0px;
-    margin: 0px;
+#tdSubMenu a {
+    color: #AAAAAA;
 }
+
+#tdSubMenu a:hover {
+    color:White;
+}
+
