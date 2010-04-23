@@ -110,7 +110,15 @@ Partial Class Projects
     End Sub
 
     Protected Sub gvAP_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvAP.RowCommand
-        If e.CommandName = "Insert" Then sqldsAP.Insert()
+        Select Case e.CommandName
+            Case "Insert"
+                sqldsAP.Insert()
+                gvAP.DataBind()
+            Case "Download"
+                'Session("DownloadFileId") = e.CommandArgument
+                'Response.Clear()
+                'Response.Redirect("~/DownloadFile.ashx")
+        End Select
     End Sub
 
     Private Sub InsertDeleteValidation(ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs, ByVal col As Byte)
@@ -140,5 +148,18 @@ Partial Class Projects
 
     Protected Sub gvFiles_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvFiles.RowDataBound
         InsertDeleteValidation(e, 0)
+    End Sub
+
+    Protected Sub gvMeetings_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvMeetings.RowCommand
+        Select Case e.CommandName
+            Case "Insert"
+                sqldsMeetings.Insert()
+                gvMeetings.DataBind()
+            Case "Download"
+                'Session("DownloadFileId") = e.CommandArgument
+                'Response.Clear()
+                'Response.Redirect("~/DownloadFile.ashx")
+        End Select
+        ShowTab(1)
     End Sub
 End Class

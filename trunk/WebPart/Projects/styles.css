@@ -196,3 +196,8 @@ a:hover {
     color:White;
 }
 
+
+#tdSubMenu table {
+    width:0%;
+}
+
