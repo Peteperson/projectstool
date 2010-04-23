@@ -14,7 +14,7 @@
         </tr>
         <tr>
             <td>
-                <table style="width:100%">
+                <table>
                     <tr class="smalltitle">
                         <td>Companies list (select one - <asp:Image ID="Image1" runat="server" ImageUrl="Images/Icons/Approve_16x16.png" /> - to view details)</td>
                         <td><asp:Label ID="lblCompName1" runat="server" Text="..."></asp:Label> users</td>
@@ -172,7 +172,7 @@
                         Currently there are no registered employees<br />
                         <br />
                         <div class="InsertRow">
-                            <table width="100%">
+                            <table>
                                 <tr class="InsertHeader">
                                     <td>Action</td>
                                     <td>LastName</td>

@@ -9,7 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-      <table style="width: 100%">
+      <table>
         <tr>
             <td style="background-color:white; border-bottom: solid 3px white">
                 <asp:Image ID="Image1" ImageUrl="~/Images/eurobank.png" runat="server" Height="71px" />
@@ -22,7 +22,7 @@
                 <br />
                 <asp:Login ID="ctrlLogin" runat="server" DisplayRememberMe="False" 
         BackColor="#E4E4C0" BorderColor="#FFDFAD" BorderPadding="4" BorderStyle="None"
-        BorderWidth="0px" Font-Names="Tahoma, Verdana" ForeColor="#333333" 
+        BorderWidth="0px" Font-Names="Tahoma, Verdana" ForeColor="#333333" Width="0%"
         TextLayout="TextOnTop">
         <LoginButtonStyle BackColor="White" BorderColor="#CC9966" BorderStyle="Solid" 
             BorderWidth="1px" Font-Names="Tahoma, Verdana" ForeColor="#990000" />
