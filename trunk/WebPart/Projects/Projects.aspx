@@ -342,7 +342,7 @@
                                                 DataTextField="FullName" DataValueField="id">
                                             </asp:DropDownList></td>
                                         <td><asp:TextBox ID="txtAPcomments" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>' ></asp:TextBox></td>
-                                        <td><asp:FileUpload Width="150px" ID="fuAP" runat="server" /></td>
+                                        <td><asp:FileUpload ID="fuAP" Width="100px" Font-Size="8pt" runat="server" /></td>
                                         <td><asp:TextBox SkinID="txtDef" ID="txtAPdead" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>'></asp:TextBox></td>
                                         <td><asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 DataTextField="Description" DataValueField="id">
@@ -377,6 +377,17 @@
                                         <ItemTemplate>
                                             <asp:Label ID="Label1" runat="server" Text='<%# Bind("id") %>'></asp:Label>
                                         </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Description" SortExpression="Comments">
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("Comments") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:TextBox ID="txtAPcomments" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>' ></asp:TextBox>
+                                        </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="ActionId" SortExpression="ActionId">
                                         <EditItemTemplate>
@@ -429,34 +440,15 @@
                                             </asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Comments" SortExpression="Comments">
-                                        <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("Comments") %>'></asp:Label>
-                                        </ItemTemplate>
-                                        <FooterTemplate>
-                                            <asp:TextBox ID="txtAPcomments" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>' ></asp:TextBox>
-                                        </FooterTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="AttachmentName" SortExpression="AttachmentName">
-                                        <ItemTemplate>
-                                            <asp:Label ID="Label18" runat="server" Text='<%# Bind("AttachmentName") %>'></asp:Label>
-                                        </ItemTemplate>
-                                        <FooterTemplate>
-                                            <asp:FileUpload Width="150px" ID="fuAP" runat="server" />                                            
-                                        </FooterTemplate>
-                                    </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Deadline" SortExpression="Deadline">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:TextBox>
+                                            <asp:TextBox ID="TextBox7" SkinID="txtDate" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label8" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:TextBox SkinID="txtDef" ID="txtAPdead" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>'></asp:TextBox>
+                                            <asp:TextBox SkinID="txtDate" ID="txtAPdead" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>'></asp:TextBox>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Status" SortExpression="Status">
@@ -474,6 +466,14 @@
                                             <asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
+                                        </FooterTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="AttachmentName" SortExpression="AttachmentName">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label18" runat="server" Text='<%# Bind("AttachmentName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:FileUpload Width="150px" ID="fuAP" runat="server" />                                            
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -968,7 +968,7 @@
                 </asp:SqlDataSource>
             </td>
             <td>
-            </td>
+                &nbsp;</td>
         </tr>
     </table>
 </asp:Content>

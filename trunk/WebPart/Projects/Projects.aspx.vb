@@ -1,4 +1,5 @@
-﻿
+﻿Imports System.Globalization
+
 Partial Class Projects
     Inherits System.Web.UI.Page
 
@@ -81,6 +82,7 @@ Partial Class Projects
         e.Command.Parameters("@ModificationDate").Value = Now
     End Sub
 
+    Private provider As CultureInfo = CultureInfo.InvariantCulture
     Protected Sub sqldsAP_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAP.Inserting
         If gvAP.Rows.Count > 0 Then
             e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
@@ -90,7 +92,7 @@ Partial Class Projects
             e.Command.Parameters("@Comments").Value = CType(gvAP.FooterRow.FindControl("txtAPcomments"), TextBox).Text
             e.Command.Parameters("@AttachmentName").Value = CType(gvAP.FooterRow.FindControl("fuAP"), FileUpload).FileName
             e.Command.Parameters("@Attachment").Value = CType(gvAP.FooterRow.FindControl("fuAP"), FileUpload).FileBytes
-            e.Command.Parameters("@Deadline").Value = CType(gvAP.FooterRow.FindControl("txtAPdead"), TextBox).Text
+            e.Command.Parameters("@Deadline").Value = DateTime.ParseExact(CType(gvAP.FooterRow.FindControl("txtAPdead"), TextBox).Text, "dd/MM/yyyy", Provider)
             e.Command.Parameters("@Status").Value = CType(gvAP.FooterRow.FindControl("ddlActionStatus"), DropDownList).SelectedValue
         Else
             e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
