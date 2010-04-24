@@ -4,8 +4,8 @@ Partial Class Projects
     Inherits System.Web.UI.Page
 
     Protected Sub mnuProjects_MenuItemClick(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.MenuEventArgs) Handles mnuProjects.MenuItemClick
-        Dim SelImages() As String = {"~/Images/ActionPlanSelected.png", "~/Images/MeetingsSelected.png", "~/Images/AttachmentsSelected.png"}
-        Dim UnselImages() As String = {"~/Images/ActionPlanUnselected.png", "~/Images/MeetingsUnselected.png", "~/Images/AttachmentsUnselected.png"}
+        Dim SelImages() As String = {"~/Images/ActionPlanSelected3.png", "~/Images/MeetingsSelected.png", "~/Images/AttachmentsSelected.png"}
+        Dim UnselImages() As String = {"~/Images/ActionPlanUnselected3.png", "~/Images/MeetingsUnselected.png", "~/Images/AttachmentsUnselected.png"}
         For i As Integer = 0 To mnuProjects.Items.Count - 1
             If i = e.Item.Value Then
                 mnuProjects.Items(i).ImageUrl = SelImages(i)
