@@ -1,7 +1,7 @@
 ﻿body {
 	background-color: #355379;
 	background-image: url(Images/Background.png);
-	font: normal small Tahoma, Verdana;
+	font: normal small Verdana, Tahoma;
 	color: #FFFFFF;
 }
 
@@ -205,3 +205,27 @@ a:hover {
     width:0%;
 }
 
+#tblProjects{
+	
+}
+
+#tblProjects td{
+	border:solid 1px #2C486E;
+}
+
+.tblProjectsHeader
+{
+	background-color: #EAEAEA;
+	color: Black;
+	text-align:left;
+	width:0%;
+	white-space:nowrap;
+}
+
+.tblProjectsItem {
+	background-color: #FFFBDA;
+	color: Black;
+	width:50%;
+	padding-left: 10px;
+	text-align:left;
+}
