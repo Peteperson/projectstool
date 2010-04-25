@@ -111,7 +111,7 @@ a:hover {
     /*background: url(Images/GrayButton.png) repeat-x;
     background: url(Images/TabBackImage.png) repeat-x;*/
     border: none 0px;
-    padding: 0px 20px 0px 0px;
+    padding: 0px 2px 0px 0px;
 }
 
 .TabMenuItemSelected {
@@ -186,6 +186,10 @@ a:hover {
 
 .gvRow {
 	height:35px;
+}
+
+#tdSubMenu{
+	text-align:left;
 }
 
 #tdSubMenu a {

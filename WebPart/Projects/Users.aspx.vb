@@ -28,4 +28,8 @@ Partial Class Users
         e.Command.Parameters("@Email").Value = CType(gvUsers.FooterRow.FindControl("txtInsEmail"), TextBox).Text
         e.Command.Parameters("@DefaultPage").Value = CType(gvUsers.FooterRow.FindControl("ddlInsDefPage"), DropDownList).SelectedValue
     End Sub
+
+    Protected Sub sqldsUsers_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsUsers.Updating
+
+    End Sub
 End Class
