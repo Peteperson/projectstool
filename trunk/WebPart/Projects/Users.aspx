@@ -167,10 +167,10 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Last Login" SortExpression="LastLogin">
                             <ItemTemplate>
-                                <asp:Label ID="Label9" runat="server" Text='<%# Bind("LastLogin") %>'></asp:Label>
+                                <asp:Label ID="Label9" runat="server" Text='<%# Bind("LastLogin", "{0:dd/MM/yyyy HH:mm:ss}") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox8" SkinID="txtDef" runat="server" Text='<%# Bind("LastLogin") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBox8" SkinID="txtDef" runat="server" Text='<%# Bind("LastLogin", "{0:dd/MM/yyyy HH:mm:ss}") %>'></asp:TextBox>
                             </EditItemTemplate>
                         </asp:TemplateField>
                     </Columns>
