@@ -229,3 +229,27 @@ a:hover {
 	padding-left: 10px;
 	text-align:left;
 }
+
+#tdAttachments a{
+    color:black;
+}
+
+#tdAttachments a:hover{
+    color:#842829;
+}
+
+#tdMeetings a{
+    color:black;
+}
+
+#tdMeetings a:hover{
+    color:#842829;
+}
+
+#tdAP a{
+    color:black;
+}
+
+#tdAP a:hover{
+    color:#842829;
+}

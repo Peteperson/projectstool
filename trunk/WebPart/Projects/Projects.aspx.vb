@@ -1,5 +1,4 @@
-﻿Imports System.Globalization
-
+﻿
 Partial Class Projects
     Inherits System.Web.UI.Page
 
@@ -60,6 +59,7 @@ Partial Class Projects
                 gvFiles.DataBind()
             Case "Download"
                 Session("DownloadFileId") = e.CommandArgument
+                Session("TableName") = "Attachments"
                 Response.Clear()
                 Response.Redirect("~/DownloadFile.ashx")
         End Select
@@ -69,20 +69,32 @@ Partial Class Projects
     Protected Sub sqldsAttachments_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAttachments.Inserting
         If gvFiles.Rows.Count > 0 Then
             e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
-            e.Command.Parameters("@FileName").Value = CType(gvFiles.FooterRow.FindControl("fuCtrl"), FileUpload).FileName
-            e.Command.Parameters("@FileData").Value = CType(gvFiles.FooterRow.FindControl("fuCtrl"), FileUpload).FileBytes
+            e.Command.Parameters("@AttachmentName").Value = CType(gvFiles.FooterRow.FindControl("fuCtrl"), FileUpload).FileName
+            e.Command.Parameters("@Attachment").Value = CType(gvFiles.FooterRow.FindControl("fuCtrl"), FileUpload).FileBytes
+            e.Command.Parameters("@Comments").Value = CType(gvFiles.FooterRow.FindControl("txtAttachComment"), TextBox).Text
         Else
             e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
-            e.Command.Parameters("@FileName").Value = CType(gvFiles.Controls(0).Controls(0).Controls(0).FindControl("fuCtrl"), FileUpload).FileName
-            e.Command.Parameters("@FileData").Value = CType(gvFiles.Controls(0).Controls(0).Controls(0).FindControl("fuCtrl"), FileUpload).FileBytes
+            e.Command.Parameters("@AttachmentName").Value = CType(gvFiles.Controls(0).Controls(0).Controls(0).FindControl("fuCtrl"), FileUpload).FileName
+            e.Command.Parameters("@Attachment").Value = CType(gvFiles.Controls(0).Controls(0).Controls(0).FindControl("fuCtrl"), FileUpload).FileBytes
+            e.Command.Parameters("@Comments").Value = CType(gvFiles.Controls(0).Controls(0).Controls(0).FindControl("txtAttachComment"), TextBox).Text
         End If
+    End Sub
+
+    Protected Sub sqldsProjects_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsProjects.Inserting
+        e.Command.Parameters("@StartDate").Value = Support.ReadDate(CType(dvProject.FindControl("txtProjectSDate"), TextBox).Text)
+        e.Command.Parameters("@InitialEndDate").Value = Support.ReadDate(CType(dvProject.FindControl("txtProjectEDate"), TextBox).Text)
+        e.Command.Parameters("@Creator").Value = CType(dvProject.FindControl("ddlCreators"), DropDownList).SelectedValue
+        e.Command.Parameters("@Supervisor").Value = CType(dvProject.FindControl("ddlSupervisors"), DropDownList).SelectedValue
+        e.Command.Parameters("@CustomerId").Value = CType(dvProject.FindControl("ddlCompanies"), DropDownList).SelectedValue
+        e.Command.Parameters("@Status").Value = CType(dvProject.FindControl("ddlProjectStatus"), DropDownList).SelectedValue
     End Sub
 
     Protected Sub sqldsProjects_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsProjects.Updating
         e.Command.Parameters("@ModificationDate").Value = Now
+        e.Command.Parameters("@StartDate").Value = Support.ReadDate(CType(dvProject.FindControl("txtProjectSDate"), TextBox).Text)
+        e.Command.Parameters("@InitialEndDate").Value = Support.ReadDate(CType(dvProject.FindControl("txtProjectEDate"), TextBox).Text)
     End Sub
 
-    Private provider As CultureInfo = CultureInfo.InvariantCulture
     Protected Sub sqldsAP_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAP.Inserting
         If gvAP.Rows.Count > 0 Then
             e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
@@ -92,7 +104,7 @@ Partial Class Projects
             e.Command.Parameters("@Comments").Value = CType(gvAP.FooterRow.FindControl("txtAPcomments"), TextBox).Text
             e.Command.Parameters("@AttachmentName").Value = CType(gvAP.FooterRow.FindControl("fuAP"), FileUpload).FileName
             e.Command.Parameters("@Attachment").Value = CType(gvAP.FooterRow.FindControl("fuAP"), FileUpload).FileBytes
-            e.Command.Parameters("@Deadline").Value = DateTime.ParseExact(CType(gvAP.FooterRow.FindControl("txtAPdead"), TextBox).Text, "dd/MM/yyyy", Provider)
+            e.Command.Parameters("@Deadline").Value = Support.ReadDate(CType(gvAP.FooterRow.FindControl("txtAPdead"), TextBox).Text)
             e.Command.Parameters("@Status").Value = CType(gvAP.FooterRow.FindControl("ddlActionStatus"), DropDownList).SelectedValue
         Else
             e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
@@ -102,13 +114,14 @@ Partial Class Projects
             e.Command.Parameters("@Comments").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("txtAPcomments"), TextBox).Text
             e.Command.Parameters("@AttachmentName").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("fuAP"), FileUpload).FileName
             e.Command.Parameters("@Attachment").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("fuAP"), FileUpload).FileBytes
-            e.Command.Parameters("@Deadline").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("txtAPdead"), TextBox).Text
+            e.Command.Parameters("@Deadline").Value = Support.ReadDate(CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("txtAPdead"), TextBox).Text)
             e.Command.Parameters("@Status").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("ddlActionStatus"), DropDownList).SelectedValue
         End If
     End Sub
 
     Protected Sub sqldsAP_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAP.Updating
-        'e.Command.Parameters("@Attachment").Value = System.DBNull.Value
+        Dim ind As Integer = gvAP.EditIndex
+        e.Command.Parameters("@Deadline").Value = Support.ReadDate(CType(gvAP.Rows(ind).FindControl("txtAPdead"), TextBox).Text)
     End Sub
 
     Protected Sub gvAP_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvAP.RowCommand
@@ -117,9 +130,10 @@ Partial Class Projects
                 sqldsAP.Insert()
                 gvAP.DataBind()
             Case "Download"
-                'Session("DownloadFileId") = e.CommandArgument
-                'Response.Clear()
-                'Response.Redirect("~/DownloadFile.ashx")
+                Session("DownloadFileId") = e.CommandArgument
+                Session("TableName") = "ActionPlan"
+                Response.Clear()
+                Response.Redirect("~/DownloadFile.ashx")
         End Select
     End Sub
 
@@ -158,10 +172,47 @@ Partial Class Projects
                 sqldsMeetings.Insert()
                 gvMeetings.DataBind()
             Case "Download"
-                'Session("DownloadFileId") = e.CommandArgument
-                'Response.Clear()
-                'Response.Redirect("~/DownloadFile.ashx")
+                Session("DownloadFileId") = e.CommandArgument
+                Session("TableName") = "Meetings"
+                Response.Clear()
+                Response.Redirect("~/DownloadFile.ashx")
         End Select
         ShowTab(1)
+    End Sub
+
+    Protected Sub sqldsMeetings_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsMeetings.Inserting
+        If gvMeetings.Rows.Count > 0 Then
+            e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+            e.Command.Parameters("@TimeFrom").Value = Support.ReadDate(CType(gvMeetings.FooterRow.FindControl("txtMeetTimeFrom"), TextBox).Text)
+            e.Command.Parameters("@TimeTo").Value = Support.ReadDate(CType(gvMeetings.FooterRow.FindControl("txtMeetTimeTo"), TextBox).Text)
+            e.Command.Parameters("@Kind").Value = CType(gvMeetings.FooterRow.FindControl("ddlMeetKind"), DropDownList).SelectedValue
+            e.Command.Parameters("@Subject").Value = CType(gvMeetings.FooterRow.FindControl("txtMeetSubject"), TextBox).Text
+            e.Command.Parameters("@Consultant").Value = CType(gvMeetings.FooterRow.FindControl("ddlMeetCons"), DropDownList).SelectedValue
+            e.Command.Parameters("@Comments").Value = CType(gvMeetings.FooterRow.FindControl("txtMeetComments"), TextBox).Text
+            e.Command.Parameters("@NewBusiness").Value = CType(gvMeetings.FooterRow.FindControl("txtMeetNewBus"), TextBox).Text
+            e.Command.Parameters("@AttachmentName").Value = CType(gvMeetings.FooterRow.FindControl("fuAttachment"), FileUpload).FileName
+            e.Command.Parameters("@Attachment").Value = CType(gvMeetings.FooterRow.FindControl("fuAttachment"), FileUpload).FileBytes
+            e.Command.Parameters("@Status").Value = CType(gvMeetings.FooterRow.FindControl("ddlMeetStat"), DropDownList).SelectedValue
+        Else
+            e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+            e.Command.Parameters("@TimeFrom").Value = Support.ReadDate(CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("txtMeetTimeFrom"), TextBox).Text)
+            e.Command.Parameters("@TimeTo").Value = Support.ReadDate(CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("txtMeetTimeTo"), TextBox).Text)
+            e.Command.Parameters("@Kind").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("ddlMeetKind"), DropDownList).SelectedValue
+            e.Command.Parameters("@Subject").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("txtMeetSubject"), TextBox).Text
+            e.Command.Parameters("@Consultant").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("ddlMeetCons"), DropDownList).SelectedValue
+            e.Command.Parameters("@Comments").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("txtMeetComments"), TextBox).Text
+            e.Command.Parameters("@NewBusiness").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("txtMeetNewBus"), TextBox).Text
+            e.Command.Parameters("@AttachmentName").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("fuAttachment"), FileUpload).FileName
+            e.Command.Parameters("@Attachment").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("fuAttachment"), FileUpload).FileBytes
+            e.Command.Parameters("@Status").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("ddlMeetStat"), DropDownList).SelectedValue
+        End If
+    End Sub
+
+    Protected Sub sqldsMeetings_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsMeetings.Updating
+        Dim ind As Integer = gvMeetings.EditIndex
+        e.Command.Parameters("@TimeFrom").Value = Support.ReadDate(CType(gvMeetings.Rows(ind).FindControl("txtMeetTimeFrom"), TextBox).Text)
+        e.Command.Parameters("@TimeTo").Value = Support.ReadDate(CType(gvMeetings.Rows(ind).FindControl("txtMeetTimeTo"), TextBox).Text)
+        'e.Command.Parameters("@Attachment").Value = System.DBNull.Value
+        'e.Command.Parameters("@AttachmentName").Value = System.DBNull.Value
     End Sub
 End Class

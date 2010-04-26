@@ -1,6 +1,6 @@
 ﻿Imports Microsoft.VisualBasic
-
 Imports System.Data
+
 Public Module Database
     Function DoLogin(ByVal username As String, ByVal password As Byte(), ByVal ip As String) As LgnResult
         Dim cmdDoLogin As SqlClient.SqlCommand
@@ -51,8 +51,17 @@ Public Module Database
         Return result
     End Function
 
-    Public Function DownloadFile(ByVal id As Integer) As DataTable
-        Dim cmdCurrentStatementData As New SqlClient.SqlCommand("DownloadFile")
+    Public Function DownloadFile(ByVal id As Integer, ByVal TableName As String) As DataTable
+        Dim SP As String = ""
+        Select Case TableName
+            Case "Attachments"
+                SP = "DownloadFile"
+            Case "Meetings"
+                SP = "DownloadMeetingFile"
+            Case "ActionPlan"
+                SP = "DownloadAPFile"
+        End Select
+        Dim cmdCurrentStatementData As New SqlClient.SqlCommand(SP)
         cmdCurrentStatementData.CommandType = CommandType.StoredProcedure
         cmdCurrentStatementData.Parameters.Add("@FileId", SqlDbType.Int).Value = id
         Dim cn As New SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings("cnMain").ConnectionString)
