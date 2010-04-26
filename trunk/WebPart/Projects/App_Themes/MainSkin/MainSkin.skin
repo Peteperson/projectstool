@@ -6,7 +6,7 @@
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
     <PagerSettings Mode="NumericFirstLast" />
     <SelectedRowStyle BackColor="#7593B9" ForeColor="White" Font-Bold="true" />
-    <HeaderStyle BackColor="#2C486E" Font-Bold="True" ForeColor="White" Font-Size="10pt" Height="35px" />
+    <HeaderStyle BackColor="#2C486E" Font-Bold="True" ForeColor="White" Font-Size="11pt" Height="35px" />
     <AlternatingRowStyle BackColor="#D3D3D3" />    
 </asp:GridView>
 
@@ -17,7 +17,7 @@
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
     <PagerSettings Mode="NumericFirstLast" />
     <SelectedRowStyle BackColor="#7593B9" ForeColor="White" Font-Bold="true" />
-    <HeaderStyle BackColor="#2C486E" Font-Bold="True" ForeColor="White" Font-Size="10pt" Height="35px" />
+    <HeaderStyle BackColor="#2C486E" Font-Bold="True" ForeColor="White" Font-Size="11pt" Height="35px" />
     <AlternatingRowStyle BackColor="#FFFBDA" />    
 </asp:GridView>
 
@@ -39,15 +39,15 @@
     <WeekendDayStyle BackColor="LightGray" ForeColor="Black" />
 </asp:Calendar>
 
-<asp:TextBox SkinId="txtDef" runat="server" Font-Names="Verdana, Tahoma" Width="90%" ></asp:TextBox>
-<asp:TextBox skinid="txtHour" width="20px" Font-Names="Verdana, Tahoma" style="text-align:center" runat="server"></asp:TextBox>
-<asp:TextBox skinid="txtCmnt" width="20px" Font-Names="Verdana, Tahoma" style="text-align:left; background: #CCCCCC" runat="server"></asp:TextBox>
-<asp:TextBox skinid="txtDecimal" width="50px" Font-Names="Verdana, Tahoma" style="text-align:right" runat="server"></asp:TextBox>
-<asp:TextBox skinid="txtText" width="98%" Font-Names="Verdana, Tahoma" runat="server"></asp:TextBox>
-<asp:TextBox skinid="txtTextCenter" width="55px" style="text-align:center" Font-Names="Verdana, Tahoma" runat="server"></asp:TextBox>
-<asp:TextBox skinid="txtTextLong" width="97%" Height="40px" Font-Names="Verdana, Tahoma" runat="server"></asp:TextBox>
-<asp:TextBox skinid="txtInteger" width="40px" Font-Names="Verdana, Tahoma" style="text-align:right" runat="server"></asp:TextBox>
-<asp:TextBox skinid="txtDate" width="75px" Font-Names="Verdana, Tahoma" style="text-align:right" runat="server"></asp:TextBox>
-<asp:TextBox skinid="txtDateTime" width="118px" Font-Names="Verdana, Tahoma" style="text-align:right" runat="server"></asp:TextBox>
-<asp:TextBox skinid="txtTextVeryLong" width="400px" Font-Names="Verdana, Tahoma" runat="server"></asp:TextBox>
+<asp:TextBox SkinId="txtDef" runat="server" Font-Names="Calibri, Tahoma, Verdana" Width="90%" ></asp:TextBox>
+<asp:TextBox skinid="txtHour" width="20px" Font-Names="Calibri, Tahoma, Verdana" style="text-align:center" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtCmnt" width="20px" Font-Names="Calibri, Tahoma, Verdana" style="text-align:left; background: #CCCCCC" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtDecimal" width="50px" Font-Names="Calibri, Tahoma, Verdana" style="text-align:right" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtText" width="98%" Font-Names="Calibri, Tahoma, Verdana" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtTextCenter" width="55px" style="text-align:center" Font-Names="Calibri, Tahoma, Verdana" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtTextLong" width="97%" Height="40px" Font-Names="Calibri, Tahoma, Verdana" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtInteger" width="40px" Font-Names="Calibri, Tahoma, Verdana" style="text-align:right" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtDate" width="75px" Font-Names="Calibri, Tahoma, Verdana" style="text-align:right" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtDateTime" width="118px" Font-Names="Calibri, Tahoma, Verdana" style="text-align:right" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtTextVeryLong" width="400px" Font-Names="Calibri, Tahoma, Verdana" runat="server"></asp:TextBox>
 

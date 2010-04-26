@@ -80,6 +80,10 @@ Partial Class Projects
         End If
     End Sub
 
+    Protected Sub sqldsProjects_Inserted(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsProjects.Inserted
+        ddlPrjCode.DataBind()
+    End Sub
+
     Protected Sub sqldsProjects_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsProjects.Inserting
         e.Command.Parameters("@StartDate").Value = Support.ReadDate(CType(dvProject.FindControl("txtProjectSDate"), TextBox).Text)
         e.Command.Parameters("@InitialEndDate").Value = Support.ReadDate(CType(dvProject.FindControl("txtProjectEDate"), TextBox).Text)

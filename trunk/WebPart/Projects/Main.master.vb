@@ -2,12 +2,12 @@
     Inherits System.Web.UI.MasterPage
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Dim CurrPage As String = Request.AppRelativeCurrentExecutionFilePath.ToLower
         If Session("UserId") Is Nothing Then
-            Response.Redirect("~/Login.aspx")
+            If Not CurrPage.ToLower.EndsWith("error.aspx") Then Response.Redirect("~/Login.aspx")
         Else
             lblUser.Text = Session("UserFullName") & " (" & Session("UserType") & ")"
             lblLogin.Text = CType(Session("LastLogin"), DateTime).ToString("dd/MM/yyyy HH:mm")
-            Dim CurrPage As String = Request.AppRelativeCurrentExecutionFilePath.ToLower
             For i As Integer = 0 To gvMenu.Rows.Count - 1
                 If CType(gvMenu.Rows(i).FindControl("MenuLink"), WebControls.HyperLink).NavigateUrl.ToLower = CurrPage Then
                     gvMenu.Rows(i).Cells(0).ControlStyle.BackColor = Drawing.Color.FromArgb(&H2C, &H48, &H6E)

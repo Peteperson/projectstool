@@ -33,14 +33,6 @@
                                     ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                             </FooterTemplate>
                         </asp:TemplateField> 
-                        <asp:TemplateField HeaderText="&nbsp;id&nbsp;" InsertVisible="False" SortExpression="id">
-                            <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("id") %>'></asp:Label>
-                            </ItemTemplate>
-                            <EditItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>'></asp:Label>
-                            </EditItemTemplate>
-                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="User Type" SortExpression="UserType">
                             <ItemTemplate>
                                 <asp:DropDownList ID="ddlUserType" runat="server" DataSourceID="sqldsUserTypes" 
@@ -80,10 +72,10 @@
                                 <asp:Label ID="Label4" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBox3" SkinID="txtText" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="txtInsDesc" runat="server" ></asp:TextBox>
+                                <asp:TextBox ID="txtInsDesc" SkinID="txtText" runat="server" ></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Ordering" SortExpression="Ordering">
@@ -91,10 +83,10 @@
                                 <asp:Label ID="Label5" runat="server" Text='<%# Bind("Ordering") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Ordering") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBox4" SkinID="txtText" runat="server" Text='<%# Bind("Ordering") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="txtInsOrd" runat="server" ></asp:TextBox>
+                                <asp:TextBox ID="txtInsOrd" SkinID="txtText" runat="server" ></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                     </Columns>
