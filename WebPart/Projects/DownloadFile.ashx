@@ -12,14 +12,15 @@ Public Class DownloadFile : Implements IHttpHandler, IReadOnlySessionState
         Dim FileName As String
         Dim dt As DataTable
         Dim FileId As String = context.Session("DownloadFileId")
+        Dim tbl As String = context.Session("TableName")
         If FileId Is Nothing Then context.Response.Redirect("~/")
 
-        dt = Database.DownloadFile(FileId)
+        dt = Database.DownloadFile(FileId, tbl)
         
         If dt.Rows.Count < 1 Then context.Response.Redirect("~/")
         
-        FileBytes = dt.Rows(0).Item("FileData")
-        FileName = dt.Rows(0).Item("FileName")
+        FileBytes = dt.Rows(0).Item("Attachment")
+        FileName = dt.Rows(0).Item("AttachmentName")
 
         With context.Response
             .Clear()

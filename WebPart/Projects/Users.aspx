@@ -170,7 +170,7 @@
                                 <asp:Label ID="Label9" runat="server" Text='<%# Bind("LastLogin", "{0:dd/MM/yyyy HH:mm:ss}") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox8" SkinID="txtDef" runat="server" Text='<%# Bind("LastLogin", "{0:dd/MM/yyyy HH:mm:ss}") %>'></asp:TextBox>
+                                <asp:Label ID="Label9" runat="server" Text='<%# Bind("LastLogin", "{0:dd/MM/yyyy HH:mm:ss}") %>'></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -186,7 +186,7 @@
         DeleteCommand="DELETE FROM [Users] WHERE [id] = @id" 
         InsertCommand="INSERT INTO [Users] ([UserName], [Password], [UserType], [Company], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage]) VALUES (@UserName, @Password, @UserType, @Company, @FirstName, @LastName, @Telephone, @Mobile, @Email, @DefaultPage)" 
         SelectCommand="SELECT [id], [UserName], [UserType], [Company], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsActive], [LastLogin] FROM [Users]" 
-        UpdateCommand="UPDATE [Users] SET [UserName] = @UserName, [UserType] = @UserType, [Company] = @Company, [FirstName] = @FirstName, [LastName] = @LastName, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email, [DefaultPage] = @DefaultPage, [IsActive] = @IsActive, [LastLogin] = @LastLogin WHERE [id] = @id">
+        UpdateCommand="UPDATE [Users] SET [UserName] = @UserName, [UserType] = @UserType, [Company] = @Company, [FirstName] = @FirstName, [LastName] = @LastName, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email, [DefaultPage] = @DefaultPage, [IsActive] = @IsActive WHERE [id] = @id">
         <DeleteParameters>
             <asp:Parameter Name="id" Type="Int32" />
         </DeleteParameters>
@@ -201,7 +201,6 @@
             <asp:Parameter Name="Email" Type="String" />
             <asp:Parameter Name="DefaultPage" Type="String" />
             <asp:Parameter Name="IsActive" Type="Boolean" />
-            <asp:Parameter Name="LastLogin" Type="DateTime" />
             <asp:Parameter Name="id" Type="Int32" />
         </UpdateParameters>
         <InsertParameters>

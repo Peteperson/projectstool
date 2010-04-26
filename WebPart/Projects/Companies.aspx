@@ -57,7 +57,7 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Datestamp" SortExpression="Datestamp" >
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:TextBox>
+                                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
                                         </EditItemTemplate>
                                         <ItemTemplate>                                           
                                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
@@ -318,13 +318,11 @@
                     DeleteCommand="DELETE FROM [Companies] WHERE [Id] = @Id" 
                     InsertCommand="INSERT INTO [Companies] ([Name], [Description]) VALUES (@Name, @Description)" 
                     SelectCommand="SELECT [Id], [Datestamp], [Name], [Description] FROM [Companies] ORDER BY [Name]" 
-                    
-                    UpdateCommand="UPDATE [Companies] SET [Datestamp] = @Datestamp, [Name] = @Name, [Description] = @Description WHERE [Id] = @Id">
+                    UpdateCommand="UPDATE [Companies] SET [Name] = @Name, [Description] = @Description WHERE [Id] = @Id">
                     <DeleteParameters>
                         <asp:Parameter Name="Id" Type="Int32" />
                     </DeleteParameters>
                     <UpdateParameters>
-                        <asp:Parameter Name="Datestamp" Type="DateTime" />
                         <asp:Parameter Name="Name" Type="String" />
                         <asp:Parameter Name="Description" Type="String" />
                         <asp:Parameter Name="Id" Type="Int32" />
