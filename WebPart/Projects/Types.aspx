@@ -34,14 +34,6 @@
                                     ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                             </FooterTemplate>
                         </asp:TemplateField>                        
-                        <asp:TemplateField HeaderText="&nbsp;id&nbsp;" InsertVisible="False" SortExpression="id">
-                            <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("id") %>'></asp:Label>
-                            </ItemTemplate>
-                            <EditItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>'></asp:Label>
-                            </EditItemTemplate>
-                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Category" SortExpression="Category">
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Category") %>'></asp:Label>

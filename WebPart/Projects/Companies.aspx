@@ -47,14 +47,6 @@
                                                 ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Id" InsertVisible="False" SortExpression="Id">
-                                        <EditItemTemplate>
-                                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("Id") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Datestamp" SortExpression="Datestamp" >
                                         <EditItemTemplate>
                                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
@@ -65,24 +57,24 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Name" SortExpression="Name">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
+                                            <asp:TextBox ID="TextBox2" SkinID="txtText" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label3" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:TextBox ID="txtCompName" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txtCompName" SkinID="txtText" runat="server"></asp:TextBox>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Description" SortExpression="Description">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox>
+                                            <asp:TextBox ID="TextBox3" runat="server" SkinID="txtText" Text='<%# Bind("Description") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label4" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:TextBox ID="txtCompDesc" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txtCompDesc" SkinID="txtText" runat="server"></asp:TextBox>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -110,14 +102,6 @@
                                                         &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
                                                             CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" Text="Cancel" />
                                                     </EditItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Id" InsertVisible="False" SortExpression="Id">
-                                                    <EditItemTemplate>
-                                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
-                                                    </EditItemTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("Id") %>'></asp:Label>
-                                                    </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="UserId" SortExpression="UserId">
                                                     <EditItemTemplate>
@@ -216,14 +200,6 @@
                                 <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
                                     ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                             </FooterTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Id" InsertVisible="False" SortExpression="Id">
-                            <EditItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("Id") %>'></asp:Label>
-                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Datestamp" SortExpression="Datestamp">
                             <EditItemTemplate>

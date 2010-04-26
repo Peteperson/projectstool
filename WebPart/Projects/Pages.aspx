@@ -33,16 +33,6 @@
                                     ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                             </FooterTemplate>
                         </asp:TemplateField> 
-                        <asp:TemplateField HeaderText="&nbsp;id&nbsp;" SortExpression="id">
-                            <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("id") %>'></asp:Label>
-                            </ItemTemplate>
-                            <EditItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>'></asp:Label>
-                            </EditItemTemplate>
-                            <FooterTemplate>
-                            </FooterTemplate>
-                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Path" SortExpression="Path">
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Path") %>'></asp:Label>
