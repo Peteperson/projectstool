@@ -1,0 +1,54 @@
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Main.master" AutoEventWireup="false" CodeFile="Files.aspx.vb" Inherits="Files" Theme="MainSkin" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
+    <br />
+    <br />
+    <table id="subPageMainTable">
+        <tr>
+            <td class="title">Meetings</td>
+        </tr>
+        <tr>
+            <td id="tdAttachments">
+                <asp:GridView ID="gvFiles" runat="server" AllowPaging="True" 
+                    AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
+                    DataSourceID="sqldsFiles" SkinID="gridviewSkinSmall">
+                    <Columns>
+                        <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
+                            SortExpression="A/A" />
+                        <asp:BoundField DataField="Datestamp" HeaderText="Datestamp" 
+                            SortExpression="Datestamp" />
+                        <asp:BoundField DataField="SubProject" HeaderText="SubProject" 
+                            SortExpression="SubProject" />
+                        <asp:TemplateField HeaderText="File" SortExpression="File">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
+                                                CommandName="Download" Text='<%# Bind("File") %>'></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="Comments" HeaderText="Comments" 
+                            SortExpression="Comments" />
+                    </Columns>
+                </asp:GridView>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <asp:SqlDataSource ID="sqldsFiles" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                    SelectCommand="FileList" SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="1" Name="UserId" Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</asp:Content>
+
