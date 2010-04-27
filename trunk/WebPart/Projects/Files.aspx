@@ -7,7 +7,7 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Meetings</td>
+            <td class="title">File list</td>
         </tr>
         <tr>
             <td id="tdAttachments">
