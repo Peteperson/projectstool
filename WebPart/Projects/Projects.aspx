@@ -250,6 +250,7 @@
                                 </Fields>
                             </asp:DetailsView>
                         </td>
+                        <td style="width:0%">Consultans?</td>
                     </tr>
                 </table>
             </td>
@@ -835,9 +836,10 @@
                 <asp:SqlDataSource ID="sqldsConsultants" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [ProjectConsultants] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [ProjectConsultants] ([ConsultantId], [Comments]) VALUES (@ConsultantId, @Comments)" 
-                    SelectCommand="SELECT [id], [ConsultantId], [Comments] FROM [ProjectConsultants] WHERE ([ProjectId] = @ProjectId)" 
-                    UpdateCommand="UPDATE [ProjectConsultants] SET [ConsultantId] = @ConsultantId, [Comments] = @Comments WHERE [id] = @id">
+                    InsertCommand="INSERT INTO [ProjectConsultants] ([ConsultantId], [Comments], [ProjectId], [Datestamp]) VALUES (@ConsultantId, @Comments, @ProjectId, @Datestamp)" 
+                    SelectCommand="SELECT [id], [ConsultantId], [Comments], [ProjectId], [Datestamp] FROM [ProjectConsultants] WHERE ([ProjectId] = @ProjectId) ORDER BY [Datestamp]" 
+                    
+                    UpdateCommand="UPDATE [ProjectConsultants] SET [ConsultantId] = @ConsultantId, [Comments] = @Comments, [ProjectId] = @ProjectId, [Datestamp] = @Datestamp WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
                             PropertyName="SelectedValue" Type="Int32" />
@@ -848,11 +850,15 @@
                     <UpdateParameters>
                         <asp:Parameter Name="ConsultantId" Type="Int32" />
                         <asp:Parameter Name="Comments" Type="String" />
+                        <asp:Parameter Name="ProjectId" Type="Int32" />
+                        <asp:Parameter Name="Datestamp" Type="DateTime" />
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
                     <InsertParameters>
                         <asp:Parameter Name="ConsultantId" Type="Int32" />
                         <asp:Parameter Name="Comments" Type="String" />
+                        <asp:Parameter Name="ProjectId" Type="Int32" />
+                        <asp:Parameter Name="Datestamp" Type="DateTime" />
                     </InsertParameters>
                 </asp:SqlDataSource>
             </td>
@@ -938,6 +944,17 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
+            <td>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
             <td>
                 &nbsp;</td>
         </tr>
