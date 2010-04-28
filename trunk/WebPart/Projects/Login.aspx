@@ -22,10 +22,10 @@
                 <br />
                 <asp:Login ID="ctrlLogin" runat="server" DisplayRememberMe="False" 
         BackColor="#E4E4C0" BorderColor="#FFDFAD" BorderPadding="4" BorderStyle="None"
-        BorderWidth="0px" Font-Names="Calibri, Tahoma, Verdana" ForeColor="#333333" Width="0%"
+        BorderWidth="0px" Font-Names="Tahoma, Calibri, Verdana" ForeColor="#333333" Width="0%"
         TextLayout="TextOnTop">
         <LoginButtonStyle BackColor="White" BorderColor="#CC9966" BorderStyle="Solid" 
-            BorderWidth="1px" Font-Names="Calibri, Tahoma, Verdana" ForeColor="#990000" />
+            BorderWidth="1px" Font-Names="Tahoma, Calibri, Verdana" ForeColor="#990000" />
         <LayoutTemplate>
             <table id="tblLogin">
                 <tr>
@@ -64,7 +64,7 @@
                             <tr>
                                 <td align="right" colspan="2">
                                     <asp:Button ID="LoginButton" runat="server" CommandName="Login" 
-                                        Font-Names="Calibri, Tahoma, Verdana" Text="Log In" ValidationGroup="Login1" 
+                                        Font-Names="Tahoma, Calibri, Verdana" Text="Log In" ValidationGroup="Login1" 
                                         Width="70px" />
                                 </td>
                             </tr>

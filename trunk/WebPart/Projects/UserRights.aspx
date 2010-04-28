@@ -35,34 +35,34 @@
                         </asp:TemplateField> 
                         <asp:TemplateField HeaderText="User Type" SortExpression="UserType">
                             <ItemTemplate>
-                                <asp:DropDownList ID="ddlUserType" runat="server" DataSourceID="sqldsUserTypes" 
+                                <asp:DropDownList SkinId="ddlDef" ID="ddlUserType" runat="server" DataSourceID="sqldsUserTypes" 
                                     Enabled="false" selectedvalue=<%# Bind("UserType") %> DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:DropDownList ID="ddlUserType" runat="server" DataSourceID="sqldsUserTypes" 
+                                <asp:DropDownList SkinId="ddlDef" ID="ddlUserType" runat="server" DataSourceID="sqldsUserTypes" 
                                     selectedvalue=<%# Bind("UserType") %> DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:DropDownList ID="ddlInsUserType" runat="server" DataSourceID="sqldsUserTypes" 
+                                <asp:DropDownList SkinId="ddlDef" ID="ddlInsUserType" runat="server" DataSourceID="sqldsUserTypes" 
                                     DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Page" SortExpression="PageId">
                             <ItemTemplate>
-                                <asp:DropDownList ID="ddlPages" runat="server" DataSourceID="sqlPages" 
+                                <asp:DropDownList SkinId="ddlDef" ID="ddlPages" runat="server" DataSourceID="sqlPages" 
                                     Enabled="false" selectedvalue=<%# Bind("PageId") %> DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:DropDownList ID="ddlPages" runat="server" DataSourceID="sqlPages" 
+                                <asp:DropDownList SkinId="ddlDef" ID="ddlPages" runat="server" DataSourceID="sqlPages" 
                                     selectedvalue=<%# Bind("PageId") %> DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:DropDownList ID="ddlInsPages" runat="server" DataSourceID="sqlPages" 
+                                <asp:DropDownList SkinId="ddlDef" ID="ddlInsPages" runat="server" DataSourceID="sqlPages" 
                                     DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </FooterTemplate>

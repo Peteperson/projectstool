@@ -35,7 +35,7 @@
                                                 CommandName="Download" Text='<%# Bind("AttachmentName") %>'></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Deadline" SortExpression="Deadline">
+                        <asp:TemplateField HeaderText="Deadline *" HeaderStyle-Wrap="false" SortExpression="Deadline">
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
@@ -45,6 +45,9 @@
                     </Columns>
                 </asp:GridView>
             </td>
+        </tr>
+        <tr>
+            <td align="right">(*): Default ordering</td>
         </tr>
     </table>
     <table>

@@ -37,7 +37,7 @@
                                     <table border="0">
                                         <tr>
                                             <td><asp:Image ID="Image2" runat="server" ImageUrl=<%# eval("Image") %> /></td>
-                                            <td><asp:HyperLink Font-Underline="false" style="text-align:center" ImageUrl="" BorderWidth="0px" BorderStyle="none" Width="100%" ID="MenuLink" NavigateUrl=<%# eval("Path") %> runat="server"><%#Eval("Description")%></asp:HyperLink></td>
+                                            <td style="width:100%; padding-left:20px"><asp:HyperLink Font-Underline="false" style="text-align:left" ImageUrl="" BorderWidth="0px" BorderStyle="none" Width="100%" ID="MenuLink" NavigateUrl=<%# eval("Path") %> runat="server"><%#Eval("Description")%></asp:HyperLink></td>
                                         </tr>
                                     </table>
                                 </ItemTemplate>

@@ -1,8 +1,8 @@
 ﻿body {
 	background-color: #355379;
 	background-image: url(Images/Background.png);
-	font: normal 11pt Calibri, Tahoma, Verdana;
-	color: #FFFFFF;
+	font: normal 10pt Tahoma, Calibri, Verdana;
+	color: #FFFFFF;	
 }
 
 table {

@@ -21,12 +21,12 @@
                             SortExpression="SubProject" />
                         <asp:BoundField DataField="Customer" HeaderText="Customer" 
                             SortExpression="Customer" />
-                        <asp:TemplateField HeaderText="Date" SortExpression="Date">
+                        <asp:TemplateField HeaderText="Date *" HeaderStyle-Wrap="false" SortExpression="Date">
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("Date", "{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="From" SortExpression="From">
+                        <asp:TemplateField HeaderText="From *" HeaderStyle-Wrap="false" SortExpression="From">
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("From", "{0:HH:mm}") %>'></asp:Label>
                             </ItemTemplate>
@@ -56,6 +56,9 @@
                     </Columns>
                 </asp:GridView>
             </td>
+        </tr>
+        <tr>
+            <td align="right">(*): Default ordering</td>
         </tr>
     </table>
     <table>
