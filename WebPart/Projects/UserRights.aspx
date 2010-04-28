@@ -86,7 +86,7 @@
                                 <asp:TextBox ID="TextBox4" SkinID="txtText" runat="server" Text='<%# Bind("Ordering") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="txtInsOrd" SkinID="txtText" runat="server" ></asp:TextBox>
+                                <asp:TextBox ID="txtInsOrd" SkinID="txtText" runat="server" Text="1" ></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                     </Columns>

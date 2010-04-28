@@ -17,19 +17,27 @@
                     <Columns>
                         <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
                             SortExpression="A/A" />
-                        <asp:BoundField DataField="SubProject" HeaderText="SubProject" 
-                            SortExpression="SubProject" />
+                        <asp:TemplateField HeaderText="SubProject" SortExpression="SubProject">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnSubProject" runat="server" CausesValidation="True" CommandArgument='<%# Bind("ProjectId") %>'
+                                                CommandName="SelSubProject" Text='<%# Bind("SubProject") %>'></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="Customer" HeaderText="Customer" 
                             SortExpression="Customer" />
                         <asp:TemplateField HeaderText="Date *" HeaderStyle-Wrap="false" SortExpression="Date">
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("Date", "{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
+
+<HeaderStyle Wrap="False"></HeaderStyle>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="From *" HeaderStyle-Wrap="false" SortExpression="From">
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("From", "{0:HH:mm}") %>'></asp:Label>
                             </ItemTemplate>
+
+<HeaderStyle Wrap="False"></HeaderStyle>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="To" SortExpression="To">
                             <ItemTemplate>
@@ -68,7 +76,7 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     SelectCommand="MeetingsList" SelectCommandType="StoredProcedure">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="1" Name="UserId" Type="String" />
+                        <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int16" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>

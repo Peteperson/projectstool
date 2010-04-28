@@ -76,48 +76,32 @@
                                 </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="First Name" SortExpression="FirstName">
+                        <asp:TemplateField HeaderText="Last Name<br>First Name" SortExpression="LastName">
                             <ItemTemplate>
+                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("LastName") %>'></asp:Label><br />
                                 <asp:Label ID="Label4" runat="server" Text='<%# Bind("FirstName") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
+                                <asp:TextBox ID="TextBox4" SkinID="txtDef" runat="server" Text='<%# Bind("LastName") %>'></asp:TextBox><br />
                                 <asp:TextBox ID="TextBox3" SkinID="txtDef" runat="server" Text='<%# Bind("FirstName") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <FooterTemplate>
+                                <asp:TextBox ID="txtInsLastName" SkinID="txtDef" runat="server"></asp:TextBox><br />
                                 <asp:TextBox ID="txtInsFirstName" SkinID="txtDef" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Last Name" SortExpression="LastName">
+                        <asp:TemplateField HeaderText="Mobile<br>Telephone" SortExpression="Mobile">
                             <ItemTemplate>
-                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("LastName") %>'></asp:Label>
-                            </ItemTemplate>
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox4" SkinID="txtDef" runat="server" Text='<%# Bind("LastName") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <FooterTemplate>
-                                <asp:TextBox ID="txtInsLastName" SkinID="txtDef" runat="server"></asp:TextBox>
-                            </FooterTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Telephone" SortExpression="Telephone">
-                            <ItemTemplate>
+                                <asp:Label ID="Label7" runat="server" Text='<%# Bind("Mobile") %>'></asp:Label><br />
                                 <asp:Label ID="Label6" runat="server" Text='<%# Bind("Telephone") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
+                                <asp:TextBox ID="TextBox6" SkinID="txtDef" runat="server" Text='<%# Bind("Mobile") %>'></asp:TextBox><br />
                                 <asp:TextBox ID="TextBox5" SkinID="txtDef" runat="server" Text='<%# Bind("Telephone") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <FooterTemplate>
+                                <asp:TextBox ID="txtInsMobile" SkinID="txtDef" runat="server"></asp:TextBox><br />
                                 <asp:TextBox ID="txtInsTelephone" SkinID="txtDef" runat="server"></asp:TextBox>
-                            </FooterTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Mobile" SortExpression="Mobile">
-                            <ItemTemplate>
-                                <asp:Label ID="Label7" runat="server" Text='<%# Bind("Mobile") %>'></asp:Label>
-                            </ItemTemplate>
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox6" SkinID="txtDef" runat="server" Text='<%# Bind("Mobile") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <FooterTemplate>
-                                <asp:TextBox ID="txtInsMobile" SkinID="txtDef" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Email" SortExpression="Email">

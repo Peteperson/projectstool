@@ -9,6 +9,10 @@ Partial Class Files
                 Session("TableName") = "Attachments"
                 Response.Clear()
                 Response.Redirect("~/DownloadFile.ashx")
+            Case "SelSubProject"
+                Session("ProjectId") = e.CommandArgument
+                Response.Clear()
+                Response.Redirect("~/Projects.aspx")
         End Select
     End Sub
 End Class

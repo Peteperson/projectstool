@@ -7,8 +7,6 @@ Partial Class Companies
             Case "Insert"
                 sqldsCompanies.Insert()
             Case "Select"
-                dvInsUsrComp.Visible = True
-                gvCmpUsr.Visible = True
                 gvCompEmpl.Visible = True
         End Select
     End Sub
@@ -50,21 +48,8 @@ Partial Class Companies
         InsertDeleteValidation(e, 0)
     End Sub
 
-    Protected Sub gvCmpUsr_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvCmpUsr.RowDataBound
-        InsertDeleteValidation(e, 0)
-    End Sub
-
     Protected Sub gvCompEmpl_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvCompEmpl.RowDataBound
         InsertDeleteValidation(e, 0)
-    End Sub
-
-    Protected Sub btnInsUser_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnInsUser.Click
-        sqldsUsersComp.Insert()
-    End Sub
-
-    Protected Sub sqldsUsersComp_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsUsersComp.Inserting
-        e.Command.Parameters("@UserId").Value = ddlInsUsers.SelectedValue
-        e.Command.Parameters("@CompanyId").Value = gvCompanies.SelectedValue
     End Sub
 
     Protected Sub sqldsCompEmployees_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsCompEmployees.Inserting
@@ -88,7 +73,6 @@ Partial Class Companies
     End Sub
 
     Protected Sub gvCompanies_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvCompanies.SelectedIndexChanged
-        lblCompName1.Text = gvCompanies.SelectedDataKey.Values("Name")
         lblCompName2.Text = gvCompanies.SelectedDataKey.Values("Name")
     End Sub
 End Class
