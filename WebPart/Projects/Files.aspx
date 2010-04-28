@@ -17,8 +17,11 @@
                     <Columns>
                         <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
                             SortExpression="A/A" />
-                        <asp:BoundField DataField="Datestamp" HeaderText="Datestamp" 
-                            SortExpression="Datestamp" />
+                        <asp:TemplateField HeaderText="Datestamp *" HeaderStyle-Wrap="false" SortExpression="Datestamp">
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy HH:mm:ss}") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="SubProject" HeaderText="SubProject" 
                             SortExpression="SubProject" />
                         <asp:TemplateField HeaderText="File" SortExpression="File">
@@ -32,6 +35,9 @@
                     </Columns>
                 </asp:GridView>
             </td>
+        </tr>
+        <tr>
+            <td align="right">(*): Default ordering</td>
         </tr>
     </table>
     <table>
