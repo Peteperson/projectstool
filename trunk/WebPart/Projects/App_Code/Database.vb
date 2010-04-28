@@ -51,6 +51,30 @@ Public Module Database
         Return result
     End Function
 
+    Public Function ChangePassword(ByVal UserId As Integer, ByVal OldPass As Byte(), ByVal NewPass As Byte()) As CngPassResult
+        Dim cmdCngPass As SqlClient.SqlCommand
+        Dim Result As CngPassResult
+
+        cmdCngPass = New SqlClient.SqlCommand("ChangePassword")
+        cmdCngPass.CommandType = CommandType.StoredProcedure
+        cmdCngPass.Parameters.Add("@UserId", SqlDbType.Int).Value = UserId
+        cmdCngPass.Parameters.Add("@OldPass", SqlDbType.VarBinary, 16).Value = OldPass
+        cmdCngPass.Parameters.Add("@NewPass", SqlDbType.VarBinary, 16).Value = NewPass
+
+        Dim cn As New SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings("cnMain").ConnectionString)
+        cmdCngPass.Connection = cn
+        cn.Open()
+        Dim res As Byte = cmdCngPass.ExecuteScalar
+        Select Case res
+            Case 1 : Result = CngPassResult.Success
+            Case 2 : Result = CngPassResult.WrongOldPass
+            Case Else : Result = CngPassResult.OtherError
+        End Select
+
+        cn.Close()
+        Return Result
+    End Function
+
     Public Function DownloadFile(ByVal id As Integer, ByVal TableName As String) As DataTable
         Dim SP As String = ""
         Select Case TableName

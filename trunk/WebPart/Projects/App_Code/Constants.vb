@@ -24,3 +24,9 @@ Public Module Support
         Return DateTime.ParseExact(input, "dd/MM/yyyy HH:mm:ss", provider)
     End Function
 End Module
+
+Public Enum CngPassResult
+    Success
+    WrongOldPass
+    OtherError
+End Enum

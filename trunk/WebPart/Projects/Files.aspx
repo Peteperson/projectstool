@@ -15,18 +15,26 @@
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
                     DataSourceID="sqldsFiles" SkinID="gridviewSkinSmall">
                     <Columns>
-                        <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
-                            SortExpression="A/A" />
+                        <asp:TemplateField HeaderText="A/A" SortExpression="A/A">
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("[A/A]") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Datestamp *" HeaderStyle-Wrap="false" SortExpression="Datestamp">
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy HH:mm:ss}") %>'></asp:Label>
                             </ItemTemplate>
+                            <HeaderStyle Wrap="False" />
                         </asp:TemplateField>
-                        <asp:BoundField DataField="SubProject" HeaderText="SubProject" 
-                            SortExpression="SubProject" />
+                        <asp:TemplateField HeaderText="SubProject" SortExpression="SubProject">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnSubProject" runat="server" CausesValidation="True" CommandArgument='<%# Bind("ProjectId") %>'
+                                                CommandName="SelSubProject" Text='<%# Bind("SubProject") %>'></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="File" SortExpression="File">
                             <ItemTemplate>
-                                <asp:LinkButton ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
+                                <asp:LinkButton ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("ProjectId") %>'
                                                 CommandName="Download" Text='<%# Bind("File") %>'></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -47,7 +55,7 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     SelectCommand="FileList" SelectCommandType="StoredProcedure">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="1" Name="UserId" Type="String" />
+                        <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int16" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>

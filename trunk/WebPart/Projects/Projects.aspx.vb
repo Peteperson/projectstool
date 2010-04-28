@@ -50,6 +50,10 @@ Partial Class Projects
         gvAP.Visible = True
         gvMeetings.Visible = False
         gvFiles.Visible = False
+        If Not Session("ProjectId") Is Nothing AndAlso Session("ProjectId") > -1 Then
+            ddlPrjCode.SelectedValue = Session("ProjectId")
+            Session("ProjectId") = -1
+        End If
     End Sub
 
     Protected Sub gvFiles_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvFiles.RowCommand
@@ -91,12 +95,20 @@ Partial Class Projects
         e.Command.Parameters("@Supervisor").Value = CType(dvProject.FindControl("ddlSupervisors"), DropDownList).SelectedValue
         e.Command.Parameters("@CustomerId").Value = CType(dvProject.FindControl("ddlCompanies"), DropDownList).SelectedValue
         e.Command.Parameters("@Status").Value = CType(dvProject.FindControl("ddlProjectStatus"), DropDownList).SelectedValue
+        If e.Command.Parameters("@Consultant2").Value = 0 Then e.Command.Parameters("@Consultant2").Value = System.DBNull.Value
+    End Sub
+
+    Protected Sub sqldsProjects_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsProjects.Selecting
+        'If e.Command.Parameters("@Consultant2").Value Is System.DBNull.Value Then
+        '    CType(dvProject.FindControl("ddlConsultant2"), DropDownList).SelectedValue = 0
+        'End If
     End Sub
 
     Protected Sub sqldsProjects_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsProjects.Updating
         e.Command.Parameters("@ModificationDate").Value = Now
         e.Command.Parameters("@StartDate").Value = Support.ReadDate(CType(dvProject.FindControl("txtProjectSDate"), TextBox).Text)
         e.Command.Parameters("@InitialEndDate").Value = Support.ReadDate(CType(dvProject.FindControl("txtProjectEDate"), TextBox).Text)
+        If e.Command.Parameters("@Consultant2").Value = 0 Then e.Command.Parameters("@Consultant2").Value = System.DBNull.Value
     End Sub
 
     Protected Sub sqldsAP_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAP.Inserting

@@ -17,7 +17,6 @@
                 <table>
                     <tr class="smalltitle">
                         <td>Companies list (select one - <asp:Image ID="Image1" runat="server" ImageUrl="Images/Icons/Approve_16x16.png" /> - to view details)</td>
-                        <td><asp:Label ID="lblCompName1" runat="server" Text="..."></asp:Label> users</td>
                     </tr>
                     <tr>                       
                         <td align="center" style="vertical-align:top">
@@ -79,59 +78,6 @@
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>                            
-                        </td>
-                        <td style="vertical-align:top" align="center">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <asp:GridView ID="gvCmpUsr" runat="server" AllowPaging="True"  EmptyDataText="Currently there are no registered users"
-                                            AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" 
-                                            DataSourceID="sqldsUsersComp" SkinID="gridviewSkin" Visible="False">
-                                            <Columns>
-                                                <asp:TemplateField ShowHeader="False">
-                                                    <ItemStyle Wrap="false" />
-                                                    <ItemTemplate>                
-                                                        <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                                                            CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
-                                                        &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                                            CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />
-                                                    </ItemTemplate>
-                                                    <EditItemTemplate>
-                                                        <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                                                            CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" Text="Update" />
-                                                        &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                                            CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" Text="Cancel" />
-                                                    </EditItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="UserId" SortExpression="UserId">
-                                                    <EditItemTemplate>
-                                                        <asp:DropDownList SkinId="ddlDef" ID="ddlUsers" runat="server" DataSourceID="sqldsUsers" 
-                                                           selectedvalue=<%# Bind("UserId") %> DataTextField="UserName" DataValueField="id">
-                                                        </asp:DropDownList>                                            
-                                                    </EditItemTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:DropDownList SkinId="ddlDef" ID="ddlUsers" runat="server" DataSourceID="sqldsUsers" 
-                                                           Enabled="false" selectedvalue=<%# Bind("UserId") %> DataTextField="UserName" DataValueField="id">
-                                                        </asp:DropDownList>                                            
-                                                    </ItemTemplate>
-                                                    <FooterTemplate>
-                                                    </FooterTemplate>
-                                                </asp:TemplateField>
-                                            </Columns>
-                                        </asp:GridView>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div id="dvInsUsrComp" runat="server" visible="false" class="InsertRow">Users: <asp:DropDownList SkinId="ddlDef" ID="ddlInsUsers" runat="server" DataSourceID="sqldsUsers" 
-                                               DataTextField="UserName" DataValueField="id">
-                                             </asp:DropDownList>                                            
-                                            <asp:ImageButton ID="btnInsUser" runat="server" 
-                                                ImageUrl="~/Images/Icons/add16_16.png" ToolTip="Add the selected user" />
-                                        </div>                            
-                                    </td>
-                                </tr>
-                            </table>
                         </td>
                     </tr>
                 </table>

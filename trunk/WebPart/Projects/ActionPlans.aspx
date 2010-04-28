@@ -17,8 +17,12 @@
                     <Columns>
                         <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
                             SortExpression="A/A" />
-                        <asp:BoundField DataField="SubProject" HeaderText="SubProject" 
-                            SortExpression="SubProject" />
+                        <asp:TemplateField HeaderText="SubProject" SortExpression="SubProject">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnSubProject" runat="server" CausesValidation="True" CommandArgument='<%# Bind("ProjectId") %>'
+                                                CommandName="SelSubProject" Text='<%# Bind("SubProject") %>'></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="Customer" HeaderText="Customer" 
                             SortExpression="Customer" />
                         <asp:BoundField DataField="Description" HeaderText="Description" 
@@ -39,6 +43,8 @@
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
+
+                        <HeaderStyle Wrap="False"></HeaderStyle>
                         </asp:TemplateField>
                         <asp:BoundField DataField="Status" HeaderText="Status" 
                             SortExpression="Status" />
@@ -57,7 +63,7 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     SelectCommand="ActionPlanList" SelectCommandType="StoredProcedure">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="1" Name="UserId" Type="String" />
+                        <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int16" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
