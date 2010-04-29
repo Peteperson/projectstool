@@ -13,11 +13,17 @@ Public Class DownloadFile : Implements IHttpHandler, IReadOnlySessionState
         Dim dt As DataTable
         Dim FileId As String = context.Session("DownloadFileId")
         Dim tbl As String = context.Session("TableName")
-        If FileId Is Nothing Then context.Response.Redirect("~/")
+        If FileId Is Nothing Then 
+            context.Session("ErrorMessage") = "FileId is not set. Unable to download file.!"
+            context.Response.Redirect("~/Error.aspx")
+        End If
 
         dt = Database.DownloadFile(FileId, tbl)
         
-        If dt.Rows.Count < 1 Then context.Response.Redirect("~/")
+        If dt.Rows.Count < 1 Then 
+            context.Session("ErrorMessage") = "File with id="& FileId &" not found!"
+            context.Response.Redirect("~/Error.aspx")
+        End If
         
         FileBytes = dt.Rows(0).Item("Attachment")
         FileName = dt.Rows(0).Item("AttachmentName")
