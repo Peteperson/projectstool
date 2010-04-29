@@ -34,7 +34,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="File" SortExpression="File">
                             <ItemTemplate>
-                                <asp:LinkButton ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("ProjectId") %>'
+                                <asp:LinkButton ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
                                                 CommandName="Download" Text='<%# Bind("File") %>'></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>

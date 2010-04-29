@@ -224,9 +224,9 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="tblProjectsHeader">Start date</td>
-                                                    <td class="tblProjectsItem"><asp:TextBox ID="txtProjectSDate" runat="server" Text='<%# Bind("StartDate", "{0:dd/MM/yyyy}") %>'></asp:TextBox></td>
+                                                    <td class="tblProjectsItem"><asp:TextBox ID="txtProjectSDate" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>'></asp:TextBox></td>
                                                     <td class="tblProjectsHeader">Initial end date</td>
-                                                    <td class="tblProjectsItem"><asp:TextBox ID="txtProjectEDate" runat="server" Text='<%# Bind("InitialEndDate", "{0:dd/MM/yyyy}") %>'></asp:TextBox></td>
+                                                    <td class="tblProjectsItem"><asp:TextBox ID="txtProjectEDate" runat="server" Text='<%# Today.AddMonths(6).ToString("dd/MM/yyyy") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblProjectsHeader">Critical issues</td>
@@ -258,23 +258,23 @@
                                     <asp:TemplateField ShowHeader="False">
                                         <EditItemTemplate>
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                                                CommandName="Update" ImageUrl="~/Images/Icons/Save24_24.png" Text="Update" />
+                                                CommandName="Update" ImageUrl="~/Images/Icons/Save24_24.png" ToolTip="Update" />
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                                CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel32_32.png" Text="Cancel" />
+                                                CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel32_32.png" ToolTip="Cancel" />
                                         </EditItemTemplate>
                                         <InsertItemTemplate>
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                                                CommandName="Insert" ImageUrl="~/Images/Icons/add24_24.png" Text="Insert" />
+                                                CommandName="Insert" ImageUrl="~/Images/Icons/add24_24.png" ToolTip="Insert" />
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                                CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel32_32.png" Text="Cancel" />
+                                                CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel32_32.png" ToolTip="Cancel" />
                                         </InsertItemTemplate>
                                         <ItemTemplate>
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                                                CommandName="Edit" ImageUrl="~/Images/Icons/Edit22_22.png" Text="Edit" />
+                                                CommandName="Edit" ImageUrl="~/Images/Icons/Edit22_22.png" ToolTip="Edit" />
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                                CommandName="New" ImageUrl="~/Images/Icons/add24_24.png" Text="New" />
+                                                CommandName="New" ImageUrl="~/Images/Icons/add24_24.png" Tooltip="New" />
                                             <!--&nbsp;<asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" 
-                                                CommandName="Delete" ImageUrl="~/Images/Icons/Remove22_22.png" Text="Delete" />-->
+                                                CommandName="Delete" ImageUrl="~/Images/Icons/Remove22_22.png" ToolTip="Delete" />-->
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Fields>
@@ -315,11 +315,11 @@
                                 <table style="border-top: solid 1px white">
                                     <tr class="InsertTabHeader">
                                         <td>Action</td>
-                                        <td>Type</td>
-                                        <td>Responsibles</td>
                                         <td>Comments</td>
-                                        <td>Status</td>
+                                        <td>Type</td>
+                                        <td>Responsible1<br />Responsible2</td>
                                         <td>Deadline</td>
+                                        <td>Status</td>
                                         <td>Attachment</td>
                                     </tr>
                                     <tr class="InsertRow">
@@ -347,15 +347,15 @@
                                     <ItemStyle Wrap="false" />
                                     <ItemTemplate>                
                                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                                            CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" Text="Edit" />
+                                            CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
                                         &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                            CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" Text="Delete" />
+                                            CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                                            CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" Text="Update" />
+                                            CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Update" />
                                         &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                            CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" Text="Cancel" />
+                                            CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Cancel" />
                                     </EditItemTemplate>
                                     <FooterTemplate>
                                         <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
@@ -478,12 +478,12 @@
                                     </tr>
                                     <tr class="InsertRow">
                                         <td><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                                ImageUrl="~/Images/Icons/add24_24.png" ToolTip="Insert" /></td>
+                                                ImageUrl="~/Images/Icons/add16_16.png" ToolTip="Insert" /></td>
                                         <td><asp:TextBox ID="txtMeetTimeFrom" SkinID="txtDateTime" runat="server" Text='<%# Now.ToString("dd/MM/yyyy HH:mm") %>'></asp:TextBox><br />
                                             <asp:TextBox ID="txtMeetTimeTo" SkinID="txtDateTime" runat="server" Text='<%# Now.ToString("dd/MM/yyyy HH:mm") %>'></asp:TextBox></td>
                                         <td><asp:DropDownList SkinId="ddlDef" ID="ddlMeetKind" runat="server" DataSourceID="sqldsMeetKind" 
                                                 DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList><br /><asp:TextBox ID="txtMeetSubject" runat="server" ></asp:TextBox></td>
+                                            </asp:DropDownList><br /><asp:TextBox ID="txtMeetSubject" SkinID="txtText" runat="server" ></asp:TextBox></td>
                                         <td><asp:DropDownList SkinId="ddlDef" ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
                                                 DataTextField="Fullname" DataValueField="id">
                                             </asp:DropDownList><br /><asp:DropDownList SkinId="ddlDef" ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
@@ -500,15 +500,15 @@
                                         <ItemStyle Wrap="false" />
                                         <ItemTemplate>                
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                                                CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" Text="Edit" />
+                                                CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                                CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" Text="Delete" />
+                                                CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />
                                         </ItemTemplate>
                                         <EditItemTemplate>
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                                                CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" Text="Update" />
+                                                CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Update" />
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                                CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" Text="Cancel" />
+                                                CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Cancel" />
                                         </EditItemTemplate>
                                         <FooterTemplate>
                                             <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
@@ -644,15 +644,15 @@
                                         <ItemStyle Wrap="false" />
                                         <ItemTemplate>                
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                                                CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" Text="Edit" />
+                                                CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                                CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" Text="Delete" />
+                                                CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />
                                         </ItemTemplate>
                                         <EditItemTemplate>
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                                                CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" Text="Update" />
+                                                CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Update" />
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                                CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" Text="Cancel" />
+                                                CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Cancel" />
                                         </EditItemTemplate>
                                         <FooterTemplate>
                                             <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"

@@ -15,4 +15,8 @@ Partial Class ActionPlans
                 Response.Redirect("~/Projects.aspx")
         End Select
     End Sub
+
+    Protected Sub gvAP_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvAP.RowDataBound
+        FormatDateCell("Deadline", 8, e)
+    End Sub
 End Class

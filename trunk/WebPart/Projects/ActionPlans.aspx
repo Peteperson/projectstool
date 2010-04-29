@@ -25,14 +25,14 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="Customer" HeaderText="Customer" 
                             SortExpression="Customer" />
-                        <asp:BoundField DataField="Description" HeaderText="Description" 
-                            SortExpression="Description" />
+                        <asp:BoundField DataField="ActionType" HeaderText="ActionType" 
+                            SortExpression="ActionType" />
+                        <asp:BoundField DataField="Comments" HeaderText="Description" 
+                            SortExpression="Comments" />
                         <asp:BoundField DataField="Responsible1" HeaderText="Responsible1" 
                             SortExpression="Responsible1" ReadOnly="True" />
                         <asp:BoundField DataField="Responsible2" HeaderText="Responsible2" 
                             ReadOnly="True" SortExpression="Responsible2" />
-                        <asp:BoundField DataField="Comments" HeaderText="Comments" 
-                            SortExpression="Comments" />
                         <asp:TemplateField HeaderText="AttachmentName" SortExpression="AttachmentName">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'

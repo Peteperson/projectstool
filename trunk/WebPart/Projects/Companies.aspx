@@ -37,9 +37,9 @@
                                         </ItemTemplate>
                                         <EditItemTemplate>
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                                                CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" Text="Update" />
+                                                CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Update" />
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                                CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" Text="Cancel" />
+                                                CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Cancel" />
                                         </EditItemTemplate>
                                         <FooterTemplate>
                                             <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
@@ -138,9 +138,9 @@
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                                    CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" Text="Update" />
+                                    CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Update" />
                                 &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                    CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" Text="Cancel" />
+                                    CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Cancel" />
                             </EditItemTemplate>
                             <FooterTemplate>
                                 <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
