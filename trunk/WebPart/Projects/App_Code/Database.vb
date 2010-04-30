@@ -95,4 +95,35 @@ Public Module Database
         da.Fill(dt)
         Return dt
     End Function
+
+    Public Sub InsertAspxError(ByVal URL As String, ByVal Exception As String, _
+                               ByVal UserIp As String, ByVal UserId As Integer)
+
+        Dim cn As New System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings("cnMain").ConnectionString)
+        Dim cmd As New System.Data.SqlClient.SqlCommand("InsertAspxError", cn) With {.CommandType = Data.CommandType.StoredProcedure}
+        cmd.Parameters.Add("@URL", Data.SqlDbType.NVarChar, 250).Value = URL
+        cmd.Parameters.Add("@Exception", Data.SqlDbType.NVarChar, 500).Value = Exception
+        cmd.Parameters.Add("@UserIp", Data.SqlDbType.NVarChar, 15).Value = UserIp
+        cmd.Parameters.Add("@UserId", Data.SqlDbType.Int).Value = UserId
+        cmd.Parameters.Add("@ServerName", Data.SqlDbType.NVarChar, 64).Value = My.Computer.Name
+        cn.Open()
+        cmd.ExecuteNonQuery()
+        cn.Close()
+    End Sub
+
+    Public Sub InsertActivity(ByVal UserIP As String, ByVal UserId As Integer, ByVal URL As String, ByVal Status As LogStatus)
+        Dim cmd As New SqlClient.SqlCommand("InsertActivity")
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = UserId
+        cmd.Parameters.Add("@Status", SqlDbType.Int).Value = Status
+        cmd.Parameters.Add("@UserIP", SqlDbType.NVarChar).Value = UserIP
+        cmd.Parameters.Add("@URL", SqlDbType.NVarChar).Value = URL
+        cmd.Parameters.Add("@ServerName", Data.SqlDbType.NVarChar, 64).Value = My.Computer.Name
+
+        Dim cn As New SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings("cnMain").ConnectionString)
+        cmd.Connection = cn
+        cn.Open()
+        Dim result As Integer = cmd.ExecuteScalar()
+        cn.Close()
+    End Sub
 End Module

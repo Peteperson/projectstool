@@ -11,38 +11,32 @@
     End Sub
         
     Sub Application_Error(ByVal sender As Object, ByVal e As EventArgs)
-        ' Code that runs when an unhandled error occurs
         'Dim errorCode As Guid
-        'Dim httpStatusCode As Integer = 500
-        'Dim httpErrorNumber As Integer = 0
+        Dim httpStatusCode As Integer = 500
+        Dim httpErrorNumber As Integer = 0
         'Dim uid As String = "anon"
-        'Dim lastError = Server.GetLastError
-        
-        'If TypeOf lastError Is HttpException Then
-        '    With CType(lastError, HttpException)
-        '        httpStatusCode = .GetHttpCode
-        '        httpErrorNumber = .ErrorCode
-        '    End With
-        'End If
+        Dim lastError = Server.GetLastError
+
+        If TypeOf lastError Is HttpException Then
+            With CType(lastError, HttpException)
+                httpStatusCode = .GetHttpCode
+                httpErrorNumber = .ErrorCode
+            End With
+        End If
       
         'If Me.Request.IsAuthenticated AndAlso Context.User IsNot Nothing AndAlso TypeOf Context.User Is UserState Then
         'uid = CType(Context.User, UserState).Id
         'End If
         
-        'Try
-        '    If ShowErrorMessage() Then Session("Exception.Text") = lastError.ToString
-        '    errorCode = InsertAspxError( _
-        '       httpStatusCode, httpErrorNumber, Request.Url.ToString, lastError.Message, lastError.ToString, _
-        '      Request.UserAgent, Request.UserHostAddress, Request.Form.ToString, Request.QueryString.ToString, uid)
-        'Catch ex As Exception
-        '    Response.Clear()
-        '    Response.Write("<!--" & ex.Message & "-->")
-        '    Response.Write("Severe Error Occurred")
-        'End Try
+        Session("ErrorMessage") = Server.GetLastError.InnerException.ToString
+        Try
+            Database.InsertAspxError(Request.Url.ToString, Server.GetLastError.InnerException.ToString, _
+                                     Request.UserHostAddress, Session("UserId"))
+        Catch ex As Exception
+            Session("ErrorMessage") = Server.GetLastError.InnerException.ToString
+        End Try
 
-        Session("ErrorMessage") = Server.GetLastError.InnerException
         Server.ClearError()
-        'Response.Redirect("~/Error.aspx?" & errorCode.ToString("n"))
         Response.Redirect("~/Error.aspx")
     End Sub
 

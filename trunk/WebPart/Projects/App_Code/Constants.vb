@@ -16,6 +16,11 @@ Public Enum Gender
     Female
 End Enum
 
+Public Enum LogStatus
+    Normal = 1
+    DenyAccess = 2
+End Enum
+
 Public Module Support
     Private provider As CultureInfo = CultureInfo.InvariantCulture
     'Public Function ReadDate(ByVal input As String) As DateTime
