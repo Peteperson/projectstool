@@ -43,7 +43,7 @@
                                         </EditItemTemplate>
                                         <FooterTemplate>
                                             <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                                ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
+                                                ImageUrl="~/images/icons/add16_16.png" ValidationGroup="InsGroup" ToolTip="Insert" />
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Datestamp" SortExpression="Datestamp" >
@@ -62,7 +62,8 @@
                                             <asp:Label ID="Label3" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:TextBox ID="txtCompName" SkinID="txtText" runat="server"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCompName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                            <asp:TextBox ID="txtCompName" SkinID="txtText93" runat="server"></asp:TextBox>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Description" SortExpression="Description">
@@ -291,28 +292,6 @@
                 </asp:SqlDataSource>
             </td>
             <td>
-                <asp:SqlDataSource ID="sqldsUsersComp" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    DeleteCommand="DELETE FROM [UsersCompanies] WHERE [Id] = @Id" 
-                    InsertCommand="INSERT INTO [UsersCompanies] ([UserId], [CompanyId]) VALUES (@UserId, @CompanyId)" 
-                    SelectCommand="SELECT * FROM [UsersCompanies] WHERE ([CompanyId] = @CompanyId)" 
-                    UpdateCommand="UPDATE [UsersCompanies] SET [UserId] = @UserId WHERE [Id] = @Id">
-                    <SelectParameters>
-                        <asp:ControlParameter ControlID="gvCompanies" Name="CompanyId" 
-                            PropertyName="SelectedValue" Type="Int32" />
-                    </SelectParameters>
-                    <DeleteParameters>
-                        <asp:Parameter Name="Id" Type="Int32" />
-                    </DeleteParameters>
-                    <UpdateParameters>
-                        <asp:Parameter Name="UserId" Type="Int32" />
-                        <asp:Parameter Name="Id" Type="Int32" />
-                    </UpdateParameters>
-                    <InsertParameters>
-                        <asp:Parameter Name="UserId" Type="Int32" />
-                        <asp:Parameter Name="CompanyId" Type="Int32" />
-                    </InsertParameters>
-                </asp:SqlDataSource>
             </td>
             <td>
                 <asp:SqlDataSource ID="sqldsUsers" runat="server" 
