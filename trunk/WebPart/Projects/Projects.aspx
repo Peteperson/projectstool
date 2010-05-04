@@ -181,13 +181,13 @@
                                         <InsertItemTemplate>
 						                    <table id="tblProjects">
                                                 <tr>
-                                                    <td class="tblProjectsHeader">Title</td>
+                                                    <td class="tblProjectsHeader">Title <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox9" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblProjectsItem" colspan="3"><asp:TextBox ID="TextBox9" SkinID="txtText" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblProjectsHeader">Code</td>
+                                                    <td class="tblProjectsHeader">Code <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox1" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblProjectsItem"><asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Code") %>'></asp:TextBox></td>
-                                                    <td class="tblProjectsHeader">SubProject</td>
+                                                    <td class="tblProjectsHeader">SubProject <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox2" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblProjectsItem"><asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("SubProject") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
@@ -219,13 +219,13 @@
                                                         </asp:DropDownList></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblProjectsHeader">Description</td>
+                                                    <td class="tblProjectsHeader">Description <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox10" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td colspan="3" class="tblProjectsItem"><asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblProjectsHeader">Start date</td>
+                                                    <td class="tblProjectsHeader">Start date <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtProjectSDate" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblProjectsItem"><asp:TextBox ID="txtProjectSDate" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>'></asp:TextBox></td>
-                                                    <td class="tblProjectsHeader">Initial end date</td>
+                                                    <td class="tblProjectsHeader">Initial end date <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtProjectEDate" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblProjectsItem"><asp:TextBox ID="txtProjectEDate" runat="server" Text='<%# Today.AddMonths(6).ToString("dd/MM/yyyy") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
@@ -264,7 +264,7 @@
                                         </EditItemTemplate>
                                         <InsertItemTemplate>
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                                                CommandName="Insert" ImageUrl="~/Images/Icons/add24_24.png" ToolTip="Insert" />
+                                                CommandName="Insert" ImageUrl="~/Images/Icons/add24_24.png" ToolTip="Insert" ValidationGroup="InsGroup" />
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
                                                 CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel32_32.png" ToolTip="Cancel" />
                                         </InsertItemTemplate>
@@ -748,15 +748,15 @@
                         <asp:Parameter Name="StartDate" Type="DateTime" />
                         <asp:Parameter Name="InitialEndDate" Type="DateTime" />
                         <asp:Parameter Name="Title" Type="String" />
-                        <asp:Parameter Name="Description" Type="String" />
+                        <asp:Parameter Name="Description" Type="String" DefaultValue=" " />
                         <asp:Parameter Name="Supervisor" Type="Int32" />
                         <asp:Parameter Name="Consultant1" Type="Int32" />
                         <asp:Parameter Name="Consultant2" Type="Int32" />
-                        <asp:Parameter Name="InitialMeetingsNo" Type="Byte" />
-                        <asp:Parameter Name="CriticalIssues" Type="String" />
-                        <asp:Parameter Name="DesiredOrganization" Type="String" />
-                        <asp:Parameter Name="CertificationField" Type="String" />
-                        <asp:Parameter Name="CompletionPercentage" Type="Byte" />
+                        <asp:Parameter Name="InitialMeetingsNo" Type="Byte" DefaultValue="10" />
+                        <asp:Parameter Name="CriticalIssues" Type="String" DefaultValue=" " />
+                        <asp:Parameter Name="DesiredOrganization" Type="String" DefaultValue=" " />
+                        <asp:Parameter Name="CertificationField" Type="String" DefaultValue=" " />
+                        <asp:Parameter Name="CompletionPercentage" Type="Byte" DefaultValue="0" />
                         <asp:Parameter Name="Status" Type="Byte" />
                     </InsertParameters>
                 </asp:SqlDataSource>
@@ -896,7 +896,10 @@
             <td>
                 <asp:SqlDataSource ID="sqldsCreators" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="SELECT [id], [LastName] + ' ' + [FirstName] as FullName FROM [Users] WHERE [IsActive] = 1">
+                    SelectCommand="UsersByType" SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="*" Name="UserType" Type="String" />
+                    </SelectParameters>
                 </asp:SqlDataSource>
             </td>
             <td>

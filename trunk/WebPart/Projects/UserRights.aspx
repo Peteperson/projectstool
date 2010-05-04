@@ -101,8 +101,7 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [UserPages] WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [UserPages] ([UserType], [PageId], [Description], [Ordering]) VALUES (@UserType, @PageId, @Description, @Ordering)" 
-                    SelectCommand="SELECT * FROM [UserPages]" 
-                    
+                    SelectCommand="SELECT * FROM [UserPages]"                     
                     UpdateCommand="UPDATE [UserPages] SET [UserType] = @UserType, [PageId] = @PageId, [Description] = @Description, [Ordering] = @Ordering WHERE [id] = @id">
                     <DeleteParameters>
                         <asp:Parameter Name="id" Type="Int32" />
@@ -110,7 +109,7 @@
                     <UpdateParameters>
                         <asp:Parameter Name="UserType" Type="Int32" />
                         <asp:Parameter Name="PageId" Type="Int32" />
-                        <asp:Parameter Name="Description" Type="String" />
+                        <asp:Parameter Name="Description" Type="String" DefaultValue=" " />
                         <asp:Parameter Name="Ordering" Type="Int32" />
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>

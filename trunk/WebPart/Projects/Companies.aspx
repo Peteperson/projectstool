@@ -20,13 +20,13 @@
                     </tr>
                     <tr>                       
                         <td align="center" style="vertical-align:top">
-                            <asp:GridView ID="gvCompanies" runat="server" AllowPaging="True"  EmptyDataText="Currently there are no registered companies"
+                            <asp:GridView ID="gvCompanies" runat="server" AllowPaging="True" EmptyDataText="Currently there are no registered companies"
                                 AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id,Name" 
                                 DataSourceID="sqldsCompanies" SkinID="gridviewSkinMainTbl" 
-                                ShowFooter="true">
+                                ShowFooter="True">
                                 <Columns>
                                     <asp:TemplateField ShowHeader="True" HeaderText="Action">
-                                        <ItemStyle Wrap="False" />
+                                        <ItemStyle Wrap="False" Width="60px" />
                                         <ItemTemplate>                
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
                                                 CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
@@ -46,23 +46,20 @@
                                                 ImageUrl="~/images/icons/add16_16.png" ValidationGroup="InsGroup" ToolTip="Insert" />
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Datestamp" SortExpression="Datestamp" >
-                                        <EditItemTemplate>
-                                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>                                           
-                                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
+                                    <asp:TemplateField HeaderText="Datestamp" SortExpression="Datestamp">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Name" SortExpression="Name">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox2" SkinID="txtText" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
+                                            <asp:TextBox ID="txtCompanyName" SkinID="txtText" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
+                                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCompName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" SkinID="rfvDef" runat="server" ControlToValidate="txtCompName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
                                             <asp:TextBox ID="txtCompName" SkinID="txtText93" runat="server"></asp:TextBox>
                                         </FooterTemplate>
                                     </asp:TemplateField>
@@ -71,14 +68,14 @@
                                             <asp:TextBox ID="TextBox3" runat="server" SkinID="txtText" Text='<%# Bind("Description") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
+                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
                                             <asp:TextBox ID="txtCompDesc" SkinID="txtText" runat="server"></asp:TextBox>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                 </Columns>
-                            </asp:GridView>                            
+                            </asp:GridView>
                         </td>
                     </tr>
                 </table>
@@ -114,10 +111,10 @@
                                     <td>Email</td>
                                 </tr>
                                 <tr>
-                                    <td><asp:ImageButton ID="btnInsEmpl" CausesValidation="true" runat="server" CommandName="Insert"
+                                    <td><asp:ImageButton ID="btnInsEmpl" CausesValidation="true" ValidationGroup="InsEmp1st" runat="server" CommandName="Insert"
                                             ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert employee" />
-                                    <td><asp:TextBox ID="txt1LastName" runat="server"></asp:TextBox></td>
-                                    <td><asp:TextBox ID="txt1FirstName" runat="server"></asp:TextBox></td>
+                                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" SkinID="rfvDef" runat="server" ControlToValidate="txt1LastName" ValidationGroup="InsEmp1st" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox ID="txt1LastName" runat="server"></asp:TextBox></td>
+                                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" SkinID="rfvDef" runat="server" ControlToValidate="txt1FirstName" ValidationGroup="InsEmp1st" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox ID="txt1FirstName" runat="server"></asp:TextBox></td>
                                     <td><asp:DropDownList SkinId="ddlDef" ID="ddl1Position" runat="server" DataSourceID="sqldsEmplType" 
                                             DataTextField="Description" DataValueField="id">
                                         </asp:DropDownList></td>
@@ -145,13 +142,10 @@
                             </EditItemTemplate>
                             <FooterTemplate>
                                 <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
+                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsEmp" />
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Datestamp" SortExpression="Datestamp">
-                            <EditItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
-                            </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
@@ -164,7 +158,7 @@
                                 <asp:Label ID="Label4" runat="server" Text='<%# Bind("LastName") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox SkinID="txtDef" ID="txt2LastName" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" SkinID="rfvDef" runat="server" ControlToValidate="txt2LastName" ValidationGroup="InsEmp" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox SkinID="txtDef" ID="txt2LastName" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="FirstName" SortExpression="FirstName">
@@ -175,7 +169,7 @@
                                 <asp:Label ID="Label5" runat="server" Text='<%# Bind("FirstName") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox SkinID="txtDef" ID="txt2FirstName" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" SkinID="rfvDef" runat="server" ControlToValidate="txt2FirstName" ValidationGroup="InsEmp" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox SkinID="txtDef" ID="txt2FirstName" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Position" SortExpression="Position">
@@ -240,7 +234,7 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [Companies] WHERE [Id] = @Id" 
                     InsertCommand="INSERT INTO [Companies] ([Name], [Description]) VALUES (@Name, @Description)" 
-                    SelectCommand="SELECT [Id], [Datestamp], [Name], [Description] FROM [Companies] ORDER BY [Name]" 
+                    SelectCommand="SELECT [Id], [Datestamp], [Name], [Description] FROM [Companies]" 
                     UpdateCommand="UPDATE [Companies] SET [Name] = @Name, [Description] = @Description WHERE [Id] = @Id">
                     <DeleteParameters>
                         <asp:Parameter Name="Id" Type="Int32" />
