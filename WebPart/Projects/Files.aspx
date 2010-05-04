@@ -10,6 +10,12 @@
             <td class="title">File list</td>
         </tr>
         <tr>
+            <td>Write a subproject id or part of it and press &quot;Find&quot; in order to filter data
+                <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
+                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" />
+            </td>
+        </tr>
+        <tr>
             <td id="tdAttachments">
                 <asp:GridView ID="gvFiles" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
@@ -56,6 +62,8 @@
                     SelectCommand="FileList" SelectCommandType="StoredProcedure">
                     <SelectParameters>
                         <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int16" />
+                        <asp:ControlParameter ControlID="txtPrjId" Name="SubProject" 
+                            PropertyName="Text" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>

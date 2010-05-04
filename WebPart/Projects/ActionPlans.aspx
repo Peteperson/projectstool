@@ -58,6 +58,13 @@
             <td class="title">List of Actions</td>
         </tr>
         <tr>
+            <td>Write a subproject id or part of it and press &quot;Find&quot; in order to 
+                filter data
+                <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
+                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" />
+            </td>
+        </tr>
+        <tr>
             <td id="tdAP">
                 <asp:GridView ID="gvAP" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
@@ -105,8 +112,10 @@
         </tr>
         <tr>
             <td>
+                <!--
                 <asp:TextBox ID="txtMaskedText" onkeyup="TestFunc(this)" runat="server"></asp:TextBox>
-                <input id="inpMT" type="text" />
+                <input id="inpMT" type="text" /> 
+                -->
             </td>
         </tr>
     </table>
@@ -118,10 +127,11 @@
                     SelectCommand="ActionPlanList" SelectCommandType="StoredProcedure">
                     <SelectParameters>
                         <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int16" />
+                        <asp:ControlParameter ControlID="txtPrjId" Name="SubProject" PropertyName="Text" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
-            <td></td>
+            <td>&nbsp;</td>
             <td></td>
             <td></td>
         </tr>

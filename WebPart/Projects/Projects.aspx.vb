@@ -86,6 +86,16 @@ Partial Class Projects
 
     Protected Sub sqldsProjects_Inserted(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsProjects.Inserted
         ddlPrjCode.DataBind()
+        SetDdlValue(e.Command.Parameters("@SubProject").Value)
+    End Sub
+
+    Private Sub SetDdlValue(ByVal text As String)
+        For i As Byte = 0 To ddlPrjCode.Items.Count - 1
+            If ddlPrjCode.Items(i).Text = text Then
+                ddlPrjCode.SelectedIndex = i
+                Exit For
+            End If
+        Next
     End Sub
 
     Protected Sub sqldsProjects_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsProjects.Inserting

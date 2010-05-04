@@ -39,7 +39,7 @@
                                 <asp:TextBox ID="TextBox1" SkinID="txtDef" runat="server" Text='<%# Bind("UserName") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtInsUserName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator SkinID="rfvDef" ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtInsUserName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
                                 <asp:TextBox ID="txtInsUserName" SkinID="txtDef" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
@@ -87,9 +87,9 @@
                                 <asp:TextBox ID="TextBox3" SkinID="txtDef" runat="server" Text='<%# Bind("FirstName") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtInsLastName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator SkinID="rfvDef" ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtInsLastName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
                                 <asp:TextBox ID="txtInsLastName" SkinID="txtDef" runat="server"></asp:TextBox><br />
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtInsFirstName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator SkinID="rfvDef" ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtInsFirstName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
                                 <asp:TextBox ID="txtInsFirstName" SkinID="txtDef" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
