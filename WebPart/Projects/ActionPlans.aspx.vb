@@ -17,7 +17,7 @@ Partial Class ActionPlans
     End Sub
 
     Protected Sub gvAP_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvAP.RowDataBound
-        FormatDateCell("Deadline", 8, e)
+        FormatDateCell("Deadline", 9, e)
     End Sub
 
     Protected Sub sqldsAP_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsAP.Selecting
@@ -26,5 +26,19 @@ Partial Class ActionPlans
             DeleteParam = e.Command.Parameters("@SubProject")
             e.Command.Parameters.Remove(DeleteParam)
         End If
+    End Sub
+
+    Protected Sub sqldsAPdet_Inserted(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsAPdet.Inserted
+        gvAP.DataBind()
+    End Sub
+
+    Protected Sub sqldsAPdet_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAPdet.Inserting
+        e.Command.Parameters("@ProjectId").Value = gvAP.SelectedDataKey.Values("ProjectId")
+        e.Command.Parameters("@AttachmentName").Value = CType(fvAction.FindControl("fuAP"), FileUpload).FileName
+        e.Command.Parameters("@Attachment").Value = CType(fvAction.FindControl("fuAP"), FileUpload).FileBytes
+    End Sub
+
+    Protected Sub sqldsAPdet_Updated(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsAPdet.Updated
+        gvAP.DataBind()
     End Sub
 End Class

@@ -205,25 +205,25 @@ a:hover {
     width:0%;
 }
 
-#tblProjects{
+#tblDetails{
 	
 }
 
-#tblProjects td{
+#tblDetails td{
 	border:solid 1px #2C486E;
 }
 
-.tblProjectsHeader
+.tblDetailsHeader
 {
-	background-color: #EAEAEA;
+	background-color: #FFFBDA;
 	color: Black;
 	text-align:left;
 	width:0%;
 	white-space:nowrap;
 }
 
-.tblProjectsItem {
-	background-color: #FFFBDA;
+.tblDetailsItem {
+	background-color: #EAEAEA;
 	color: Black;
 	width:50%;
 	padding-left: 10px;
