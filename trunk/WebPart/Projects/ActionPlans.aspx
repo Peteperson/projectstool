@@ -95,10 +95,10 @@
                             SortExpression="Responsible1" ReadOnly="True" />
                         <asp:BoundField DataField="Responsible2" HeaderText="Responsible2" 
                             ReadOnly="True" SortExpression="Responsible2" />
-                        <asp:TemplateField HeaderText="AttachmentName" SortExpression="AttachmentName">
+                        <asp:TemplateField HeaderText="File" SortExpression="AttachmentName">
                             <ItemTemplate>
-                                <asp:LinkButton ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
-                                                CommandName="Download" Text='<%# Bind("AttachmentName") %>'></asp:LinkButton>
+                                <asp:ImageButton ID="btnDown" runat="server" CommandArgument='<%# Bind("id") %>'
+                                                CommandName="Download" ImageUrl="~/Images/Icons/Files2_24x24.png" ToolTip='<%# Bind("AttachmentName") %>'/>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Deadline *" HeaderStyle-Wrap="false" SortExpression="Deadline">
@@ -165,7 +165,8 @@
                         &nbsp;<asp:ImageButton ID="ImageButton4" runat="server" CausesValidation="False" 
                             CommandName="New" ImageUrl="~/Images/Icons/add24_24.png" Tooltip="New" />
                         <!--&nbsp;<asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" 
-                            CommandName="Delete" ImageUrl="~/Images/Icons/Remove22_22.png" ToolTip="Delete" />-->                    </EditItemTemplate>
+                            CommandName="Delete" ImageUrl="~/Images/Icons/Remove22_22.png" ToolTip="Delete" />-->
+                    </EditItemTemplate>
                     <InsertItemTemplate>
                         <table id="tblDetails">
                             <tr>

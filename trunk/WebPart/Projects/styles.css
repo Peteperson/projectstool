@@ -48,7 +48,7 @@ a:hover {
 }
 
 #tblMain td {
-    border-right: solid 1px white;
+    /*border-right: solid 1px white;*/
     padding-right: 5px;
 }
 
@@ -160,10 +160,6 @@ a:hover {
     width:95%;
 }
 
-.NoTopBorderLine {
-    border-top: none 0px;
-}
-
 .ErrorMessage {
     color: Yellow;
 }
@@ -267,4 +263,8 @@ a:hover {
 .RedDate {
     color: Red;
     font-weight:bold;
+}
+
+.CommentsCol {
+    width: 250px;
 }

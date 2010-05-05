@@ -315,30 +315,30 @@
                                 <table style="border-top: solid 1px white">
                                     <tr class="InsertTabHeader">
                                         <td>Action</td>
-                                        <td>Comments</td>
-                                        <td>Type</td>
-                                        <td>Responsible1<br />Responsible2</td>
+                                        <td class="CommentsCol">Description<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAPcomments" ValidationGroup="InsAP1st" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                        <!--<td>Type</td>-->
+                                        <td>Responsible1<!--<br />Responsible2--></td>
                                         <td>Deadline</td>
                                         <td>Status</td>
                                         <td>Attachment</td>
                                     </tr>
                                     <tr class="InsertRow">
                                         <td><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                            ImageUrl="~/images/icons/add24_24.png" ToolTip="Insert" ValidationGroup="InsAP1st" /></td>
+                                            ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsAP1st" /></td>
                                         <td><asp:TextBox ID="txtAPcomments" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>' ></asp:TextBox></td>
-                                        <td><asp:DropDownList SkinId="ddlDef" ID="ddlActionType" runat="server" 
+                                        <!--<td><asp:DropDownList SkinId="ddlDef" ID="ddlActionType" runat="server" 
                                                DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList></td>
-                                        <td><asp:DropDownList SkinId="ddlDef" ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
+                                            </asp:DropDownList></td>-->
+                                        <td><asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
                                                 DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList><br /><asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
+                                            </asp:DropDownList><!--<br /><asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
                                                 DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList></td>
-                                        <td><asp:TextBox SkinID="txtDef" ID="txtAPdead" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>'></asp:TextBox></td>
+                                            </asp:DropDownList>--></td>
+                                        <td><asp:TextBox SkinID="txtDate" ID="txtAPdead" runat="server" Text='<%# Today.AddMonths(1).ToString("dd/MM/yyyy") %>'></asp:TextBox></td>
                                         <td><asp:DropDownList SkinId="ddlDef" ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList></td>
-                                        <td><asp:FileUpload ID="fuAP" Width="100px" Font-Size="8pt" runat="server" /></td>
+                                        <td><asp:FileUpload ID="fuAP" Font-Size="8pt" runat="server" /></td>
                                     </tr>
                                 </table>
                             </EmptyDataTemplate>
@@ -359,10 +359,11 @@
                                     </EditItemTemplate>
                                     <FooterTemplate>
                                         <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                            ImageUrl="~/images/icons/add24_24.png" ToolTip="Insert" />
+                                            ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                                     </FooterTemplate>
                                 </asp:TemplateField> 
                                     <asp:TemplateField HeaderText="Description" SortExpression="Comments">
+                                        <ItemStyle CssClass="CommentsCol" />
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox>
                                         </EditItemTemplate>
@@ -373,7 +374,7 @@
                                             <asp:TextBox ID="txtAPcomments" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>' ></asp:TextBox>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Type" SortExpression="ActionId">
+                                    <asp:TemplateField HeaderText="Type" Visible="false" SortExpression="ActionId">
                                         <EditItemTemplate>
                                             <asp:DropDownList SkinId="ddlDef" ID="ddlActionType" runat="server" 
                                                selectedvalue=<%# Bind("ActionId") %> DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
@@ -390,30 +391,31 @@
                                             </asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Responsible1<br>Responsible2" SortExpression="Responsible1">
+                                    <asp:TemplateField HeaderText="Responsible1" SortExpression="Responsible1">
                                         <EditItemTemplate>
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
+                                            <asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
                                                 selectedvalue=<%# Bind("Responsible1") %> DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList><br />
+                                            </asp:DropDownList>
+                                            <!--<br />
                                             <asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
                                                 selectedvalue=<%# Bind("Responsible2") %> DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList>
+                                            </asp:DropDownList>-->
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
+                                            <asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
                                                 Enabled="false" selectedvalue=<%# Bind("Responsible1") %> DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList><br />
+                                            </asp:DropDownList><!--<br />
                                             <asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
                                                 Enabled="false" selectedvalue=<%# Bind("Responsible2") %> DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList>
+                                            </asp:DropDownList>-->
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
+                                            <asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
                                                 DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList><br />
+                                            </asp:DropDownList><!--<br />
                                             <asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
                                                 DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList>
+                                            </asp:DropDownList>-->
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Deadline" SortExpression="Deadline">
@@ -424,22 +426,22 @@
                                             <asp:Label ID="Label8" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:TextBox SkinID="txtDate" ID="txtAPdead" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>'></asp:TextBox>
+                                            <asp:TextBox SkinID="txtDate" ID="txtAPdead" runat="server" Text='<%# Today.AddMonths(1).ToString("dd/MM/yyyy") %>'></asp:TextBox>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Status" SortExpression="Status">
                                         <EditItemTemplate>
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
+                                            <asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
+                                            <asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 Enabled="false" selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
+                                            <asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </FooterTemplate>
@@ -450,7 +452,7 @@
                                                 CommandName="Download" Text='<%# Bind("AttachmentName") %>'></asp:LinkButton>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:FileUpload Width="100px" Font-Size="8pt" ID="fuAP" runat="server" />                                            
+                                            <asp:FileUpload Font-Size="8pt" ID="fuAP" runat="server" />                                            
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -469,29 +471,32 @@
                                 <table style="border-top: solid 1px white">
                                     <tr class="InsertTabHeader">
                                         <td></td>
-                                        <td>From<br />To</td>
-                                        <td>Kind<br />Subject</td>
-                                        <td>Consultant<br />Status</td>
-                                        <td>NewBusiness</td>
-                                        <td>Comments</td>
+                                        <td>From</td>
+                                        <td>To</td>
+                                        <td class="CommentsCol"><!--Kind<br />-->Subject</td>
+                                        <td>Consultant</td>
+                                        <td>Status</td>
+                                        <!--<td>NewBusiness</td>
+                                        <td>Comments</td>-->
                                         <td>Attachment</td>
                                     </tr>
                                     <tr class="InsertRow">
                                         <td><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                                ImageUrl="~/Images/Icons/add24_24.png" ToolTip="Insert" /></td>
-                                        <td><asp:TextBox ID="txtMeetTimeFrom" SkinID="txtDateTime" runat="server" Text='<%# Now.ToString("dd/MM/yyyy HH:mm") %>'></asp:TextBox><br />
-                                            <asp:TextBox ID="txtMeetTimeTo" SkinID="txtDateTime" runat="server" Text='<%# Now.ToString("dd/MM/yyyy HH:mm") %>'></asp:TextBox></td>
-                                        <td><asp:DropDownList SkinId="ddlDef" ID="ddlMeetKind" runat="server" DataSourceID="sqldsMeetKind" 
+                                                ImageUrl="~/Images/Icons/add16_16.png" ToolTip="Insert" /></td>
+                                        <td><asp:TextBox ID="txtMeetTimeFrom" SkinID="txtDateTime" runat="server" Text='<%# Now.ToString("dd/MM/yyyy HH:mm") %>'></asp:TextBox></td>
+                                        <td><asp:TextBox ID="txtMeetTimeTo" SkinID="txtTime" runat="server" Text='<%# Now.ToString("HH:mm") %>'></asp:TextBox></td>
+                                        <td><!--<asp:DropDownList SkinId="ddlDef" ID="ddlMeetKind" runat="server" DataSourceID="sqldsMeetKind" 
                                                 DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList><br /><asp:TextBox ID="txtMeetSubject" SkinID="txtText" runat="server" ></asp:TextBox></td>
+                                            </asp:DropDownList><br />--><asp:TextBox ID="txtMeetSubject" SkinID="txtText" runat="server" ></asp:TextBox></td>
                                         <td><asp:DropDownList SkinId="ddlDef" ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
                                                 DataTextField="Fullname" DataValueField="id">
-                                            </asp:DropDownList><br /><asp:DropDownList SkinId="ddlDef" ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
+                                            </asp:DropDownList></td>
+                                        <td><asp:DropDownList SkinId="ddlDef" ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
 				                                DataTextField="Description" DataValueField="id">
 				                            </asp:DropDownList></td>
-                                        <td><asp:TextBox ID="txtMeetNewBus" SkinID="txtTextLong" TextMode="MultiLine" runat="server" ></asp:TextBox></td>
-                                        <td><asp:TextBox ID="txtMeetComments" SkinID="txtTextLong" TextMode="MultiLine" runat="server" ></asp:TextBox></td>
-                                        <td><asp:FileUpload Width="100px" Font-Size="8pt" ID="fuAttachment" runat="server" /></td>
+                                        <!--<td><asp:TextBox ID="txtMeetNewBus" SkinID="txtTextLong" TextMode="MultiLine" runat="server" ></asp:TextBox></td>
+                                        <td><asp:TextBox ID="txtMeetComments" SkinID="txtTextLong" TextMode="MultiLine" runat="server" ></asp:TextBox></td>-->
+                                        <td><asp:FileUpload Font-Size="8pt" ID="fuAttachment" runat="server" /></td>
                                     </tr>
                                 </table>
                                 </EmptyDataTemplate>
@@ -512,70 +517,78 @@
                                         </EditItemTemplate>
                                         <FooterTemplate>
                                             <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                                ImageUrl="~/images/icons/add24_24.png" ToolTip="Insert" />
+                                                ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                                         </FooterTemplate>
                                     </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="Date/Time<br>From-To" SortExpression="TimeFrom" ItemStyle-Wrap="false">
+                                    <asp:TemplateField HeaderText="From" SortExpression="TimeFrom" ItemStyle-Wrap="false">
                                         <EditItemTemplate>
                                             <asp:TextBox ID="txtMeetTimeFrom" runat="server" SkinID="txtDateTime" Text='<%# Bind("TimeFrom", "{0:dd/MM/yyyy HH:mm}") %>'></asp:TextBox><br />
-                                            <asp:TextBox ID="txtMeetTimeTo" runat="server" SkinID="txtDateTime" Text='<%# Bind("TimeTo", "{0:dd/MM/yyyy HH:mm}") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label5" runat="server" Text='<%# Bind("TimeFrom", "{0:dd/MM/yyyy HH:mm}") %>'></asp:Label><br />
-                                            <asp:Label ID="Label6" runat="server" Text='<%# Bind("TimeTo", "{0:dd/MM/yyyy HH:mm}") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
                                             <asp:TextBox ID="txtMeetTimeFrom" SkinID="txtDateTime" runat="server" Text='<%# Now.ToString("dd/MM/yyyy HH:mm") %>'></asp:TextBox><br />
-                                            <asp:TextBox ID="txtMeetTimeTo" SkinID="txtDateTime" runat="server" Text='<%# Now.ToString("dd/MM/yyyy HH:mm") %>'></asp:TextBox>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Kind<br>Subject" SortExpression="Kind">
+                                    <asp:TemplateField HeaderText="To" SortExpression="TimeTo" ItemStyle-Wrap="false">
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="txtMeetTimeTo" SkinID="txtTime" runat="server" Text='<%# Bind("TimeTo", "{0:HH:mm}") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label6" runat="server" Text='<%# Bind("TimeTo", "{0:HH:mm}") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:TextBox ID="txtMeetTimeTo" SkinID="txtTime" runat="server" Text='<%# Now.ToString("HH:mm") %>'></asp:TextBox>
+                                        </FooterTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Kind" SortExpression="Kind" Visible="false">
                                         <EditItemTemplate>
                                             <asp:DropDownList SkinId="ddlDef" ID="ddlMeetKind" runat="server" DataSourceID="sqldsMeetKind" 
                                                 selectedvalue=<%# Bind("Kind") %> DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList><br />
-                                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Subject") %>'></asp:TextBox>
+                                            </asp:DropDownList>
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:DropDownList SkinId="ddlDef" ID="ddlMeetKind" runat="server" DataSourceID="sqldsMeetKind" 
                                                 Enabled="false" selectedvalue=<%# Bind("Kind") %> DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList><br />
-                                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("Subject") %>'></asp:Label>
+                                            </asp:DropDownList>
                                         </ItemTemplate>
                                         <FooterTemplate>
                                             <asp:DropDownList ID="ddlMeetKind" SkinID="ddlDef" runat="server" DataSourceID="sqldsMeetKind" 
                                                 DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList><br />
-                                            <asp:TextBox ID="txtMeetSubject" runat="server" ></asp:TextBox>
+                                            </asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Consultant<br>Status" SortExpression="Consultant">
+                                    <asp:TemplateField HeaderText="Subject" SortExpression="Subject">
+                                        <ItemStyle CssClass="CommentsCol" />
                                         <EditItemTemplate>
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
+                                            <asp:TextBox ID="TextBox7" SkinID="txtText" runat="server" Text='<%# Bind("Subject") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("Subject") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:TextBox ID="txtMeetSubject" SkinID="txtText" runat="server" ></asp:TextBox>
+                                        </FooterTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Consultant" SortExpression="Consultant">
+                                        <EditItemTemplate>
+                                            <asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
                                                 selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
-                                            </asp:DropDownList><br />
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
-                                                selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
+                                            <asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
                                                 Enabled="false" selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
-                                            </asp:DropDownList><br />
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
-                                                Enabled="false" selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
+                                            <asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
                                                 DataTextField="Fullname" DataValueField="id">
-                                            </asp:DropDownList><br />
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
-                                                DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="NewBusiness" SortExpression="NewBusiness">
+				                    <asp:TemplateField HeaderText="NewBusiness" Visible="false" SortExpression="NewBusiness">
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("NewBusiness") %>'></asp:TextBox>
                                         </EditItemTemplate>
@@ -586,7 +599,7 @@
                                             <asp:TextBox ID="txtMeetNewBus" SkinID="txtTextLong" TextMode="MultiLine" runat="server" ></asp:TextBox>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Comments" SortExpression="Comments">
+                                    <asp:TemplateField HeaderText="Comments" Visible="false" SortExpression="Comments">
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox9" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox>
                                         </EditItemTemplate>
@@ -595,6 +608,23 @@
                                         </ItemTemplate>
                                         <FooterTemplate>
                                             <asp:TextBox ID="txtMeetComments" SkinID="txtTextLong" TextMode="MultiLine" runat="server" ></asp:TextBox>
+                                        </FooterTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Status" SortExpression="status">
+                                        <EditItemTemplate>
+                                            <asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
+                                                selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
+                                            </asp:DropDownList>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
+                                                Enabled="false" selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
+                                            </asp:DropDownList>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
+                                                DataTextField="Description" DataValueField="id">
+                                            </asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Attachment" SortExpression="AttachmentName">
@@ -606,7 +636,7 @@
                                                 CommandName="Download" Text='<%# Bind("AttachmentName") %>'></asp:LinkButton>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:FileUpload Width="100px" Font-Size="8pt" ID="fuAttachment" runat="server" />                                            
+                                            <asp:FileUpload Font-Size="8pt" ID="fuAttachment" runat="server" />                                            
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -632,7 +662,7 @@
                                         <tr class="InsertRow">
                                             <td>
                                                 <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                                ImageUrl="~/images/icons/add24_24.png" ToolTip="Insert" />
+                                                ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                                             </td>
                                             <td><asp:FileUpload ID="fuCtrl" runat="server" /></td>
                                             <td><asp:TextBox ID="txtAttachComment" SkinID="txtText" runat="server"></asp:TextBox></td>
@@ -656,7 +686,7 @@
                                         </EditItemTemplate>
                                         <FooterTemplate>
                                             <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                                ImageUrl="~/images/icons/add24_24.png" ToolTip="Insert" />
+                                                ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                                         </FooterTemplate>
                                     </asp:TemplateField> 
                                     <asp:TemplateField HeaderText="Datestamp" SortExpression="Datestamp">
@@ -805,7 +835,7 @@
                     SelectCommand="SELECT [id], [Datestamp], [ProjectId], [TimeFrom], [TimeTo], [Kind], [Subject], [Consultant], [Comments], [NewBusiness], [AttachmentName], [Status] FROM [Meetings] WHERE ([ProjectId] = @ProjectId)" 
                     DeleteCommand="DELETE FROM [Meetings] WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [Meetings] ([ProjectId], [TimeFrom], [TimeTo], [Kind], [Subject], [Consultant], [Comments], [NewBusiness], [AttachmentName], [Attachment], [Status]) VALUES (@ProjectId, @TimeFrom, @TimeTo, @Kind, @Subject, @Consultant, @Comments, @NewBusiness, @AttachmentName, @Attachment, @Status)" 
-                    UpdateCommand="UPDATE [Meetings] SET [TimeFrom] = @TimeFrom, [TimeTo] = @TimeTo, [Kind] = @Kind, [Subject] = @Subject, [Consultant] = @Consultant, [Comments] = @Comments, [NewBusiness] = @NewBusiness, [Status] = @Status WHERE [id] = @id">
+                    UpdateCommand="UPDATE [Meetings] SET [TimeFrom] = @TimeFrom, [TimeTo] = @TimeTo, [Subject] = @Subject, [Consultant] = @Consultant, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
                             PropertyName="SelectedValue" Type="Int32" />
@@ -962,14 +992,10 @@
             </td>
         </tr>
         <tr>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
     </table>
 </asp:Content>
