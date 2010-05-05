@@ -210,12 +210,12 @@ Partial Class Projects
     End Sub
 
     Protected Sub sqldsMeetings_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsMeetings.Inserting
+        Dim tf As String
         If gvMeetings.Rows.Count > 0 Then
             e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
-            'e.Command.Parameters("@TimeFrom").Value = Support.ReadDate(CType(gvMeetings.FooterRow.FindControl("txtMeetTimeFrom"), TextBox).Text)
-            'e.Command.Parameters("@TimeTo").Value = Support.ReadDate(CType(gvMeetings.FooterRow.FindControl("txtMeetTimeTo"), TextBox).Text)
-            e.Command.Parameters("@TimeFrom").Value = CType(gvMeetings.FooterRow.FindControl("txtMeetTimeFrom"), TextBox).Text
-            e.Command.Parameters("@TimeTo").Value = CType(gvMeetings.FooterRow.FindControl("txtMeetTimeTo"), TextBox).Text
+            tf = CType(gvMeetings.FooterRow.FindControl("txtMeetTimeFrom"), TextBox).Text
+            e.Command.Parameters("@TimeFrom").Value = tf
+            e.Command.Parameters("@TimeTo").Value = tf.Substring(0, 11) & CType(gvMeetings.FooterRow.FindControl("txtMeetTimeTo"), TextBox).Text
             e.Command.Parameters("@Kind").Value = CType(gvMeetings.FooterRow.FindControl("ddlMeetKind"), DropDownList).SelectedValue
             e.Command.Parameters("@Subject").Value = CType(gvMeetings.FooterRow.FindControl("txtMeetSubject"), TextBox).Text
             e.Command.Parameters("@Consultant").Value = CType(gvMeetings.FooterRow.FindControl("ddlMeetCons"), DropDownList).SelectedValue
@@ -226,10 +226,9 @@ Partial Class Projects
             e.Command.Parameters("@Status").Value = CType(gvMeetings.FooterRow.FindControl("ddlMeetStat"), DropDownList).SelectedValue
         Else
             e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
-            'e.Command.Parameters("@TimeFrom").Value = Support.ReadDate(CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("txtMeetTimeFrom"), TextBox).Text)
-            'e.Command.Parameters("@TimeTo").Value = Support.ReadDate(CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("txtMeetTimeTo"), TextBox).Text)
-            e.Command.Parameters("@TimeFrom").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("txtMeetTimeFrom"), TextBox).Text
-            e.Command.Parameters("@TimeTo").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("txtMeetTimeTo"), TextBox).Text
+            tf = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("txtMeetTimeFrom"), TextBox).Text
+            e.Command.Parameters("@TimeFrom").Value = tf
+            e.Command.Parameters("@TimeTo").Value = tf.Substring(0, 11) & CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("txtMeetTimeTo"), TextBox).Text
             e.Command.Parameters("@Kind").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("ddlMeetKind"), DropDownList).SelectedValue
             e.Command.Parameters("@Subject").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("txtMeetSubject"), TextBox).Text
             e.Command.Parameters("@Consultant").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("ddlMeetCons"), DropDownList).SelectedValue
@@ -247,5 +246,9 @@ Partial Class Projects
         'e.Command.Parameters("@TimeTo").Value = Support.ReadDate(CType(gvMeetings.Rows(ind).FindControl("txtMeetTimeTo"), TextBox).Text)
         e.Command.Parameters("@TimeFrom").Value = CType(gvMeetings.Rows(ind).FindControl("txtMeetTimeFrom"), TextBox).Text
         e.Command.Parameters("@TimeTo").Value = CType(gvMeetings.Rows(ind).FindControl("txtMeetTimeTo"), TextBox).Text
+    End Sub
+
+    Protected Sub gvMeetings_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvMeetings.RowDataBound
+        InsertDeleteValidation(e, 0)
     End Sub
 End Class
