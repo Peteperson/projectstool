@@ -85,10 +85,11 @@
         </tr>
         <tr>
             <td>Legal Notice. <br />
-                Application can be used only by an authorized person with preservation of binding procedures. Actions taken by a user can be monitored, and user’s approval to this monitoring is given by entering the system. All users action propagating content that are offensive or moral harmful to anyone are strictly prohibited. If monitoring reveals possibility of any criminal activity, the employees of Polbank EFG standing in charge of security can forward such monitoring as an evidence to the authorities. Obtaining or attempt of obtaining an unauthorized access to the application can cause bearing criminal responsibility or civil liability.</td>
+                                Application can be used only by an authorized person with preservation of 
+                binding procedures ... Obtaining or attempt of obtaining an unauthorized access to the application can cause bearing criminal responsibility or civil liability.</td>
         </tr>
         <tr>
-            <td style="background: url(Images/Blue.png) repeat-x; text-align:right; height: 27px; vertical-align:top">AG Advent 2010</td>
+            <td style="background: url(Images/Blue.png) repeat-x; text-align:right; height: 27px; vertical-align:top"><a href="http://advent.com.gr">AG Advent 2010</a></td>
         </tr>
       </table>
     </form>
