@@ -42,14 +42,12 @@
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("Date", "{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
-
                         <HeaderStyle Wrap="False"></HeaderStyle>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="From *" HeaderStyle-Wrap="false" SortExpression="From">
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("From", "{0:HH:mm}") %>'></asp:Label>
                             </ItemTemplate>
-
                         <HeaderStyle Wrap="False"></HeaderStyle>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="To" SortExpression="To">
@@ -100,12 +98,12 @@
                             <tr>
                                 <td class="tblDetailsHeader">Consultant</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
-                                                selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
-                                            </asp:DropDownList></td>
+                                        selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
+                                    </asp:DropDownList></td>
                                 <td class="tblDetailsHeader">Kind</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetKind" runat="server" DataSourceID="sqldsMeetKind" 
-                                                selectedvalue=<%# Bind("Kind") %> DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList>
+                                        selectedvalue=<%# Bind("Kind") %> DataTextField="Description" DataValueField="id">
+                                    </asp:DropDownList>
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">NewBusiness</td>
@@ -117,11 +115,11 @@
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">Attachment</td>
-                                <td class="tblDetailsItem"><asp:label ID="AttachmentNameTextBox" runat="server" Text='<%# Bind("AttachmentName") %>' /></td>
+                                <td class="tblDetailsItem"><asp:label ID="lblAttachmentName" runat="server" Text='<%# Bind("AttachmentName") %>' /></td>
                                 <td class="tblDetailsHeader">Status</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
-                                                selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList></td>
+                                        selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
+                                    </asp:DropDownList></td>
                             </tr>
                         </table>
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
@@ -134,24 +132,24 @@
                     <InsertItemTemplate>
                         <table id="tblDetails">
                             <tr>
-                                <td class="tblDetailsHeader">TimeFrom</td>
+                                <td class="tblDetailsHeader">TimeFrom<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtTimeFrom" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                 <td class="tblDetailsItem"><asp:TextBox ID="txtTimeFrom" runat="server" Text='<%# Now.AddDays(5).ToString("dd/MM/yyyy HH:mm") %>' /></td>
-                                <td class="tblDetailsHeader">TimeTo</td>
+                                <td class="tblDetailsHeader">TimeTo<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtTimeTo" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                 <td class="tblDetailsItem"><asp:TextBox ID="txtTimeTo" runat="server" Text='<%# Now.AddDays(5).AddMinutes(90).ToString("dd/MM/yyyy HH:mm") %>' /></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">Subject</td>
+                                <td class="tblDetailsHeader">Subject<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="SubjectTextBox" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                 <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="SubjectTextBox" SkinID="txtText" runat="server" Text='<%# Bind("Subject") %>' /></td>
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">Consultant</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
-                                                selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
-                                            </asp:DropDownList></td>
+                                        selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
+                                    </asp:DropDownList></td>
                                 <td class="tblDetailsHeader">Kind</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetKind" runat="server" DataSourceID="sqldsMeetKind" 
-                                                selectedvalue=<%# Bind("Kind") %> DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList>
+                                        selectedvalue=<%# Bind("Kind") %> DataTextField="Description" DataValueField="id">
+                                    </asp:DropDownList>
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">NewBusiness</td>
@@ -166,17 +164,20 @@
                                 <td class="tblDetailsItem"><asp:FileUpload ID="fuMtngs" runat="server" /></td>
                                 <td class="tblDetailsHeader">Status</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
-                                                 selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList></td>
+                                         selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
+                                    </asp:DropDownList></td>
                             </tr>
                         </table>
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                            CommandName="Insert" ImageUrl="~/Images/Icons/add24_24.png" ToolTip="Insert" />
+                            CommandName="Insert" ImageUrl="~/Images/Icons/add24_24.png" ToolTip="Insert" ValidationGroup="InsMeet" />
                         &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
                             CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel32_32.png" ToolTip="Cancel" />
                     </InsertItemTemplate>
                 </asp:FormView>
             </td>
+        </tr>
+        <tr>
+            <td><asp:Button ID="btnReset" runat="server" Text="Remove filtering" /></td>
         </tr>
     </table>
     <table>
@@ -187,8 +188,8 @@
                     SelectCommand="MeetingsList" SelectCommandType="StoredProcedure">
                     <SelectParameters>
                         <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int16" />
-                        <asp:ControlParameter ControlID="txtPrjId" Name="SubProject" 
-                            PropertyName="Text" Type="String" />
+                        <asp:ControlParameter ControlID="txtPrjId" Name="SubProject" PropertyName="Text" Type="String" />
+                        <asp:Parameter Name="MtngsId" Type="Int16" DefaultValue="0" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
@@ -211,8 +212,8 @@
                         <asp:Parameter Name="Kind" Type="Byte" />
                         <asp:Parameter Name="Subject" Type="String" />
                         <asp:Parameter Name="Consultant" Type="Int32" />
-                        <asp:Parameter Name="Comments" Type="String" />
-                        <asp:Parameter Name="NewBusiness" Type="String" />
+                        <asp:Parameter Name="Comments" Type="String" DefaultValue=" " />
+                        <asp:Parameter Name="NewBusiness" Type="String" DefaultValue=" " />
                         <asp:Parameter Name="Status" Type="Byte" />
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
@@ -223,8 +224,8 @@
                         <asp:Parameter Name="Kind" Type="Byte" />
                         <asp:Parameter Name="Subject" Type="String" />
                         <asp:Parameter Name="Consultant" Type="Int32" />
-                        <asp:Parameter Name="Comments" Type="String" />
-                        <asp:Parameter Name="NewBusiness" Type="String" />
+                        <asp:Parameter Name="Comments" Type="String" DefaultValue=" " />
+                        <asp:Parameter Name="NewBusiness" Type="String" DefaultValue=" " />
                         <asp:Parameter Name="AttachmentName" Type="String" />
                         <asp:Parameter Name="Status" Type="Byte" />
                         <asp:Parameter Name="Attachment" />

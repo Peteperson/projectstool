@@ -59,8 +59,6 @@
             <td id="tdMessage"><asp:Label ID="lblMessage" Visible="false" runat="server">This is a test</asp:Label></td>
         </tr>
         </table>
-        <br />
-        <br />
         <table>
         <tr>
             <td style="background: url(Images/Blue.png) repeat-x; text-align:right; height: 27px; vertical-align:top">AG Advent 2010</td>
