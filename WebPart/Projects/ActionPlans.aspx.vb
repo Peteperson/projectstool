@@ -18,7 +18,7 @@ Partial Class ActionPlans
 
     Protected Sub gvAP_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvAP.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
-            If e.Row.RowState = DataControlRowState.Normal Or e.Row.RowState = DataControlRowState.Alternate Then
+            If e.Row.RowState = DataControlRowState.Normal Or e.Row.RowState = DataControlRowState.Alternate Or e.Row.RowState = DataControlRowState.Selected Then
                 FormatDateCell("Deadline", 9, e)
                 If CType(e.Row.FindControl("btnDown"), ImageButton).ToolTip = "" Then
                     CType(e.Row.FindControl("btnDown"), ImageButton).Visible = False
