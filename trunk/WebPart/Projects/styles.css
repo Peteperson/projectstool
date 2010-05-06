@@ -211,7 +211,7 @@ a:hover {
 
 .tblDetailsHeader
 {
-	background-color: #FFFBDA;
+	background-color: #EAEAEA;
 	color: Black;
 	text-align:left;
 	width:0%;
@@ -219,7 +219,7 @@ a:hover {
 }
 
 .tblDetailsItem {
-	background-color: #EAEAEA;
+	background-color: white;
 	color: Black;
 	width:50%;
 	padding-left: 10px;
