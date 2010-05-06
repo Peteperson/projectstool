@@ -28,6 +28,7 @@
                 End If
             End If
         End If
+        lblMessage.Visible = False
     End Sub
 
     Protected Sub btnLogoff_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnLogoff.Click

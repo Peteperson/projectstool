@@ -347,10 +347,11 @@
                                     <ItemStyle Wrap="false" />
                                     <ItemTemplate>                
                                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                                            CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
-                                        &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                            CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />
-                                    </ItemTemplate>
+                                            CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />&nbsp;
+                                        <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
+                                            CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />&nbsp;
+                                        <asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" CommandArgument='<%# Bind("id") %>'
+                                            CommandName="Details" ImageUrl="~/Images/Icons/Preview1_16x16.png" ToolTip="View details" />                                    </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
                                             CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Update" />
@@ -505,9 +506,11 @@
                                         <ItemStyle Wrap="false" />
                                         <ItemTemplate>                
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                                                CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
-                                            &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                                CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />
+                                                CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" /> &nbsp;
+                                            <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False"
+                                                CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" /> &nbsp;
+                                            <asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" CommandArgument='<%# Bind("id") %>'
+                                                CommandName="Details" ImageUrl="~/Images/Icons/Preview1_16x16.png" ToolTip="View details" />
                                         </ItemTemplate>
                                         <EditItemTemplate>
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
@@ -798,7 +801,7 @@
                     SelectCommand="SELECT [id], [ProjectId], [DateStamp], [ActionId], [Responsible1], [Responsible2], [Comments], [AttachmentName], [Deadline], [Status] FROM [ActionPlans] WHERE ([ProjectId] = @ProjectId)" 
                     DeleteCommand="DELETE FROM [ActionPlans] WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Responsible1], [Responsible2], [Comments], [AttachmentName], [Attachment], [Deadline], [Status]) VALUES (@ProjectId, @ActionId, @Responsible1, @Responsible2, @Comments, @AttachmentName, @Attachment, @Deadline, @Status)" 
-                    UpdateCommand="UPDATE [ActionPlans] SET [ActionId] = @ActionId, [Responsible1] = @Responsible1, [Responsible2] = @Responsible2, [Comments] = @Comments, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
+                    UpdateCommand="UPDATE [ActionPlans] SET [Responsible1] = @Responsible1, [Comments] = @Comments, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
                             PropertyName="SelectedValue" Type="Int32" />
@@ -808,9 +811,7 @@
                     </DeleteParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="ProjectId" Type="Int32" />
-                        <asp:Parameter Name="ActionId" Type="Byte" />
                         <asp:Parameter Name="Responsible1" Type="Int32" />
-                        <asp:Parameter Name="Responsible2" Type="Int32" />
                         <asp:Parameter Name="Comments" Type="String" />
                         <asp:Parameter Name="Deadline" Type="DateTime" />
                         <asp:Parameter Name="Status" Type="Byte" />

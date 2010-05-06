@@ -34,6 +34,15 @@ Partial Class Meetings
             DeleteParam = e.Command.Parameters("@SubProject")
             e.Command.Parameters.Remove(DeleteParam)
         End If
+
+        If Not Session("MeetingId") Is Nothing AndAlso Session("MeetingId") > -1 Then
+            e.Command.Parameters("@MtngsId").Value = CInt(Session("MeetingId"))
+            btnReset.Visible = True
+            With CType(Master.FindControl("lblMessage"), Label)
+                .Visible = True
+                .Text = "The results are filtered. Press 'Remove filtering' to view all data"
+            End With
+        End If
     End Sub
 
     Protected Sub sqldsMeetingsDet_Updated(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsMeetingsDet.Updated
@@ -46,7 +55,21 @@ Partial Class Meetings
                 If CType(e.Row.FindControl("btnDown"), ImageButton).ToolTip = "" Then
                     CType(e.Row.FindControl("btnDown"), ImageButton).Visible = False
                 End If
+                If Not Session("MeetingId") Is Nothing AndAlso Session("MeetingId") > -1 Then
+                    If CType(e.Row.DataItem, Data.DataRowView).Item("id") = Session("MeetingId") Then
+                        gvMeetings.SelectedIndex = e.Row.RowIndex
+                    End If
+                End If
             End If
         End If
+    End Sub
+
+    Protected Sub btnReset_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnReset.Click
+        Session("MeetingId") = -1
+        gvMeetings.DataBind()
+    End Sub
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        btnReset.Visible = False
     End Sub
 End Class

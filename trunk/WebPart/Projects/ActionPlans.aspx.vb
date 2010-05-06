@@ -23,6 +23,11 @@ Partial Class ActionPlans
                 If CType(e.Row.FindControl("btnDown"), ImageButton).ToolTip = "" Then
                     CType(e.Row.FindControl("btnDown"), ImageButton).Visible = False
                 End If
+                If Not Session("ActionPlanId") Is Nothing AndAlso Session("ActionPlanId") > -1 Then
+                    If CType(e.Row.DataItem, Data.DataRowView).Item("id") = Session("ActionPlanId") Then
+                        gvAP.SelectedIndex = e.Row.RowIndex
+                    End If
+                End If
             End If
         End If
     End Sub
@@ -32,6 +37,15 @@ Partial Class ActionPlans
             Dim DeleteParam As System.Data.Common.DbParameter
             DeleteParam = e.Command.Parameters("@SubProject")
             e.Command.Parameters.Remove(DeleteParam)
+        End If
+
+        If Not Session("ActionPlanId") Is Nothing AndAlso Session("ActionPlanId") > -1 Then
+            e.Command.Parameters("@APId").Value = CInt(Session("ActionPlanId"))
+            btnReset.Visible = True
+            With CType(Master.FindControl("lblMessage"), Label)
+                .Visible = True
+                .Text = "The results are filtered. Press 'Remove filtering' to view all data"
+            End With
         End If
     End Sub
 
@@ -47,5 +61,14 @@ Partial Class ActionPlans
 
     Protected Sub sqldsAPdet_Updated(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsAPdet.Updated
         gvAP.DataBind()
+    End Sub
+
+    Protected Sub btnReset_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnReset.Click
+        Session("ActionPlanId") = -1
+        gvAP.DataBind()
+    End Sub
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        btnReset.Visible = False
     End Sub
 End Class

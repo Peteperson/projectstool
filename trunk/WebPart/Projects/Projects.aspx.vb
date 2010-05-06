@@ -163,6 +163,10 @@ Partial Class Projects
                 Session("TableName") = "ActionPlan"
                 Response.Clear()
                 Response.Redirect("~/DownloadFile.ashx")
+            Case "Details"
+                Session("ActionPlanId") = e.CommandArgument
+                Response.Clear()
+                Response.Redirect("~/ActionPlans.aspx")
         End Select
     End Sub
 
@@ -205,6 +209,10 @@ Partial Class Projects
                 Session("TableName") = "Meetings"
                 Response.Clear()
                 Response.Redirect("~/DownloadFile.ashx")
+            Case "Details"
+                Session("MeetingId") = e.CommandArgument
+                Response.Clear()
+                Response.Redirect("~/Meetings.aspx")
         End Select
         ShowTab(1)
     End Sub

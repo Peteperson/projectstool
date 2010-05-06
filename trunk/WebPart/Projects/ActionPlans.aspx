@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Main.master" AutoEventWireup="false" CodeFile="ActionPlans.aspx.vb" Inherits="ActionPlans" Theme="MainSkin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-<script language="javascript" type="text/javascript">
+
+    <script language="javascript" type="text/javascript">
     function setCaretPosition(elemId, caretPos) {
         var elem = document.getElementById(elemId);
 
@@ -245,6 +246,7 @@
                 <asp:TextBox ID="txtMaskedText" onkeyup="TestFunc(this)" runat="server"></asp:TextBox>
                 <input id="inpMT" type="text" /> 
                 -->
+                <asp:Button ID="btnReset" runat="server" Text="Remove filtering" />
             </td>
         </tr>
     </table>
@@ -257,6 +259,7 @@
                     <SelectParameters>
                         <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int16" />
                         <asp:ControlParameter ControlID="txtPrjId" Name="SubProject" PropertyName="Text" Type="String" />
+                        <asp:Parameter Name="APId" Type="Int16" DefaultValue="0" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
