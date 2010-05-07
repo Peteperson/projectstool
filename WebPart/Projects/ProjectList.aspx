@@ -33,6 +33,8 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="Title" HeaderText="Title" 
                             SortExpression="Title" />
+                        <asp:BoundField DataField="Customer" HeaderText="Customer" 
+                            SortExpression="Customer" />
                         <asp:BoundField DataField="Supervisor" HeaderText="Supervisor" ReadOnly="True" 
                             SortExpression="Supervisor" />
                         <asp:BoundField DataField="Consultant" HeaderText="Consultant" 

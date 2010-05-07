@@ -6,8 +6,14 @@
         Dim passwordText As String = ctrlLogin.Password
         Dim password = SecCrypto.Hash(passwordText)
 
-        Dim lr As LgnResult = Database.DoLogin(username, password, Request.UserHostAddress)
         e.Authenticated = False
+        Dim lr As LgnResult
+        Try
+            lr = Database.DoLogin(username, password, Request.UserHostAddress)
+        Catch ex As Exception
+            ctrlLogin.FailureText = ex.Message
+            Exit Sub
+        End Try
         Select Case lr.Status
             Case LoginResultStatus.Success ', LoginResultStatus.PasswordExpired, LoginResultStatus.ChangePassword
                 Session.Add("UserId", lr.Id)
