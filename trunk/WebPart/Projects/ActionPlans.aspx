@@ -90,8 +90,8 @@
                             SortExpression="Customer" />
                         <asp:BoundField DataField="ActionType" HeaderText="ActionType" 
                             SortExpression="ActionType" />
-                        <asp:BoundField DataField="Comments" HeaderText="Description" 
-                            SortExpression="Comments" />
+                        <asp:BoundField DataField="Description" HeaderText="Description" 
+                            SortExpression="Description" />
                         <asp:BoundField DataField="Responsible1" HeaderText="Responsible1" 
                             SortExpression="Responsible1" ReadOnly="True" />
                         <asp:BoundField DataField="Responsible2" HeaderText="Responsible2" 
@@ -141,8 +141,8 @@
                                             </asp:DropDownList></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">Comments</td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox></td>
+                                <td class="tblDetailsHeader">Description<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox6" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">ActionId</td>
@@ -153,16 +153,20 @@
                                 <td class="tblDetailsItem"><asp:label ID="AttachmentNameTextBox" runat="server" Text='<%# Bind("AttachmentName") %>' /></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">Deadline</td>
+                                <td class="tblDetailsHeader">Deadline<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtAPdead" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                 <td class="tblDetailsItem"><asp:TextBox ID="txtAPdead" SkinID="txtDate" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:TextBox></td>
                                 <td class="tblDetailsHeader">Status</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList></td>
                             </tr>
+                            <tr>
+                                <td class="tblDetailsHeader">Comments</td>
+                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox1" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox></td>
+                            </tr>
                         </table>
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                            CommandName="Update" ImageUrl="~/Images/Icons/Save24_24.png" ToolTip="Update" />
+                            CommandName="Update" ImageUrl="~/Images/Icons/Save24_24.png" ToolTip="Update" ValidationGroup="UpdAP" />
                         &nbsp;<asp:ImageButton ID="ImageButton4" runat="server" CausesValidation="False" 
                             CommandName="New" ImageUrl="~/Images/Icons/add24_24.png" Tooltip="New" />
                         <!--&nbsp;<asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" 
@@ -181,8 +185,8 @@
                                             </asp:DropDownList></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">Comments<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox6" ValidationGroup="InsAP" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox></td>
+                                <td class="tblDetailsHeader">Description<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox6" ValidationGroup="InsAP" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">ActionId</td>
@@ -200,43 +204,16 @@
                                                 selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList></td>
                             </tr>
+                            <tr>
+                                <td class="tblDetailsHeader">Comments<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox6" ValidationGroup="InsAP" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox2" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox></td>
+                            </tr>
                         </table>
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
                             CommandName="Insert" ImageUrl="~/Images/Icons/add24_24.png" ToolTip="Insert" ValidationGroup="InsAP" />
                         &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
                             CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel32_32.png" ToolTip="Cancel" />
                     </InsertItemTemplate>
-                    <ItemTemplate>
-                        <table id="tblDetails">
-                            <tr>
-                                <td class="tblDetailsHeader">ProjectId</td>
-                                <td class="tblDetailsItem"><asp:Label ID="ProjectIdLabel" runat="server" Text='<%# Bind("ProjectId") %>' /></td>
-                                <td class="tblDetailsHeader">ActionId</td>
-                                <td class="tblDetailsItem"><asp:Label ID="ActionIdLabel" runat="server" Text='<%# Bind("ActionId") %>' /></td>
-                            </tr>
-                            <tr>
-                                <td class="tblDetailsHeader">Responsible1</td>
-                                <td class="tblDetailsItem"><asp:Label ID="Responsible1Label" runat="server" Text='<%# Bind("Responsible1") %>' /></td>
-                                <td class="tblDetailsHeader">Responsible2</td>
-                                <td class="tblDetailsItem"><asp:Label ID="Responsible2Label" runat="server" Text='<%# Bind("Responsible2") %>' /></td>
-                            </tr>
-                            <tr>
-                                <td class="tblDetailsHeader">Comments</td>
-                                <td class="tblDetailsItem"><asp:Label ID="CommentsLabel" runat="server" Text='<%# Bind("Comments") %>' /></td>
-                                <td class="tblDetailsHeader">AttachmentName</td>
-                                <td class="tblDetailsItem"><asp:Label ID="AttachmentNameLabel" runat="server" Text='<%# Bind("AttachmentName") %>' /></td>
-                            </tr>
-                            <tr>
-                                <td class="tblDetailsHeader">Deadline</td>
-                                <td class="tblDetailsItem"><asp:Label ID="DeadlineLabel" runat="server" Text='<%# Bind("Deadline") %>' /></td>
-                                <td class="tblDetailsHeader">Status</td>
-                                <td class="tblDetailsItem"><asp:Label ID="StatusLabel" runat="server" Text='<%# Bind("Status") %>' /></td>
-                            </tr>
-                        </table>
-                        <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                            CommandName="Edit" ImageUrl="~/Images/Icons/Edit22_22.png" ToolTip="Edit" />
-
-                    </ItemTemplate>
                 </asp:FormView>
             </td>
         </tr>
@@ -267,9 +244,9 @@
                 <asp:SqlDataSource ID="sqldsAPdet" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [ActionPlans] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Responsible1], [Responsible2], [Comments], [AttachmentName], [Attachment], [Deadline], [Status]) VALUES (@ProjectId, @ActionId, @Responsible1, @Responsible2, @Comments, @AttachmentName, @Attachment, @Deadline, @Status)" 
-                    SelectCommand="SELECT [id], [ProjectId], [ActionId], [Responsible1], [Responsible2], [Comments], [AttachmentName], [Deadline], [Status] FROM [ActionPlans] WHERE ([id] = @id)" 
-                    UpdateCommand="UPDATE [ActionPlans] SET [ActionId] = @ActionId, [Responsible1] = @Responsible1, [Responsible2] = @Responsible2, [Comments] = @Comments, [AttachmentName] = @AttachmentName, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
+                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Responsible1], [Responsible2], [Description], [Comments], [AttachmentName], [Attachment], [Deadline], [Status]) VALUES (@ProjectId, @ActionId, @Responsible1, @Responsible2, @Description, @Comments, @AttachmentName, @Attachment, @Deadline, @Status)" 
+                    SelectCommand="SELECT [id], [ProjectId], [ActionId], [Responsible1], [Responsible2], [Description], [Comments], [AttachmentName], [Deadline], [Status] FROM [ActionPlans] WHERE ([id] = @id)" 
+                    UpdateCommand="UPDATE [ActionPlans] SET [ActionId] = @ActionId, [Responsible1] = @Responsible1, [Responsible2] = @Responsible2, [Description] = @Description, [Comments] = @Comments, [AttachmentName] = @AttachmentName, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="gvAP" Name="id" PropertyName="SelectedValue" 
                             Type="Int32" />
@@ -281,6 +258,7 @@
                         <asp:Parameter Name="ActionId" Type="Byte" />
                         <asp:Parameter Name="Responsible1" Type="Int32" />
                         <asp:Parameter Name="Responsible2" Type="Int32" />
+                        <asp:Parameter Name="Description" Type="String" />
                         <asp:Parameter Name="Comments" Type="String" />
                         <asp:Parameter Name="AttachmentName" Type="String" />
                         <asp:Parameter Name="Deadline" Type="DateTime" />
@@ -292,6 +270,7 @@
                         <asp:Parameter Name="ActionId" Type="Byte" />
                         <asp:Parameter Name="Responsible1" Type="Int32" />
                         <asp:Parameter Name="Responsible2" Type="Int32" />
+                        <asp:Parameter Name="Description" Type="String" />
                         <asp:Parameter Name="Comments" Type="String" />
                         <asp:Parameter Name="AttachmentName" Type="String" />
                         <asp:Parameter Name="Attachment"  />

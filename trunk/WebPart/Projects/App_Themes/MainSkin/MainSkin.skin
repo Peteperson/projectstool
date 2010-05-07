@@ -32,8 +32,8 @@
     <AlternatingRowStyle BackColor="#D3D3D3" />    
 </asp:GridView>
 
-<asp:GridView runat="server" SkinId="gridviewSkinSmall" AutoGenerateColumns="False" RowStyle-HorizontalAlign="Left" RowStyle-CssClass="gvRow"
-    ForeColor="Black" BackColor="#EAEAEA" PageSize="15" Width="100%" FooterStyle-Wrap="false" CssClass="NoTopBorderLine" FooterStyle-CssClass="gvRow">
+<asp:GridView runat="server" SkinId="gridviewSkinSmall" AutoGenerateColumns="False" RowStyle-HorizontalAlign="Left"
+    ForeColor="Black" PageSize="10" BackColor="#EAEAEA" Width="100%" FooterStyle-Wrap="false">
     <EmptyDataRowStyle BackColor="#233D63" ForeColor="White" Font-Size="11pt" />
     <FooterStyle BackColor="Tan" />
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />

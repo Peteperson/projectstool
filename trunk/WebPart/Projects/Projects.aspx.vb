@@ -127,7 +127,7 @@ Partial Class Projects
             e.Command.Parameters("@ActionId").Value = CType(gvAP.FooterRow.FindControl("ddlActionType"), DropDownList).SelectedValue
             e.Command.Parameters("@Responsible1").Value = CType(gvAP.FooterRow.FindControl("ddlResp1"), DropDownList).SelectedValue
             e.Command.Parameters("@Responsible2").Value = CType(gvAP.FooterRow.FindControl("ddlResp2"), DropDownList).SelectedValue
-            e.Command.Parameters("@Comments").Value = CType(gvAP.FooterRow.FindControl("txtAPcomments"), TextBox).Text
+            e.Command.Parameters("@Description").Value = CType(gvAP.FooterRow.FindControl("txtAPdesc"), TextBox).Text
             e.Command.Parameters("@AttachmentName").Value = CType(gvAP.FooterRow.FindControl("fuAP"), FileUpload).FileName
             e.Command.Parameters("@Attachment").Value = CType(gvAP.FooterRow.FindControl("fuAP"), FileUpload).FileBytes
             'e.Command.Parameters("@Deadline").Value = Support.ReadDate(CType(gvAP.FooterRow.FindControl("txtAPdead"), TextBox).Text)
@@ -138,7 +138,7 @@ Partial Class Projects
             e.Command.Parameters("@ActionId").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("ddlActionType"), DropDownList).SelectedValue
             e.Command.Parameters("@Responsible1").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("ddlResp1"), DropDownList).SelectedValue
             e.Command.Parameters("@Responsible2").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("ddlResp2"), DropDownList).SelectedValue
-            e.Command.Parameters("@Comments").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("txtAPcomments"), TextBox).Text
+            e.Command.Parameters("@Description").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("txtAPdesc"), TextBox).Text
             e.Command.Parameters("@AttachmentName").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("fuAP"), FileUpload).FileName
             e.Command.Parameters("@Attachment").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("fuAP"), FileUpload).FileBytes
             'e.Command.Parameters("@Deadline").Value = Support.ReadDate(CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("txtAPdead"), TextBox).Text)

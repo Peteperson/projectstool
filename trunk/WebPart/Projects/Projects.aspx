@@ -30,23 +30,21 @@
                                             <table id="tblDetails">
                                                 <tr>
                                                     <td class="tblDetailsHeader">Title</td>
-                                                    <td class="tblDetailsItem" colspan="3"><asp:Label ID="Label10" runat="server" Text='<%# Bind("Title") %>'></asp:Label></td>
+                                                    <td class="tblDetailsItem" colspan="5"><asp:Label ID="Label10" runat="server" Text='<%# Bind("Title") %>'></asp:Label></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Code</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label2" runat="server" Text='<%# Bind("Code") %>'></asp:Label></td>
                                                     <td class="tblDetailsHeader">SubProject</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label3" runat="server" Text='<%# Bind("SubProject") %>'></asp:Label></td>
-                                                </tr>
-                                                <tr>
                                                     <td class="tblDetailsHeader">Datestamp</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label4" runat="server" Text='<%# Bind("DateStamp", "{0:dd/MM/yyyy}") %>'></asp:Label></td>
+                                                </tr>
+                                                <tr>
                                                     <td class="tblDetailsHeader">Creator</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlCreators" runat="server" DataSourceID="sqldsCreators" 
                                                            Enabled="false" selectedvalue=<%# Bind("Creator") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
-                                                </tr>
-                                                <tr>
                                                     <td class="tblDetailsHeader">Customer</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlCompanies" runat="server" 
                                                            Enabled="false" selectedvalue=<%# Bind("CustomerId") %>  DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
@@ -65,38 +63,34 @@
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlConsultant2" runat="server" DataSourceID="sqldsConsultantsNN" 
                                                            Enabled="false" selectedvalue=<%# Bind("Consultant2") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
+                                                    <td class="tblDetailsHeader">Certification Fields</td>
+                                                    <td class="tblDetailsItem"><asp:Label ID="Label16" runat="server" Text='<%# Bind("CertificationField") %>'></asp:Label></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Description</td>
-                                                    <td colspan="3" class="tblDetailsItem"><asp:Label ID="Label11" runat="server" Text='<%# Bind("Description") %>'></asp:Label></td>
+                                                    <td colspan="5" class="tblDetailsItem"><asp:Label ID="Label11" runat="server" Text='<%# Bind("Description") %>'></asp:Label></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Start date</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label8" runat="server" Text='<%# Bind("StartDate", "{0:dd/MM/yyyy}") %>'></asp:Label></td>
                                                     <td class="tblDetailsHeader">Initial end date</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label9" runat="server" Text='<%# Bind("InitialEndDate", "{0:dd/MM/yyyy}") %>'></asp:Label></td>
+                                                    <td class="tblDetailsHeader">Initial meetings no</td>
+                                                    <td class="tblDetailsItem"><asp:Label ID="Label13" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:Label></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Critical issues</td>
                                                     <td colspan="3" class="tblDetailsItem"><asp:Label ID="Label14" runat="server" Text='<%# Bind("CriticalIssues") %>'></asp:Label></td>
-                                                </tr>
-                                                <tr>
                                                     <td class="tblDetailsHeader">Desired Organization</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label15" runat="server" Text='<%# Bind("DesiredOrganization") %>'></asp:Label></td>
-                                                    <td class="tblDetailsHeader">Certification Fields</td>
-                                                    <td class="tblDetailsItem"><asp:Label ID="Label16" runat="server" Text='<%# Bind("CertificationField") %>'></asp:Label></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="tblDetailsHeader">Initial meetings no</td>
-                                                    <td class="tblDetailsItem"><asp:Label ID="Label13" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:Label></td>
-                                                    <td class="tblDetailsHeader">Completion (%)</td>
-                                                    <td class="tblDetailsItem"><asp:Label ID="Label17" runat="server" Text='<%# Bind("CompletionPercentage") %>'></asp:Label></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Status</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectStatus" runat="server" DataSourceID="sqldsProjectStatus" 
                                                             Enabled="false" selectedvalue=<%# Bind("Status") %>  DataTextField="Description" DataValueField="id">                                                
                                                         </asp:DropDownList></td>
+                                                    <td class="tblDetailsHeader">Completion (%)</td>
+                                                    <td class="tblDetailsItem"><asp:Label ID="Label17" runat="server" Text='<%# Bind("CompletionPercentage") %>'></asp:Label></td>
                                                     <td class="tblDetailsHeader">Modification Date</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label6" runat="server" Text='<%# Bind("ModificationDate", "{0:dd/MM/yyyy HH:mm}") %>'></asp:Label></td>
                                                 </tr>
@@ -106,23 +100,21 @@
 						                    <table id="tblDetails">
                                                 <tr>
                                                     <td class="tblDetailsHeader">Title</td>
-                                                    <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox9" SkinID="txtText" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox></td>
+                                                    <td class="tblDetailsItem" colspan="5"><asp:TextBox ID="TextBox9" SkinID="txtText" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Code</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Code") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">SubProject</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("SubProject") %>'></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
                                                     <td class="tblDetailsHeader">Datestamp</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label4" runat="server" Text='<%# Bind("DateStamp", "{0:dd/MM/yyyy}") %>'></asp:Label></td>
+                                                </tr>
+                                                <tr>
                                                     <td class="tblDetailsHeader">Creator</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlCreators" runat="server" DataSourceID="sqldsCreators" 
                                                            selectedvalue=<%# Bind("Creator") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
-                                                </tr>
-                                                <tr>
                                                     <td class="tblDetailsHeader">Customer</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlCompanies" runat="server" 
                                                            selectedvalue=<%# Bind("CustomerId") %>  DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
@@ -141,38 +133,34 @@
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlConsultant2" runat="server" DataSourceID="sqldsConsultantsNN" 
                                                            selectedvalue=<%# Bind("Consultant2") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
+                                                    <td class="tblDetailsHeader">Certification Fields</td>
+                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox15" runat="server" SkinID="txtText" Text='<%# Bind("CertificationField") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Description</td>
-                                                    <td colspan="3" class="tblDetailsItem"><asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
+                                                    <td colspan="5" class="tblDetailsItem"><asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Start date</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="txtProjectSDate" runat="server" Text='<%# Bind("StartDate", "{0:dd/MM/yyyy}") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">Initial end date</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="txtProjectEDate" runat="server" Text='<%# Bind("InitialEndDate", "{0:dd/MM/yyyy}") %>'></asp:TextBox></td>
+                                                    <td class="tblDetailsHeader">Initial meetings no</td>
+                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox12" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Critical issues</td>
                                                     <td colspan="3" class="tblDetailsItem"><asp:TextBox ID="TextBox13" SkinID="txtText" runat="server" Text='<%# Bind("CriticalIssues") %>'></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
                                                     <td class="tblDetailsHeader">Desired Organization</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox14" runat="server" SkinID="txtText" Text='<%# Bind("DesiredOrganization") %>'></asp:TextBox></td>
-                                                    <td class="tblDetailsHeader">Certification Fields</td>
-                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox15" runat="server" SkinID="txtText" Text='<%# Bind("CertificationField") %>'></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="tblDetailsHeader">Initial meetings no</td>
-                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox12" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:TextBox></td>
-                                                    <td class="tblDetailsHeader">Completion (%)</td>
-                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox16" runat="server" Text='<%# Bind("CompletionPercentage") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Status</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectStatus" runat="server" DataSourceID="sqldsProjectStatus" 
                                                             selectedvalue=<%# Bind("Status") %>  DataTextField="Description" DataValueField="id">                                                
                                                         </asp:DropDownList></td>
+                                                    <td class="tblDetailsHeader">Completion (%)</td>
+                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox16" runat="server" Text='<%# Bind("CompletionPercentage") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">Modification Date</td>
                                                     <td class="tblDetailsItem"></td>
                                                 </tr>
@@ -182,23 +170,21 @@
 						                    <table id="tblDetails">
                                                 <tr>
                                                     <td class="tblDetailsHeader">Title <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox9" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                                    <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox9" SkinID="txtText" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox></td>
+                                                    <td class="tblDetailsItem" colspan="5"><asp:TextBox ID="TextBox9" SkinID="txtText" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Code <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox1" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Code") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">SubProject <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox2" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("SubProject") %>'></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
                                                     <td class="tblDetailsHeader">Datestamp</td>
                                                     <td class="tblDetailsItem"></td>
+                                                </tr>
+                                                <tr>
                                                     <td class="tblDetailsHeader">Creator</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlCreators" runat="server" DataSourceID="sqldsCreators" 
                                                            DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
-                                                </tr>
-                                                <tr>
                                                     <td class="tblDetailsHeader">Customer</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlCompanies" runat="server" 
                                                            DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
@@ -217,38 +203,34 @@
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlInsConsultant2" runat="server" DataSourceID="sqldsConsultantsNN" 
                                                            DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
+                                                    <td class="tblDetailsHeader">Certification Fields</td>
+                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox15" runat="server" SkinID="txtText" Text='<%# Bind("CertificationField") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Description <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox10" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                                    <td colspan="3" class="tblDetailsItem"><asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
+                                                    <td colspan="5" class="tblDetailsItem"><asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Start date <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtProjectSDate" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="txtProjectSDate" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">Initial end date <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtProjectEDate" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="txtProjectEDate" runat="server" Text='<%# Today.AddMonths(6).ToString("dd/MM/yyyy") %>'></asp:TextBox></td>
+                                                    <td class="tblDetailsHeader">Initial meetings no</td>
+                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox12" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Critical issues</td>
                                                     <td colspan="3" class="tblDetailsItem"><asp:TextBox ID="TextBox13" SkinID="txtText" runat="server" Text='<%# Bind("CriticalIssues") %>'></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
                                                     <td class="tblDetailsHeader">Desired Organization</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox14" runat="server" SkinID="txtText" Text='<%# Bind("DesiredOrganization") %>'></asp:TextBox></td>
-                                                    <td class="tblDetailsHeader">Certification Fields</td>
-                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox15" runat="server" SkinID="txtText" Text='<%# Bind("CertificationField") %>'></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="tblDetailsHeader">Initial meetings no</td>
-                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox12" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:TextBox></td>
-                                                    <td class="tblDetailsHeader">Completion (%)</td>
-                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox16" runat="server" Text='<%# Bind("CompletionPercentage") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Status</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectStatus" runat="server" DataSourceID="sqldsProjectStatus" 
                                                             DataTextField="Description" DataValueField="id">                                                
                                                         </asp:DropDownList></td>
+                                                    <td class="tblDetailsHeader">Completion (%)</td>
+                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox16" runat="server" Text='<%# Bind("CompletionPercentage") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">Modification Date</td>
                                                     <td class="tblDetailsItem"></td>
                                                 </tr>
@@ -315,7 +297,7 @@
                                 <table style="border-top: solid 1px white">
                                     <tr class="InsertTabHeader">
                                         <td>Action</td>
-                                        <td class="CommentsCol">Description<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAPcomments" ValidationGroup="InsAP1st" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                        <td class="CommentsCol">Description<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAPdesc" ValidationGroup="InsAP1st" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                         <!--<td>Type</td>-->
                                         <td>Responsible1<!--<br />Responsible2--></td>
                                         <td>Deadline</td>
@@ -325,7 +307,7 @@
                                     <tr class="InsertRow">
                                         <td><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
                                             ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsAP1st" /></td>
-                                        <td><asp:TextBox ID="txtAPcomments" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>' ></asp:TextBox></td>
+                                        <td><asp:TextBox ID="txtAPdesc" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>' ></asp:TextBox></td>
                                         <!--<td><asp:DropDownList SkinId="ddlDef" ID="ddlActionType" runat="server" 
                                                DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList></td>-->
@@ -363,16 +345,16 @@
                                             ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                                     </FooterTemplate>
                                 </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="Description" SortExpression="Comments">
+                                    <asp:TemplateField HeaderText="Description" SortExpression="Description">
                                         <ItemStyle CssClass="CommentsCol" />
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox>
+                                            <asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("Comments") %>'></asp:Label>
+                                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:TextBox ID="txtAPcomments" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>' ></asp:TextBox>
+                                            <asp:TextBox ID="txtAPdesc" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>' ></asp:TextBox>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Type" Visible="false" SortExpression="ActionId">
@@ -798,10 +780,10 @@
                 <asp:SqlDataSource ID="sqldsAP" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     
-                    SelectCommand="SELECT [id], [ProjectId], [DateStamp], [ActionId], [Responsible1], [Responsible2], [Comments], [AttachmentName], [Deadline], [Status] FROM [ActionPlans] WHERE ([ProjectId] = @ProjectId)" 
+                    SelectCommand="SELECT [id], [ProjectId], [DateStamp], [ActionId], [Responsible1], [Responsible2], [Description], [Comments], [AttachmentName], [Deadline], [Status] FROM [ActionPlans] WHERE ([ProjectId] = @ProjectId)" 
                     DeleteCommand="DELETE FROM [ActionPlans] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Responsible1], [Responsible2], [Comments], [AttachmentName], [Attachment], [Deadline], [Status]) VALUES (@ProjectId, @ActionId, @Responsible1, @Responsible2, @Comments, @AttachmentName, @Attachment, @Deadline, @Status)" 
-                    UpdateCommand="UPDATE [ActionPlans] SET [Responsible1] = @Responsible1, [Comments] = @Comments, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
+                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Responsible1], [Responsible2], [Description], [AttachmentName], [Attachment], [Deadline], [Status]) VALUES (@ProjectId, @ActionId, @Responsible1, @Responsible2, @Description, @AttachmentName, @Attachment, @Deadline, @Status)" 
+                    UpdateCommand="UPDATE [ActionPlans] SET [Responsible1] = @Responsible1, [Description] = @Description, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
                             PropertyName="SelectedValue" Type="Int32" />
@@ -812,7 +794,7 @@
                     <UpdateParameters>
                         <asp:Parameter Name="ProjectId" Type="Int32" />
                         <asp:Parameter Name="Responsible1" Type="Int32" />
-                        <asp:Parameter Name="Comments" Type="String" />
+                        <asp:Parameter Name="Description" Type="String" />
                         <asp:Parameter Name="Deadline" Type="DateTime" />
                         <asp:Parameter Name="Status" Type="Byte" />
                         <asp:Parameter Name="id" Type="Int32" />
@@ -822,7 +804,7 @@
                         <asp:Parameter Name="ActionId" Type="Byte" />
                         <asp:Parameter Name="Responsible1" Type="Int32" />
                         <asp:Parameter Name="Responsible2" Type="Int32" />
-                        <asp:Parameter Name="Comments" Type="String" />
+                        <asp:Parameter Name="Description" Type="String" />
                         <asp:Parameter Name="AttachmentName" Type="String" />
                         <asp:Parameter Name="Attachment" />
                         <asp:Parameter Name="Deadline" Type="DateTime" />
