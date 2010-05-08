@@ -32,7 +32,7 @@
             <td>
                 <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataSourceID="sqldsErrors" 
-                    SkinID="gridviewSkinShort">
+                    SkinID="gridviewSkinSmall">
                     <Columns>
                         <asp:TemplateField HeaderText="Datestamp" SortExpression="Datestamp">
                             <ItemTemplate>

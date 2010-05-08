@@ -90,7 +90,20 @@
                                                             Enabled="false" selectedvalue=<%# Bind("Status") %>  DataTextField="Description" DataValueField="id">                                                
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Completion (%)</td>
-                                                    <td class="tblDetailsItem"><asp:Label ID="Label17" runat="server" Text='<%# Bind("CompletionPercentage") %>'></asp:Label></td>
+                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlPercent" runat="server" Enabled="false" selectedvalue=<%# Bind("CompletionPercentage") %>  >
+                                                            <asp:ListItem>0</asp:ListItem>
+                                                            <asp:ListItem>10</asp:ListItem>
+                                                            <asp:ListItem>20</asp:ListItem>
+                                                            <asp:ListItem>30</asp:ListItem>
+                                                            <asp:ListItem>40</asp:ListItem>
+                                                            <asp:ListItem>50</asp:ListItem>
+                                                            <asp:ListItem>60</asp:ListItem>
+                                                            <asp:ListItem>70</asp:ListItem>
+                                                            <asp:ListItem>80</asp:ListItem>
+                                                            <asp:ListItem>90</asp:ListItem>
+                                                            <asp:ListItem>100</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>
                                                     <td class="tblDetailsHeader">Modification Date</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label6" runat="server" Text='<%# Bind("ModificationDate", "{0:dd/MM/yyyy HH:mm}") %>'></asp:Label></td>
                                                 </tr>
@@ -160,7 +173,19 @@
                                                             selectedvalue=<%# Bind("Status") %>  DataTextField="Description" DataValueField="id">                                                
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Completion (%)</td>
-                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox16" runat="server" Text='<%# Bind("CompletionPercentage") %>'></asp:TextBox></td>
+                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlPercent" runat="server" selectedvalue=<%# Bind("CompletionPercentage") %>  >
+                                                            <asp:ListItem>0</asp:ListItem>
+                                                            <asp:ListItem>10</asp:ListItem>
+                                                            <asp:ListItem>20</asp:ListItem>
+                                                            <asp:ListItem>30</asp:ListItem>
+                                                            <asp:ListItem>40</asp:ListItem>
+                                                            <asp:ListItem>50</asp:ListItem>
+                                                            <asp:ListItem>60</asp:ListItem>
+                                                            <asp:ListItem>70</asp:ListItem>
+                                                            <asp:ListItem>80</asp:ListItem>
+                                                            <asp:ListItem>90</asp:ListItem>
+                                                            <asp:ListItem>100</asp:ListItem>
+                                                        </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Modification Date</td>
                                                     <td class="tblDetailsItem"></td>
                                                 </tr>
@@ -230,7 +255,19 @@
                                                             DataTextField="Description" DataValueField="id">                                                
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Completion (%)</td>
-                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox16" runat="server" Text='<%# Bind("CompletionPercentage") %>'></asp:TextBox></td>
+                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlPercent" runat="server" selectedvalue=<%# Bind("CompletionPercentage") %>  >
+                                                            <asp:ListItem>0</asp:ListItem>
+                                                            <asp:ListItem>10</asp:ListItem>
+                                                            <asp:ListItem>20</asp:ListItem>
+                                                            <asp:ListItem>30</asp:ListItem>
+                                                            <asp:ListItem>40</asp:ListItem>
+                                                            <asp:ListItem>50</asp:ListItem>
+                                                            <asp:ListItem>60</asp:ListItem>
+                                                            <asp:ListItem>70</asp:ListItem>
+                                                            <asp:ListItem>80</asp:ListItem>
+                                                            <asp:ListItem>90</asp:ListItem>
+                                                            <asp:ListItem>100</asp:ListItem>
+                                                        </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Modification Date</td>
                                                     <td class="tblDetailsItem"></td>
                                                 </tr>
@@ -267,7 +304,7 @@
             </td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <td></td>
         </tr>
         <tr>
             <td id="tdSubMenu">

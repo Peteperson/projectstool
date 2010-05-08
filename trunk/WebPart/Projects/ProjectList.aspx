@@ -19,7 +19,7 @@
             <td id="tdMeetings">
                 <asp:GridView ID="gvProjects" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" 
-                    DataSourceID="sqldsProjects" SkinID="gridviewSkinSmall">
+                    DataSourceID="sqldsProjects" SkinID="gridviewSkinList">
                     <Columns>
                         <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
                             SortExpression="A/A" />
@@ -41,7 +41,7 @@
                             SortExpression="Consultant" ReadOnly="True" />
                         <asp:BoundField DataField="InitialEndDate" HeaderText="InitialEndDate" 
                             SortExpression="InitialEndDate" DataFormatString="{0:dd/MM/yyyy}" />
-                        <asp:BoundField DataField="CompletionPercentage" HeaderText="Completion (%)" 
+                        <asp:BoundField DataField="CompletionPercentage" HeaderText="(%)" 
                             SortExpression="CompletionPercentage" />
                         <asp:BoundField DataField="Status" HeaderText="Status" 
                             SortExpression="Status" />

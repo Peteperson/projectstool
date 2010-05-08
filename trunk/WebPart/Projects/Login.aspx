@@ -23,7 +23,7 @@
                 <br />
                 <br />
                 <asp:Login ID="ctrlLogin" runat="server" DisplayRememberMe="False" 
-        BackColor="#E4E4C0" BorderColor="#FFDFAD" BorderPadding="4" BorderStyle="None"
+        BorderPadding="4" BorderStyle="None"
         BorderWidth="0px" Font-Names="Tahoma, Calibri, Verdana" ForeColor="#333333" Width="0%"
         TextLayout="TextOnTop">
         <LoginButtonStyle BackColor="White" BorderColor="#CC9966" BorderStyle="Solid" 
@@ -31,31 +31,36 @@
         <LayoutTemplate>
             <table id="tblLogin">
                 <tr>
-                    <td>
-                        <table border="0" cellpadding="0" style="width:250px;height:115px">
+                    <td align="center" style="vertical-align:top">
+                        <br /><br /><br /><br /><br /><br />
+                        <table border="0" cellpadding="0" style="width:360px;">
                             <tr>
-                                <td align="center" colspan="2" style="color:White; padding-bottom: 2px;background-color:#842829;font-weight:bold; height:17px">Log In</td>
+                                <td align="center" colspan="2" style="color:black; padding-bottom: 2px;font-weight:bold">Please insert your username and password:<br /><br /><br /></td>
                             </tr>
                             <tr>
-                                <td>
+                                <td align="right">
                                     <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name:</asp:Label>
+                                    <br /><br />
                                 </td>
                                 <td>
                                     <asp:TextBox ID="UserName" runat="server" Width="130px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
                                         ControlToValidate="UserName" ErrorMessage="User Name is required." 
                                         ToolTip="User Name is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                    <br /><br />
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td align="right">
                                     <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
+                                    <br /><br /><br /><br />
                                 </td>
                                 <td>
                                     <asp:TextBox ID="Password" runat="server" TextMode="Password" Width="130px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
                                         ControlToValidate="Password" ErrorMessage="Password is required." 
                                         ToolTip="Password is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                    <br /><br /><br /><br />
                                 </td>
                             </tr>
                             <tr>
@@ -64,10 +69,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right" colspan="2">
+                                <td align="center" colspan="2">
                                     <asp:Button ID="LoginButton" runat="server" CommandName="Login" 
-                                        Font-Names="Tahoma, Calibri, Verdana" Text="Log In" ValidationGroup="Login1" 
-                                        Width="70px" />
+                                        Font-Names="Tahoma, Calibri, Verdana" Text="Enter site" style="text-align:center" ValidationGroup="Login1" />
                                 </td>
                             </tr>
                         </table>

@@ -7,6 +7,7 @@
 
 table {
     width:100%;
+    border-collapse:collapse;
 }
 
 a {
@@ -37,10 +38,13 @@ a:hover {
 
 #tblLogin {
     border-collapse:collapse;
-    border-top: solid 3px #AAAAAA;
+    /*border-top: solid 3px #AAAAAA;
     border-left: solid 3px #AAAAAA;
     border-right: solid 3px #666666;
-    border-bottom: solid 3px #666666;
+    border-bottom: solid 3px #666666;*/
+    background-image: url(Images/LogInTblBack.png);
+    width:510px;
+    height:376px;
 }
 
 #tblMain {
@@ -182,6 +186,10 @@ a:hover {
 
 .gvRow {
 	height:30px;
+}
+
+.gvRow2 {
+	height:24px;
 }
 
 #tdSubMenu{
