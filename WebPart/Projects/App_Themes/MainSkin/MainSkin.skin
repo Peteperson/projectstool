@@ -22,7 +22,18 @@
 </asp:GridView>
 
 <asp:GridView runat="server" SkinId="gridviewSkinShort" AutoGenerateColumns="False" RowStyle-HorizontalAlign="Left"
-    BackColor="#EAEAEA" BorderColor="Tan" BorderWidth="1px" CellPadding="0" Width="100%" 
+    BackColor="#EAEAEA" BorderColor="Tan" BorderWidth="1px" CellPadding="0" Width="100%"  
+    ForeColor="Black" PageSize="10" FooterStyle-Wrap="false" FooterStyle-CssClass="gvRow">
+    <FooterStyle BackColor="Tan" />
+    <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
+    <PagerSettings Mode="NumericFirstLast" />
+    <SelectedRowStyle BackColor="#7593B9" ForeColor="White" Font-Bold="true" />
+    <HeaderStyle BackColor="#2C486E" ForeColor="White" Font-Size="10pt" Height="35px" />
+    <AlternatingRowStyle BackColor="#D3D3D3" />    
+</asp:GridView>
+
+<asp:GridView runat="server" SkinId="gridviewSkinList" AutoGenerateColumns="False" RowStyle-HorizontalAlign="Left"
+    BackColor="#EEEEEE" BorderColor="Tan" BorderWidth="1px" CellPadding="0" Width="100%" RowStyle-CssClass="gvRow2" 
     ForeColor="Black" PageSize="10" FooterStyle-Wrap="false" FooterStyle-CssClass="gvRow">
     <FooterStyle BackColor="Tan" />
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
@@ -33,7 +44,7 @@
 </asp:GridView>
 
 <asp:GridView runat="server" SkinId="gridviewSkinSmall" AutoGenerateColumns="False" RowStyle-HorizontalAlign="Left"
-    ForeColor="Black" PageSize="10" BackColor="#EAEAEA" Width="100%" FooterStyle-Wrap="false">
+    ForeColor="Black" PageSize="5" BackColor="#EAEAEA" Width="100%" FooterStyle-Wrap="false">
     <EmptyDataRowStyle BackColor="#233D63" ForeColor="White" Font-Size="11pt" />
     <FooterStyle BackColor="Tan" />
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
@@ -43,10 +54,10 @@
     <AlternatingRowStyle BackColor="#D3D3D3" />    
 </asp:GridView>
 
-<asp:Calendar SkinId="clndMain" runat="server" BackColor="#7593B9" DayNameFormat="Shortest" ForeColor="Black" Width="200px">
+<asp:Calendar SkinId="clndMain" runat="server" BackColor="#7593B9" DayNameFormat="Shortest" ForeColor="Black" Width="150px" Font-Size="8pt" >
     <SelectedDayStyle BackColor="#7593B9" Font-Bold="True" ForeColor="White" />
     <DayHeaderStyle BackColor="Tan" ForeColor="Black" />
-    <TitleStyle BackColor="#2C486E" Font-Bold="True" Font-Size="11pt" ForeColor="White" />
+    <TitleStyle BackColor="#2C486E" Font-Bold="True" Font-Size="10pt" ForeColor="White" />
     <WeekendDayStyle BackColor="LightGray" ForeColor="Black" />
 </asp:Calendar>
 

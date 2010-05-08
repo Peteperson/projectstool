@@ -18,8 +18,8 @@
         <tr>
             <td id="tdAttachments">
                 <asp:GridView ID="gvFiles" runat="server" AllowPaging="True" ShowFooter="True" 
-                    AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
-                    DataSourceID="sqldsFiles" SkinID="gridviewSkinSmall">
+                    AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id"
+                    DataSourceID="sqldsFiles" SkinID="gridviewSkinList">
                     <Columns>
                         <asp:TemplateField ShowHeader="False">
                             <ItemStyle Wrap="false" />

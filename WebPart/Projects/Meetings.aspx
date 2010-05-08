@@ -20,7 +20,7 @@
             <td id="tdMeetings">
                 <asp:GridView ID="gvMeetings" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id,ProjectId" 
-                    DataSourceID="sqldsMeetings" SkinID="gridviewSkinSmall">
+                    DataSourceID="sqldsMeetings" SkinID="gridviewSkinList">
                     <Columns>
                         <asp:TemplateField ShowHeader="False">
                             <ItemTemplate>
@@ -62,7 +62,7 @@
                         <asp:TemplateField HeaderText="File" SortExpression="File">
                             <ItemTemplate>
                                 <asp:ImageButton ID="btnDown" runat="server" CommandArgument='<%# Bind("id") %>'
-                                                CommandName="Download" ImageUrl="~/Images/Icons/Files2_24x24.png" ToolTip='<%# Bind("File") %>'/>
+                                                CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip='<%# Bind("File") %>'/>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />

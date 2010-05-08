@@ -70,7 +70,7 @@
             <td id="tdAP">
                 <asp:GridView ID="gvAP" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id,ProjectId" 
-                    DataSourceID="sqldsAP" SkinID="gridviewSkin">
+                    DataSourceID="sqldsAP" SkinID="gridviewSkinList">
                     <Columns>
                         <asp:TemplateField ShowHeader="False">
                             <ItemTemplate>
@@ -94,12 +94,12 @@
                             SortExpression="Description" />
                         <asp:BoundField DataField="Responsible1" HeaderText="Responsible1" 
                             SortExpression="Responsible1" ReadOnly="True" />
-                        <asp:BoundField DataField="Responsible2" HeaderText="Responsible2" 
+                        <asp:BoundField DataField="Responsible2" HeaderText="Responsible2" Visible="false" 
                             ReadOnly="True" SortExpression="Responsible2" />
                         <asp:TemplateField HeaderText="File" SortExpression="AttachmentName">
                             <ItemTemplate>
                                 <asp:ImageButton ID="btnDown" runat="server" CommandArgument='<%# Bind("id") %>'
-                                                CommandName="Download" ImageUrl="~/Images/Icons/Files2_24x24.png" ToolTip='<%# Bind("AttachmentName") %>'/>
+                                                CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip='<%# Bind("AttachmentName") %>'/>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Deadline *" HeaderStyle-Wrap="false" SortExpression="Deadline">
@@ -259,7 +259,7 @@
                         <asp:Parameter Name="Responsible1" Type="Int32" />
                         <asp:Parameter Name="Responsible2" Type="Int32" />
                         <asp:Parameter Name="Description" Type="String" />
-                        <asp:Parameter Name="Comments" Type="String" />
+                        <asp:Parameter Name="Comments" Type="String" DefaultValue=" " />
                         <asp:Parameter Name="AttachmentName" Type="String" />
                         <asp:Parameter Name="Deadline" Type="DateTime" />
                         <asp:Parameter Name="Status" Type="Byte" />
@@ -271,7 +271,7 @@
                         <asp:Parameter Name="Responsible1" Type="Int32" />
                         <asp:Parameter Name="Responsible2" Type="Int32" />
                         <asp:Parameter Name="Description" Type="String" />
-                        <asp:Parameter Name="Comments" Type="String" />
+                        <asp:Parameter Name="Comments" Type="String" DefaultValue=" " />
                         <asp:Parameter Name="AttachmentName" Type="String" />
                         <asp:Parameter Name="Attachment"  />
                         <asp:Parameter Name="Deadline" Type="DateTime" />
