@@ -54,6 +54,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
     <br />
+    <div id="dvHidden" style="DISPLAY: none; Z-INDEX: -1; POSITION: absolute; background-color: #C64221">Our comments are shown here!!!</div>
     <table id="subPageMainTable">
         <tr>
             <td class="title">List of Actions</td>
@@ -154,7 +155,7 @@
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">Deadline<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtAPdead" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                <td class="tblDetailsItem"><asp:TextBox ID="txtAPdead" SkinID="txtDate" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:TextBox></td>
+                                <td class="tblDetailsItem"><asp:TextBox ID="txtAPdead" SkinID="txtDate" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:TextBox> <img src="Images/Icons/Calendar_16x16.png" alt="clnd" onclick="ShowComments('dvHidden', this)" /></td>
                                 <td class="tblDetailsHeader">Status</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">

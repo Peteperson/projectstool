@@ -1,17 +1,12 @@
 ﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="ctrlDateTime.ascx.vb" Inherits="ctrlDateTime" %>
 <table width="200px">
     <tr>
-        <td rowspan="4"><asp:Calendar ID="Calendar1" runat="server" BackColor="White" 
-                BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" 
-                Font-Names="Verdana" Font-Size="7pt" ForeColor="Black" Width="50px">
-            <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
-            <SelectorStyle BackColor="#CCCCCC" />
-            <WeekendDayStyle BackColor="#FFFFCC" />
-            <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
-            <OtherMonthDayStyle ForeColor="#808080" />
-            <NextPrevStyle VerticalAlign="Bottom" />
-            <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
-            <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
+        <td rowspan="5">
+            <asp:Calendar ID="Calendar1" runat="server" BackColor="#7593B9" DayNameFormat="Shortest" ForeColor="Black" Width="150px" Font-Size="8pt" >
+                <SelectedDayStyle BackColor="#7593B9" Font-Bold="True" ForeColor="White" />
+                <DayHeaderStyle BackColor="Tan" ForeColor="Black" />
+                <TitleStyle BackColor="#2C486E" Font-Bold="True" Font-Size="10pt" ForeColor="White" />
+                <WeekendDayStyle BackColor="LightGray" ForeColor="Black" />
             </asp:Calendar></td>
         <td>From:</td>
     </tr>
@@ -92,6 +87,11 @@
                 <asp:ListItem Value="29">23:00</asp:ListItem>
                 <asp:ListItem Value="30">23:30</asp:ListItem>
             </asp:DropDownList>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <asp:Button ID="btnDone" runat="server" Text="Done" />
         </td>
     </tr>
 </table>
