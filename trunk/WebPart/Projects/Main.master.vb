@@ -24,6 +24,7 @@
                     Session("ErrorMessage") = "You do not have permission to view this page."
                     Response.Redirect("~/error.aspx")
                 Else
+                    RemoveFilters()
                     Database.InsertActivity(Request.UserHostAddress, Session("UserId"), Request.Url.ToString, LogStatus.Normal)
                 End If
             End If
@@ -34,6 +35,10 @@
     Protected Sub btnLogoff_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnLogoff.Click
         Session.Clear()
         Response.Redirect("~/Login.aspx")
+    End Sub
+
+    Private Sub RemoveFilters()
+
     End Sub
 End Class
 

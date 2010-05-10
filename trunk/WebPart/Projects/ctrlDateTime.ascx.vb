@@ -31,4 +31,14 @@ Partial Class ctrlDateTime
             _ShowTime = value
         End Set
     End Property
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Not _ShowTime Then
+            ddlFrom.Visible = False
+            ddlTo.Visible = False
+        Else
+            ddlFrom.Visible = True
+            ddlTo.Visible = True
+        End If
+    End Sub
 End Class
