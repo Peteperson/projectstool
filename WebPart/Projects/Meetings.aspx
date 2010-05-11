@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Main.master" AutoEventWireup="false" CodeFile="Meetings.aspx.vb" Inherits="Meetings" Theme="MainSkin" %>
 
+<%@ Register src="DateBox.ascx" tagname="DateBox" tagprefix="uc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
@@ -87,9 +89,9 @@
                         <table id="tblDetails">
                             <tr>
                                 <td class="tblDetailsHeader">TimeFrom</td>
-                                <td class="tblDetailsItem"><asp:TextBox ID="TimeFromTextBox" runat="server" Text='<%# Bind("TimeFrom", "{0:dd/MM/yyyy HH:mm}") %>' /></td>
+                                <td class="tblDetailsItem"><uc1:DateBox ID="dbTimeFrom" runat="server" Value='<%# Bind("TimeFrom") %>' ShowTime="true" /></td>
                                 <td class="tblDetailsHeader">TimeTo</td>
-                                <td class="tblDetailsItem"><asp:TextBox ID="TimeToTextBox" runat="server" Text='<%# Bind("TimeTo", "{0:dd/MM/yyyy HH:mm}") %>' /></td>
+                                <td class="tblDetailsItem"><uc1:DateBox ID="dbTimeTo" runat="server" Value='<%# Bind("TimeTo") %>' ShowTime="true" ShowDate="false" /></td>
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">Subject</td>
@@ -132,10 +134,10 @@
                     <InsertItemTemplate>
                         <table id="tblDetails">
                             <tr>
-                                <td class="tblDetailsHeader">TimeFrom<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtTimeFrom" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                <td class="tblDetailsItem"><asp:TextBox ID="txtTimeFrom" runat="server" Text='<%# Now.AddDays(5).ToString("dd/MM/yyyy HH:mm") %>' /></td>
-                                <td class="tblDetailsHeader">TimeTo<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtTimeTo" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                <td class="tblDetailsItem"><asp:TextBox ID="txtTimeTo" runat="server" Text='<%# Now.AddDays(5).AddMinutes(90).ToString("dd/MM/yyyy HH:mm") %>' /></td>
+                                <td class="tblDetailsHeader">TimeFrom</td>
+                                <td class="tblDetailsItem"><uc1:DateBox ID="dbTimeFrom" runat="server" Value='<%# Bind("TimeFrom") %>' ShowTime="true" Text='<%# Now.ToString("dd/MM/yyyy") %>' /></td>
+                                <td class="tblDetailsHeader">TimeTo</td>
+                                <td class="tblDetailsItem"><uc1:DateBox ID="DateBox1" runat="server" Value='<%# Bind("TimeTo") %>' ShowTime="true" ShowDate="false" Text='<%# Now.AddMinutes(90).ToString("dd/MM/yyyy") %>' /></td>
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">Subject<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="SubjectTextBox" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RequiredFieldValidator></td>

@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Main.master" AutoEventWireup="false" CodeFile="Projects.aspx.vb" Inherits="Projects" Theme="MainSkin" %>
+<%@ Register src="DateBox.ascx" tagname="DateBox" tagprefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
@@ -155,9 +156,9 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Start date</td>
-                                                    <td class="tblDetailsItem"><asp:TextBox ID="txtProjectSDate" runat="server" Text='<%# Bind("StartDate", "{0:dd/MM/yyyy}") %>'></asp:TextBox></td>
+                                                    <td class="tblDetailsItem"><uc1:DateBox ID="dbStartDate" runat="server" Value='<%# Bind("StartDate") %>' /></td>
                                                     <td class="tblDetailsHeader">Initial end date</td>
-                                                    <td class="tblDetailsItem"><asp:TextBox ID="txtProjectEDate" runat="server" Text='<%# Bind("InitialEndDate", "{0:dd/MM/yyyy}") %>'></asp:TextBox></td>
+                                                    <td class="tblDetailsItem"><uc1:DateBox ID="dbEndDate" runat="server" Value='<%# Bind("InitialEndDate") %>' /></td>
                                                     <td class="tblDetailsHeader">Initial meetings no</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox12" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:TextBox></td>
                                                 </tr>
@@ -236,10 +237,10 @@
                                                     <td colspan="5" class="tblDetailsItem"><asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Start date <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtProjectSDate" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                                    <td class="tblDetailsItem"><asp:TextBox ID="txtProjectSDate" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>'></asp:TextBox></td>
-                                                    <td class="tblDetailsHeader">Initial end date <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtProjectEDate" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                                    <td class="tblDetailsItem"><asp:TextBox ID="txtProjectEDate" runat="server" Text='<%# Today.AddMonths(6).ToString("dd/MM/yyyy") %>'></asp:TextBox></td>
+                                                    <td class="tblDetailsHeader">Start date</td>
+                                                    <td class="tblDetailsItem"><uc1:DateBox ID="dbStartDate" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>' /></td>
+                                                    <td class="tblDetailsHeader">Initial end date</td>
+                                                    <td class="tblDetailsItem"><uc1:DateBox ID="dbEndDate" runat="server" Text='<%# Today.AddMonths(6).ToString("dd/MM/yyyy") %>' /></td>
                                                     <td class="tblDetailsHeader">Initial meetings no</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox12" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:TextBox></td>
                                                 </tr>
@@ -304,7 +305,7 @@
             </td>
         </tr>
         <tr>
-            <td></td>
+            <td>&nbsp;</td>
         </tr>
         <tr>
             <td id="tdSubMenu">
@@ -334,7 +335,7 @@
                                 <table style="border-top: solid 1px white">
                                     <tr class="InsertTabHeader">
                                         <td>Action</td>
-                                        <td class="CommentsCol">Description<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAPdesc" ValidationGroup="InsAP1st" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                        <td class="CommentsCol">Description</td>
                                         <!--<td>Type</td>-->
                                         <td>Responsible1<!--<br />Responsible2--></td>
                                         <td>Deadline</td>
@@ -343,7 +344,7 @@
                                     </tr>
                                     <tr class="InsertRow">
                                         <td><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                            ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsAP1st" /></td>
+                                            ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" /></td>
                                         <td><asp:TextBox ID="txtAPdesc" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>' ></asp:TextBox></td>
                                         <!--<td><asp:DropDownList SkinId="ddlDef" ID="ddlActionType" runat="server" 
                                                DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
@@ -353,7 +354,7 @@
                                             </asp:DropDownList><!--<br /><asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
                                                 DataTextField="FullName" DataValueField="id">
                                             </asp:DropDownList>--></td>
-                                        <td><asp:TextBox SkinID="txtDate" ID="txtAPdead" runat="server" Text='<%# Today.AddMonths(1).ToString("dd/MM/yyyy") %>'></asp:TextBox></td>
+                                        <td><uc1:DateBox ID="dbDeadline" runat="server" Value='<%# Bind("Deadline") %>' Text='<%# Today.AddMonths(1).ToString("dd/MM/yyyy") %>' /></td>
                                         <td><asp:DropDownList SkinId="ddlDef" ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList></td>
@@ -440,13 +441,13 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Deadline" SortExpression="Deadline">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="txtAPdead" SkinID="txtDate" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:TextBox>
+                                            <uc1:DateBox ID="dbDeadline" runat="server" Value='<%# Bind("Deadline") %>' />
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label8" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:TextBox SkinID="txtDate" ID="txtAPdead" runat="server" Text='<%# Today.AddMonths(1).ToString("dd/MM/yyyy") %>'></asp:TextBox>
+                                            <uc1:DateBox ID="dbDeadline" runat="server" Value='<%# Bind("Deadline") %>' Text='<%# Today.AddMonths(1).ToString("dd/MM/yyyy") %>' />
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Status" SortExpression="Status">
@@ -503,8 +504,8 @@
                                     <tr class="InsertRow">
                                         <td><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
                                                 ImageUrl="~/Images/Icons/add16_16.png" ToolTip="Insert" /></td>
-                                        <td><asp:TextBox ID="txtMeetTimeFrom" SkinID="txtDateTime" runat="server" Text='<%# Now.ToString("dd/MM/yyyy HH:mm") %>'></asp:TextBox></td>
-                                        <td><asp:TextBox ID="txtMeetTimeTo" SkinID="txtTime" runat="server" Text='<%# Now.ToString("HH:mm") %>'></asp:TextBox></td>
+                                        <td><uc1:DateBox ID="dbTimeFrom" runat="server" ShowTime="true" Text='<%# Now.ToString("dd/MM/yyyy") %>' /></td>
+                                        <td><uc1:DateBox ID="dbTimeTo" runat="server" ShowTime="true" ShowDate="false" Text='<%# Now.ToString("dd/MM/yyyy") %>' /></td>
                                         <td><!--<asp:DropDownList SkinId="ddlDef" ID="ddlMeetKind" runat="server" DataSourceID="sqldsMeetKind" 
                                                 DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList><br />--><asp:TextBox ID="txtMeetSubject" SkinID="txtText" runat="server" ></asp:TextBox></td>
@@ -544,24 +545,24 @@
                                     </asp:TemplateField> 
                                     <asp:TemplateField HeaderText="From" SortExpression="TimeFrom" ItemStyle-Wrap="false">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="txtMeetTimeFrom" runat="server" SkinID="txtDateTime" Text='<%# Bind("TimeFrom", "{0:dd/MM/yyyy HH:mm}") %>'></asp:TextBox><br />
+                                            <uc1:DateBox ID="dbTimeFrom" runat="server" Value='<%# Bind("TimeFrom") %>' ShowTime="true" />
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label5" runat="server" Text='<%# Bind("TimeFrom", "{0:dd/MM/yyyy HH:mm}") %>'></asp:Label><br />
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:TextBox ID="txtMeetTimeFrom" SkinID="txtDateTime" runat="server" Text='<%# Now.ToString("dd/MM/yyyy HH:mm") %>'></asp:TextBox><br />
+                                            <uc1:DateBox ID="dbTimeFrom" runat="server" Value='<%# Bind("TimeFrom") %>' ShowTime="true" Text='<%# Now.ToString("dd/MM/yyyy") %>' />
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="To" SortExpression="TimeTo" ItemStyle-Wrap="false">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="txtMeetTimeTo" SkinID="txtTime" runat="server" Text='<%# Bind("TimeTo", "{0:HH:mm}") %>'></asp:TextBox>
+                                            <uc1:DateBox ID="dbTimeTo" runat="server" Value='<%# Bind("TimeTo") %>' ShowTime="true" ShowDate="false" />
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label6" runat="server" Text='<%# Bind("TimeTo", "{0:HH:mm}") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:TextBox ID="txtMeetTimeTo" SkinID="txtTime" runat="server" Text='<%# Now.ToString("HH:mm") %>'></asp:TextBox>
+                                            <uc1:DateBox ID="dbTimeTo" runat="server" Value='<%# Bind("TimeTo") %>' Text='<%# Now.ToString("HH:mm") %>' ShowTime="true" ShowDate="false" />                                            
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Kind" SortExpression="Kind" Visible="false">
