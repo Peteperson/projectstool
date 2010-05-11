@@ -1,8 +1,12 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Main.master" AutoEventWireup="false" CodeFile="ActionPlans.aspx.vb" Inherits="ActionPlans" Theme="MainSkin" %>
 
+<%@ Register src="ctrlDateTime.ascx" tagname="ctrlDateTime" tagprefix="uc1" %>
+
+<%@ Register src="DateBox.ascx" tagname="DateBox" tagprefix="uc2" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
-    <script language="javascript" type="text/javascript">
+<script language="javascript" type="text/javascript">
     function setCaretPosition(elemId, caretPos) {
         var elem = document.getElementById(elemId);
 
@@ -54,7 +58,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
     <br />
-    <div id="dvHidden" style="DISPLAY: none; Z-INDEX: -1; POSITION: absolute; background-color: #C64221">Our comments are shown here!!!</div>
     <table id="subPageMainTable">
         <tr>
             <td class="title">List of Actions</td>
@@ -154,8 +157,8 @@
                                 <td class="tblDetailsItem"><asp:label ID="AttachmentNameTextBox" runat="server" Text='<%# Bind("AttachmentName") %>' /></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">Deadline<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtAPdead" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                <td class="tblDetailsItem"><asp:TextBox ID="txtAPdead" SkinID="txtDate" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:TextBox> <img src="Images/Icons/Calendar_16x16.png" alt="clnd" onclick="ShowComments('dvHidden', this)" /></td>
+                                <td class="tblDetailsHeader">Deadline</td>
+                                <td class="tblDetailsItem"><uc2:DateBox ID="DateBox1" runat="server" Value='<%# Bind("Deadline") %>' /></td>
                                 <td class="tblDetailsHeader">Status</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
@@ -198,15 +201,15 @@
                                 <td class="tblDetailsItem"><asp:FileUpload ID="fuAP" runat="server" /></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">Deadline<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtAPdead" ValidationGroup="InsAP" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                <td class="tblDetailsItem"><asp:TextBox ID="txtAPdead" SkinID="txtDate" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:TextBox></td>
+                                <td class="tblDetailsHeader">Deadline</td>
+                                <td class="tblDetailsItem"><uc2:DateBox ID="dbDeadline" runat="server" Value='<%# Bind("Deadline") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' /></td>
                                 <td class="tblDetailsHeader">Status</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">Comments<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox6" ValidationGroup="InsAP" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                <td class="tblDetailsHeader">Comments</td>
                                 <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox2" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox></td>
                             </tr>
                         </table>

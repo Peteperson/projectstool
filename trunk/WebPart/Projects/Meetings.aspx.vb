@@ -22,8 +22,12 @@ Partial Class Meetings
 
     Protected Sub sqldsMeetingsDet_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsMeetingsDet.Inserting
         e.Command.Parameters("@ProjectId").Value = gvMeetings.SelectedDataKey.Values("ProjectId")
-        e.Command.Parameters("@TimeFrom").Value = CType(fvMeetings.FindControl("txtTimeFrom"), TextBox).Text
-        e.Command.Parameters("@TimeTo").Value = CType(fvMeetings.FindControl("txtTimeTo"), TextBox).Text
+        Dim dtFrom As DateTime = e.Command.Parameters("@TimeFrom").Value
+        Dim dtTo As DateTime = e.Command.Parameters("@TimeTo").Value
+        e.Command.Parameters("@TimeTo").Value = dtFrom.Date.AddHours(dtTo.Hour).AddMinutes(dtTo.Minute)
+
+        'e.Command.Parameters("@TimeFrom").Value = CType(fvMeetings.FindControl("txtTimeFrom"), TextBox).Text
+        'e.Command.Parameters("@TimeTo").Value = CType(fvMeetings.FindControl("txtTimeTo"), TextBox).Text
         e.Command.Parameters("@AttachmentName").Value = CType(fvMeetings.FindControl("fuMtngs"), FileUpload).FileName
         e.Command.Parameters("@Attachment").Value = CType(fvMeetings.FindControl("fuMtngs"), FileUpload).FileBytes
     End Sub
@@ -71,5 +75,11 @@ Partial Class Meetings
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         btnReset.Visible = False
+    End Sub
+
+    Protected Sub sqldsMeetingsDet_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsMeetingsDet.Updating
+        Dim dtFrom As DateTime = e.Command.Parameters("@TimeFrom").Value
+        Dim dtTo As DateTime = e.Command.Parameters("@TimeTo").Value
+        e.Command.Parameters("@TimeTo").Value = dtFrom.Date.AddHours(dtTo.Hour).AddMinutes(dtTo.Minute)
     End Sub
 End Class
