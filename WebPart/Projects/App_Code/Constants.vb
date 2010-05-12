@@ -19,6 +19,7 @@ End Enum
 Public Enum LogStatus
     Normal = 1
     DenyAccess = 2
+    PassReset = 3
 End Enum
 
 Public Module Support

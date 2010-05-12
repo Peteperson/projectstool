@@ -3,16 +3,20 @@ Partial Class Projects
     Inherits System.Web.UI.Page
 
     Protected Sub mnuProjects_MenuItemClick(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.MenuEventArgs) Handles mnuProjects.MenuItemClick
+        SetTabImage(e.Item.Value)
+        ShowTab(e.Item.Value)
+    End Sub
+
+    Private Sub SetTabImage(ByVal TabId As Byte)
         Dim SelImages() As String = {"~/Images/ActionPlanSelected5.png", "~/Images/MeetingsSelected5.png", "~/Images/AttachmentsSelected5.png"}
         Dim UnselImages() As String = {"~/Images/ActionPlanUnselected5.png", "~/Images/MeetingsUnselected5.png", "~/Images/AttachmentsUnselected5.png"}
         For i As Integer = 0 To mnuProjects.Items.Count - 1
-            If i = e.Item.Value Then
+            If i = TabId Then
                 mnuProjects.Items(i).ImageUrl = SelImages(i)
             Else
                 mnuProjects.Items(i).ImageUrl = UnselImages(i)
             End If
         Next
-        ShowTab(e.Item.Value)
     End Sub
 
     Private Sub ShowTab(ByVal TabId As Byte)
@@ -38,6 +42,7 @@ Partial Class Projects
     Protected Sub btnFindPrj_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnFindPrj.Click
         If Not (ddlPrjCode.Items.FindByText(txtPrjId.Text)) Is Nothing Then
             ddlPrjCode.SelectedValue = ddlPrjCode.Items.FindByText(txtPrjId.Text).Value
+            SetTabImage(0)
         Else
             With CType(Master.FindControl("lblMessage"), Label)
                 .Visible = True
@@ -258,5 +263,9 @@ Partial Class Projects
 
     Protected Sub gvMeetings_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvMeetings.RowDataBound
         InsertDeleteValidation(e, 0)
+    End Sub
+
+    Protected Sub ddlPrjCode_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlPrjCode.SelectedIndexChanged
+        SetTabImage(0)
     End Sub
 End Class

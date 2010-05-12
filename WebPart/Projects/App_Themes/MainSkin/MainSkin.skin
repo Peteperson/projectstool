@@ -23,7 +23,7 @@
 
 <asp:GridView runat="server" SkinId="gridviewSkinShort" AutoGenerateColumns="False" RowStyle-HorizontalAlign="Left"
     BackColor="#EAEAEA" BorderColor="Tan" BorderWidth="1px" CellPadding="0" Width="100%"  
-    ForeColor="Black" PageSize="10" FooterStyle-Wrap="false" FooterStyle-CssClass="gvRow">
+    ForeColor="Black" PageSize="30" FooterStyle-Wrap="false" FooterStyle-CssClass="gvRow">
     <FooterStyle BackColor="Tan" />
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
     <PagerSettings Mode="NumericFirstLast" />

@@ -134,7 +134,7 @@ Public Module Database
         cn.Close()
     End Sub
 
-    Public Sub InsertActivity(ByVal UserIP As String, ByVal UserId As Integer, ByVal URL As String, ByVal Status As LogStatus)
+    Public Sub InsertActivity(ByVal UserIP As String, ByVal UserId As Integer, ByVal URL As String, ByVal Status As LogStatus, Optional ByVal ExtraInfo As String = "")
         Dim cmd As New SqlClient.SqlCommand("InsertActivity")
         cmd.CommandType = CommandType.StoredProcedure
         cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = UserId
@@ -142,6 +142,7 @@ Public Module Database
         cmd.Parameters.Add("@UserIP", SqlDbType.NVarChar).Value = UserIP
         cmd.Parameters.Add("@URL", SqlDbType.NVarChar).Value = URL
         cmd.Parameters.Add("@ServerName", Data.SqlDbType.NVarChar, 64).Value = My.Computer.Name
+        cmd.Parameters.Add("@ExtraInfo", Data.SqlDbType.NVarChar, 100).Value = ExtraInfo
 
         Dim cn As New SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings("cnMain").ConnectionString)
         cmd.Connection = cn

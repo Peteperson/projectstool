@@ -36,12 +36,17 @@
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         ctrlLogin.Focus()
+        lblMessage.Visible = False
     End Sub
 
     Protected Sub btnResetMail_Click(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim res As ChkEmailResult = Database.CheckEmail(CType(ctrlLogin.FindControl("txtemail"), TextBox).Text)
-        If res.UserId > 0 Then
-            Response.Redirect("~ResetPassword.aspx?UserId=" & res.UserId)
+        lblMessage.Visible = True
+        If res.UserId = 0 Then
+            lblMessage.Text = "Invalid email address."
+        Else
+            Database.InsertActivity(Request.UserHostAddress, res.UserId, Request.Url.ToString, LogStatus.PassReset)
+            lblMessage.Text = "You will soon receive your new password."
         End If
     End Sub
 End Class
