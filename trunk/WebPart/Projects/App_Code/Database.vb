@@ -2,6 +2,29 @@
 Imports System.Data
 
 Public Module Database
+    Function CheckEmail(ByVal email As String) As ChkEmailResult
+        Dim res As New ChkEmailResult
+        Dim cmdChkeml As SqlClient.SqlCommand
+        cmdChkeml = New SqlClient.SqlCommand("CheckEmail")
+        cmdChkeml.CommandType = CommandType.StoredProcedure
+        cmdChkeml.Parameters.Add("@email", SqlDbType.NVarChar, 50).Value = email
+        Dim cn As New SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings("cnMain").ConnectionString)
+        cmdChkeml.Connection = cn
+        cn.Open()
+        Dim dr As SqlClient.SqlDataReader = cmdChkeml.ExecuteReader
+        If dr.Read Then
+            res.UserId = dr("id")
+            res.Username = dr("username")
+        Else
+            res.UserId = 0
+            res.Username = ""
+        End If
+
+        dr.Close()
+        cn.Close()
+        Return res
+    End Function
+
     Function DoLogin(ByVal username As String, ByVal password As Byte(), ByVal ip As String) As LgnResult
         Dim cmdDoLogin As SqlClient.SqlCommand
         Dim result As New LgnResult

@@ -9,3 +9,8 @@ Public Class LgnResult
     Public UserType As String
     Public DefPage As String
 End Class
+
+Public Class ChkEmailResult
+    Public UserId As Int16
+    Public Username As String
+End Class
