@@ -37,4 +37,11 @@
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         ctrlLogin.Focus()
     End Sub
+
+    Protected Sub btnResetMail_Click(ByVal sender As Object, ByVal e As System.EventArgs)
+        Dim res As ChkEmailResult = Database.CheckEmail(CType(ctrlLogin.FindControl("txtemail"), TextBox).Text)
+        If res.UserId > 0 Then
+            Response.Redirect("~ResetPassword.aspx?UserId=" & res.UserId)
+        End If
+    End Sub
 End Class
