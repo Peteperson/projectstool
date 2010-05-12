@@ -18,7 +18,7 @@
             </td>
         </tr>
         <tr>
-            <td align="center" style="border-bottom: solid 3px white">
+            <td align="center">
                 <br />
                 <br />
                 <br />
@@ -38,11 +38,11 @@
                                 <td align="center" colspan="2" style="color:black; padding-bottom: 2px;font-weight:bold">Please insert your username and password:<br /><br /><br /></td>
                             </tr>
                             <tr>
-                                <td align="right">
+                                <td align="right" style="vertical-align:top">
                                     <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name:</asp:Label>
                                     <br /><br />
                                 </td>
-                                <td>
+                                <td style="vertical-align:top">
                                     <asp:TextBox ID="UserName" runat="server" Width="130px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
                                         ControlToValidate="UserName" ErrorMessage="User Name is required." 
@@ -51,27 +51,38 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right">
+                                <td align="right" style="vertical-align:top">
                                     <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
-                                    <br /><br /><br /><br />
+                                    <br /><br />
                                 </td>
-                                <td>
+                                <td style="vertical-align:top">
                                     <asp:TextBox ID="Password" runat="server" TextMode="Password" Width="130px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
                                         ControlToValidate="Password" ErrorMessage="Password is required." 
                                         ToolTip="Password is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
-                                    <br /><br /><br /><br />
+                                    <br />
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" style="color:Red;" colspan="2">
+                                <td align="center" colspan="2" style="padding-top:5px;padding-bottom:5px">
+                                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" 
+                                        Font-Names="Tahoma, Calibri, Verdana" Text="Enter site" style="text-align:center" ValidationGroup="Login1" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="color:Red;" colspan="2">&nbsp;
                                     <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" colspan="2">
-                                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" 
-                                        Font-Names="Tahoma, Calibri, Verdana" Text="Enter site" style="text-align:center" ValidationGroup="Login1" />
+                                <td colspan="2" style="padding-bottom:10px; padding-top:10px;">Forgot your password? Fill in the field below and press 'Reset'.</td>
+                            </tr>
+                            <tr>
+                                <td align="right">e-mail:</td>
+                                <td>
+                                    <asp:TextBox ID="txtemail" runat="server"></asp:TextBox>
+                                    <asp:Button ID="btnResetMail" runat="server" Text="Reset" 
+                                        onclick="btnResetMail_Click" />
                                 </td>
                             </tr>
                         </table>
@@ -82,7 +93,11 @@
         <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
         <TitleTextStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
         </asp:Login>
-                <br />
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <asp:Label ID="lblMessage" Visible="false" runat="server" CssClass="ErrorMessage" Text="Label"></asp:Label>
                 <br />
                 <br />
                 <br />
@@ -90,7 +105,7 @@
             </td>
         </tr>
         <tr>
-            <td>Legal Notice. <br />
+            <td style="border-top: solid 3px white">Legal Notice. <br />
                                 Application can be used only by an authorized person with preservation of 
                 binding procedures ... Obtaining or attempt of obtaining an unauthorized access to the application can cause bearing criminal responsibility or civil liability.</td>
         </tr>
