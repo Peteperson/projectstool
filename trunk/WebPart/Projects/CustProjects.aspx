@@ -5,12 +5,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
     <br />
-    <table id="subPageMainTable">
+    <table id="subPageMainTable" cellpadding="0" cellspacing="0">
         <tr>
             <td class="title">Project list</td>
         </tr>
         <tr>
-            <td><br />Click <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> in order to select a project and view its details.</td>
+            <td class="titlemessage"><br />Click <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> in order to select a project and view its details.</td>
         </tr>
         <tr>
             <td>

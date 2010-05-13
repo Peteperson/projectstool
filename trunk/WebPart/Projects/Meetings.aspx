@@ -12,7 +12,7 @@
             <td class="title">Meetings</td>
         </tr>
         <tr>
-            <td>Write a subproject id or part of it and press &quot;Find&quot; in order to filter data
+            <td class="titlemessage">Write a subproject id or part of it and press &quot;Find&quot; in order to filter data
                 <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
                 &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" /><br />
                 Click <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> in order to select a meeting and view its details.

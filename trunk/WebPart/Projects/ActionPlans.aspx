@@ -63,7 +63,7 @@
             <td class="title">List of Actions</td>
         </tr>
         <tr>
-            <td>Write a subproject id or part of it and press &quot;Find&quot; in order to 
+            <td class="titlemessage">Write a subproject id or part of it and press &quot;Find&quot; in order to 
                 filter data
                 <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
                 &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" /><br />

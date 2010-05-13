@@ -16,10 +16,10 @@
                     <br />
                     <table id="tblCngPass" cellpadding="5">
                         <tr>
-                            <td colspan="2" style="background-color:#842829; font-weight:bold; color:White">Please give your new credentials</td>
+                            <td colspan="2" style="background-color:#842829; font-weight:bold; color:White; text-align:center">Please give your new credentials</td>
                         </tr>
                         <tr>
-                            <td>Old password</td>
+                            <td align="right">Old password:</td>
                             <td>
                                 <asp:TextBox ID="txtOldPass" runat="server" TextMode="Password"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
@@ -27,7 +27,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>New password</td>
+                            <td align="right">New password:</td>
                             <td>
                                 <asp:TextBox ID="txtNewPass" runat="server" TextMode="Password"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
@@ -35,7 +35,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Repeat new password</td>
+                            <td align="right">Repeat new password:</td>
                             <td>
                                 <asp:TextBox ID="txtReNewPass" runat="server" TextMode="Password"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
@@ -43,7 +43,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2" style="background-color:#842829">
+                            <td colspan="2" style="background-color:#842829; text-align:center">
                                 <asp:Button ID="btnChangePass" runat="server" Text="Change password" 
                                     ValidationGroup="CngPass" />
                             </td>

@@ -10,7 +10,7 @@
             <td class="title">Manage projects</td>
         </tr>
         <tr>
-            <td>Select a subproject from the list:
+            <td class="titlemessage">Select a subproject from the list:
                 <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
                     DataTextField="SubProject" DataValueField="id" AutoPostBack="True">
                 </asp:DropDownList>&nbsp;or write its subproject id and press &quot;Find&quot;
@@ -324,10 +324,10 @@
             <td align="left" style="padding: 6px 6px 6px 6px; background-color:#7A2021">
                 <table cellpadding="0" cellspacing="0">
                     <tr>
-                        <td id="tdAP">
+                        <td id="tdAP" align="center">
                             <asp:GridView ID="gvAP" runat="server" AutoGenerateColumns="False" 
                                 AllowPaging="True" AllowSorting="True" DataKeyNames="id" 
-                                DataSourceID="sqldsAP" ShowFooter="True" SkinID="gridviewSkinSmall">
+                                DataSourceID="sqldsAP" ShowFooter="false" SkinID="gridviewSkinSmall">
                             <EmptyDataTemplate>
                                 <br />
                                 There are no actions. Insert one using the controls below.<br />
@@ -478,13 +478,14 @@
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
+                            <asp:Button ID="btnAPins" runat="server" Text="Enable/Disable insertion" />
                         </td>
                     </tr>
                     <tr>
-                        <td id="tdMeetings">
+                        <td id="tdMeetings" align="center">
                             <asp:GridView ID="gvMeetings" runat="server" AllowPaging="True" 
                                 AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
-                                DataSourceID="sqldsMeetings"  SkinID="gridviewSkinSmall" ShowFooter="True">
+                                DataSourceID="sqldsMeetings"  SkinID="gridviewSkinSmall" ShowFooter="false">
                                 <EmptyDataTemplate>
                                 <br />
                                 There are no scheduled meetings for this project. Insert one using the controls below.<br />
@@ -664,14 +665,15 @@
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
+                            <asp:Button ID="btnMTins" runat="server" Text="Enable/Disable insertion" />
                         </td>
                     </tr>
                     <tr>
-                        <td id="tdAttachments">
+                        <td id="tdAttachments" align="center">
                             <asp:GridView ID="gvFiles" runat="server" AllowPaging="True" 
                                 AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
                                 DataSourceID="sqldsAttachments" SkinID="gridviewSkinSmall" 
-                                ShowFooter="True">
+                                ShowFooter="false">
                                 <EmptyDataTemplate>
                                     <br />
                                     There are no files uploaded. Insert one using the controls below.<br />
@@ -742,6 +744,7 @@
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
+                            <asp:Button ID="btnFlsIns" runat="server" Text="Enable/Disable insertion" />
                         </td>
                     </tr>
                 </table>
