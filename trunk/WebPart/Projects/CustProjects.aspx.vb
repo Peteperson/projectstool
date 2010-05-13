@@ -47,6 +47,7 @@ Partial Class CustProjects
 
     Protected Sub gvProjects_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvProjects.SelectedIndexChanged
         SetTabImage(0)
+        If Not mnuProjects.Visible Then mnuProjects.Visible = True
     End Sub
 
     Protected Sub gvMeetings_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvMeetings.RowDataBound

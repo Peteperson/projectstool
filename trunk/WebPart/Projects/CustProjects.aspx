@@ -49,7 +49,8 @@
             <td id="tdSubMenu">
                 <asp:Menu ID="mnuProjects" runat="server" Orientation="Horizontal" ForeColor="Black" 
                     StaticEnableDefaultPopOutImage="False" OnMenuItemClick="mnuProjects_MenuItemClick" 
-                    StaticMenuItemStyle-CssClass="TabMenuItem">
+                    StaticMenuItemStyle-CssClass="TabMenuItem" Visible="False">
+                    <StaticMenuItemStyle CssClass="TabMenuItem"></StaticMenuItemStyle>
                     <Items>
                         <asp:MenuItem ImageUrl="~/Images/ActionPlanSelected5.png" Text="" Value="0"></asp:MenuItem>
                         <asp:MenuItem ImageUrl="~/Images/MeetingsUnselected5.png" Text="" Value="1"></asp:MenuItem>
