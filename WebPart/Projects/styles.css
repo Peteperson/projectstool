@@ -62,12 +62,13 @@ a:hover {
 
 .title {
     text-align: center;
-    background-color:#788CA5;
+    /*background-color:#788CA5;*/
+    background-color:#7A2021;
 	padding: 5px 0px 5px 0px;
 	border: 1px solid #FFFFFF;
 	font-size:large;
 	font-weight:bolder;
-	color: white;
+	/*color: white;*/
 }
 
 .titlemessage {
@@ -221,8 +222,7 @@ a:hover {
 	border:solid 1px #2C486E;
 }
 
-.tblDetailsHeader
-{
+.tblDetailsHeader {
 	background-color: #EAEAEA;
 	color: Black;
 	text-align:left;
