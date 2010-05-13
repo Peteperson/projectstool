@@ -31,31 +31,23 @@
         <LayoutTemplate>
             <table id="tblLogin">
                 <tr>
-                    <td align="center" style="vertical-align:top">
-                        <br /><br /><br /><br /><br /><br />
-                        <table border="0" cellpadding="0" style="width:360px;">
+                    <td align="center" style="vertical-align:top; padding-top:90px">
+                        <table border="0" cellpadding="0" style="width:400px;">
                             <tr>
-                                <td align="center" colspan="2" style="color:black; padding-bottom: 2px;font-weight:bold">Please insert your username and password:<br /><br /><br /></td>
+                                <td align="center" colspan="2" style="color:black; padding-bottom: 30px;font-weight:bold">Please insert your username and password:</td>
                             </tr>
                             <tr>
-                                <td align="right" style="vertical-align:top">
-                                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name:</asp:Label>
-                                    <br /><br />
-                                </td>
-                                <td style="vertical-align:top">
+                                <td align="right" style="vertical-align:top; padding-bottom:5px">User Name:<br /></td>
+                                <td align="center" style="vertical-align:top; padding-bottom:5px">
                                     <asp:TextBox ID="UserName" runat="server" Width="130px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
                                         ControlToValidate="UserName" ErrorMessage="User Name is required." 
                                         ToolTip="User Name is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
-                                    <br /><br />
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right" style="vertical-align:top">
-                                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
-                                    <br /><br />
-                                </td>
-                                <td style="vertical-align:top">
+                                <td align="right" style="vertical-align:top; padding-bottom:5px">Password:</td>
+                                <td align="center" style="vertical-align:top; padding-bottom:5px">
                                     <asp:TextBox ID="Password" runat="server" TextMode="Password" Width="130px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
                                         ControlToValidate="Password" ErrorMessage="Password is required." 
@@ -64,23 +56,21 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" colspan="2" style="padding-top:5px;padding-bottom:5px">
+                                <td align="center" colspan="2" style="padding-top:12px; padding-bottom:2px">
                                     <asp:Button ID="LoginButton" runat="server" CommandName="Login" 
                                         Font-Names="Tahoma, Calibri, Verdana" Text="Enter site" style="text-align:center" ValidationGroup="Login1" />
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" style="color:Red;" colspan="2">&nbsp;
+                                <td align="center" style="color:Red; height:45px" colspan="2">&nbsp;
                                     <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="padding-bottom:10px; padding-top:10px;">Forgot your password? Fill in the field below and press 'Reset'.</td>
+                                <td align="center" colspan="2" style="padding-bottom:5px; padding-top:8px;">Forgot your password? Fill in the field below and press 'Reset'.</td>
                             </tr>
                             <tr>
-                                <td align="right">e-mail:</td>
-                                <td>
-                                    <asp:TextBox ID="txtemail" runat="server"></asp:TextBox>
+                                <td align="center" colspan="2">e-mail: <asp:TextBox ID="txtemail" runat="server"></asp:TextBox>
                                     <asp:Button ID="btnResetMail" runat="server" Text="Reset" 
                                         onclick="btnResetMail_Click" />
                                 </td>

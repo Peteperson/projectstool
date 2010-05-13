@@ -23,19 +23,28 @@ Partial Class Projects
         Select Case TabId
             Case 0
                 gvAP.Visible = True
+                btnAPins.Visible = True
                 gvAP.DataBind()
                 gvMeetings.Visible = False
+                btnMTins.Visible = False
                 gvFiles.Visible = False
+                btnFlsIns.Visible = False
             Case 1
                 gvAP.Visible = False
+                btnAPins.Visible = False
                 gvMeetings.Visible = True
                 gvMeetings.DataBind()
+                btnMTins.Visible = True
                 gvFiles.Visible = False
+                btnFlsIns.Visible = False
             Case 2
                 gvAP.Visible = False
                 gvMeetings.Visible = False
+                btnMTins.Visible = False
+                btnAPins.Visible = False
                 gvFiles.Visible = True
                 gvFiles.DataBind()
+                btnFlsIns.Visible = True
         End Select
     End Sub
 
@@ -55,6 +64,9 @@ Partial Class Projects
         gvAP.Visible = True
         gvMeetings.Visible = False
         gvFiles.Visible = False
+        btnAPins.Visible = True
+        btnFlsIns.Visible = False
+        btnMTins.Visible = False
         If Not Session("ProjectId") Is Nothing AndAlso Session("ProjectId") > -1 Then
             ddlPrjCode.SelectedValue = Session("ProjectId")
             Session("ProjectId") = -1
@@ -267,5 +279,19 @@ Partial Class Projects
 
     Protected Sub ddlPrjCode_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlPrjCode.SelectedIndexChanged
         SetTabImage(0)
+    End Sub
+
+    Protected Sub btnAPins_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnAPins.Click
+        gvAP.ShowFooter = Not gvAP.ShowFooter
+    End Sub
+
+    Protected Sub btnFlsIns_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnFlsIns.Click
+        gvFiles.ShowFooter = Not gvFiles.ShowFooter
+        ShowTab(2)
+    End Sub
+
+    Protected Sub btnMTins_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnMTins.Click
+        gvMeetings.ShowFooter = Not gvMeetings.ShowFooter
+        ShowTab(1)
     End Sub
 End Class

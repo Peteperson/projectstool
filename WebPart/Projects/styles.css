@@ -70,6 +70,10 @@ a:hover {
 	color: white;
 }
 
+.titlemessage {
+    text-align:center;
+}
+
 .smalltitle {
     text-align: center;
     background-color:#788CA5;
