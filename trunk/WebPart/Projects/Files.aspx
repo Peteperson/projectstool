@@ -10,7 +10,10 @@
             <td class="title">File list</td>
         </tr>
         <tr>
-            <td class="titlemessage">Write a subproject id or part of it and press &quot;Find&quot; in order to filter data
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="centered">Write a subproject id or part of it and press &quot;Find&quot; in order to filter data
                 <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
                 &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" />
             </td>

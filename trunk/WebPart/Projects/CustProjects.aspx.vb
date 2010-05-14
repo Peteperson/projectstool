@@ -50,6 +50,17 @@ Partial Class CustProjects
         If Not mnuProjects.Visible Then mnuProjects.Visible = True
     End Sub
 
+    Protected Sub gvMeetings_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvMeetings.RowCommand
+        Select Case e.CommandName
+            Case "Download"
+                Session("DownloadFileId") = e.CommandArgument
+                Session("TableName") = "Meetings"
+                Response.Clear()
+                Response.Redirect("~/DownloadFile.ashx")
+        End Select
+        ShowTab(1)
+    End Sub
+
     Protected Sub gvMeetings_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvMeetings.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
             If e.Row.RowState = DataControlRowState.Normal Or e.Row.RowState = DataControlRowState.Alternate Or e.Row.RowState = DataControlRowState.Selected Then
@@ -60,6 +71,16 @@ Partial Class CustProjects
         End If
     End Sub
 
+    Protected Sub gvAP_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvAP.RowCommand
+        Select Case e.CommandName
+            Case "Download"
+                Session("DownloadFileId") = e.CommandArgument
+                Session("TableName") = "ActionPlan"
+                Response.Clear()
+                Response.Redirect("~/DownloadFile.ashx")
+        End Select
+    End Sub
+
     Protected Sub gvAP_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvAP.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
             If e.Row.RowState = DataControlRowState.Normal Or e.Row.RowState = DataControlRowState.Alternate Or e.Row.RowState = DataControlRowState.Selected Then
@@ -68,5 +89,16 @@ Partial Class CustProjects
                 End If
             End If
         End If
+    End Sub
+
+    Protected Sub gvAttachments_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvAttachments.RowCommand
+        Select Case e.CommandName
+            Case "Download"
+                Session("DownloadFileId") = e.CommandArgument
+                Session("TableName") = "Attachments"
+                Response.Clear()
+                Response.Redirect("~/DownloadFile.ashx")
+        End Select
+        ShowTab(2)
     End Sub
 End Class

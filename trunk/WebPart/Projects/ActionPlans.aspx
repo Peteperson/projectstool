@@ -63,7 +63,10 @@
             <td class="title">List of Actions</td>
         </tr>
         <tr>
-            <td class="titlemessage">Write a subproject id or part of it and press &quot;Find&quot; in order to 
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="centered">Write a subproject id or part of it and press &quot;Find&quot; in order to 
                 filter data
                 <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
                 &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" /><br />
@@ -129,9 +132,10 @@
             <td class="title">Action's details</td>
         </tr>
         <tr>
-            <td>
-                <asp:FormView ID="fvAction" runat="server" DataKeyNames="id" 
-                    DataSourceID="sqldsAPdet" DefaultMode="Edit">
+            <td class="DetFormView">
+                <asp:FormView ID="fvAction" runat="server" DataKeyNames="id"
+                    DataSourceID="sqldsAPdet" DefaultMode="Edit" Width="100%">
+                    <EditRowStyle CssClass="centered" />
                     <EditItemTemplate>
                         <table id="tblDetails">
                             <tr>

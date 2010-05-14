@@ -6,7 +6,6 @@
 }
 
 table {
-    width:100%;
     border-collapse:collapse;
 }
 
@@ -71,7 +70,7 @@ a:hover {
 	/*color: white;*/
 }
 
-.titlemessage {
+.centered {
     text-align:center;
 }
 
@@ -215,7 +214,7 @@ a:hover {
 }
 
 #tblDetails{
-	
+	 width:100%;
 }
 
 #tblDetails td{
@@ -280,3 +279,7 @@ a:hover {
 .CommentsCol {
     width: 250px;
 }
+
+.DetFormView{
+    border: solid 1px white;
+S}

@@ -10,7 +10,10 @@
             <td class="title">Manage projects</td>
         </tr>
         <tr>
-            <td class="titlemessage">Select a subproject from the list:
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="centered">Select a subproject from the list:
                 <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
                     DataTextField="SubProject" DataValueField="id" AutoPostBack="True">
                 </asp:DropDownList>&nbsp;or write its subproject id and press &quot;Find&quot;
@@ -20,7 +23,7 @@
         </tr>
         <tr>
             <td>
-                <table>
+                <table style="width:100%">
                     <tr>
                         <td style="border: inset 5px white;"> <!--  style="width:70%; background-color: #788CA5; padding: 6px;"-->
                             <asp:DetailsView ID="dvProject" runat="server" AutoGenerateRows="False"
@@ -288,6 +291,7 @@
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
                                                 CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel32_32.png" ToolTip="Cancel" />
                                         </InsertItemTemplate>
+                                        <ItemStyle CssClass="centered"/>
                                         <ItemTemplate>
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
                                                 CommandName="Edit" ImageUrl="~/Images/Icons/Edit22_22.png" ToolTip="Edit" />
@@ -322,7 +326,7 @@
         </tr>
         <tr>
             <td align="left" style="padding: 6px 6px 6px 6px; background-color:#7A2021">
-                <table cellpadding="0" cellspacing="0">
+                <table cellpadding="0" cellspacing="0" style="width:100%">
                     <tr>
                         <td id="tdAP" align="center">
                             <asp:GridView ID="gvAP" runat="server" AutoGenerateColumns="False" 

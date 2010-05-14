@@ -40,7 +40,7 @@
                             </EditItemTemplate>
                             <FooterTemplate>
                                 <asp:RequiredFieldValidator SkinID="rfvDef" ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtInsUserName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
-                                <asp:TextBox ID="txtInsUserName" SkinID="txtDef" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtInsUserName" SkinID="txtReqFld" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="User Type" SortExpression="UserType">
@@ -88,9 +88,9 @@
                             </EditItemTemplate>
                             <FooterTemplate>
                                 <asp:RequiredFieldValidator SkinID="rfvDef" ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtInsLastName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
-                                <asp:TextBox ID="txtInsLastName" SkinID="txtDef" runat="server"></asp:TextBox><br />
+                                <asp:TextBox ID="txtInsLastName" SkinID="txtReqFld" runat="server"></asp:TextBox><br />
                                 <asp:RequiredFieldValidator SkinID="rfvDef" ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtInsFirstName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
-                                <asp:TextBox ID="txtInsFirstName" SkinID="txtDef" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtInsFirstName" SkinID="txtReqFld" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Mobile<br>Telephone" SortExpression="Mobile">

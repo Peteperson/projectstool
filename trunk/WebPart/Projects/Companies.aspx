@@ -14,8 +14,8 @@
         </tr>
         <tr>
             <td>
-                <table>
-                    <tr class="smalltitle">
+                <table style="width:100%">
+                    <tr class="centered">
                         <td>Companies list (select one - <asp:Image ID="Image1" runat="server" ImageUrl="Images/Icons/Approve_16x16.png" /> - to view details)</td>
                     </tr>
                     <tr>                       
@@ -87,7 +87,7 @@
         <tr>
             <td>&nbsp;</td>
         </tr>
-        <tr class="smalltitle">
+        <tr class="title">
             <td><asp:Label ID="lblCompName2" runat="server" Text="..."></asp:Label> employees</td>
         </tr>
         <tr>
@@ -113,8 +113,8 @@
                                 <tr>
                                     <td><asp:ImageButton ID="btnInsEmpl" CausesValidation="true" ValidationGroup="InsEmp1st" runat="server" CommandName="Insert"
                                             ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert employee" />
-                                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" SkinID="rfvDef" runat="server" ControlToValidate="txt1LastName" ValidationGroup="InsEmp1st" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox ID="txt1LastName" runat="server"></asp:TextBox></td>
-                                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" SkinID="rfvDef" runat="server" ControlToValidate="txt1FirstName" ValidationGroup="InsEmp1st" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox ID="txt1FirstName" runat="server"></asp:TextBox></td>
+                                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" SkinID="rfvDef" runat="server" ControlToValidate="txt1LastName" ValidationGroup="InsEmp1st" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox ID="txt1LastName" SkinID="txtReqFld" runat="server"></asp:TextBox></td>
+                                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" SkinID="rfvDef" runat="server" ControlToValidate="txt1FirstName" ValidationGroup="InsEmp1st" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox ID="txt1FirstName" SkinID="txtReqFld" runat="server"></asp:TextBox></td>
                                     <td><asp:DropDownList SkinId="ddlDef" ID="ddl1Position" runat="server" DataSourceID="sqldsEmplType" 
                                             DataTextField="Description" DataValueField="id">
                                         </asp:DropDownList></td>
