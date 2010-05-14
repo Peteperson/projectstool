@@ -12,7 +12,10 @@
             <td class="title">Meetings</td>
         </tr>
         <tr>
-            <td class="titlemessage">Write a subproject id or part of it and press &quot;Find&quot; in order to filter data
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="centered">Write a subproject id or part of it and press &quot;Find&quot; in order to filter data
                 <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
                 &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" /><br />
                 Click <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> in order to select a meeting and view its details.
@@ -82,9 +85,10 @@
             <td class="title">Meeting's details</td>
         </tr>
         <tr>
-            <td>
+            <td class="DetFormView">
                 <asp:FormView ID="fvMeetings" runat="server" DataKeyNames="id" 
-                    DataSourceID="sqldsMeetingsDet" DefaultMode="Edit">
+                    DataSourceID="sqldsMeetingsDet" DefaultMode="Edit" Width="100%">
+                    <EditRowStyle CssClass="centered" />
                     <EditItemTemplate>
                         <table id="tblDetails">
                             <tr>

@@ -10,7 +10,7 @@
             <td class="title">Project list</td>
         </tr>
         <tr>
-            <td class="titlemessage"><br />Click <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> in order to select a project and view its details.</td>
+            <td class="centered"><br />Click <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> in order to select a project and view its details.</td>
         </tr>
         <tr>
             <td>
@@ -61,7 +61,7 @@
         </tr>
         <tr>
             <td align="left" style="padding: 6px 6px 6px 6px; background-color:#7A2021">
-                <table cellpadding="0" cellspacing="0">
+                <table cellpadding="0" cellspacing="0" style="width:100%">
                     <tr>
                         <td id="tdAP">
                             <asp:GridView ID="gvAP" runat="server" AllowPaging="True" SkinID="gridviewSkinSmall"

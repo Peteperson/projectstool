@@ -142,7 +142,7 @@
             <td id="tdMessage"><asp:Label ID="lblMessage" Visible="false" runat="server">This is a test</asp:Label></td>
         </tr>
         </table>
-        <table>
+        <table style="width:100%">
         <tr>
             <td style="background: url(Images/Blue.png) repeat-x; text-align:right; height: 27px; vertical-align:top"><a href="http://advent.com.gr">AG Advent 2010</a></td>
         </tr>
