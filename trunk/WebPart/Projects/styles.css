@@ -276,6 +276,10 @@ a:hover {
     font-weight:bold;
 }
 
+.BoldDate {
+    font-weight:bold;
+}
+
 .CommentsCol {
     width: 250px;
 }

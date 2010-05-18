@@ -36,6 +36,7 @@ Public Module Support
                 Dim drv As System.Data.DataRowView = e.Row.DataItem
                 Dim dt As DateTime = drv.Item(FieldName)
                 If dt <= Today Then e.Row.Cells(idx).CssClass = "RedDate"
+                If dt.Date = Today Then e.Row.Cells(idx).CssClass = "BoldDate"
             End If
         End If
     End Sub
