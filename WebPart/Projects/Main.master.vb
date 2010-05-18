@@ -3,16 +3,6 @@
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim CurrPage As String = Request.AppRelativeCurrentExecutionFilePath.ToLower
-        If Not Session("CurrPage") Is Nothing Then
-            If Session("CurrPage").EndsWith("actionplans.aspx") Then
-                RemoveFilters(1)
-            ElseIf Session("CurrPage").EndsWith("meetings.aspx") Then
-                RemoveFilters(2)
-            ElseIf Session("CurrPage").EndsWith("projects.aspx") Then
-                RemoveFilters(3)
-            End If
-        End If
-        Session("CurrPage") = CurrPage.ToLower
         Dim Authorized As Boolean = False
         If Session("UserId") Is Nothing Then
             Response.Redirect("~/Login.aspx")
@@ -52,17 +42,6 @@
     Protected Sub btnLogoff_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnLogoff.Click
         Session.Clear()
         Response.Redirect("~/Login.aspx")
-    End Sub
-
-    Private Sub RemoveFilters(ByVal ind As Byte)
-        Select Case ind
-            Case 1
-                Session("ActionPlanId") = -1
-            Case 2
-                Session("MeetingId") = -1
-            Case 3
-                Session("ProjectId") = -1
-        End Select
     End Sub
 End Class
 

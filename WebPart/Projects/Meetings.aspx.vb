@@ -56,6 +56,7 @@ Partial Class Meetings
     Protected Sub gvMeetings_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvMeetings.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
             If e.Row.RowState = DataControlRowState.Normal Or e.Row.RowState = DataControlRowState.Alternate Or e.Row.RowState = DataControlRowState.Selected Then
+                FormatDateCell("Date", 4, e)
                 If CType(e.Row.FindControl("btnDown"), ImageButton).ToolTip = "" Then
                     CType(e.Row.FindControl("btnDown"), ImageButton).Visible = False
                 End If
