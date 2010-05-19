@@ -336,7 +336,7 @@
                                 <br />
                                 There are no actions. Insert one using the controls below.<br />
                                 <br />
-                                <table style="border-top: solid 1px white">
+                                <table class="TblEmptyData">
                                     <tr class="InsertTabHeader">
                                         <td>Action</td>
                                         <td class="CommentsCol">Description</td>
