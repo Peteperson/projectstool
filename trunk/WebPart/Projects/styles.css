@@ -286,4 +286,9 @@ a:hover {
 
 .DetFormView{
     border: solid 1px white;
-S}
+}
+
+.TblEmptyData {
+	border-top: solid 1px white;
+	width:100%;
+}
