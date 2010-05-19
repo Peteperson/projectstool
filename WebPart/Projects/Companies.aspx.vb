@@ -76,6 +76,10 @@ Partial Class Companies
         lblCompName2.Text = gvCompanies.SelectedDataKey.Values("Name")
     End Sub
 
+    Protected Sub sqldsCompanies_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsCompanies.Selecting
+        If txtFilterComp.Text = "" Then e.Command.Parameters("@CompName").Value = System.DBNull.Value
+    End Sub
+
     Protected Sub sqldsCompanies_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsCompanies.Updating
         Dim ind As Integer = gvCompanies.EditIndex
         e.Command.Parameters("@Name").Value = CType(gvCompanies.Rows(ind).FindControl("txtCompanyName"), TextBox).Text

@@ -150,7 +150,7 @@
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">Description<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox6" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
+                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox><asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox6" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">ActionId</td>
@@ -170,7 +170,7 @@
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">Comments</td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox1" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox></td>
+                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox1" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox1" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
                             </tr>
                         </table>
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
@@ -194,7 +194,7 @@
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">Description<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox6" ValidationGroup="InsAP" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
+                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal3" runat="server" ControlToValidate="TextBox6" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">ActionId</td>
@@ -214,7 +214,7 @@
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">Comments</td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox2" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox></td>
+                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox2" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox><asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox2" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
                             </tr>
                         </table>
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
@@ -226,7 +226,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td align="center">
                 <!--
                 <asp:TextBox ID="txtMaskedText" onkeyup="TestFunc(this)" runat="server"></asp:TextBox>
                 <input id="inpMT" type="text" /> 

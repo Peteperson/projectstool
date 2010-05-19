@@ -69,7 +69,7 @@
 <asp:TextBox skinid="txtText" width="97%" Font-Names="Tahoma, Calibri, Verdana" runat="server"></asp:TextBox>
 <asp:TextBox skinid="txtText93" width="93%" Font-Names="Tahoma, Calibri, Verdana" runat="server"></asp:TextBox>
 <asp:TextBox skinid="txtTextCenter" width="55px" style="text-align:center" Font-Names="Tahoma, Calibri, Verdana" runat="server"></asp:TextBox>
-<asp:TextBox skinid="txtTextLong" width="97%" Height="40px" Font-Names="Tahoma, Calibri, Verdana" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtTextLong" width="95%" Height="40px" Font-Size="12px" Font-Names="Tahoma, Calibri, Verdana" runat="server"></asp:TextBox>
 <asp:TextBox skinid="txtInteger" width="40px" Font-Names="Tahoma, Calibri, Verdana" style="text-align:right" runat="server"></asp:TextBox>
 <asp:TextBox skinid="txtDate" width="75px" Font-Names="Tahoma, Calibri, Verdana" style="text-align:center" runat="server"></asp:TextBox>
 <asp:TextBox skinid="txtDateTime" width="118px" Font-Names="Tahoma, Calibri, Verdana" style="text-align:right" runat="server"></asp:TextBox>

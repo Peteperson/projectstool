@@ -24,27 +24,27 @@ Partial Class Projects
             Case 0
                 gvAP.Visible = True
                 btnAPins.Visible = True
-                gvAP.DataBind()
                 gvMeetings.Visible = False
                 btnMTins.Visible = False
                 gvFiles.Visible = False
                 btnFlsIns.Visible = False
+                gvAP.DataBind()
             Case 1
                 gvAP.Visible = False
                 btnAPins.Visible = False
                 gvMeetings.Visible = True
-                gvMeetings.DataBind()
                 btnMTins.Visible = True
                 gvFiles.Visible = False
                 btnFlsIns.Visible = False
+                gvMeetings.DataBind()
             Case 2
                 gvAP.Visible = False
                 gvMeetings.Visible = False
                 btnMTins.Visible = False
                 btnAPins.Visible = False
                 gvFiles.Visible = True
-                gvFiles.DataBind()
                 btnFlsIns.Visible = True
+                gvFiles.DataBind()
         End Select
     End Sub
 
@@ -70,6 +70,14 @@ Partial Class Projects
         If Not Session("ProjectId") Is Nothing AndAlso Session("ProjectId") > -1 Then
             ddlPrjCode.SelectedValue = Session("ProjectId")
             Session("ProjectId") = -1
+        End If
+    End Sub
+
+    Protected Sub gvFiles_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvFiles.DataBound
+        If gvFiles.Rows.Count > 0 Then
+            btnFlsIns.Visible = True
+        Else
+            btnFlsIns.Visible = False
         End If
     End Sub
 
@@ -170,6 +178,14 @@ Partial Class Projects
         e.Command.Parameters("@Deadline").Value = CType(gvAP.Rows(ind).FindControl("dbDeadline"), DateBox).Value
     End Sub
 
+    Protected Sub gvAP_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvAP.DataBound
+        If gvAP.Rows.Count > 0 Then
+            btnAPins.Visible = True
+        Else
+            btnAPins.Visible = False
+        End If
+    End Sub
+
     Protected Sub gvAP_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvAP.RowCommand
         Select Case e.CommandName
             Case "Insert"
@@ -214,6 +230,14 @@ Partial Class Projects
 
     Protected Sub gvFiles_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvFiles.RowDataBound
         InsertDeleteValidation(e, 0)
+    End Sub
+
+    Protected Sub gvMeetings_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvMeetings.DataBound
+        If gvMeetings.Rows.Count > 0 Then
+            btnMTins.Visible = True
+        Else
+            btnMTins.Visible = False
+        End If
     End Sub
 
     Protected Sub gvMeetings_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvMeetings.RowCommand
