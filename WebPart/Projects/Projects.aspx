@@ -347,7 +347,7 @@
                                         <td>Attachment</td>
                                     </tr>
                                     <tr class="InsertRow">
-                                        <td><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
+                                        <td class="centered"><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
                                             ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsAP" /></td>
                                         <td><asp:TextBox ID="txtAPdesc" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>' ></asp:TextBox></td>
                                         <!--<td><asp:DropDownList SkinId="ddlDef" ID="ddlActionType" runat="server" 
@@ -383,6 +383,7 @@
                                         &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
                                             CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Cancel" />
                                     </EditItemTemplate>
+                                    <FooterStyle HorizontalAlign="Center" />
                                     <FooterTemplate>
                                         <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
                                             ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsAP" />
@@ -508,7 +509,7 @@
                                         <td>Attachment</td>
                                     </tr>
                                     <tr class="InsertRow">
-                                        <td><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
+                                        <td class="centered"><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
                                                 ImageUrl="~/Images/Icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsMeet" /></td>
                                         <td><uc1:DateBox ID="dbTimeFrom" runat="server" ShowTime="true" Text='<%# Now.ToString("dd/MM/yyyy") %>' /></td>
                                         <td><uc1:DateBox ID="dbTimeTo" runat="server" ShowTime="true" ShowDate="false" Text='<%# Now.ToString("dd/MM/yyyy") %>' /></td>
@@ -544,6 +545,7 @@
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
                                                 CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Cancel" />
                                         </EditItemTemplate>
+                                        <FooterStyle HorizontalAlign="Center" />
                                         <FooterTemplate>
                                             <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
                                                 ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsMeet" />
@@ -690,8 +692,7 @@
                                             <td>Comments</td>
                                         </tr>
                                         <tr class="InsertRow">
-                                            <td>
-                                                <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
+                                            <td class="centered"><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
                                                 ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
                                             </td>
                                             <td><asp:FileUpload ID="fuCtrl" runat="server" /></td>
@@ -714,6 +715,7 @@
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
                                                 CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Cancel" />
                                         </EditItemTemplate>
+                                        <FooterStyle HorizontalAlign="Center" />
                                         <FooterTemplate>
                                             <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
                                                 ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" />
