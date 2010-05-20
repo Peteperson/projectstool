@@ -16,11 +16,11 @@
                     DataSourceID="sqldsTypes" SkinID="gridviewSkin" ShowFooter="true">
                     <Columns>
                         <asp:TemplateField ShowHeader="False">
-                            <ItemStyle Wrap="false" />
+                            <ItemStyle Wrap="false" Width="60px" />
                             <ItemTemplate>                
                                 <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
                                     CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
-                                &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
+                                &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" Visible="false"
                                     CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />
                             </ItemTemplate>
                             <EditItemTemplate>
