@@ -7,7 +7,7 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">File list</td>
+            <td class="title">Attachment list</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
@@ -66,7 +66,7 @@
                                 </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="File" SortExpression="File">
+                        <asp:TemplateField HeaderText="Attachment" SortExpression="File">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
                                                 CommandName="Download" Text='<%# Bind("File") %>'></asp:LinkButton>

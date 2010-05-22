@@ -108,8 +108,8 @@
         <tr>
             <td id="tdMenu">
                 <div id="dvMenu">
-                    <div id="mnuHeader"><font class="YellowBold">User:</font>&nbsp;<asp:Label ID="lblUser" runat="server" Text="user"></asp:Label><br />
-                      <font class="YellowBold">Last&nbsp;Login:</font>&nbsp;<asp:Label ID="lblLogin" runat="server" Text="login"></asp:Label></div>
+                    <div id="mnuHeader"><font class="Yellow">User:</font>&nbsp;<asp:Label ID="lblUser" Font-Size="9pt" runat="server" Text="user"></asp:Label><br />
+                      <font class="Yellow">Last&nbsp;Login:</font>&nbsp;<asp:Label ID="lblLogin" Font-Size="9pt" runat="server" Text="login"></asp:Label></div>
                     <div id="mnuInterMediate"><br /><br /></div>
                     <div id="mnuMain">
                         <asp:GridView ID="gvMenu" runat="server" AutoGenerateColumns="False" DataSourceID="sqldsMenu" 
