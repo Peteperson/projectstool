@@ -277,9 +277,9 @@
                         <asp:Parameter Name="LastName" Type="String" />
                         <asp:Parameter Name="FirstName" Type="String" />
                         <asp:Parameter Name="Position" Type="Byte" />
-                        <asp:Parameter Name="Telephone" Type="String" />
-                        <asp:Parameter Name="Mobile" Type="String" />
-                        <asp:Parameter Name="Email" Type="String" />
+                        <asp:Parameter Name="Telephone" Type="String" DefaultValue=" " />
+                        <asp:Parameter Name="Mobile" Type="String" DefaultValue=" " />
+                        <asp:Parameter Name="Email" Type="String" DefaultValue=" " />
                         <asp:Parameter Name="Id" Type="Int32" />
                     </UpdateParameters>
                     <InsertParameters>

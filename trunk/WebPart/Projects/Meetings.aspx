@@ -249,11 +249,9 @@
             </td>
             <td style="margin-left: 40px">
                 <asp:SqlDataSource ID="sqldsConsultants" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="UsersByType" 
-                    SelectCommandType="StoredProcedure">
-                    <SelectParameters>
-                        <asp:Parameter DefaultValue="Consultant" Name="UserType" Type="String" />
-                    </SelectParameters>
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="SELECT Users.id, LastName + ' ' + FirstName AS Fullname FROM Users
+                    INNER JOIN VariousTypes ON Users.UserType = VariousTypes.id
+                    WHERE VariousTypes.[Description] IN ('Consultant', 'Supervisor') AND users.IsActive = 1">
                 </asp:SqlDataSource>
             </td>
         </tr>

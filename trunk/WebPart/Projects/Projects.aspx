@@ -37,7 +37,7 @@
                                                     <td class="tblDetailsItem" colspan="5"><asp:Label ID="Label10" runat="server" Text='<%# Bind("Title") %>'></asp:Label></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Code</td>
+                                                    <td class="tblDetailsHeader">Project</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label2" runat="server" Text='<%# Bind("Code") %>'></asp:Label></td>
                                                     <td class="tblDetailsHeader">SubProject</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label3" runat="server" Text='<%# Bind("SubProject") %>'></asp:Label></td>
@@ -120,7 +120,7 @@
                                                     <td class="tblDetailsItem" colspan="5"><asp:TextBox ID="TextBox9" MaxLength="50" SkinID="txtText" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Code <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TextBox1" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                                    <td class="tblDetailsHeader">Project <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TextBox1" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox1" MaxLength="10" runat="server" Text='<%# Bind("Code") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">SubProject <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TextBox2" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox2" MaxLength="10" runat="server" Text='<%# Bind("SubProject") %>'></asp:TextBox></td>
@@ -202,7 +202,7 @@
                                                     <td class="tblDetailsItem" colspan="5"><asp:TextBox ID="TextBox9" MaxLength="50" SkinID="txtText" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Code <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox1" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                                    <td class="tblDetailsHeader">Project <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox1" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox1" MaxLength="10" runat="server" Text='<%# Bind("Code") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">SubProject <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox2" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox2" MaxLength="10" runat="server" Text='<%# Bind("SubProject") %>'></asp:TextBox></td>
@@ -336,7 +336,7 @@
                                 <br />
                                 There are no actions. Insert one using the controls below.<br />
                                 <br />
-                                <table class="TblEmptyData">
+                                <table border="1" class="TblEmptyData">
                                     <tr class="InsertTabHeader">
                                         <td>Action</td>
                                         <td class="CommentsCol">Description <asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtAPdesc" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
@@ -358,7 +358,7 @@
                                             </asp:DropDownList><!--<br /><asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
                                                 DataTextField="FullName" DataValueField="id">
                                             </asp:DropDownList>--></td>
-                                        <td><uc1:DateBox ID="dbDeadline" runat="server" Value='<%# Bind("Deadline") %>' Text='<%# Today.AddMonths(1).ToString("dd/MM/yyyy") %>' /></td>
+                                        <td><uc1:DateBox ID="dbDeadline" runat="server" Value='<%# Bind("Deadline") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' /></td>
                                         <td><asp:DropDownList SkinId="ddlDef" ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList></td>
@@ -453,7 +453,7 @@
                                             <asp:Label ID="Label8" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <uc1:DateBox ID="dbDeadline" runat="server" Value='<%# Bind("Deadline") %>' Text='<%# Today.AddMonths(1).ToString("dd/MM/yyyy") %>' />
+                                            <uc1:DateBox ID="dbDeadline" runat="server" Value='<%# Bind("Deadline") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' />
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Status" SortExpression="Status">
@@ -496,17 +496,17 @@
                                 <br />
                                 There are no scheduled meetings for this project. Insert one using the controls below.<br />
                                 <br />
-                                <table style="border-top: solid 1px white">
+                                <table border="1" class="TblEmptyData">
                                     <tr class="InsertTabHeader">
                                         <td></td>
-                                        <td>From</td>
-                                        <td>To</td>
+                                        <td align="center">From</td>
+                                        <td align="center">To</td>
                                         <td class="CommentsCol"><!--Kind<br />-->Subject</td>
-                                        <td>Consultant</td>
-                                        <td>Status</td>
+                                        <td align="center">Consultant</td>
+                                        <td align="center">Status</td>
                                         <!--<td>NewBusiness</td>
                                         <td>Comments</td>-->
-                                        <td>Attachment</td>
+                                        <td align="center">Attachment</td>
                                     </tr>
                                     <tr class="InsertRow">
                                         <td class="centered"><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
@@ -685,7 +685,7 @@
                                     <br />
                                     There are no files uploaded. Insert one using the controls below.<br />
                                     <br />
-                                    <table style="border-top: solid 1px white; width:100%;">
+                                    <table border="1" class="TblEmptyData">
                                         <tr class="InsertTabHeader">
                                             <td>Action</td>
                                             <td>File</td>
@@ -729,7 +729,7 @@
                                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy HH:mm:ss}") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="AttachmentName" SortExpression="AttachmentName">
+                                    <asp:TemplateField HeaderText="Attachment" SortExpression="AttachmentName">
                                         <ItemTemplate>
                                             <asp:LinkButton ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
                                                 CommandName="Download" Text='<%# Bind("AttachmentName") %>'></asp:LinkButton>
@@ -1005,11 +1005,9 @@
             </td>
             <td>
                 <asp:SqlDataSource ID="sqldsConsultants" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="UsersByType" 
-                    SelectCommandType="StoredProcedure">
-                    <SelectParameters>
-                        <asp:Parameter DefaultValue="Consultant" Name="UserType" Type="String" />
-                    </SelectParameters>
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="SELECT Users.id, LastName + ' ' + FirstName AS Fullname FROM Users
+                    INNER JOIN VariousTypes ON Users.UserType = VariousTypes.id
+                    WHERE VariousTypes.[Description] IN ('Consultant', 'Supervisor') AND users.IsActive = 1">
                 </asp:SqlDataSource>
             </td>
             <td>
