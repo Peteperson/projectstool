@@ -35,7 +35,6 @@ Partial Class Types
     Protected Sub sqldsTypes_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsTypes.Inserting
         e.Command.Parameters("@Category").Value = CType(gvTypes.FooterRow.FindControl("txtInsCategory"), TextBox).Text
         e.Command.Parameters("@Description").Value = CType(gvTypes.FooterRow.FindControl("txtInsDesc"), TextBox).Text
-        e.Command.Parameters("@Id").Value = CType(gvTypes.FooterRow.FindControl("txtInsId"), TextBox).Text
     End Sub
 
     Protected Sub sqldsTypes_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsTypes.Selecting

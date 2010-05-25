@@ -4,6 +4,10 @@ Imports System.Data
 Partial Class Files
     Inherits System.Web.UI.Page
 
+    Protected Sub gvFiles_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvFiles.DataBound
+        If gvFiles.Rows.Count > 0 Then CType(gvFiles.HeaderRow.FindControl("txtHeadFFilter"), TextBox).Text = txtPrjId.Text
+    End Sub
+
     Protected Sub gvFiles_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvFiles.RowCommand
         Select Case e.CommandName
             Case "Insert"
@@ -17,6 +21,8 @@ Partial Class Files
                 Session("ProjectId") = e.CommandArgument
                 Response.Clear()
                 Response.Redirect("~/Projects.aspx")
+            Case "Filter"
+                txtPrjId.Text = CType(gvFiles.HeaderRow.FindControl("txtHeadFFilter"), TextBox).Text
         End Select
     End Sub
 

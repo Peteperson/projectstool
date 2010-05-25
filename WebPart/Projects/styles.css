@@ -216,16 +216,13 @@ a:hover {
 	 width:100%;
 }
 
-#tblDetails td{
-	border:solid 1px #2C486E;
-}
-
 .tblDetailsHeader {
 	background-color: #EAEAEA;
 	color: Black;
 	text-align:left;
 	width:0%;
 	white-space:nowrap;
+	border:solid 1px #2C486E;
 }
 
 .tblDetailsItem {
@@ -234,6 +231,7 @@ a:hover {
 	width:50%;
 	padding-left: 10px;
 	text-align:left;
+	border:solid 1px #2C486E;
 }
 
 #tdAttachments a{

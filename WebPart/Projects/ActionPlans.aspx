@@ -66,10 +66,7 @@
         </tr>
         <tr>
             <td class="centered">Click <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> in order to select an action and view its details.<br />
-                Write a subproject id or part of it and press &quot;Find&quot; in order to 
-                filter data
-                <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
-                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" />
+                <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter" Visible="false"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -100,16 +97,32 @@
                                     CommandName="Select" ImageUrl="~/Images/Icons/Approve_16x16.png" ToolTip="Select" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
-                            SortExpression="A/A" />
-                        <asp:TemplateField HeaderText="SubProject" SortExpression="SubProject">
+                        <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" SortExpression="A/A" />
+                        <asp:TemplateField>
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <HeaderTemplate>
+                                <table>
+                                    <tr>
+                                        <td colspan="2" align="center">SubProject</td>
+                                    </tr>
+                                    <tr>
+                                        <td><asp:TextBox ID="txtHeadAPFilter" SkinID="txtFilterSmall" runat="server"></asp:TextBox></td>
+                                        <td><asp:ImageButton ID="btnFilter" runat="server" CausesValidation="False" 
+                                                CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Filter data" /></td>                                        
+                                    </tr>
+                                </table>
+                            </HeaderTemplate>
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnSubProject" runat="server" CausesValidation="True" CommandArgument='<%# Bind("ProjectId") %>'
                                                 CommandName="SelSubProject" Text='<%# Bind("SubProject") %>'></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Customer" HeaderText="Customer" 
-                            SortExpression="Customer" />
+                        <asp:TemplateField HeaderText="Customer" SortExpression="Customer">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnCust" runat="server" CommandArgument='<%# Bind("Customer") %>'
+                                                CommandName="SelCompany" Text='<%# Bind("Customer") %>'></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="Description" HeaderText="Description" 
                             SortExpression="Description" />
                         <asp:BoundField DataField="Responsible1" HeaderText="Responsible1" 
@@ -135,9 +148,11 @@
                 </asp:GridView>
             </td>
         </tr>
+        <!--
         <tr>
             <td align="right">(*): Default ordering</td>
         </tr>
+        -->
         <tr>
             <td>&nbsp;</td>
         </tr>
@@ -172,8 +187,19 @@
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionType" runat="server" 
                                        selectedvalue=<%# Bind("ActionId") %> DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList></td>-->
-                                <td class="tblDetailsHeader">AttachmentName</td>
-                                <td class="tblDetailsItem" colspan="3"><asp:label ID="AttachmentNameTextBox" runat="server" Text='<%# Bind("AttachmentName") %>' /></td>
+                                <td class="tblDetailsHeader">File name</td>
+                                <td class="tblDetailsItem"><asp:label ID="AttachmentNameTextBox" runat="server" Text='<%# Bind("AttachmentName") %>' /></td>
+                                <td class="tblDetailsHeader">Attachment</td>
+                                <td class="tblDetailsItem">
+                                    <table>
+                                        <tr>
+                                            <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="fuAPupd" ValidationGroup="UpdFile" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                            <td><asp:FileUpload ID="fuAPupd" runat="server" /></td>
+                                            <td><asp:ImageButton ID="ImageButton6" runat="server" CausesValidation="True" ValidationGroup="UpdFile" CommandArgument='<%# Bind("Id") %>' 
+                                                CommandName="FileUpd" ImageUrl="~/Images/Icons/Update1_24x24.png" ToolTip="Update file" /></td>
+                                        </tr>
+                                    </table>
+                                </td>
                                 <td class="tblDetailsHeader">Status</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
@@ -214,8 +240,10 @@
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionType" runat="server" 
                                        selectedvalue=<%# Bind("ActionId") %> DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList></td>-->
-                                <td class="tblDetailsHeader">AttachmentName</td>
-                                <td class="tblDetailsItem" colspan="3"><asp:FileUpload ID="fuAP" runat="server" /></td>
+                                <td class="tblDetailsHeader">File name</td>
+                                <td class="tblDetailsItem"></td>
+                                <td class="tblDetailsHeader">Attachment</td>
+                                <td class="tblDetailsItem"><asp:FileUpload ID="fuAP" runat="server" /></td>
                                 <td class="tblDetailsHeader">Status</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
@@ -338,7 +366,18 @@
                 </asp:SqlDataSource>
             </td>
             <td>&nbsp;</td>
-            <td></td>
+            <td>
+                <asp:SqlDataSource ID="sqldsFile" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                    SelectCommand="SELECT [id], [AttachmentName] FROM [ActionPlans]" 
+                    UpdateCommand="UPDATE [ActionPlans] SET [Attachment] = @Attachment, [AttachmentName] = @AttachmentName WHERE [id] = @id">
+                    <UpdateParameters>
+                        <asp:Parameter Name="Attachment" />
+                        <asp:Parameter Name="AttachmentName" Type="String" />
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+            </td>
         </tr>
     </table>
 </asp:Content>

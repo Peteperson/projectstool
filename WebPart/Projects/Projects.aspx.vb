@@ -322,13 +322,18 @@ Partial Class Projects
 
     Protected Sub dvProject_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles dvProject.DataBound
         If dvProject.CurrentMode = DetailsViewMode.ReadOnly Then
-            CType(dvProject.FindControl("btnDeletePrj"), ImageButton).Attributes("onclick") = "if(!confirm('Really delete this row?'))return   false;"
+            If Not dvProject.FindControl("btnDeletePrj") Is Nothing Then
+                CType(dvProject.FindControl("btnDeletePrj"), ImageButton).Attributes("onclick") = "if(!confirm('Really delete this row?'))return   false;"
+            Else
+                dvProject.ChangeMode(DetailsViewMode.Insert)
+            End If
         End If
     End Sub
 
     Protected Sub dvProject_ItemCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.DetailsViewCommandEventArgs) Handles dvProject.ItemCommand
-        If e.CommandName = "Customer" Then
-            Response.Redirect("~/Companies.aspx?CustId=" & e.CommandArgument)
+        If e.CommandName = "SelCompany" Then
+            Response.Clear()
+            Response.Redirect("~/Companies.aspx?Company=" & CType(dvProject.FindControl("ddlCompanies"), DropDownList).SelectedItem.Text)
         End If
     End Sub
 End Class

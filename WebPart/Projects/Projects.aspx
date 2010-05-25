@@ -49,10 +49,16 @@
                                                            Enabled="false" selectedvalue=<%# Bind("Creator") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Customer</td>
-                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlCompanies" runat="server" 
-                                                           Enabled="false" selectedvalue=<%# Bind("CustomerId") %>  DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
-                                                        </asp:DropDownList><asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" CommandArgument='<%# Bind("CustomerId") %>'
-                                                                            CommandName="Customer" ImageUrl="~/Images/Icons/Preview1_16x16.png" ToolTip="View details" /></td>
+                                                    <td class="tblDetailsItem">
+                                                        <table>
+                                                            <tr>
+                                                                <td><asp:DropDownList ID="ddlCompanies" runat="server" 
+                                                                    Enabled="false" selectedvalue=<%# Bind("CustomerId") %>  DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id"></asp:DropDownList></td>
+                                                                <td><asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" CommandArgument='<%# Bind("CustomerId") %>'
+                                                                            CommandName="SelCompany" ImageUrl="~/Images/Icons/Preview2_24x24.png" ToolTip="View details" /></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
                                                     <td class="tblDetailsHeader">Supervisor</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlSupervisors" runat="server" DataSourceID="sqldsCreators" 
                                                            Enabled="false" selectedvalue=<%# Bind("Supervisor") %>  DataTextField="FullName" DataValueField="id">

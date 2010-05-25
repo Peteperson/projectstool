@@ -16,9 +16,8 @@
                 <table style="width:100%">
                     <tr class="centered">
                         <td>Companies list (select one - <asp:Image ID="Image1" runat="server" ImageUrl="Images/Icons/Approve_16x16.png" /> - to view details).<br />
-                            Fill in company's name or part of it and press button to filter data: <asp:TextBox ID="txtFilterComp" runat="server" SkinID="txtTextCenter"></asp:TextBox>
-                            &nbsp;<asp:Button ID="btnFilterComp" runat="server" Text="Filter data" />
-                        </td>
+                            <asp:TextBox ID="txtNameFilter" runat="server" SkinID="txtTextCenter" Visible="False"></asp:TextBox>
+                            </td>
                     </tr>
                     <tr>                       
                         <td align="center" style="vertical-align:top">
@@ -54,7 +53,19 @@
                                             <asp:Label ID="Label1" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Name" SortExpression="Name">
+                                    <asp:TemplateField>
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td style="padding-right:10px">Name</td>
+                                                    <td><asp:TextBox ID="txtHeadNameFilter" SkinID="txtFilter" runat="server"></asp:TextBox></td>
+                                                    <td><asp:ImageButton ID="btnFilter" runat="server" CausesValidation="False" 
+                                                            CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Filter data" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
                                         <EditItemTemplate>
                                             <asp:TextBox ID="txtCompanyName" MaxLength="50" SkinID="txtText" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
                                         </EditItemTemplate>
@@ -253,7 +264,7 @@
                         <asp:Parameter Name="Description" Type="String" />
                     </InsertParameters>
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="txtFilterComp" Name="CompName" PropertyName="Text" Type="String" />
+                        <asp:ControlParameter ControlID="txtNameFilter" Name="CompName" PropertyName="Text" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>

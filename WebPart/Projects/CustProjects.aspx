@@ -4,7 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
-    <br />
     <table id="subPageMainTable" cellpadding="0" cellspacing="0">
         <tr>
             <td class="title">Project list</td>
