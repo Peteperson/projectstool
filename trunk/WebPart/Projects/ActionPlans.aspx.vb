@@ -2,6 +2,10 @@
 Partial Class ActionPlans
     Inherits System.Web.UI.Page
 
+    Protected Sub gvAP_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvAP.DataBound
+        If gvAP.Rows.Count > 0 Then CType(gvAP.HeaderRow.FindControl("txtHeadAPFilter"), TextBox).Text = txtPrjId.Text
+    End Sub
+
     Protected Sub gvAP_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvAP.RowCommand
         Select Case e.CommandName
             Case "Download"
@@ -13,6 +17,11 @@ Partial Class ActionPlans
                 Session("ProjectId") = e.CommandArgument
                 Response.Clear()
                 Response.Redirect("~/Projects.aspx")
+            Case "SelCompany"
+                Response.Clear()
+                Response.Redirect("~/Companies.aspx?Company=" & e.CommandArgument)
+            Case "Filter"
+                txtPrjId.Text = CType(gvAP.HeaderRow.FindControl("txtHeadAPFilter"), TextBox).Text
         End Select
     End Sub
 
@@ -74,5 +83,24 @@ Partial Class ActionPlans
 
     Protected Sub btnClearFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClearFilter.Click
         rblStatus.SelectedIndex = -1
+    End Sub
+
+    Private ActionId As Integer
+    Protected Sub fvAction_ItemCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.FormViewCommandEventArgs) Handles fvAction.ItemCommand
+        If e.CommandName = "FileUpd" Then
+            ActionId = e.CommandArgument
+            sqldsFile.Update()
+        End If
+    End Sub
+
+    Protected Sub sqldsFile_Updated(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsFile.Updated
+        gvAP.DataBind()
+        fvAction.DataBind()
+    End Sub
+
+    Protected Sub sqldsFile_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsFile.Updating
+        e.Command.Parameters("@Id").Value = ActionId
+        e.Command.Parameters("@AttachmentName").Value = CType(fvAction.FindControl("fuAPupd"), FileUpload).FileName
+        e.Command.Parameters("@Attachment").Value = CType(fvAction.FindControl("fuAPupd"), FileUpload).FileBytes
     End Sub
 End Class

@@ -92,9 +92,9 @@
                 <asp:SqlDataSource ID="sqldsTypes" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [VariousTypes] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [VariousTypes] ([id], [Category], [Description]) VALUES (@Id, @Category, @Description)" 
+                    InsertCommand="INSERT INTO [VariousTypes] ([Category], [Description]) VALUES (@Category, @Description)" 
                     SelectCommand="SELECT * FROM [VariousTypes] WHERE Category LIKE ('%' + IsNull(@CatName, '') + '%')" 
-                    UpdateCommand="UPDATE [VariousTypes] SET [id] = @id, [Category] = @Category, [Description] = @Description WHERE [id] = @id">
+                    UpdateCommand="UPDATE [VariousTypes] SET [Category] = @Category, [Description] = @Description WHERE [id] = @id">
                     <DeleteParameters>
                         <asp:Parameter Name="id" Type="Int32" />
                     </DeleteParameters>
@@ -104,7 +104,6 @@
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
                     <InsertParameters>
-                        <asp:Parameter Name="id" Type="Int32" />
                         <asp:Parameter Name="Category" Type="String" />
                         <asp:Parameter Name="Description" Type="String" />
                     </InsertParameters>

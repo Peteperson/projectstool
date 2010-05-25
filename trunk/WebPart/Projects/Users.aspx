@@ -8,6 +8,10 @@
             <td class="title">Manage Users</td>
         </tr>
         <tr>
+            <td><asp:TextBox ID="txtUNameFilter" runat="server" SkinID="txtTextCenter" 
+                    Visible="False"></asp:TextBox></td>
+        </tr>
+        <tr>
             <td>
                 <asp:GridView ID="gvUsers" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id"
@@ -31,7 +35,20 @@
                                     ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsGroup" />
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="User Name" SortExpression="UserName">
+                        <asp:TemplateField>
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <HeaderTemplate>
+                                <table>
+                                    <tr>
+                                        <td colspan="2" align="center">Username</td>
+                                    </tr>
+                                    <tr>
+                                        <td><asp:TextBox ID="txtHeadUsrFilter" SkinID="txtFilterSmall" runat="server"></asp:TextBox></td>
+                                        <td><asp:ImageButton ID="btnFilter" runat="server" CausesValidation="False" 
+                                                CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Filter data" /></td>                                        
+                                    </tr>
+                                </table>
+                            </HeaderTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("UserName") %>'></asp:Label>
                             </ItemTemplate>
@@ -177,7 +194,7 @@
         ConnectionString="<%$ ConnectionStrings:cnMain %>" 
         DeleteCommand="DELETE FROM [Users] WHERE [id] = @id" 
         InsertCommand="INSERT INTO [Users] ([UserName], [Password], [UserType], [Company], [Position], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsUser]) VALUES (@UserName, @Password, @UserType, @Company, @Position, @FirstName, @LastName, @Telephone, @Mobile, @Email, @DefaultPage, @IsUser)" 
-        SelectCommand="SELECT [id], [UserName], [UserType], [Company], [Position], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsActive], [LastLogin], [IsUser] FROM [Users]" 
+        SelectCommand="SELECT [id], [UserName], [UserType], [Company], [Position], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsActive], [LastLogin], [IsUser] FROM [Users] WHERE UserName LIKE ('%'+ IsNull(@UserName, '') +'%')" 
         UpdateCommand="UPDATE [Users] SET [UserName] = @UserName, [UserType] = @UserType, [Company] = @Company, [Position] = @Position, [FirstName] = @FirstName, [LastName] = @LastName, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email, [DefaultPage] = @DefaultPage, [IsActive] = @IsActive, [IsUser] = @IsUser WHERE [id] = @id">
         <DeleteParameters>
             <asp:Parameter Name="id" Type="Int32" />
@@ -211,6 +228,9 @@
             <asp:Parameter Name="DefaultPage" Type="String" />
             <asp:Parameter Name="IsUser" Type="Boolean" />
         </InsertParameters>
+        <SelectParameters>
+            <asp:ControlParameter ControlID="txtUNameFilter" Name="UserName" PropertyName="Text" Type="String" />
+        </SelectParameters>
     </asp:SqlDataSource>
                 </td>
                 <td>

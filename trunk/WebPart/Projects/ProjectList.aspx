@@ -75,9 +75,10 @@
                 </asp:GridView>
             </td>
         </tr>
+        <!--
         <tr>
             <td align="right">(*): Default ordering</td>
-        </tr>
+        </tr>-->
     </table>
     <table>
         <tr>

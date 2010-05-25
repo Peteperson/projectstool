@@ -15,9 +15,7 @@
         </tr>
         <tr>
             <td class="centered">Click <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> in order to select a meeting and view its details.<br />
-                Write a subproject id or part of it and press &quot;Find&quot; in order to filter data
-                <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
-                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" />
+                <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter" Visible="false"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -49,14 +47,31 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
                             SortExpression="A/A" />
-                        <asp:TemplateField HeaderText="SubProject" SortExpression="SubProject">
+                        <asp:TemplateField>
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <HeaderTemplate>
+                                <table>
+                                    <tr>
+                                        <td colspan="2" align="center">SubProject</td>
+                                    </tr>
+                                    <tr>
+                                        <td><asp:TextBox ID="txtHeadMtFilter" SkinID="txtFilterSmall" runat="server"></asp:TextBox></td>
+                                        <td><asp:ImageButton ID="btnFilter" runat="server" CausesValidation="False" 
+                                                CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Filter data" /></td>                                        
+                                    </tr>
+                                </table>
+                            </HeaderTemplate>
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnSubProject" runat="server" CausesValidation="True" CommandArgument='<%# Bind("ProjectId") %>'
                                                 CommandName="SelSubProject" Text='<%# Bind("SubProject") %>'></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Customer" HeaderText="Customer" 
-                            SortExpression="Customer" />
+                        <asp:TemplateField HeaderText="Customer" SortExpression="Customer">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnCust" runat="server" CommandArgument='<%# Bind("Customer") %>'
+                                                CommandName="SelCompany" Text='<%# Bind("Customer") %>'></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Date *" HeaderStyle-Wrap="false" SortExpression="Date">
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("Date", "{0:dd/MM/yyyy}") %>'></asp:Label>
@@ -89,9 +104,11 @@
                 </asp:GridView>
             </td>
         </tr>
+        <!--
         <tr>
             <td align="right">(*): Default ordering</td>
         </tr>
+        -->
         <tr>
             <td>&nbsp;</td>
         </tr>
@@ -110,12 +127,6 @@
                                 <td class="tblDetailsItem"><uc1:DateBox ID="dbTimeFrom" runat="server" Value='<%# Bind("TimeFrom") %>' ShowTime="true" /></td>
                                 <td class="tblDetailsHeader">TimeTo</td>
                                 <td class="tblDetailsItem"><uc1:DateBox ID="dbTimeTo" runat="server" Value='<%# Bind("TimeTo") %>' ShowTime="true" ShowDate="false" /></td>
-                            </tr>
-                            <tr>
-                                <td class="tblDetailsHeader">Subject</td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="SubjectTextBox" SkinID="txtText" MaxLength="50" runat="server" Text='<%# Bind("Subject") %>' /></td>
-                            </tr>
-                            <tr>
                                 <td class="tblDetailsHeader">Consultant</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
                                         selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
@@ -126,20 +137,35 @@
                                     </asp:DropDownList>
                             </tr>
                             <tr>
+                                <td class="tblDetailsHeader">Subject</td>
+                                <td class="tblDetailsItem" colspan="7"><asp:TextBox ID="SubjectTextBox" SkinID="txtText" MaxLength="50" runat="server" Text='<%# Bind("Subject") %>' /></td>
+                            </tr>
+                            <tr>
                                 <td class="tblDetailsHeader">NewBusiness<asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="NewBusinessTextBox" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdMeet" ErrorMessage="*"></asp:RegularExpressionValidator></td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="NewBusinessTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("NewBusiness") %>' /></td>
+                                <td class="tblDetailsItem" colspan="7"><asp:TextBox ID="NewBusinessTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("NewBusiness") %>' /></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">Comments<asp:RegularExpressionValidator ID="RegExpVal2" runat="server" ControlToValidate="CommentsTextBox" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdMeet" ErrorMessage="*"></asp:RegularExpressionValidator></td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="CommentsTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" MaxLength="500" Text='<%# Bind("Comments") %>' /></td>
-                            </tr>
-                            <tr>
-                                <td class="tblDetailsHeader">Attachment</td>
+                                <td class="tblDetailsHeader">File Name</td>
                                 <td class="tblDetailsItem"><asp:label ID="lblAttachmentName" runat="server" Text='<%# Bind("AttachmentName") %>' /></td>
+                                <td class="tblDetailsHeader">Attachment</td>
+                                <td class="tblDetailsItem" colspan="3">
+                                    <table>
+                                        <tr>
+                                            <td><asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="fuMtupd" ValidationGroup="UpdFile" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                            <td><asp:FileUpload ID="fuMtupd" runat="server" /></td>
+                                            <td><asp:ImageButton ID="ImageButton6" runat="server" CausesValidation="True" ValidationGroup="UpdFile" CommandArgument='<%# Bind("Id") %>' 
+                                                CommandName="FileUpd" ImageUrl="~/Images/Icons/Update1_24x24.png" ToolTip="Update file" /></td>
+                                        </tr>
+                                    </table>
+                                </td>
                                 <td class="tblDetailsHeader">Status</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
                                         selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList></td>
+                            </tr>
+                            <tr>
+                                <td class="tblDetailsHeader">Comments<asp:RegularExpressionValidator ID="RegExpVal2" runat="server" ControlToValidate="CommentsTextBox" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdMeet" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsItem" colspan="7"><asp:TextBox ID="CommentsTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" MaxLength="500" Text='<%# Bind("Comments") %>' /></td>
                             </tr>
                         </table>
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" ValidationGroup="UpdMeet"
@@ -156,12 +182,6 @@
                                 <td class="tblDetailsItem"><uc1:DateBox ID="dbTimeFrom" runat="server" Value='<%# Bind("TimeFrom") %>' ShowTime="true" Text='<%# Now.ToString("dd/MM/yyyy") %>' /></td>
                                 <td class="tblDetailsHeader">TimeTo</td>
                                 <td class="tblDetailsItem"><uc1:DateBox ID="DateBox1" runat="server" Value='<%# Bind("TimeTo") %>' ShowTime="true" ShowDate="false" Text='<%# Now.AddMinutes(90).ToString("dd/MM/yyyy") %>' /></td>
-                            </tr>
-                            <tr>
-                                <td class="tblDetailsHeader">Subject<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="SubjectTextBox" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="SubjectTextBox" SkinID="txtText" runat="server" MaxLength="50" Text='<%# Bind("Subject") %>' /></td>
-                            </tr>
-                            <tr>
                                 <td class="tblDetailsHeader">Consultant</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
                                         selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
@@ -172,20 +192,26 @@
                                     </asp:DropDownList>
                             </tr>
                             <tr>
+                                <td class="tblDetailsHeader">Subject<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="SubjectTextBox" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                <td class="tblDetailsItem" colspan="7"><asp:TextBox ID="SubjectTextBox" SkinID="txtText" runat="server" MaxLength="50" Text='<%# Bind("Subject") %>' /></td>
+                            </tr>
+                            <tr>
                                 <td class="tblDetailsHeader">NewBusiness<asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="NewBusinessTextBox" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RegularExpressionValidator></td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="NewBusinessTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("NewBusiness") %>' /></td>
+                                <td class="tblDetailsItem" colspan="7"><asp:TextBox ID="NewBusinessTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("NewBusiness") %>' /></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">Comments<asp:RegularExpressionValidator ID="RegExpVal2" runat="server" ControlToValidate="CommentsTextBox" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RegularExpressionValidator></td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="CommentsTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>' /></td>
-                            </tr>
-                            <tr>
+                                <td class="tblDetailsHeader">File Name</td>
+                                <td class="tblDetailsItem"></td>
                                 <td class="tblDetailsHeader">Attachment</td>
-                                <td class="tblDetailsItem"><asp:FileUpload ID="fuMtngs" runat="server" /></td>
+                                <td class="tblDetailsItem" colspan="3"><asp:FileUpload ID="FileUpload1" runat="server" /></td>
                                 <td class="tblDetailsHeader">Status</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
                                          selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList></td>
+                            </tr>
+                            <tr>
+                                <td class="tblDetailsHeader">Comments<asp:RegularExpressionValidator ID="RegExpVal2" runat="server" ControlToValidate="CommentsTextBox" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsItem" colspan="7"><asp:TextBox ID="CommentsTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>' /></td>
                             </tr>
                         </table>
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
@@ -281,6 +307,20 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
+            <td>
+                <asp:SqlDataSource ID="sqldsFiles" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                    SelectCommand="SELECT [id], [AttachmentName] FROM [Meetings]" 
+                    UpdateCommand="UPDATE [Meetings] SET [AttachmentName] = @AttachmentName, [Attachment] = @Attachment WHERE [id] = @id">
+                    <UpdateParameters>
+                        <asp:Parameter Name="AttachmentName" Type="String" />
+                        <asp:Parameter Name="Attachment" />
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+            </td>
+            <td></td>
+            <td></td>
         </tr>
     </table>
 </asp:Content>

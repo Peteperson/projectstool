@@ -2,12 +2,18 @@
 Partial Class Companies
     Inherits System.Web.UI.Page
 
+    Protected Sub gvCompanies_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvCompanies.DataBound
+        CType(gvCompanies.HeaderRow.FindControl("txtHeadNameFilter"), TextBox).Text = txtNameFilter.Text
+    End Sub
+
     Protected Sub gvCompanies_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvCompanies.RowCommand
         Select Case e.CommandName
             Case "Insert"
                 sqldsCompanies.Insert()
             Case "Select"
                 gvCompEmpl.Visible = True
+            Case "Filter"
+                txtNameFilter.Text = CType(gvCompanies.HeaderRow.FindControl("txtHeadNameFilter"), TextBox).Text
         End Select
     End Sub
 
@@ -79,7 +85,7 @@ Partial Class Companies
     End Sub
 
     Protected Sub sqldsCompanies_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsCompanies.Selecting
-        If txtFilterComp.Text = "" Then e.Command.Parameters("@CompName").Value = System.DBNull.Value
+        If txtNameFilter.Text = "" Then e.Command.Parameters("@CompName").Value = System.DBNull.Value
     End Sub
 
     Protected Sub sqldsCompanies_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsCompanies.Updating
@@ -88,6 +94,6 @@ Partial Class Companies
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        If Request.Params("Company") <> "" Then txtFilterComp.Text = Request.Params("Company")
+        If Request.Params("Company") <> "" Then txtNameFilter.Text = Request.Params("Company")
     End Sub
 End Class

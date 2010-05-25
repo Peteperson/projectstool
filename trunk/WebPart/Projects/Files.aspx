@@ -12,9 +12,7 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="centered">Write a subproject id or part of it and press &quot;Find&quot; in order to filter data
-                <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
-                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" />
+            <td class="centered"><asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter" Visible="false"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -54,8 +52,20 @@
                             </ItemTemplate>
                             <HeaderStyle Wrap="False" />
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="SubProject" SortExpression="SubProject">
-                            <ItemTemplate>
+                        <asp:TemplateField>
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <HeaderTemplate>
+                                <table>
+                                    <tr>
+                                        <td colspan="2" align="center">SubProject</td>
+                                    </tr>
+                                    <tr>
+                                        <td><asp:TextBox ID="txtHeadFFilter" SkinID="txtFilterSmall" runat="server"></asp:TextBox></td>
+                                        <td><asp:ImageButton ID="btnFilter" runat="server" CausesValidation="False" 
+                                                CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Filter data" /></td>                                        
+                                    </tr>
+                                </table>
+                            </HeaderTemplate>                            <ItemTemplate>
                                 <asp:LinkButton ID="btnSubProject" runat="server" CausesValidation="True" CommandArgument='<%# Bind("ProjectId") %>'
                                                 CommandName="SelSubProject" Text='<%# Bind("SubProject") %>'></asp:LinkButton>
                             </ItemTemplate>
@@ -90,9 +100,11 @@
                 </asp:GridView>
             </td>
         </tr>
+        <!--
         <tr>
             <td align="right">(*): Default ordering</td>
         </tr>
+        -->
     </table>
     <table>
         <tr>
