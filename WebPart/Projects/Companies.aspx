@@ -4,7 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
-    <br />
     <table id="subPageMainTable">
         <tr>
             <td class="title">Manage companies</td>
@@ -262,10 +261,10 @@
                 <asp:SqlDataSource ID="sqldsCompEmployees" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     
-                    SelectCommand="SELECT * FROM [CompaniesEmployees] WHERE ([CompanyId] = @CompanyId) ORDER BY [LastName], [FirstName]" 
-                    DeleteCommand="DELETE FROM [CompaniesEmployees] WHERE [Id] = @Id" 
-                    InsertCommand="INSERT INTO [CompaniesEmployees] ([CompanyId], [LastName], [FirstName], [Position], [Telephone], [Mobile], [Email]) VALUES (@CompanyId, @LastName, @FirstName, @Position, @Telephone, @Mobile, @Email)" 
-                    UpdateCommand="UPDATE [CompaniesEmployees] SET [LastName] = @LastName, [FirstName] = @FirstName, [Position] = @Position, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email WHERE [Id] = @Id">
+                    SelectCommand="SELECT * FROM [Users] WHERE ([Company] = @CompanyId AND [IsUser] = 0) ORDER BY [LastName], [FirstName]" 
+                    DeleteCommand="DELETE FROM [Users] WHERE [Id] = @Id" 
+                    InsertCommand="INSERT INTO [Users] ([UserName], [UserType], [Company], [Position], [LastName], [FirstName], [Telephone], [Mobile], [Email], [DefaultPage], [IsUser]) VALUES (@UserName, 41, @CompanyId, @Position, @LastName, @FirstName, @Telephone, @Mobile, @Email, 18, 0)" 
+                    UpdateCommand="UPDATE [Users] SET [UserName] = @UserName, [LastName] = @LastName, [FirstName] = @FirstName, [Position] = @Position, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email WHERE [Id] = @Id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="gvCompanies" Name="CompanyId" 
                             PropertyName="SelectedValue" Type="Int32" />
@@ -274,6 +273,7 @@
                         <asp:Parameter Name="Id" Type="Int32" />
                     </DeleteParameters>
                     <UpdateParameters>
+                        <asp:Parameter Name="UserName" Type="String" />
                         <asp:Parameter Name="LastName" Type="String" />
                         <asp:Parameter Name="FirstName" Type="String" />
                         <asp:Parameter Name="Position" Type="Byte" />
@@ -283,6 +283,8 @@
                         <asp:Parameter Name="Id" Type="Int32" />
                     </UpdateParameters>
                     <InsertParameters>
+                        <asp:Parameter Name="UserName" Type="String" />
+                        <asp:Parameter Name="UserType" Type="Int32" />
                         <asp:Parameter Name="CompanyId" Type="Int32" />
                         <asp:Parameter Name="LastName" Type="String" />
                         <asp:Parameter Name="FirstName" Type="String" />

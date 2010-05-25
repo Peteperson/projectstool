@@ -3,7 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
-    <br />
     <table id="subPageMainTable">
         <tr>
             <td class="title">Manage Users</td>
@@ -12,7 +11,7 @@
             <td>
                 <asp:GridView ID="gvUsers" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id"
-                    DataSourceID="sqldsUsers" SkinID="gridviewSkin" ShowFooter="true">
+                    DataSourceID="sqldsUsers" SkinID="gridviewSkin" ShowFooter="True">
                     <Columns>
                         <asp:TemplateField ShowHeader="False">
                             <ItemStyle Wrap="false" />
@@ -46,35 +45,44 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="User Type" SortExpression="UserType">
                             <ItemTemplate>
-                                    <asp:DropDownList SkinId="ddlDef" ID="ddlUserType" runat="server" DataSourceID="sqldsUserTypes" 
+                                    <asp:DropDownList ID="ddlUserType" runat="server" DataSourceID="sqldsUserTypes" 
                                         Enabled="false" selectedvalue=<%# Bind("UserType") %> DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                    <asp:DropDownList SkinId="ddlDef" ID="ddlUserType" runat="server" DataSourceID="sqldsUserTypes" 
+                                    <asp:DropDownList ID="ddlUserType" runat="server" DataSourceID="sqldsUserTypes" 
                                         selectedvalue=<%# Bind("UserType") %> DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                    <asp:DropDownList SkinId="ddlDef" ID="ddlInsUserType" runat="server" DataSourceID="sqldsUserTypes" 
+                                    <asp:DropDownList ID="ddlInsUserType" runat="server" DataSourceID="sqldsUserTypes" 
                                         DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Company" SortExpression="Company">
+                        <asp:TemplateField HeaderText="Company<br>Position" SortExpression="Company">
                             <ItemTemplate>
-                                <asp:DropDownList SkinId="ddlDef" ID="ddlCompanies" runat="server" 
+                                <asp:DropDownList ID="ddlCompanies" runat="server" 
                                     Enabled="false" selectedvalue=<%# Bind("Company") %> DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
-                                </asp:DropDownList>
+                                </asp:DropDownList><br />
+                                <asp:DropDownList ID="ddlPosition" runat="server" DataSourceID="sqldsEmplType" 
+                                    Enabled="false" selectedvalue=<%# Bind("Position") %> DataTextField="Description" DataValueField="id">
+                                </asp:DropDownList>                                
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:DropDownList SkinId="ddlDef" ID="ddlCompanies" runat="server" 
+                                <asp:DropDownList ID="ddlCompanies" runat="server" 
                                     selectedvalue=<%# Bind("Company") %> DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
+                                </asp:DropDownList><br />
+                                <asp:DropDownList ID="ddlPosition" runat="server" DataSourceID="sqldsEmplType" 
+                                    selectedvalue=<%# Bind("Position") %> DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:DropDownList SkinId="ddlDef" ID="ddlCompanies" runat="server" 
+                                <asp:DropDownList ID="ddlCompanies" runat="server" 
                                     DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
+                                </asp:DropDownList><br />
+                                <asp:DropDownList ID="ddlPosition" runat="server" DataSourceID="sqldsEmplType" 
+                                    DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
@@ -108,32 +116,24 @@
                                 <asp:TextBox ID="txtInsTelephone" SkinID="txtDef" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Email" SortExpression="Email">
+                        <asp:TemplateField HeaderText="Email<br>Default Page" SortExpression="Email">
                             <ItemTemplate>
-                                <asp:Label ID="Label8" runat="server" Text='<%# Bind("Email") %>'></asp:Label>
+                                <asp:Label ID="Label8" runat="server" Text='<%# Bind("Email") %>'></asp:Label><br />
+                                <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="sqldsPages"  
+                                    Enabled="false" selectedvalue=<%# Bind("DefaultPage") %> DataTextField="Description" DataValueField="id">
+                                </asp:DropDownList>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox7" SkinID="txtDef" runat="server" Text='<%# Bind("Email") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBox7" SkinID="txtDef" runat="server" Text='<%# Bind("Email") %>'></asp:TextBox><br />
+                                <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="sqldsPages" 
+                                    selectedvalue=<%# Bind("DefaultPage") %> DataTextField="Description" DataValueField="id">
+                                </asp:DropDownList>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="txtInsEmail" SkinID="txtDef" runat="server"></asp:TextBox>
-                            </FooterTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Default Page" SortExpression="DefaultPage">
-                            <ItemTemplate>
-                                    <asp:DropDownList SkinId="ddlDef" ID="DropDownList2" runat="server" DataSourceID="sqldsPages" 
-                                        Enabled="false" selectedvalue=<%# Bind("DefaultPage") %> DataTextField="Description" DataValueField="id">
-                                    </asp:DropDownList>
-                            </ItemTemplate>
-                            <EditItemTemplate>
-                                    <asp:DropDownList SkinId="ddlDef" ID="DropDownList2" runat="server" DataSourceID="sqldsPages" 
-                                        selectedvalue=<%# Bind("DefaultPage") %> DataTextField="Description" DataValueField="id">
-                                    </asp:DropDownList>
-                            </EditItemTemplate>
-                            <FooterTemplate>
-                                    <asp:DropDownList SkinId="ddlDef" ID="ddlInsDefPage" runat="server" DataSourceID="sqldsPages" 
-                                        DataTextField="Description" DataValueField="id">
-                                    </asp:DropDownList>
+                                <asp:TextBox ID="txtInsEmail" SkinID="txtDef" runat="server"></asp:TextBox><br />
+                                <asp:DropDownList ID="ddlInsDefPage" runat="server" DataSourceID="sqldsPages"
+                                    DataTextField="Description" DataValueField="id">
+                                </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Enabled" SortExpression="IsActive">
@@ -153,6 +153,18 @@
                                 <asp:Label ID="Label9" runat="server" Text='<%# Bind("LastLogin", "{0:dd/MM/yyyy HH:mm:ss}") %>'></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="IsUser" SortExpression="IsUser">
+                            <ItemTemplate>
+                                <asp:CheckBox ID="CheckBox2" runat="server" Checked='<%# Bind("IsUser") %>' 
+                                    Enabled="false" />
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:CheckBox ID="CheckBox2" runat="server" Checked='<%# Bind("IsUser") %>' />
+                            </EditItemTemplate>
+                            <FooterTemplate>
+                                <asp:CheckBox ID="chkIsUser" runat="server" Checked="true" />
+                            </FooterTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </td>
@@ -164,9 +176,9 @@
     <asp:SqlDataSource ID="sqldsUsers" runat="server" 
         ConnectionString="<%$ ConnectionStrings:cnMain %>" 
         DeleteCommand="DELETE FROM [Users] WHERE [id] = @id" 
-        InsertCommand="INSERT INTO [Users] ([UserName], [Password], [UserType], [Company], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage]) VALUES (@UserName, @Password, @UserType, @Company, @FirstName, @LastName, @Telephone, @Mobile, @Email, @DefaultPage)" 
-        SelectCommand="SELECT [id], [UserName], [UserType], [Company], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsActive], [LastLogin] FROM [Users]" 
-        UpdateCommand="UPDATE [Users] SET [UserName] = @UserName, [UserType] = @UserType, [Company] = @Company, [FirstName] = @FirstName, [LastName] = @LastName, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email, [DefaultPage] = @DefaultPage, [IsActive] = @IsActive WHERE [id] = @id">
+        InsertCommand="INSERT INTO [Users] ([UserName], [Password], [UserType], [Company], [Position], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsUser]) VALUES (@UserName, @Password, @UserType, @Company, @Position, @FirstName, @LastName, @Telephone, @Mobile, @Email, @DefaultPage, @IsUser)" 
+        SelectCommand="SELECT [id], [UserName], [UserType], [Company], [Position], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsActive], [LastLogin], [IsUser] FROM [Users]" 
+        UpdateCommand="UPDATE [Users] SET [UserName] = @UserName, [UserType] = @UserType, [Company] = @Company, [Position] = @Position, [FirstName] = @FirstName, [LastName] = @LastName, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email, [DefaultPage] = @DefaultPage, [IsActive] = @IsActive, [IsUser] = @IsUser WHERE [id] = @id">
         <DeleteParameters>
             <asp:Parameter Name="id" Type="Int32" />
         </DeleteParameters>
@@ -174,13 +186,15 @@
             <asp:Parameter Name="UserName" Type="String" />
             <asp:Parameter Name="UserType" Type="Byte" />
             <asp:Parameter Name="Company" Type="Int32" />
+            <asp:Parameter Name="Position" Type="Int32" />
             <asp:Parameter Name="FirstName" Type="String" />
             <asp:Parameter Name="LastName" Type="String" />
-            <asp:Parameter Name="Telephone" Type="String" />
-            <asp:Parameter Name="Mobile" Type="String" />
-            <asp:Parameter Name="Email" Type="String" />
+            <asp:Parameter Name="Telephone" Type="String" DefaultValue=" " />
+            <asp:Parameter Name="Mobile" Type="String" DefaultValue=" " />
+            <asp:Parameter Name="Email" Type="String" DefaultValue=" " />
             <asp:Parameter Name="DefaultPage" Type="String" />
             <asp:Parameter Name="IsActive" Type="Boolean" />
+            <asp:Parameter Name="IsUser" Type="Boolean" />
             <asp:Parameter Name="id" Type="Int32" />
         </UpdateParameters>
         <InsertParameters>
@@ -188,12 +202,14 @@
             <asp:Parameter Name="Password" />
             <asp:Parameter Name="UserType" Type="Byte" />
             <asp:Parameter Name="Company" Type="Int32" />
+            <asp:Parameter Name="Position" Type="Int32" />
             <asp:Parameter Name="FirstName" Type="String" />
             <asp:Parameter Name="LastName" Type="String" />
-            <asp:Parameter Name="Telephone" Type="String" />
-            <asp:Parameter Name="Mobile" Type="String" />
-            <asp:Parameter Name="Email" Type="String" />
+            <asp:Parameter Name="Telephone" Type="String" DefaultValue=" " />
+            <asp:Parameter Name="Mobile" Type="String" DefaultValue=" " />
+            <asp:Parameter Name="Email" Type="String" DefaultValue=" " />
             <asp:Parameter Name="DefaultPage" Type="String" />
+            <asp:Parameter Name="IsUser" Type="Boolean" />
         </InsertParameters>
     </asp:SqlDataSource>
                 </td>
@@ -207,9 +223,9 @@
     </asp:SqlDataSource>
                 </td>
                 <td>
-    <asp:SqlDataSource ID="sqldsPages" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-        SelectCommand="SELECT [id], [Description] FROM [Pages]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="sqldsPages" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                        SelectCommand="SELECT [id], [Description] FROM [Pages] ORDER BY [Description]"></asp:SqlDataSource>
                 </td>
                 <td>
                     <asp:SqlDataSource ID="sqldsCompanies" runat="server" 
@@ -217,6 +233,20 @@
                         SelectCommand="SELECT [Id], [Name] FROM [Companies] ORDER BY [Name]">
                     </asp:SqlDataSource>
                 </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:SqlDataSource ID="sqldsEmplType" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                        SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [id]">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="EmployeeType" Name="Category" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         </table>
     </asp:Content>

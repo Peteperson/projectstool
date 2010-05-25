@@ -4,10 +4,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
-    <br />
     <table id="subPageMainTable">
         <tr>
             <td class="title">Manage all types</td>
+        </tr>
+        <tr>
+            <td>
+                <asp:TextBox ID="txtCatFilter" runat="server" Visible="False"></asp:TextBox>
+            </td>
         </tr>
         <tr>
             <td>
@@ -34,8 +38,20 @@
                                 <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
                                     ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsGroup" />
                             </FooterTemplate>
-                        </asp:TemplateField>                        
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Category" SortExpression="Category">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <HeaderTemplate>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px">Category</td>
+                                        <td><asp:TextBox ID="txtHeadCatFilter" SkinID="txtFilter" runat="server"></asp:TextBox></td>
+                                        <td><asp:ImageButton ID="btnFilterCat" runat="server" CausesValidation="False" 
+                                                CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Filter data" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </HeaderTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Category") %>'></asp:Label>
                             </ItemTemplate>
@@ -63,6 +79,12 @@
                 </asp:GridView>
             </td>
         </tr>
+        <tr>
+            <td>
+                <asp:Button ID="btnClear" runat="server" Text="Remove filtering" 
+                    Visible="False" />
+            </td>
+        </tr>
     </table>
     <table>
         <tr>
@@ -70,9 +92,9 @@
                 <asp:SqlDataSource ID="sqldsTypes" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [VariousTypes] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [VariousTypes] ([Category], [Description]) VALUES (@Category, @Description)" 
-                    SelectCommand="SELECT * FROM [VariousTypes]" 
-                    UpdateCommand="UPDATE [VariousTypes] SET [Category] = @Category, [Description] = @Description WHERE [id] = @id">
+                    InsertCommand="INSERT INTO [VariousTypes] ([id], [Category], [Description]) VALUES (@Id, @Category, @Description)" 
+                    SelectCommand="SELECT * FROM [VariousTypes] WHERE Category LIKE ('%' + IsNull(@CatName, '') + '%')" 
+                    UpdateCommand="UPDATE [VariousTypes] SET [id] = @id, [Category] = @Category, [Description] = @Description WHERE [id] = @id">
                     <DeleteParameters>
                         <asp:Parameter Name="id" Type="Int32" />
                     </DeleteParameters>
@@ -82,9 +104,13 @@
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
                     <InsertParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
                         <asp:Parameter Name="Category" Type="String" />
                         <asp:Parameter Name="Description" Type="String" />
                     </InsertParameters>
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="txtCatFilter" Name="CatName" PropertyName="Text" Type="String" />
+                    </SelectParameters>
                 </asp:SqlDataSource>
             </td>
             <td></td>

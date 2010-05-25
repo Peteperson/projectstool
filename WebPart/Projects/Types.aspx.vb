@@ -2,8 +2,13 @@
 Partial Class Types
     Inherits System.Web.UI.Page
 
+    Protected Sub gvTypes_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvTypes.DataBound
+        CType(gvTypes.HeaderRow.FindControl("txtHeadCatFilter"), TextBox).Text = txtCatFilter.Text
+    End Sub
+
     Protected Sub gvTypes_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvTypes.RowCommand
         If e.CommandName = "Insert" Then sqldsTypes.Insert()
+        If e.CommandName = "Filter" Then txtCatFilter.Text = CType(gvTypes.HeaderRow.FindControl("txtHeadCatFilter"), TextBox).Text
     End Sub
 
     Protected Sub gvTypes_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvTypes.RowDataBound
@@ -30,6 +35,14 @@ Partial Class Types
     Protected Sub sqldsTypes_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsTypes.Inserting
         e.Command.Parameters("@Category").Value = CType(gvTypes.FooterRow.FindControl("txtInsCategory"), TextBox).Text
         e.Command.Parameters("@Description").Value = CType(gvTypes.FooterRow.FindControl("txtInsDesc"), TextBox).Text
+        e.Command.Parameters("@Id").Value = CType(gvTypes.FooterRow.FindControl("txtInsId"), TextBox).Text
     End Sub
 
+    Protected Sub sqldsTypes_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsTypes.Selecting
+        If txtCatFilter.Text = "" Then e.Command.Parameters("@CatName").Value = System.DBNull.Value
+    End Sub
+
+    Protected Sub btnClear_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClear.Click
+        txtCatFilter.Text = ""
+    End Sub
 End Class

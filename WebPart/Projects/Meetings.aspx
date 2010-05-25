@@ -6,7 +6,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
-    <br />
     <table id="subPageMainTable">
         <tr>
             <td class="title">Meetings</td>
@@ -15,10 +14,25 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="centered">Write a subproject id or part of it and press &quot;Find&quot; in order to filter data
+            <td class="centered">Click <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> in order to select a meeting and view its details.<br />
+                Write a subproject id or part of it and press &quot;Find&quot; in order to filter data
                 <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
-                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" /><br />
-                Click <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> in order to select a meeting and view its details.
+                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" />
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <table style="border: solid 1px white">
+                    <tr>
+                        <td>Exclude status:</td>
+                        <td><asp:RadioButtonList ID="rblStatus" runat="server" RepeatDirection="Horizontal" 
+                                DataSourceID="sqldsMeetStat" DataTextField="Description" 
+                                DataValueField="id">
+                            </asp:RadioButtonList>
+                        </td>
+                        <td><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
+                    </tr>
+                </table>
             </td>
         </tr>
         <tr>
@@ -112,12 +126,12 @@
                                     </asp:DropDownList>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">NewBusiness</td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="NewBusinessTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("NewBusiness") %>' /><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="NewBusinessTextBox" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="UpdMeet" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsHeader">NewBusiness<asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="NewBusinessTextBox" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdMeet" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="NewBusinessTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("NewBusiness") %>' /></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">Comments</td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="CommentsTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" MaxLength="250" Text='<%# Bind("Comments") %>' /><asp:RegularExpressionValidator ID="RegExpVal2" runat="server" ControlToValidate="CommentsTextBox" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="UpdMeet" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsHeader">Comments<asp:RegularExpressionValidator ID="RegExpVal2" runat="server" ControlToValidate="CommentsTextBox" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdMeet" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="CommentsTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" MaxLength="500" Text='<%# Bind("Comments") %>' /></td>
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">Attachment</td>
@@ -158,12 +172,12 @@
                                     </asp:DropDownList>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">NewBusiness</td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="NewBusinessTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("NewBusiness") %>' /><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="NewBusinessTextBox" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsHeader">NewBusiness<asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="NewBusinessTextBox" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="NewBusinessTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("NewBusiness") %>' /></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">Comments</td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="CommentsTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>' /><asp:RegularExpressionValidator ID="RegExpVal2" runat="server" ControlToValidate="CommentsTextBox" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsHeader">Comments<asp:RegularExpressionValidator ID="RegExpVal2" runat="server" ControlToValidate="CommentsTextBox" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="CommentsTextBox" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>' /></td>
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">Attachment</td>
@@ -196,6 +210,8 @@
                         <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int16" />
                         <asp:ControlParameter ControlID="txtPrjId" Name="SubProject" PropertyName="Text" Type="String" />
                         <asp:Parameter Name="MtngsId" Type="Int16" DefaultValue="0" />
+                        <asp:ControlParameter ControlID="rblStatus" DefaultValue="0" Name="Status" 
+                            PropertyName="SelectedValue" Type="Int32" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>

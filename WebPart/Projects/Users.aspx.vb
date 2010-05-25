@@ -20,6 +20,7 @@ Partial Class Users
         e.Command.Parameters("@UserName").Value = CType(gvUsers.FooterRow.FindControl("txtInsUserName"), TextBox).Text
         e.Command.Parameters("@Password").Value = SecCrypto.Hash(Password)
         e.Command.Parameters("@Company").Value = CType(gvUsers.FooterRow.FindControl("ddlCompanies"), DropDownList).SelectedValue
+        e.Command.Parameters("@Position").Value = CType(gvUsers.FooterRow.FindControl("ddlPosition"), DropDownList).SelectedValue
         e.Command.Parameters("@UserType").Value = CType(gvUsers.FooterRow.FindControl("ddlInsUserType"), DropDownList).SelectedValue
         e.Command.Parameters("@FirstName").Value = CType(gvUsers.FooterRow.FindControl("txtInsFirstName"), TextBox).Text
         e.Command.Parameters("@LastName").Value = CType(gvUsers.FooterRow.FindControl("txtInsLastName"), TextBox).Text
@@ -27,6 +28,7 @@ Partial Class Users
         e.Command.Parameters("@Mobile").Value = CType(gvUsers.FooterRow.FindControl("txtInsMobile"), TextBox).Text
         e.Command.Parameters("@Email").Value = CType(gvUsers.FooterRow.FindControl("txtInsEmail"), TextBox).Text
         e.Command.Parameters("@DefaultPage").Value = CType(gvUsers.FooterRow.FindControl("ddlInsDefPage"), DropDownList).SelectedValue
+        e.Command.Parameters("@IsUser").Value = CType(gvUsers.FooterRow.FindControl("chkIsUser"), CheckBox).Checked
     End Sub
 
     Protected Sub sqldsUsers_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsUsers.Updating

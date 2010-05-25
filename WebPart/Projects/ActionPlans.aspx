@@ -57,7 +57,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
-    <br />
     <table id="subPageMainTable">
         <tr>
             <td class="title">List of Actions</td>
@@ -66,11 +65,27 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="centered">Write a subproject id or part of it and press &quot;Find&quot; in order to 
+            <td class="centered">Click <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> in order to select an action and view its details.<br />
+                Write a subproject id or part of it and press &quot;Find&quot; in order to 
                 filter data
                 <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
-                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" /><br />
-                Click <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> in order to select an action and view its details.
+                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" />
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <table style="border: solid 1px white">
+                    <tr>
+                        <td>Exclude status:</td>
+                        <td>
+                            <asp:RadioButtonList ID="rblStatus" runat="server" RepeatDirection="Horizontal" 
+                                DataSourceID="sqldsActionStatus" DataTextField="Description" 
+                                DataValueField="id" AutoPostBack="True">
+                            </asp:RadioButtonList>
+                        </td>
+                        <td><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
+                    </tr>
+                </table>
             </td>
         </tr>
         <tr>
@@ -95,13 +110,11 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="Customer" HeaderText="Customer" 
                             SortExpression="Customer" />
-                        <asp:BoundField DataField="ActionType" HeaderText="ActionType" 
-                            SortExpression="ActionType" />
                         <asp:BoundField DataField="Description" HeaderText="Description" 
                             SortExpression="Description" />
                         <asp:BoundField DataField="Responsible1" HeaderText="Responsible1" 
                             SortExpression="Responsible1" ReadOnly="True" />
-                        <asp:BoundField DataField="Responsible2" HeaderText="Responsible2" Visible="false" 
+                        <asp:BoundField DataField="Responsible2" HeaderText="Responsible2" 
                             ReadOnly="True" SortExpression="Responsible2" />
                         <asp:TemplateField HeaderText="File" SortExpression="AttachmentName">
                             <ItemTemplate>
@@ -139,6 +152,8 @@
                     <EditItemTemplate>
                         <table id="tblDetails">
                             <tr>
+                                <td class="tblDetailsHeader">Deadline</td>
+                                <td class="tblDetailsItem"><uc2:DateBox ID="DateBox1" runat="server" Value='<%# Bind("Deadline") %>' /></td>
                                 <td class="tblDetailsHeader">Responsible1</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
                                                 selectedvalue=<%# Bind("Responsible1") %> DataTextField="FullName" DataValueField="id">
@@ -149,28 +164,24 @@
                                             </asp:DropDownList></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">Description<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox6" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox><asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox6" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsHeader">Description<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox6" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox6" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsItem" colspan="5"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">ActionId</td>
+                                <!--<td class="tblDetailsHeader">ActionId</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionType" runat="server" 
                                        selectedvalue=<%# Bind("ActionId") %> DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
-                                    </asp:DropDownList></td>
+                                    </asp:DropDownList></td>-->
                                 <td class="tblDetailsHeader">AttachmentName</td>
-                                <td class="tblDetailsItem"><asp:label ID="AttachmentNameTextBox" runat="server" Text='<%# Bind("AttachmentName") %>' /></td>
-                            </tr>
-                            <tr>
-                                <td class="tblDetailsHeader">Deadline</td>
-                                <td class="tblDetailsItem"><uc2:DateBox ID="DateBox1" runat="server" Value='<%# Bind("Deadline") %>' /></td>
+                                <td class="tblDetailsItem" colspan="3"><asp:label ID="AttachmentNameTextBox" runat="server" Text='<%# Bind("AttachmentName") %>' /></td>
                                 <td class="tblDetailsHeader">Status</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">Comments</td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox1" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox1" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsHeader">Comments<asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox1" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsItem" colspan="5"><asp:TextBox ID="TextBox1" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox></td>
                             </tr>
                         </table>
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
@@ -183,6 +194,8 @@
                     <InsertItemTemplate>
                         <table id="tblDetails">
                             <tr>
+                                <td class="tblDetailsHeader">Deadline</td>
+                                <td class="tblDetailsItem"><uc2:DateBox ID="dbDeadline" runat="server" Value='<%# Bind("Deadline") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' /></td>
                                 <td class="tblDetailsHeader">Responsible1</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
                                                 selectedvalue=<%# Bind("Responsible1") %> DataTextField="FullName" DataValueField="id">
@@ -193,28 +206,24 @@
                                             </asp:DropDownList></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">Description<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox6" ValidationGroup="InsAP" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal3" runat="server" ControlToValidate="TextBox6" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsHeader">Description<asp:RegularExpressionValidator ID="RegExpVal3" runat="server" ControlToValidate="TextBox6" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox6" ValidationGroup="InsAP" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                <td class="tblDetailsItem" colspan="5"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">ActionId</td>
+                                <!--<td class="tblDetailsHeader">ActionId</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionType" runat="server" 
                                        selectedvalue=<%# Bind("ActionId") %> DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
-                                    </asp:DropDownList></td>
+                                    </asp:DropDownList></td>-->
                                 <td class="tblDetailsHeader">AttachmentName</td>
-                                <td class="tblDetailsItem"><asp:FileUpload ID="fuAP" runat="server" /></td>
-                            </tr>
-                            <tr>
-                                <td class="tblDetailsHeader">Deadline</td>
-                                <td class="tblDetailsItem"><uc2:DateBox ID="dbDeadline" runat="server" Value='<%# Bind("Deadline") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' /></td>
+                                <td class="tblDetailsItem" colspan="3"><asp:FileUpload ID="fuAP" runat="server" /></td>
                                 <td class="tblDetailsHeader">Status</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList></td>
                             </tr>
                             <tr>
-                                <td class="tblDetailsHeader">Comments</td>
-                                <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox2" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox><asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox2" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsHeader">Comments<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox2" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td class="tblDetailsItem" colspan="5"><asp:TextBox ID="TextBox2" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox></td>
                             </tr>
                         </table>
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
@@ -245,6 +254,8 @@
                         <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int16" />
                         <asp:ControlParameter ControlID="txtPrjId" Name="SubProject" PropertyName="Text" Type="String" />
                         <asp:Parameter Name="APId" Type="Int16" DefaultValue="0" />
+                        <asp:ControlParameter ControlID="rblStatus" DefaultValue="0" Name="Status" 
+                            PropertyName="SelectedValue" Type="Int32" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
@@ -288,13 +299,13 @@
                 </asp:SqlDataSource>
             </td>
             <td>
-                <asp:SqlDataSource ID="sqldsActionType" runat="server" 
+                <!--<asp:SqlDataSource ID="sqldsActionType" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [Description]">
                     <SelectParameters>
                         <asp:Parameter DefaultValue="ActionType" Name="Category" Type="String" />
                     </SelectParameters>
-                </asp:SqlDataSource>
+                </asp:SqlDataSource>-->
             </td>
             <td>
                 <asp:SqlDataSource ID="sqldsResponsibles" runat="server" 

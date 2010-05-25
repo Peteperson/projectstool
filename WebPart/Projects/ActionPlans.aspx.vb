@@ -71,4 +71,8 @@ Partial Class ActionPlans
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         btnReset.Visible = False
     End Sub
+
+    Protected Sub btnClearFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClearFilter.Click
+        rblStatus.SelectedIndex = -1
+    End Sub
 End Class
