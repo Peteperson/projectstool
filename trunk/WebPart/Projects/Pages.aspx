@@ -3,7 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
-    <br />
     <table id="subPageMainTable">
         <tr>
             <td class="title">Manage pages</td>

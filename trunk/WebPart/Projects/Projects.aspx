@@ -4,7 +4,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
-    <br />
     <table id="subPageMainTable" cellpadding="0" cellspacing="0">
         <tr>
             <td class="title">Manage projects</td>
@@ -13,7 +12,7 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="centered">Select a subproject from the list:
+            <td class="centered" style="padding-bottom:5px">Select a subproject from the list:
                 <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
                     DataTextField="SubProject" DataValueField="id" AutoPostBack="True">
                 </asp:DropDownList>&nbsp;or write its subproject id and press &quot;Find&quot;
@@ -52,7 +51,8 @@
                                                     <td class="tblDetailsHeader">Customer</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlCompanies" runat="server" 
                                                            Enabled="false" selectedvalue=<%# Bind("CustomerId") %>  DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
-                                                        </asp:DropDownList></td>
+                                                        </asp:DropDownList><asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" CommandArgument='<%# Bind("CustomerId") %>'
+                                                                            CommandName="Customer" ImageUrl="~/Images/Icons/Preview1_16x16.png" ToolTip="View details" /></td>
                                                     <td class="tblDetailsHeader">Supervisor</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlSupervisors" runat="server" DataSourceID="sqldsCreators" 
                                                            Enabled="false" selectedvalue=<%# Bind("Supervisor") %>  DataTextField="FullName" DataValueField="id">
@@ -151,10 +151,10 @@
                                                            selectedvalue=<%# Bind("Consultant2") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Certification Fields</td>
-                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox15" MaxLength="250" runat="server" SkinID="txtText" Text='<%# Bind("CertificationField") %>'></asp:TextBox></td>
+                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox15" MaxLength="500" runat="server" SkinID="txtText" Text='<%# Bind("CertificationField") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Description <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TextBox10" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox10" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                                    <td class="tblDetailsHeader">Description <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TextBox10" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox10" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RegularExpressionValidator></td>
                                                     <td colspan="5" class="tblDetailsItem"><asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
@@ -167,7 +167,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Critical issues</td>
-                                                    <td colspan="3" class="tblDetailsItem"><asp:TextBox ID="TextBox13" SkinID="txtText" MaxLength="250" runat="server" Text='<%# Bind("CriticalIssues") %>'></asp:TextBox></td>
+                                                    <td colspan="3" class="tblDetailsItem"><asp:TextBox ID="TextBox13" SkinID="txtText" MaxLength="500" runat="server" Text='<%# Bind("CriticalIssues") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">Desired Organization</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox14" MaxLength="50" runat="server" SkinID="txtText" Text='<%# Bind("DesiredOrganization") %>'></asp:TextBox></td>
                                                 </tr>
@@ -233,10 +233,10 @@
                                                            DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Certification Fields</td>
-                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox15" MaxLength="250" runat="server" SkinID="txtText" Text='<%# Bind("CertificationField") %>'></asp:TextBox></td>
+                                                    <td class="tblDetailsItem"><asp:TextBox ID="TextBox15" MaxLength="500" runat="server" SkinID="txtText" Text='<%# Bind("CertificationField") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Description <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox10" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox10" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                                    <td class="tblDetailsHeader">Description <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox10" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox10" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RegularExpressionValidator></td>
                                                     <td colspan="5" class="tblDetailsItem"><asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
@@ -249,7 +249,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Critical issues</td>
-                                                    <td colspan="3" class="tblDetailsItem"><asp:TextBox ID="TextBox13" MaxLength="250" SkinID="txtText" runat="server" Text='<%# Bind("CriticalIssues") %>'></asp:TextBox></td>
+                                                    <td colspan="3" class="tblDetailsItem"><asp:TextBox ID="TextBox13" MaxLength="500" SkinID="txtText" runat="server" Text='<%# Bind("CriticalIssues") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">Desired Organization</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox14" MaxLength="50" runat="server" SkinID="txtText" Text='<%# Bind("DesiredOrganization") %>'></asp:TextBox></td>
                                                 </tr>
@@ -297,8 +297,8 @@
                                                 CommandName="Edit" ImageUrl="~/Images/Icons/Edit22_22.png" ToolTip="Edit" />
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
                                                 CommandName="New" ImageUrl="~/Images/Icons/add24_24.png" Tooltip="New" />
-                                            <!--&nbsp;<asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" 
-                                                CommandName="Delete" ImageUrl="~/Images/Icons/Remove22_22.png" ToolTip="Delete" />-->
+                                            &nbsp;<asp:ImageButton ID="btnDeletePrj" runat="server" CausesValidation="False" 
+                                                CommandName="Delete" ImageUrl="~/Images/Icons/Delete_24x24.png" ToolTip="Delete" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Fields>
@@ -339,7 +339,7 @@
                                 <table border="1" class="TblEmptyData">
                                     <tr class="InsertTabHeader">
                                         <td>Action</td>
-                                        <td class="CommentsCol">Description <asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtAPdesc" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                        <td class="CommentsCol">Description <asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtAPdesc" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
                                         <!--<td>Type</td>-->
                                         <td>Responsible1<!--<br />Responsible2--></td>
                                         <td>Deadline</td>
@@ -392,13 +392,13 @@
                                     <asp:TemplateField HeaderText="Description" SortExpression="Description">
                                         <ItemStyle CssClass="CommentsCol" />
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox6" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RegularExpressionValidator>
+                                            <asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox6" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RegularExpressionValidator>
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label7" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:TextBox ID="txtAPdesc" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>' ></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtAPdesc" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator>
+                                            <asp:TextBox ID="txtAPdesc" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>' ></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtAPdesc" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Type" Visible="false" SortExpression="ActionId">
@@ -621,13 +621,13 @@
                                     </asp:TemplateField>
 				                    <asp:TemplateField HeaderText="NewBusiness" Visible="false" SortExpression="NewBusiness">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("NewBusiness") %>'></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox10" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="UpdMeet" ErrorMessage="*"></asp:RegularExpressionValidator>
+                                            <asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("NewBusiness") %>'></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox10" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdMeet" ErrorMessage="*"></asp:RegularExpressionValidator>
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label11" runat="server" Text='<%# Bind("NewBusiness") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:TextBox ID="txtMeetNewBus" SkinID="txtTextLong" TextMode="MultiLine" runat="server" ></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtMeetNewBus" ValidationExpression="^[\s\S]{0,250}$" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RegularExpressionValidator>
+                                            <asp:TextBox ID="txtMeetNewBus" SkinID="txtTextLong" TextMode="MultiLine" runat="server" ></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtMeetNewBus" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RegularExpressionValidator>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Comments" Visible="false" SortExpression="Comments">

@@ -4,7 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
-    <br />
     <table id="subPageMainTable">
         <tr>
             <td class="title">Project list</td>
@@ -16,6 +15,26 @@
             <td class="centered">Write a subproject id or part of it and press &quot;Find&quot; in order to filter data
                 <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
                 &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" />
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <table style="border: solid 1px white">
+                    <tr>
+                        <td align="center">Exclude status:</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:RadioButtonList ID="rblStatus" runat="server" RepeatDirection="Horizontal" 
+                                DataSourceID="sqldsPrjStatus" DataTextField="Description" 
+                                DataValueField="id" AutoPostBack="True">
+                            </asp:RadioButtonList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center"><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
+                    </tr>
+                </table>
             </td>
         </tr>
         <tr>
@@ -36,8 +55,12 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="Title" HeaderText="Title" 
                             SortExpression="Title" />
-                        <asp:BoundField DataField="Customer" HeaderText="Customer" 
-                            SortExpression="Customer" />
+                        <asp:TemplateField HeaderText="Customer" SortExpression="Customer">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnCust" runat="server" CommandArgument='<%# Bind("Customer") %>'
+                                                CommandName="SelCompany" Text='<%# Bind("Customer") %>'></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="Supervisor" HeaderText="Supervisor" ReadOnly="True" 
                             SortExpression="Supervisor" />
                         <asp:BoundField DataField="Consultant" HeaderText="Consultant" 
@@ -66,10 +89,20 @@
                         <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int16" />
                         <asp:ControlParameter ControlID="txtPrjId" Name="SubProject" 
                             PropertyName="Text" Type="String" />
+                        <asp:ControlParameter ControlID="rblStatus" DefaultValue="0" Name="Status" 
+                            PropertyName="SelectedValue" Type="Int32" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
-            <td></td>
+            <td>
+                <asp:SqlDataSource ID="sqldsPrjStatus" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                    SelectCommand="TypesByCategory" SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="ProjectStatus" Name="Category" Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </td>
             <td></td>
             <td></td>
         </tr>

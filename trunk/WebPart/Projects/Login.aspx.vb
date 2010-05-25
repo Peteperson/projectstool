@@ -11,7 +11,8 @@
         Try
             lr = Database.DoLogin(username, password, Request.UserHostAddress)
         Catch ex As Exception
-            ctrlLogin.FailureText = ex.Message
+            lblMessage.Visible = True
+            lblMessage.Text = ex.Message
             Exit Sub
         End Try
         Select Case lr.Status

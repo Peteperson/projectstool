@@ -54,6 +54,7 @@ Partial Class Companies
 
     Protected Sub sqldsCompEmployees_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsCompEmployees.Inserting
         If gvCompEmpl.Rows.Count > 0 Then
+            e.Command.Parameters("@UserName").Value = "emp_" & SecCrypto.GeneratePasswordNoSpecialChrs(10)
             e.Command.Parameters("@CompanyId").Value = gvCompanies.SelectedValue
             e.Command.Parameters("@LastName").Value = CType(gvCompEmpl.FooterRow.FindControl("txt2LastName"), TextBox).Text
             e.Command.Parameters("@FirstName").Value = CType(gvCompEmpl.FooterRow.FindControl("txt2FirstName"), TextBox).Text
@@ -62,6 +63,7 @@ Partial Class Companies
             e.Command.Parameters("@Mobile").Value = CType(gvCompEmpl.FooterRow.FindControl("txt2MobTel"), TextBox).Text
             e.Command.Parameters("@Email").Value = CType(gvCompEmpl.FooterRow.FindControl("txt2Email"), TextBox).Text
         Else
+            e.Command.Parameters("@UserName").Value = "emp_" & SecCrypto.GeneratePasswordNoSpecialChrs(10)
             e.Command.Parameters("@CompanyId").Value = gvCompanies.SelectedValue
             e.Command.Parameters("@LastName").Value = CType(gvCompEmpl.Controls(0).Controls(0).Controls(0).FindControl("txt1LastName"), TextBox).Text
             e.Command.Parameters("@FirstName").Value = CType(gvCompEmpl.Controls(0).Controls(0).Controls(0).FindControl("txt1FirstName"), TextBox).Text
@@ -83,5 +85,9 @@ Partial Class Companies
     Protected Sub sqldsCompanies_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsCompanies.Updating
         Dim ind As Integer = gvCompanies.EditIndex
         e.Command.Parameters("@Name").Value = CType(gvCompanies.Rows(ind).FindControl("txtCompanyName"), TextBox).Text
+    End Sub
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Request.Params("Company") <> "" Then txtFilterComp.Text = Request.Params("Company")
     End Sub
 End Class

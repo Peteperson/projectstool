@@ -83,4 +83,8 @@ Partial Class Meetings
         Dim dtTo As DateTime = e.Command.Parameters("@TimeTo").Value
         e.Command.Parameters("@TimeTo").Value = dtFrom.Date.AddHours(dtTo.Hour).AddMinutes(dtTo.Minute)
     End Sub
+
+    Protected Sub btnClearFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClearFilter.Click
+        rblStatus.SelectedIndex = -1
+    End Sub
 End Class

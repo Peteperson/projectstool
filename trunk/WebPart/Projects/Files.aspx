@@ -4,7 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
-    <br />
     <table id="subPageMainTable">
         <tr>
             <td class="title">Attachment list</td>
@@ -78,13 +77,13 @@
                         <asp:TemplateField HeaderText="Comments" SortExpression="Comments">
                             <ItemStyle Width="40%" />
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox1" runat="server" MaxLength="250" Text='<%# Bind("Comments") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBox1" runat="server" MaxLength="500" Text='<%# Bind("Comments") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label3" runat="server" Text='<%# Bind("Comments") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="txtAttachComment" SkinID="txtText" runat="server" MaxLength="250" Text='<%# Bind("Comments") %>'></asp:TextBox>
+                                <asp:TextBox ID="txtAttachComment" SkinID="txtText" runat="server" MaxLength="500" Text='<%# Bind("Comments") %>'></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                     </Columns>

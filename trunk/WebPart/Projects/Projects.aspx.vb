@@ -319,4 +319,16 @@ Partial Class Projects
         gvMeetings.ShowFooter = Not gvMeetings.ShowFooter
         ShowTab(1)
     End Sub
+
+    Protected Sub dvProject_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles dvProject.DataBound
+        If dvProject.CurrentMode = DetailsViewMode.ReadOnly Then
+            CType(dvProject.FindControl("btnDeletePrj"), ImageButton).Attributes("onclick") = "if(!confirm('Really delete this row?'))return   false;"
+        End If
+    End Sub
+
+    Protected Sub dvProject_ItemCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.DetailsViewCommandEventArgs) Handles dvProject.ItemCommand
+        If e.CommandName = "Customer" Then
+            Response.Redirect("~/Companies.aspx?CustId=" & e.CommandArgument)
+        End If
+    End Sub
 End Class
