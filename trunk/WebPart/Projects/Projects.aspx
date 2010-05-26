@@ -935,6 +935,13 @@
                 </asp:SqlDataSource>
             </td>
             <td>
+                <asp:SqlDataSource ID="sqldsSysVer" runat="server" ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                    InsertCommand="INSERT INTO [SystemVersion] ([ProjectId], [VersionNo], [Comments]) VALUES (@ProjectId, @VersionNo, @Comments)" 
+                    SelectCommand="SELECT [id], [ProjectId], [VersionNo], [Comments] FROM [SystemVersion]" >
+                    <InsertParameters>
+                        <asp:Parameter Name="ProjectId" Type="Int32" />
+                    </InsertParameters>
+                </asp:SqlDataSource>
             </td>
             <td>
                 <asp:SqlDataSource ID="sqldsActionType" runat="server" 

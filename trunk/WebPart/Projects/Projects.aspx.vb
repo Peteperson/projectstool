@@ -113,6 +113,7 @@ Partial Class Projects
     Protected Sub sqldsProjects_Inserted(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsProjects.Inserted
         ddlPrjCode.DataBind()
         SetDdlValue(e.Command.Parameters("@SubProject").Value)
+        sqldsSysVer.Insert()
     End Sub
 
     Private Sub SetDdlValue(ByVal text As String)
@@ -335,5 +336,9 @@ Partial Class Projects
             Response.Clear()
             Response.Redirect("~/Companies.aspx?Company=" & CType(dvProject.FindControl("ddlCompanies"), DropDownList).SelectedItem.Text)
         End If
+    End Sub
+
+    Protected Sub sqldsSysVer_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsSysVer.Inserting
+        e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
     End Sub
 End Class

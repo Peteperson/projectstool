@@ -94,6 +94,8 @@ Partial Class Companies
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        If Request.Params("Company") <> "" Then txtNameFilter.Text = Request.Params("Company")
+        If Not IsPostBack Then
+            If Request.Params("Company") <> "" Then txtNameFilter.Text = Request.Params("Company")
+        End If
     End Sub
 End Class
