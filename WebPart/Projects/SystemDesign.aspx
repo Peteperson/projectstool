@@ -27,7 +27,8 @@
                     <tr class="centered">
                         <td>Available versions:
                             <asp:DropDownList ID="ddlSysVersions" runat="server" 
-                                DataSourceID="sqldsSysVersions" DataTextField="VersionNo" DataValueField="id">
+                                DataSourceID="sqldsSysVersions" DataTextField="VersionNo" 
+                                DataValueField="id" AutoPostBack="True">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -39,16 +40,47 @@
             </td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <td>
+                &nbsp;</td>
         </tr>
         <tr class="title">
-            <td>Processes:</td>
+            <td>Processes</td>
         </tr>
         <tr>
             <td>
-                <asp:GridView ID="GridView1" runat="server" AllowPaging="True" ShowFooter="true"
+                <asp:GridView ID="gvProcesses" runat="server" AllowPaging="True" ShowFooter="true"
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
                     DataSourceID="sqldsProcesses" SkinID="gridviewSkin">
+                    <EmptyDataTemplate>
+                        <br />
+                        There are no processes. Insert one using the controls below.<br />
+                        <br />
+                        <table border="1" class="TblEmptyData">
+                            <tr class="InsertTabHeader">
+                                <td></td>
+                                <td>Code</td>
+                                <td class="CommentsCol">Description <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="InsProc" ControlToValidate="txtDescr" ErrorMessage="*"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtDescr" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsProc" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td>Status</td>
+                                <td>StatusDate</td>
+                                <td>Responsible</td>
+                                <td>Comments</td>
+                            </tr>
+                            <tr class="InsertRow">
+                                <td class="centered"><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
+                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsProc" /></td>
+                                <td><asp:TextBox ID="txtCode" SkinID="txtTime" runat="server" Text='<%# Bind("Code") %>' ></asp:TextBox></td>
+                                <td><asp:TextBox ID="txtDescr" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>' ></asp:TextBox></td>
+                                <td><asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
+                                        selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
+                                    </asp:DropDownList></td>
+                                <td><uc1:DateBox ID="dbStatDate" runat="server" Value='<%# Bind("StatusDate") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' /></td>
+                                <td><asp:DropDownList ID="ddlResp" runat="server" DataSourceID="sqldsResponsibles" 
+                                        DataTextField="FullName" DataValueField="id">
+                                    </asp:DropDownList></td>
+                                <td><asp:TextBox ID="txtComm" runat="server" Text='<%# Bind("Comments") %>' ></asp:TextBox></td>
+                            </tr>
+                        </table>
+                    </EmptyDataTemplate>
                     <Columns>
                         <asp:TemplateField ShowHeader="False">
                             <ItemStyle Wrap="false" />
@@ -71,6 +103,7 @@
                             </FooterTemplate>
                         </asp:TemplateField> 
                         <asp:TemplateField HeaderText="Code" SortExpression="Code">
+                            <ItemStyle Width="50px" Wrap="false" />
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox1" SkinID="txtText" runat="server" Text='<%# Bind("Code") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -78,7 +111,7 @@
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("Code") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="txtCode" SkinID="txtText" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtCode" SkinID="txtTime" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Description" SortExpression="Description">
@@ -89,45 +122,58 @@
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="txtDescr" SkinID="txtText" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator SkinID="rfvDef" ID="RequiredFieldValidator2" runat="server" ValidationGroup="InsProc" ControlToValidate="txtDescr" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                <asp:TextBox ID="txtDescr" SkinID="txtDef" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Status" SortExpression="Status">
+                            <ItemStyle Width="120px" Wrap="false" />
                             <EditItemTemplate>
-                                <asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="sqldsProcStat" 
+                                <asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
                                     selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="sqldsProcStat" 
+                                <asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
                                     Enabled="false" selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="sqldsProcStat" 
+                                <asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
                                     DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="StatusDate" SortExpression="StatusDate">
+                            <ItemStyle Width="100px" />
                             <EditItemTemplate>
-                                <uc1:DateBox ID="dbDeadline" runat="server" Value='<%# Bind("StatusDate") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' />
+                                <uc1:DateBox ID="dbStatDate" runat="server" Value='<%# Bind("StatusDate") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' />
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label4" runat="server" 
                                     Text='<%# Bind("StatusDate", "{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <uc1:DateBox ID="dbDeadline" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>' />
+                                <uc1:DateBox ID="dbStatDate" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>' />
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Responsible" SortExpression="Responsible">
+                            <ItemStyle Width="120px" Wrap="false" />
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Responsible") %>'></asp:TextBox>
+                                <asp:DropDownList ID="ddlResp" runat="server" DataSourceID="sqldsResponsibles" 
+                                    selectedvalue=<%# Bind("Responsible") %> DataTextField="FullName" DataValueField="id">
+                                </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("Responsible") %>'></asp:Label>
+                                <asp:DropDownList ID="ddlResp" runat="server" DataSourceID="sqldsResponsibles" 
+                                    Enabled="false" selectedvalue=<%# Bind("Responsible") %> DataTextField="FullName" DataValueField="id">
+                                </asp:DropDownList>
                             </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:DropDownList ID="ddlResp" runat="server" DataSourceID="sqldsResponsibles" 
+                                    DataTextField="FullName" DataValueField="id">
+                                </asp:DropDownList>
+                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Comments" SortExpression="Comments">
                             <EditItemTemplate>
@@ -160,7 +206,7 @@
             <td>
                 <asp:SqlDataSource ID="sqldsSysVersions" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="SELECT [id], [VersionNo] FROM [SystemVersion] WHERE ([ProjectId] = @ProjectId) ORDER BY [VersionNo]">
+                    SelectCommand="SELECT [id], [VersionNo] FROM [SystemVersion] WHERE ([ProjectId] = @ProjectId) ORDER BY [VersionNo] DESC">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
                             PropertyName="SelectedValue" Type="Int32" />
@@ -171,10 +217,9 @@
                 <asp:SqlDataSource ID="sqldsProcesses" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [Processes] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [Processes] ([Datestamp], [SystemVersionId], [Code], [Description], [Status], [StatusDate], [Responsible], [Comments]) VALUES (@Datestamp, @SystemVersionId, @Code, @Description, @Status, @StatusDate, @Responsible, @Comments)" 
+                    InsertCommand="INSERT INTO [Processes] ([SystemVersionId], [Code], [Description], [Status], [StatusDate], [Responsible], [Comments]) VALUES (@SystemVersionId, @Code, @Description, @Status, @StatusDate, @Responsible, @Comments)" 
                     SelectCommand="SELECT [id], [Datestamp], [SystemVersionId], [Code], [Description], [Status], [StatusDate], [Responsible], [Comments] FROM [Processes] WHERE ([SystemVersionId] = @SystemVersionId) ORDER BY [Code]" 
-                    
-                    UpdateCommand="UPDATE [Processes] SET [Datestamp] = @Datestamp, [SystemVersionId] = @SystemVersionId, [Code] = @Code, [Description] = @Description, [Status] = @Status, [StatusDate] = @StatusDate, [Responsible] = @Responsible, [Comments] = @Comments WHERE [id] = @id">
+                    UpdateCommand="UPDATE [Processes] SET [SystemVersionId] = @SystemVersionId, [Code] = @Code, [Description] = @Description, [Status] = @Status, [StatusDate] = @StatusDate, [Responsible] = @Responsible, [Comments] = @Comments WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlSysVersions" Name="SystemVersionId" 
                             PropertyName="SelectedValue" Type="Int16" />
@@ -183,30 +228,27 @@
                         <asp:Parameter Name="id" Type="Int32" />
                     </DeleteParameters>
                     <UpdateParameters>
-                        <asp:Parameter DbType="Date" Name="Datestamp" />
                         <asp:Parameter Name="SystemVersionId" Type="Int16" />
                         <asp:Parameter Name="Code" Type="String" />
                         <asp:Parameter Name="Description" Type="String" />
                         <asp:Parameter Name="Status" Type="Int32" />
-                        <asp:Parameter Name="StatusDate" DbType="Date" />
+                        <asp:Parameter Name="StatusDate" DbType="DateTime" />
                         <asp:Parameter Name="Responsible" Type="Int32" />
-                        <asp:Parameter Name="Comments" Type="String" />
+                        <asp:Parameter Name="Comments" Type="String" DefaultValue=" " />
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
                     <InsertParameters>
-                        <asp:Parameter DbType="Date" Name="Datestamp" />
                         <asp:Parameter Name="SystemVersionId" Type="Int16" />
                         <asp:Parameter Name="Code" Type="String" />
                         <asp:Parameter Name="Description" Type="String" />
                         <asp:Parameter Name="Status" Type="Int32" />
-                        <asp:Parameter Name="StatusDate" DbType="Date" />
+                        <asp:Parameter Name="StatusDate" DbType="DateTime" />
                         <asp:Parameter Name="Responsible" Type="Int32" />
-                        <asp:Parameter Name="Comments" Type="String" />
+                        <asp:Parameter Name="Comments" Type="String" DefaultValue=" " />
                     </InsertParameters>
                 </asp:SqlDataSource>
             </td>
-            <td>
-                &nbsp;</td>
+            <td>&nbsp;</td>
         </tr>
         <tr>
             <td>
@@ -218,7 +260,14 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
-            <td></td>
+            <td><asp:SqlDataSource ID="sqldsResponsibles" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                    SelectCommand="GetResponsible" SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
+                            PropertyName="SelectedValue" Type="Int16" />
+                    </SelectParameters>
+                </asp:SqlDataSource></td>
             <td></td>
             <td></td>
         </tr>
