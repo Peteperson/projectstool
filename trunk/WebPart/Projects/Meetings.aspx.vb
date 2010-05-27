@@ -64,15 +64,13 @@ Partial Class Meetings
 
     Protected Sub gvMeetings_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvMeetings.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
-            If e.Row.RowState = DataControlRowState.Normal Or e.Row.RowState = DataControlRowState.Alternate Or e.Row.RowState = DataControlRowState.Selected Then
-                FormatDateCell("Date", 4, e)
-                If CType(e.Row.FindControl("btnDown"), ImageButton).ToolTip = "" Then
-                    CType(e.Row.FindControl("btnDown"), ImageButton).Visible = False
-                End If
-                If Not Session("MeetingId") Is Nothing AndAlso Session("MeetingId") > -1 Then
-                    If CType(e.Row.DataItem, Data.DataRowView).Item("id") = Session("MeetingId") Then
-                        gvMeetings.SelectedIndex = e.Row.RowIndex
-                    End If
+            FormatDateCell("Date", 4, e)
+            If CType(e.Row.FindControl("btnDown"), ImageButton).ToolTip = "" Then
+                CType(e.Row.FindControl("btnDown"), ImageButton).Visible = False
+            End If
+            If Not Session("MeetingId") Is Nothing AndAlso Session("MeetingId") > -1 Then
+                If CType(e.Row.DataItem, Data.DataRowView).Item("id") = Session("MeetingId") Then
+                    gvMeetings.SelectedIndex = e.Row.RowIndex
                 End If
             End If
         End If

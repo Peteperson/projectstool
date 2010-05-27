@@ -25,7 +25,7 @@
                         <td>Exclude status:</td>
                         <td><asp:RadioButtonList ID="rblStatus" runat="server" RepeatDirection="Horizontal" 
                                 DataSourceID="sqldsMeetStat" DataTextField="Description" 
-                                DataValueField="id">
+                                DataValueField="id" AutoPostBack="True">
                             </asp:RadioButtonList>
                         </td>
                         <td><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
