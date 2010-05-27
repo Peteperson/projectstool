@@ -237,6 +237,15 @@
                                 <asp:TextBox SkinID="txtDef" MaxLength="50" ID="txt2Email" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="IsUser" SortExpression="IsUser">
+                            <ItemTemplate>
+                                <asp:CheckBox ID="CheckBox2" runat="server" Checked='<%# Bind("IsUser") %>' 
+                                    Enabled="false" />
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:CheckBox ID="CheckBox2" runat="server" Checked='<%# Bind("IsUser") %>' />
+                            </EditItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </td>
@@ -272,7 +281,7 @@
                 <asp:SqlDataSource ID="sqldsCompEmployees" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     
-                    SelectCommand="SELECT * FROM [Users] WHERE ([Company] = @CompanyId AND [IsUser] = 0) ORDER BY [LastName], [FirstName]" 
+                    SelectCommand="SELECT * FROM [Users] WHERE [Company] = @CompanyId ORDER BY [LastName], [FirstName]" 
                     DeleteCommand="DELETE FROM [Users] WHERE [Id] = @Id" 
                     InsertCommand="INSERT INTO [Users] ([UserName], [UserType], [Company], [Position], [LastName], [FirstName], [Telephone], [Mobile], [Email], [DefaultPage], [IsUser]) VALUES (@UserName, 41, @CompanyId, @Position, @LastName, @FirstName, @Telephone, @Mobile, @Email, 18, 0)" 
                     UpdateCommand="UPDATE [Users] SET [UserName] = @UserName, [LastName] = @LastName, [FirstName] = @FirstName, [Position] = @Position, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email WHERE [Id] = @Id">
@@ -292,6 +301,7 @@
                         <asp:Parameter Name="Mobile" Type="String" DefaultValue=" " />
                         <asp:Parameter Name="Email" Type="String" DefaultValue=" " />
                         <asp:Parameter Name="Id" Type="Int32" />
+                        <asp:Parameter Name="IsUser" Type="Boolean" />
                     </UpdateParameters>
                     <InsertParameters>
                         <asp:Parameter Name="UserName" Type="String" />

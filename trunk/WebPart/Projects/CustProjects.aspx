@@ -68,8 +68,6 @@
                                 <Columns>
                                     <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
                                         SortExpression="A/A" />
-                                    <asp:BoundField DataField="ActionType" HeaderText="ActionType" 
-                                        SortExpression="ActionType" />
                                     <asp:BoundField DataField="Responsible1" HeaderText="Responsible1" 
                                         ReadOnly="True" SortExpression="Responsible1" />
                                     <asp:BoundField DataField="Responsible2" HeaderText="Responsible2" 
