@@ -31,14 +31,10 @@ Public Module Support
     'End Function
 
     Public Sub FormatDateCell(ByVal FieldName As String, ByVal idx As Byte, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs)
-        If e.Row.RowType = DataControlRowType.DataRow Then
-            If e.Row.RowState = DataControlRowState.Normal Or e.Row.RowState = DataControlRowState.Alternate Then
-                Dim drv As System.Data.DataRowView = e.Row.DataItem
-                Dim dt As DateTime = drv.Item(FieldName)
-                If dt <= Today Then e.Row.Cells(idx).CssClass = "RedDate"
-                If dt.Date = Today Then e.Row.Cells(idx).CssClass = "BoldDate"
-            End If
-        End If
+        Dim drv As System.Data.DataRowView = e.Row.DataItem
+        Dim dt As DateTime = drv.Item(FieldName)
+        If dt <= Today Then e.Row.Cells(idx).CssClass = "RedDate"
+        If dt.Date = Today Then e.Row.Cells(idx).CssClass = "BoldDate"
     End Sub
 End Module
 
