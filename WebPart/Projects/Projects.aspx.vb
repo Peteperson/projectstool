@@ -110,6 +110,10 @@ Partial Class Projects
         End If
     End Sub
 
+    Protected Sub sqldsProjects_Deleted(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsProjects.Deleted
+        Response.Redirect("~/Projects.aspx")
+    End Sub
+
     Protected Sub sqldsProjects_Inserted(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsProjects.Inserted
         ddlPrjCode.DataBind()
         SetDdlValue(e.Command.Parameters("@SubProject").Value)
