@@ -115,7 +115,7 @@
                                     <tr>
                                         <td><asp:TextBox ID="txtHeadLstFilter" SkinID="txtFilterSmall" runat="server"></asp:TextBox></td>
                                         <td><asp:ImageButton ID="btnFilterLstName" runat="server" CausesValidation="False" 
-                                                CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Filter data" /></td>                                        
+                                                CommandName="FilterLN" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Filter data" /></td>                                        
                                     </tr>
                                 </table>
                             </HeaderTemplate>                        
@@ -252,6 +252,7 @@
         </InsertParameters>
         <SelectParameters>
             <asp:ControlParameter ControlID="txtUNameFilter" Name="UserName" PropertyName="Text" Type="String" />
+            <asp:ControlParameter ControlID="txtLastNameFilter" Name="LastName" PropertyName="Text" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
                 </td>

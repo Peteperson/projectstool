@@ -7,6 +7,7 @@ Partial Class Users
 
     Protected Sub gvUsers_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvUsers.DataBound
         CType(gvUsers.HeaderRow.FindControl("txtHeadUsrFilter"), TextBox).Text = txtUNameFilter.Text
+        CType(gvUsers.HeaderRow.FindControl("txtHeadLstFilter"), TextBox).Text = txtLastNameFilter.Text
     End Sub
     Protected Sub gvUsers_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvUsers.RowCommand
         Select Case e.CommandName
@@ -14,6 +15,8 @@ Partial Class Users
                 sqldsUsers.Insert()
             Case "Filter"
                 txtUNameFilter.Text = CType(gvUsers.HeaderRow.FindControl("txtHeadUsrFilter"), TextBox).Text
+            Case "FilterLN"
+                txtLastNameFilter.Text = CType(gvUsers.HeaderRow.FindControl("txtHeadLstFilter"), TextBox).Text
             Case "ResetPass"
                 UsrId = e.CommandArgument
                 sqldsUserTypes.Update()
@@ -45,6 +48,7 @@ Partial Class Users
 
     Protected Sub sqldsUsers_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsUsers.Selecting
         If txtUNameFilter.Text = "" Then e.Command.Parameters("@UserName").Value = System.DBNull.Value
+        If txtLastNameFilter.Text = "" Then e.Command.Parameters("@LastName").Value = System.DBNull.Value
     End Sub
 
     Protected Sub sqldsUserTypes_Updated(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsUserTypes.Updated
