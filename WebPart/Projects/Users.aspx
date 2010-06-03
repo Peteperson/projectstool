@@ -8,8 +8,10 @@
             <td class="title">Manage Users</td>
         </tr>
         <tr>
-            <td><asp:TextBox ID="txtUNameFilter" runat="server" SkinID="txtTextCenter" 
-                    Visible="False"></asp:TextBox></td>
+            <td>
+                <asp:TextBox ID="txtUNameFilter" runat="server" Visible="False"></asp:TextBox>
+                <asp:TextBox ID="txtLastNameFilter" runat="server" Visible="False"></asp:TextBox>
+            </td>
         </tr>
         <tr>
             <td>
@@ -40,7 +42,7 @@
                             <HeaderTemplate>
                                 <table>
                                     <tr>
-                                        <td colspan="2" align="center">Username</td>
+                                        <td colspan="2" align="center"> <asp:LinkButton ID="lnkUsername" runat="server" CommandName="Sort" CommandArgument="UserName" >Username</asp:LinkButton></td>
                                     </tr>
                                     <tr>
                                         <td><asp:TextBox ID="txtHeadUsrFilter" SkinID="txtFilterSmall" runat="server"></asp:TextBox></td>
@@ -103,7 +105,20 @@
                                 </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Last Name<br>First Name" SortExpression="LastName">
+                        <asp:TemplateField>
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <HeaderTemplate>
+                                <table>
+                                    <tr>
+                                        <td colspan="2" align="center"><asp:LinkButton ID="lnkLastname" runat="server" CommandName="Sort" CommandArgument="LastName" >Fullname</asp:LinkButton></td>
+                                    </tr>
+                                    <tr>
+                                        <td><asp:TextBox ID="txtHeadLstFilter" SkinID="txtFilterSmall" runat="server"></asp:TextBox></td>
+                                        <td><asp:ImageButton ID="btnFilterLstName" runat="server" CausesValidation="False" 
+                                                CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Filter data" /></td>                                        
+                                    </tr>
+                                </table>
+                            </HeaderTemplate>                        
                             <ItemTemplate>
                                 <asp:Label ID="Label5" runat="server" Text='<%# Bind("LastName") %>'></asp:Label><br />
                                 <asp:Label ID="Label4" runat="server" Text='<%# Bind("FirstName") %>'></asp:Label>
@@ -170,7 +185,7 @@
                                 <asp:Label ID="Label9" runat="server" Text='<%# Bind("LastLogin", "{0:dd/MM/yyyy HH:mm:ss}") %>'></asp:Label>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="IsUser" SortExpression="IsUser">
+                        <asp:TemplateField HeaderText="User" SortExpression="IsUser">
                             <ItemTemplate>
                                 <asp:CheckBox ID="CheckBox2" runat="server" Checked='<%# Bind("IsUser") %>' 
                                     Enabled="false" />
@@ -181,6 +196,13 @@
                             <FooterTemplate>
                                 <asp:CheckBox ID="chkIsUser" runat="server" Checked="true" />
                             </FooterTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:ImageButton ID="btnResetPass" runat="server" CommandName="ResetPass" CausesValidation="False" 
+                                    ImageUrl="~/Images/Icons/Update2_22x22.png" CommandArgument='<%# Bind("Id") %>' 
+                                    ToolTip="Reset password" />
+                            </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
@@ -194,7 +216,7 @@
         ConnectionString="<%$ ConnectionStrings:cnMain %>" 
         DeleteCommand="DELETE FROM [Users] WHERE [id] = @id" 
         InsertCommand="INSERT INTO [Users] ([UserName], [Password], [UserType], [Company], [Position], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsUser]) VALUES (@UserName, @Password, @UserType, @Company, @Position, @FirstName, @LastName, @Telephone, @Mobile, @Email, @DefaultPage, @IsUser)" 
-        SelectCommand="SELECT [id], [UserName], [UserType], [Company], [Position], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsActive], [LastLogin], [IsUser] FROM [Users] WHERE UserName LIKE ('%'+ IsNull(@UserName, '') +'%')" 
+        SelectCommand="SELECT [id], [UserName], [UserType], [Company], [Position], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsActive], [LastLogin], [IsUser] FROM [Users] WHERE LastName LIKE ('%'+ IsNull(@LastName, '') +'%') AND UserName LIKE ('%'+ IsNull(@UserName, '') +'%')" 
         UpdateCommand="UPDATE [Users] SET [UserName] = @UserName, [UserType] = @UserType, [Company] = @Company, [Position] = @Position, [FirstName] = @FirstName, [LastName] = @LastName, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email, [DefaultPage] = @DefaultPage, [IsActive] = @IsActive, [IsUser] = @IsUser WHERE [id] = @id">
         <DeleteParameters>
             <asp:Parameter Name="id" Type="Int32" />
@@ -236,10 +258,15 @@
                 <td>
     <asp:SqlDataSource ID="sqldsUserTypes" runat="server" 
         ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-        SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category)">
+        SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category)"
+        UpdateCommand="UPDATE [Users] SET [Password] = @Password WHERE [id] = @id" >
         <SelectParameters>
             <asp:Parameter DefaultValue="UserType" Name="Category" Type="String" />
         </SelectParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="Password" />
+            <asp:Parameter Name="id" Type="Int32" />
+        </UpdateParameters>
     </asp:SqlDataSource>
                 </td>
                 <td>

@@ -258,7 +258,7 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [Companies] WHERE [Id] = @Id" 
                     InsertCommand="INSERT INTO [Companies] ([Name], [Description]) VALUES (@Name, @Description)" 
-                    SelectCommand="SELECT [Id], [Datestamp], [Name], [Description] FROM [Companies] WHERE [Name] LIKE ('%' + IsNull(@CompName, '') + '%') ORDER BY Name " 
+                    SelectCommand="SELECT [Id], [Datestamp], [Name], [Description] FROM [Companies] WHERE [Name] LIKE ('%' + IsNull(@CompName, '') + '%') ORDER BY Name  " 
                     UpdateCommand="UPDATE [Companies] SET [Name] = @Name, [Description] = @Description WHERE [Id] = @Id">
                     <DeleteParameters>
                         <asp:Parameter Name="Id" Type="Int32" />

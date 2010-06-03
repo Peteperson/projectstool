@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/Main.master" AutoEventWireup="false" CodeFile="SystemDesign.aspx.vb" Inherits="SystemDesign" title="Untitled Page" Theme="MainSkin" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Main.master" AutoEventWireup="false" CodeFile="SystemDesign.aspx.vb" Inherits="SystemDesign" Theme="MainSkin" %>
 <%@ Register src="DateBox.ascx" tagname="DateBox" tagprefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
@@ -147,7 +147,9 @@
                         <asp:TemplateField HeaderText="StatusDate" SortExpression="StatusDate">
                             <ItemStyle Width="100px" />
                             <EditItemTemplate>
-                                <uc1:DateBox ID="dbStatDate" runat="server" Value='<%# Bind("StatusDate") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' />
+                                <!--<uc1:DateBox ID="dbStatDate" runat="server" Value='<%# Bind("StatusDate") %>' />-->
+                                <asp:Label ID="Label11" runat="server" 
+                                    Text='<%# Bind("StatusDate", "{0:dd/MM/yyyy}") %>'></asp:Label>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label4" runat="server" 
