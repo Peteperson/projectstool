@@ -3,6 +3,7 @@ Partial Class Users
     Inherits System.Web.UI.Page
 
     Private Password As String
+    Private UsrId As Integer
 
     Protected Sub gvUsers_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvUsers.DataBound
         CType(gvUsers.HeaderRow.FindControl("txtHeadUsrFilter"), TextBox).Text = txtUNameFilter.Text
@@ -13,6 +14,9 @@ Partial Class Users
                 sqldsUsers.Insert()
             Case "Filter"
                 txtUNameFilter.Text = CType(gvUsers.HeaderRow.FindControl("txtHeadUsrFilter"), TextBox).Text
+            Case "ResetPass"
+                UsrId = e.CommandArgument
+                sqldsUserTypes.Update()
         End Select
     End Sub
 
@@ -41,5 +45,19 @@ Partial Class Users
 
     Protected Sub sqldsUsers_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsUsers.Selecting
         If txtUNameFilter.Text = "" Then e.Command.Parameters("@UserName").Value = System.DBNull.Value
+    End Sub
+
+    Protected Sub sqldsUserTypes_Updated(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsUserTypes.Updated
+        With CType(Master.FindControl("lblMessage"), Label)
+            .Visible = True
+            .Text = "New user's password: " & Password
+        End With
+        gvUsers.DataBind()
+    End Sub
+
+    Protected Sub sqldsUserTypes_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsUserTypes.Updating
+        Password = SecCrypto.GeneratePassword(8)
+        e.Command.Parameters("@Password").Value = SecCrypto.Hash(Password)
+        e.Command.Parameters("@Id").Value = UsrId
     End Sub
 End Class
