@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
+    <asp:Panel runat="server" ID="pnl1" DefaultButton="btnFilterQ" >
     <table id="subPageMainTable">
         <tr>
             <td class="title">Manage companies</td>
@@ -96,7 +97,15 @@
             </td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <td align="center">
+                <asp:Button ID="btnClearFilter" runat="server" Text="Clear filtering" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Button ID="btnFilterQ" runat="server" Text="Button" 
+                    style="visibility:hidden" Height="16px" />
+            </td>
         </tr>
         <tr>
             <td>&nbsp;</td>
@@ -344,5 +353,6 @@
             <td></td>
         </tr>
     </table>
+    </asp:Panel>
 </asp:Content>
 

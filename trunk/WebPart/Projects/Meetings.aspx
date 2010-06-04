@@ -22,7 +22,7 @@
             <td align="center">
                 <table style="border: solid 1px white">
                     <tr>
-                        <td>Exclude status:</td>
+                        <td>Show status:</td>
                         <td><asp:RadioButtonList ID="rblStatus" runat="server" RepeatDirection="Horizontal" 
                                 DataSourceID="sqldsMeetStat" DataTextField="Description" 
                                 DataValueField="id" AutoPostBack="True">

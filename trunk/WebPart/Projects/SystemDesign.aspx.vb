@@ -35,6 +35,11 @@ Partial Class SystemDesign
 
     Protected Sub sqldsProcesses_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsProcesses.Updating
         e.Command.Parameters("@SystemVersionId").Value = ddlSysVersions.SelectedValue
+        If StatusChanged Then e.Command.Parameters("@StatusDate").Value = Now
+    End Sub
+
+    Protected Sub gvProcesses_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvProcesses.DataBound
+        If Not gvProcesses.Rows.Count > 0 Then btnAddVersion.Enabled = False
     End Sub
 
     Protected Sub gvProcesses_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvProcesses.RowCommand
@@ -71,5 +76,19 @@ Partial Class SystemDesign
 
     Protected Sub ddlSysVersions_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlSysVersions.DataBound
         gvProcesses.DataBind()
+    End Sub
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        btnAddVersion.Attributes("onclick") = "if(!confirm('Add new version?'))return   false;"
+    End Sub
+
+    Private StatusChanged As Boolean
+    Protected Sub gvProcesses_RowUpdating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewUpdateEventArgs) Handles gvProcesses.RowUpdating
+        If e.OldValues("Status") <> e.NewValues("Status") Then StatusChanged = True Else StatusChanged = False
+    End Sub
+
+    Protected Sub btnAddVersion_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnAddVersion.Click
+        sqldsSysVersions.Update()
+        ddlSysVersions.DataBind()
     End Sub
 End Class

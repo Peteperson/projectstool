@@ -290,3 +290,14 @@ a:hover {
 	border: solid 1px white;
 	width:100%;
 }
+
+#dvPleaseWait {
+    position:absolute; 
+    width:99%; 
+    height:99%;
+    background: url(Images/TransparentBack.png);
+    background-repeat: repeat;
+    color: Black;
+    font-weight: bold;
+    display:none;
+}

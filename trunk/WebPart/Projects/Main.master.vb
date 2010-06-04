@@ -2,6 +2,7 @@
     Inherits System.Web.UI.MasterPage
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        form1.Attributes.Add("onsubmit", "ShowPleaseWait()")
         Dim CurrPage As String = Request.AppRelativeCurrentExecutionFilePath.ToLower
         Dim Authorized As Boolean = False
         If Session("UserId") Is Nothing Then

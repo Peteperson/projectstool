@@ -98,4 +98,12 @@ Partial Class Companies
             If Request.Params("Company") <> "" Then txtNameFilter.Text = Request.Params("Company")
         End If
     End Sub
+
+    Protected Sub btnFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnFilterQ.Click
+        txtNameFilter.Text = CType(gvCompanies.HeaderRow.FindControl("txtHeadNameFilter"), TextBox).Text
+    End Sub
+
+    Protected Sub btnClearFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClearFilter.Click
+        txtNameFilter.Text = ""
+    End Sub
 End Class
