@@ -21,7 +21,7 @@
             <td align="center">
                 <table style="border: solid 1px white">
                     <tr>
-                        <td align="center">Exclude status:</td>
+                        <td align="center">Show status:</td>
                     </tr>
                     <tr>
                         <td>

@@ -21,7 +21,7 @@
                         <tr style="background-color:#dddddd">
                             <td align="right">Old password:</td>
                             <td>
-                                <asp:TextBox ID="txtOldPass" runat="server" TextMode="Password"></asp:TextBox>
+                                <asp:TextBox ID="txtOldPass" runat="server" TextMode="Password" AutoCompleteType="None" ></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                                     ControlToValidate="txtOldPass" ErrorMessage="*" ValidationGroup="CngPass"></asp:RequiredFieldValidator>
                             </td>

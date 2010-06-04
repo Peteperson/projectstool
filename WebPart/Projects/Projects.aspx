@@ -12,12 +12,12 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="centered" style="padding-bottom:5px">Select a subproject from the list:
+            <td class="centered" style="padding-bottom:5px"><asp:Panel runat="server" ID="pnl1" DefaultButton="btnFindPrj">Select a subproject from the list:
                 <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
                     DataTextField="SubProject" DataValueField="id" AutoPostBack="True">
                 </asp:DropDownList>&nbsp;or write its subproject id and press &quot;Find&quot;
                 <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
-                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" />
+                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" /></asp:Panel> 
             </td>
         </tr>
         <tr>

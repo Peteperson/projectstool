@@ -13,12 +13,12 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="centered" style="padding-bottom:5px">Select a subproject from the list:
+            <td class="centered" style="padding-bottom:5px"> <asp:Panel ID="pnl1" runat="server" DefaultButton="btnFindPrj">Select a subproject from the list:
                 <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
                     DataTextField="SubProject" DataValueField="id" AutoPostBack="True">
                 </asp:DropDownList>&nbsp;or write its subproject id and press &quot;Find&quot;
                 <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
-                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" />
+                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" /></asp:Panel> 
             </td>
         </tr>
         <tr>
@@ -29,7 +29,7 @@
                             <asp:DropDownList ID="ddlSysVersions" runat="server" 
                                 DataSourceID="sqldsSysVersions" DataTextField="VersionNo" 
                                 DataValueField="id" AutoPostBack="True">
-                            </asp:DropDownList>
+                            </asp:DropDownList>&nbsp;-&nbsp;<asp:Button ID="btnAddVersion" runat="server" Text="Add new version" />
                         </td>
                     </tr>
                     <tr>                       
@@ -73,7 +73,7 @@
                                 <td><asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
                                         selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList></td>
-                                <td><uc1:DateBox ID="dbStatDate" runat="server" Value='<%# Bind("StatusDate") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' /></td>
+                                <td><!--<uc1:DateBox ID="dbStatDate" runat="server" Value='<%# Bind("StatusDate") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' />--></td>
                                 <td><asp:DropDownList ID="ddlResp" runat="server" DataSourceID="sqldsResponsibles" 
                                         DataTextField="FullName" DataValueField="id">
                                     </asp:DropDownList></td>
@@ -85,7 +85,7 @@
                         <asp:TemplateField ShowHeader="False">
                             <ItemStyle Wrap="false" />
                             <ItemTemplate>                
-                                <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
+                                <asp:ImageButton ID="ImageButton1" runat="server" 
                                     CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" /> &nbsp;
                                 <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False"
                                     CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />
@@ -105,7 +105,7 @@
                         <asp:TemplateField HeaderText="Code" SortExpression="Code">
                             <ItemStyle Width="50px" Wrap="false" />
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox1" SkinID="txtText" runat="server" Text='<%# Bind("Code") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBox1" SkinID="txtText93" runat="server" Text='<%# Bind("Code") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("Code") %>'></asp:Label>
@@ -115,8 +115,9 @@
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Description" SortExpression="Description">
+                            <ItemStyle HorizontalAlign="Center" />
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox2" SkinID="txtText" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBox2" SkinID="txtDef" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
@@ -156,7 +157,7 @@
                                     Text='<%# Bind("StatusDate", "{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <uc1:DateBox ID="dbStatDate" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>' />
+                                <!--<uc1:DateBox ID="dbStatDate" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>' />-->
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Responsible" SortExpression="Responsible">
@@ -208,11 +209,15 @@
             <td>
                 <asp:SqlDataSource ID="sqldsSysVersions" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="SELECT [id], [VersionNo] FROM [SystemVersion] WHERE ([ProjectId] = @ProjectId) ORDER BY [VersionNo] DESC">
+                    
+                    SelectCommand="SELECT [id], [VersionNo] FROM [SystemVersion] WHERE ([ProjectId] = @ProjectId) ORDER BY [VersionNo] DESC" 
+                    UpdateCommand="InsertVersion" UpdateCommandType="StoredProcedure">
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
-                            PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" PropertyName="SelectedValue" Type="Int32" />
                     </SelectParameters>
+                    <UpdateParameters>
+                        <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" PropertyName="SelectedValue" Type="Int32" />
+                    </UpdateParameters>
                 </asp:SqlDataSource>
             </td>
             <td>
