@@ -27,4 +27,8 @@ Partial Class ChangePass
             .Text = msg
         End With
     End Sub
+
+    Protected Sub pnl1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles pnl1.Load
+        txtOldPass.Text = ""
+    End Sub
 End Class
