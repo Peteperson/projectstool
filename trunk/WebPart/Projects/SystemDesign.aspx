@@ -36,7 +36,7 @@
                         <td align="center" style="vertical-align:top">
                             &nbsp;</td>
                     </tr>
-                </table>
+                </table>                
             </td>
         </tr>
         <tr>
@@ -44,7 +44,7 @@
                 &nbsp;</td>
         </tr>
         <tr class="title">
-            <td>Processes</td>
+            <td>Processes - <asp:Label ID="lblCompany" runat="server"></asp:Label></td>
         </tr>
         <tr>
             <td>
@@ -73,7 +73,7 @@
                                 <td><asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
                                         selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList></td>
-                                <td><!--<uc1:DateBox ID="dbStatDate" runat="server" Value='<%# Bind("StatusDate") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' />--></td>
+                                <td><uc1:DateBox ID="dbStatDate" runat="server" Value='<%# Bind("StatusDate") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' /></td>
                                 <td><asp:DropDownList ID="ddlResp" runat="server" DataSourceID="sqldsResponsibles" 
                                         DataTextField="FullName" DataValueField="id">
                                     </asp:DropDownList></td>
@@ -157,7 +157,7 @@
                                     Text='<%# Bind("StatusDate", "{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <!--<uc1:DateBox ID="dbStatDate" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>' />-->
+                                <uc1:DateBox ID="dbStatDate" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>' />
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Responsible" SortExpression="Responsible">

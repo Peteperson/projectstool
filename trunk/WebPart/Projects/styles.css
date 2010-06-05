@@ -294,7 +294,7 @@ a:hover {
 #dvPleaseWait {
     position:absolute; 
     width:99%; 
-    height:99%;
+    height:1200px;
     background: url(Images/TransparentBack.png);
     background-repeat: repeat;
     color: Black;

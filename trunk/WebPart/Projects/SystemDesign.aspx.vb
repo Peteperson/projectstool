@@ -19,7 +19,7 @@ Partial Class SystemDesign
             e.Command.Parameters("@Code").Value = CType(gvProcesses.FooterRow.FindControl("txtCode"), TextBox).Text
             e.Command.Parameters("@Description").Value = CType(gvProcesses.FooterRow.FindControl("txtDescr"), TextBox).Text
             e.Command.Parameters("@Status").Value = CType(gvProcesses.FooterRow.FindControl("ddlProcStat"), DropDownList).SelectedValue
-            e.Command.Parameters("@StatusDate").Value = Today
+            e.Command.Parameters("@StatusDate").Value = CType(gvProcesses.FooterRow.FindControl("dbStatDate"), DateBox).Value
             e.Command.Parameters("@Responsible").Value = CType(gvProcesses.FooterRow.FindControl("ddlResp"), DropDownList).SelectedValue
             e.Command.Parameters("@Comments").Value = CType(gvProcesses.FooterRow.FindControl("txtComm"), TextBox).Text
         Else
@@ -27,7 +27,7 @@ Partial Class SystemDesign
             e.Command.Parameters("@Code").Value = CType(gvProcesses.Controls(0).Controls(0).Controls(0).FindControl("txtCode"), TextBox).Text
             e.Command.Parameters("@Description").Value = CType(gvProcesses.Controls(0).Controls(0).Controls(0).FindControl("txtDescr"), TextBox).Text
             e.Command.Parameters("@Status").Value = CType(gvProcesses.Controls(0).Controls(0).Controls(0).FindControl("ddlProcStat"), DropDownList).SelectedValue
-            e.Command.Parameters("@StatusDate").Value = Today
+            e.Command.Parameters("@StatusDate").Value = CType(gvProcesses.Controls(0).Controls(0).Controls(0).FindControl("dbStatDate"), DateBox).Value
             e.Command.Parameters("@Responsible").Value = CType(gvProcesses.Controls(0).Controls(0).Controls(0).FindControl("ddlResp"), DropDownList).SelectedValue
             e.Command.Parameters("@Comments").Value = CType(gvProcesses.Controls(0).Controls(0).Controls(0).FindControl("txtComm"), TextBox).Text
         End If
@@ -39,7 +39,7 @@ Partial Class SystemDesign
     End Sub
 
     Protected Sub gvProcesses_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvProcesses.DataBound
-        If Not gvProcesses.Rows.Count > 0 Then btnAddVersion.Enabled = False
+        If Not gvProcesses.Rows.Count > 0 Then btnAddVersion.Enabled = False Else btnAddVersion.Enabled = True
     End Sub
 
     Protected Sub gvProcesses_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvProcesses.RowCommand

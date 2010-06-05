@@ -64,8 +64,8 @@
 <asp:TextBox SkinId="txtDef" Width="90%" runat="server" Font-Names="Tahoma, Calibri, Verdana" ></asp:TextBox>
 <asp:TextBox SkinId="txtReqFld" Width="85%" runat="server" Font-Names="Tahoma, Calibri, Verdana" ></asp:TextBox>
 <asp:TextBox skinid="txtTime" width="40px" Font-Names="Tahoma, Calibri, Verdana" style="text-align:center" runat="server"></asp:TextBox>
-<asp:TextBox skinid="txtFilter" width="80px" height="12px" Font-Names="Tahoma, Calibri, Verdana" style="text-align:left; background: #CCCCCC; border: solid 1px white" runat="server"></asp:TextBox>
-<asp:TextBox skinid="txtFilterSmall" width="40px" height="12px" Font-Names="Tahoma, Calibri, Verdana" style="text-align:left; background: #CCCCCC; border: solid 1px white" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtFilter" width="80px" height="17px" Font-Names="Tahoma, Calibri, Verdana" style="text-align:left; background: #CCCCCC; border: solid 1px white" runat="server"></asp:TextBox>
+<asp:TextBox skinid="txtFilterSmall" width="40px" height="17px" Font-Names="Tahoma, Calibri, Verdana" style="text-align:left; background: #CCCCCC; border: solid 1px white" runat="server"></asp:TextBox>
 <asp:TextBox skinid="txtDecimal" width="50px" Font-Names="Tahoma, Calibri, Verdana" style="text-align:right" runat="server"></asp:TextBox>
 <asp:TextBox skinid="txtText" width="97%" Font-Names="Tahoma, Calibri, Verdana" runat="server"></asp:TextBox>
 <asp:TextBox skinid="txtText93" width="93%" Font-Names="Tahoma, Calibri, Verdana" runat="server"></asp:TextBox>
