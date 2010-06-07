@@ -23,7 +23,7 @@
                 Session.Add("UserName", lr.UserName)
                 Session.Add("UserType", lr.UserType)
                 e.Authenticated = True
-                Response.Redirect(lr.DefPage) 'FormsAuthentication.GetRedirectUrl(username, False)
+                Response.Redirect(IIf(lr.DefPage = "---", "~/MainPanel.aspx", lr.DefPage)) 'FormsAuthentication.GetRedirectUrl(username, False)
             Case LoginResultStatus.InvalidCredentials
                 ctrlLogin.FailureText = "Invalid Credentials"
                 'Case LoginResultStatus.LockedUser, LoginResultStatus.AlreadyLoggedIn

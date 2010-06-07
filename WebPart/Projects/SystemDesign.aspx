@@ -24,24 +24,30 @@
         <tr>
             <td>
                 <table style="width:100%">
-                    <tr class="centered">
-                        <td>Available versions:
-                            <asp:DropDownList ID="ddlSysVersions" runat="server" 
-                                DataSourceID="sqldsSysVersions" DataTextField="VersionNo" 
-                                DataValueField="id" AutoPostBack="True">
-                            </asp:DropDownList>&nbsp;-&nbsp;<asp:Button ID="btnAddVersion" runat="server" Text="Add new version" />
+                    <tr>
+                        <td align="center">
+                            <table>
+                                <tr>
+                                    <td>Available versions:&nbsp;</td>
+                                    <td><asp:DropDownList ID="ddlSysVersions" runat="server" 
+                                        DataSourceID="sqldsSysVersions" DataTextField="VersionNo" 
+                                        DataValueField="id" AutoPostBack="True">
+                                    </asp:DropDownList></td>
+                                    <td> - Version actions:&nbsp;</td>
+                                    <td><asp:ImageButton ID="btnAddVersion" runat="server" ImageUrl="~/Images/Icons/add_24x24.png" ToolTip="Add new version" /></td>
+                                    <td><asp:ImageButton ID="btnDelVersion" runat="server" ImageUrl="~/Images/Icons/Delete_24x24.png" ToolTip="Delete current version" /></td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                     <tr>                       
-                        <td align="center" style="vertical-align:top">
-                            &nbsp;</td>
+                        <td align="center">&nbsp;</td>
                     </tr>
                 </table>                
             </td>
         </tr>
         <tr>
-            <td>
-                &nbsp;</td>
+            <td>&nbsp;</td>
         </tr>
         <tr class="title">
             <td>Processes - <asp:Label ID="lblCompany" runat="server"></asp:Label></td>
@@ -209,15 +215,18 @@
             <td>
                 <asp:SqlDataSource ID="sqldsSysVersions" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    
                     SelectCommand="SELECT [id], [VersionNo] FROM [SystemVersion] WHERE ([ProjectId] = @ProjectId) ORDER BY [VersionNo] DESC" 
-                    UpdateCommand="InsertVersion" UpdateCommandType="StoredProcedure">
+                    InsertCommand="InsertVersion" InsertCommandType="StoredProcedure"
+                    DeleteCommand="DeleteVersion" DeleteCommandType="StoredProcedure">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" PropertyName="SelectedValue" Type="Int32" />
                     </SelectParameters>
-                    <UpdateParameters>
-                        <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" PropertyName="SelectedValue" Type="Int32" />
-                    </UpdateParameters>
+                    <InsertParameters>
+                        <asp:ControlParameter ControlID="ddlSysVersions" Name="VersionId" PropertyName="SelectedValue" Type="Int32" />
+                    </InsertParameters>
+                    <DeleteParameters>
+                        <asp:ControlParameter ControlID="ddlSysVersions" Name="VersionId" PropertyName="SelectedValue" Type="Int32" />
+                    </DeleteParameters>
                 </asp:SqlDataSource>
             </td>
             <td>

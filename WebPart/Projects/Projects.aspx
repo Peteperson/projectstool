@@ -293,7 +293,7 @@
                                         </EditItemTemplate>
                                         <InsertItemTemplate>
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                                                CommandName="Insert" ImageUrl="~/Images/Icons/add24_24.png" ToolTip="Insert" ValidationGroup="InsGroup" />
+                                                CommandName="Insert" ImageUrl="~/Images/Icons/add_24x24.png" ToolTip="Insert" ValidationGroup="InsGroup" />
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
                                                 CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel32_32.png" ToolTip="Cancel" />
                                         </InsertItemTemplate>
@@ -302,9 +302,11 @@
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="false" 
                                                 CommandName="Edit" ImageUrl="~/Images/Icons/Edit22_22.png" ToolTip="Edit" />
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                                CommandName="New" ImageUrl="~/Images/Icons/add24_24.png" Tooltip="New" />
+                                                CommandName="New" ImageUrl="~/Images/Icons/add_24x24.png" Tooltip="New" />
                                             &nbsp;<asp:ImageButton ID="btnDeletePrj" runat="server" CausesValidation="False" 
                                                 CommandName="Delete" ImageUrl="~/Images/Icons/Delete_24x24.png" ToolTip="Delete" />
+                                            &nbsp;&nbsp;&nbsp;&nbsp;<asp:ImageButton ID="btnSysDesign" runat="server" CausesValidation="False" 
+                                                CommandName="SysDesign" ImageUrl="~/Images/LeftMenu/System_24x24.png" ToolTip="Go to system design page" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Fields>
@@ -326,12 +328,13 @@
                         <asp:MenuItem ImageUrl="~/Images/ActionPlanSelected5.png" Text="" Value="0"></asp:MenuItem>
                         <asp:MenuItem ImageUrl="~/Images/MeetingsUnselected5.png" Text="" Value="1"></asp:MenuItem>
                         <asp:MenuItem ImageUrl="~/Images/AttachmentsUnselected5.png" Text="" Value="2"></asp:MenuItem>
+                        <asp:MenuItem ImageUrl="~/Images/ProgressUnselected.png" Text="" Value="3"></asp:MenuItem>
                     </Items>
                 </asp:Menu>
             </td>
         </tr>
         <tr>
-            <td align="left" style="padding: 6px 6px 6px 6px; background-color:#7A2021">
+            <td align="left" style="padding: 6px 6px 6px 6px; background-color:#842829">
                 <table cellpadding="0" cellspacing="0" style="width:100%">
                     <tr>
                         <td id="tdAP" align="center">

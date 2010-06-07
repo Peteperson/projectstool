@@ -213,7 +213,7 @@
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
                             CommandName="Update" ImageUrl="~/Images/Icons/Save24_24.png" ToolTip="Update" ValidationGroup="UpdAP" />
                         &nbsp;<asp:ImageButton ID="ImageButton4" runat="server" CausesValidation="False" 
-                            CommandName="New" ImageUrl="~/Images/Icons/add24_24.png" Tooltip="New" />
+                            CommandName="New" ImageUrl="~/Images/Icons/add_24x24.png" Tooltip="New" />
                         <!--&nbsp;<asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" 
                             CommandName="Delete" ImageUrl="~/Images/Icons/Remove22_22.png" ToolTip="Delete" />-->
                     </EditItemTemplate>
@@ -255,7 +255,7 @@
                             </tr>
                         </table>
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                            CommandName="Insert" ImageUrl="~/Images/Icons/add24_24.png" ToolTip="Insert" ValidationGroup="InsAP" />
+                            CommandName="Insert" ImageUrl="~/Images/Icons/add_24x24.png" ToolTip="Insert" ValidationGroup="InsAP" />
                         &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
                             CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel32_32.png" ToolTip="Cancel" />
                     </InsertItemTemplate>

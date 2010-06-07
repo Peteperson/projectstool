@@ -8,8 +8,8 @@ Partial Class Projects
     End Sub
 
     Private Sub SetTabImage(ByVal TabId As Byte)
-        Dim SelImages() As String = {"~/Images/ActionPlanSelected5.png", "~/Images/MeetingsSelected5.png", "~/Images/AttachmentsSelected5.png"}
-        Dim UnselImages() As String = {"~/Images/ActionPlanUnselected5.png", "~/Images/MeetingsUnselected5.png", "~/Images/AttachmentsUnselected5.png"}
+        Dim SelImages() As String = {"~/Images/ActionPlanSelected5.png", "~/Images/MeetingsSelected5.png", "~/Images/AttachmentsSelected5.png", "~/Images/ProgressSelected.png"}
+        Dim UnselImages() As String = {"~/Images/ActionPlanUnselected5.png", "~/Images/MeetingsUnselected5.png", "~/Images/AttachmentsUnselected5.png", "~/Images/ProgressUnselected.png"}
         For i As Integer = 0 To mnuProjects.Items.Count - 1
             If i = TabId Then
                 mnuProjects.Items(i).ImageUrl = SelImages(i)
@@ -45,6 +45,14 @@ Partial Class Projects
                 gvFiles.Visible = True
                 btnFlsIns.Visible = True
                 gvFiles.DataBind()
+            Case 3
+                gvAP.Visible = False
+                btnAPins.Visible = False
+                gvMeetings.Visible = False
+                btnMTins.Visible = False
+                gvFiles.Visible = False
+                btnFlsIns.Visible = False
+
         End Select
     End Sub
 
@@ -336,10 +344,14 @@ Partial Class Projects
     End Sub
 
     Protected Sub dvProject_ItemCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.DetailsViewCommandEventArgs) Handles dvProject.ItemCommand
-        If e.CommandName = "SelCompany" Then
-            Response.Clear()
-            Response.Redirect("~/Companies.aspx?Company=" & CType(dvProject.FindControl("ddlCompanies"), DropDownList).SelectedItem.Text)
-        End If
+        Select Case e.CommandName
+            Case "SelCompany"
+                Response.Clear()
+                Response.Redirect("~/Companies.aspx?Company=" & CType(dvProject.FindControl("ddlCompanies"), DropDownList).SelectedItem.Text)
+            Case "SysDesign"
+                Response.Clear()
+                Response.Redirect("~/SystemDesign.aspx?Project=" & ddlPrjCode.SelectedValue)
+        End Select
     End Sub
 
     Protected Sub sqldsSysVer_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsSysVer.Inserting

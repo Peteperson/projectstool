@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>AG Advent - Project management tool</title>
+    <title>AG ADVENT - Project management tool</title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="styles.css" rel="stylesheet" type="text/css" />
@@ -101,7 +101,7 @@ function ShowPleaseWait() {
         <div id="dvPleaseWait">
             <table style="width: 100%; height: 100%">
                 <tr>                
-                    <td style="text-align:center; vertical-align:middle">Please wait...<br /><asp:Image ID="imgPleaseWait" runat="server" ImageUrl="~/Images/Animated/ClockPlain.gif" /></td>
+                    <td style="text-align:center;">Please wait...<br /><asp:Image ID="imgPleaseWait" runat="server" ImageUrl="~/Images/Animated/ClockPlain.gif" /></td>
                 </tr>
             </table>
         </div>
@@ -111,6 +111,7 @@ function ShowPleaseWait() {
                 <asp:Image ID="Image1" ImageUrl="~/Images/eurobank.png" runat="server" Height="70px" />
             </td>
             <td style="width:100%; text-align: right; vertical-align: bottom; background-color: white">
+                <asp:ImageButton ID="btnQwe" runat="server" style="visibility:hidden" />
                 <asp:ImageButton ID="btnLogoff" runat="server" ImageUrl="~/Images/logout.png" ToolTip="Exit application" />
             </td>
         </tr>
@@ -155,7 +156,7 @@ function ShowPleaseWait() {
         </table>
         <table style="width:100%">
         <tr>
-            <td style="background: url(Images/Blue.png) repeat-x; text-align:right; height: 27px; vertical-align:top"><a href="http://advent.com.gr">AG Advent 2010</a></td>
+            <td style="background: url(Images/Blue.png) repeat-x; text-align:right; height: 27px; vertical-align:top"><a href="http://advent.com.gr">AG ADVENT 2010</a></td>
         </tr>
         </table>
         <asp:SqlDataSource ID="sqldsMenu" runat="server" 
