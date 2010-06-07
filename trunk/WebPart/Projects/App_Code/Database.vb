@@ -150,4 +150,17 @@ Public Module Database
         Dim result As Integer = cmd.ExecuteScalar()
         cn.Close()
     End Sub
+
+    Public Function CompanyName(ByVal ProjectId As Integer) As String
+        Dim cmd As New SqlClient.SqlCommand("CompNameFromPrj")
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.Add("@ProjectId", SqlDbType.Int).Value = ProjectId
+
+        Dim cn As New SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings("cnMain").ConnectionString)
+        cmd.Connection = cn
+        cn.Open()
+        Dim result As String = cmd.ExecuteScalar()
+        cn.Close()
+        Return result
+    End Function
 End Module

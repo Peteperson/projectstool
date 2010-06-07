@@ -62,7 +62,7 @@ a:hover {
 .title {
     text-align: center;
     /*background-color:#788CA5;*/
-    background-color:#7A2021;
+    background-color:#842829;
 	padding: 5px 0px 5px 0px;
 	border: 1px solid #FFFFFF;
 	font-size:large;
@@ -294,7 +294,7 @@ a:hover {
 #dvPleaseWait {
     position:absolute; 
     width:99%; 
-    height:1200px;
+    height:99%;
     background: url(Images/TransparentBack.png);
     background-repeat: repeat;
     color: Black;

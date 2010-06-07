@@ -19,7 +19,7 @@
                 End If
             Next
             If Not IsPostBack Then
-                If Not Authorized And Not CurrPage.ToLower.EndsWith("error.aspx") Then
+                If Not Authorized And Not CurrPage.EndsWith("error.aspx") And Not CurrPage.EndsWith("mainpanel.aspx") Then
                     Session("ErrorMessage") = "You do not have permission to view this page."
                     Try
                         Database.InsertActivity(Request.UserHostAddress, Session("UserId"), Request.Url.ToString, LogStatus.DenyAccess)
