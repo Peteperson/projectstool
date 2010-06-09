@@ -30,11 +30,20 @@ Public Module Support
     '    Return DateTime.ParseExact(input, "dd/MM/yyyy HH:mm:ss", provider)
     'End Function
 
-    Public Sub FormatDateCell(ByVal FieldName As String, ByVal idx As Byte, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs)
+    Private AcceptableStrings As ArrayList = GetAcceptableValues()
+    Private Function GetAcceptableValues() As ArrayList
+        Dim al As New ArrayList
+        al.Add("")
+        al.Add("Ολοκληρωμένο")
+        Return al
+    End Function
+    Public Sub FormatDateCell(ByVal FieldName As String, ByVal PrmIdx As Byte, ByVal CompareFieldName As String, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs)
         Dim drv As System.Data.DataRowView = e.Row.DataItem
         Dim dt As DateTime = drv.Item(FieldName)
-        If dt <= Today Then e.Row.Cells(idx).CssClass = "RedDate"
-        If dt.Date = Today Then e.Row.Cells(idx).CssClass = "BoldDate"
+        Dim stat As String = ""
+        If CompareFieldName <> "" Then stat = drv.Item(CompareFieldName).ToString.Trim()
+        If dt <= Today And Not AcceptableStrings.Contains(stat) Then e.Row.Cells(PrmIdx).CssClass = "RedDate"
+        If dt.Date = Today And Not AcceptableStrings.Contains(stat) Then e.Row.Cells(PrmIdx).CssClass = "BoldDate"
     End Sub
 End Module
 

@@ -896,11 +896,8 @@
                     <UpdateParameters>
                         <asp:Parameter Name="TimeFrom" Type="DateTime" />
                         <asp:Parameter Name="TimeTo" Type="DateTime" />
-                        <asp:Parameter Name="Kind" Type="Byte" />
                         <asp:Parameter Name="Subject" Type="String" />
                         <asp:Parameter Name="Consultant" Type="Int32" />
-                        <asp:Parameter Name="Comments" Type="String" />
-                        <asp:Parameter Name="NewBusiness" Type="String" />
                         <asp:Parameter Name="Status" Type="Byte" />
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
