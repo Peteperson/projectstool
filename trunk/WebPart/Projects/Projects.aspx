@@ -350,7 +350,8 @@
                                         <td>Action</td>
                                         <td class="CommentsCol">Description <asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtAPdesc" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
                                         <!--<td>Type</td>-->
-                                        <td>Responsible1<!--<br />Responsible2--></td>
+                                        <td>Responsible1</td>
+                                        <td>Responsible2</td>
                                         <td>Deadline</td>
                                         <td>Status</td>
                                         <td>Attachment</td>
@@ -364,9 +365,10 @@
                                             </asp:DropDownList></td>-->
                                         <td><asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
                                                 DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList><!--<br /><asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
+                                            </asp:DropDownList></td>
+                                        <td><asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
                                                 DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList>--></td>
+                                            </asp:DropDownList></td>
                                         <td><uc1:DateBox ID="dbDeadline" runat="server" Value='<%# Bind("Deadline") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' /></td>
                                         <td><asp:DropDownList SkinId="ddlDef" ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
                                                 DataTextField="Description" DataValueField="id">
@@ -432,26 +434,33 @@
                                             <asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
                                                 selectedvalue=<%# Bind("Responsible1") %> DataTextField="FullName" DataValueField="id">
                                             </asp:DropDownList>
-                                            <!--<br />
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
-                                                selectedvalue=<%# Bind("Responsible2") %> DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList>-->
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
                                                 Enabled="false" selectedvalue=<%# Bind("Responsible1") %> DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList><!--<br />
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
-                                                Enabled="false" selectedvalue=<%# Bind("Responsible2") %> DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList>-->
+                                            </asp:DropDownList>
                                         </ItemTemplate>
                                         <FooterTemplate>
                                             <asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
                                                 DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList><!--<br />
+                                            </asp:DropDownList>
+                                        </FooterTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Responsible2" SortExpression="Responsible2">
+                                        <EditItemTemplate>
+                                            <asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
+                                                selectedvalue=<%# Bind("Responsible2") %> DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
+                                                Enabled="false" selectedvalue=<%# Bind("Responsible2") %> DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
                                             <asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
                                                 DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList>-->
+                                            </asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Deadline" SortExpression="Deadline">
@@ -482,7 +491,7 @@
                                             </asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="AttachmentName" SortExpression="AttachmentName">
+                                    <asp:TemplateField HeaderText="Attachment" SortExpression="AttachmentName">
                                         <ItemTemplate>
                                             <asp:LinkButton ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
                                                 CommandName="Download" Text='<%# Bind("AttachmentName") %>'></asp:LinkButton>
@@ -840,7 +849,7 @@
                     SelectCommand="SELECT [id], [ProjectId], [DateStamp], [ActionId], [Responsible1], [Responsible2], [Description], [Comments], [AttachmentName], [Deadline], [Status] FROM [ActionPlans] WHERE ([ProjectId] = @ProjectId)" 
                     DeleteCommand="DELETE FROM [ActionPlans] WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Responsible1], [Responsible2], [Description], [AttachmentName], [Attachment], [Deadline], [Status]) VALUES (@ProjectId, @ActionId, @Responsible1, @Responsible2, @Description, @AttachmentName, @Attachment, @Deadline, @Status)" 
-                    UpdateCommand="UPDATE [ActionPlans] SET [Responsible1] = @Responsible1, [Description] = @Description, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
+                    UpdateCommand="UPDATE [ActionPlans] SET [Responsible1] = @Responsible1, [Responsible2] = @Responsible2, [Description] = @Description, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
                             PropertyName="SelectedValue" Type="Int32" />
@@ -851,6 +860,7 @@
                     <UpdateParameters>
                         <asp:Parameter Name="ProjectId" Type="Int32" />
                         <asp:Parameter Name="Responsible1" Type="Int32" />
+                        <asp:Parameter Name="Responsible2" Type="Int32" />
                         <asp:Parameter Name="Description" Type="String" />
                         <asp:Parameter Name="Deadline" Type="DateTime" />
                         <asp:Parameter Name="Status" Type="Byte" />

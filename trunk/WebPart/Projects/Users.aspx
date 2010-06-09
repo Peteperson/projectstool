@@ -24,6 +24,8 @@
                             <ItemTemplate>                
                                 <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
                                     CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
+                                &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False"
+                                    CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
@@ -206,6 +208,11 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <asp:Button ID="btnclearFilters" runat="server" Text="Clear filtering" />
             </td>
         </tr>
     </table>
