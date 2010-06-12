@@ -354,7 +354,7 @@
                                         <td>Responsible2</td>
                                         <td>Deadline</td>
                                         <td>Status</td>
-                                        <td>Attachment</td>
+                                        <td>File</td>
                                     </tr>
                                     <tr class="InsertRow">
                                         <td class="centered"><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
@@ -491,7 +491,7 @@
                                             </asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Attachment" SortExpression="AttachmentName">
+                                    <asp:TemplateField HeaderText="File" SortExpression="AttachmentName">
                                         <ItemTemplate>
                                             <asp:LinkButton ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
                                                 CommandName="Download" Text='<%# Bind("AttachmentName") %>'></asp:LinkButton>
@@ -524,7 +524,7 @@
                                         <td align="center">Status</td>
                                         <!--<td>NewBusiness</td>
                                         <td>Comments</td>-->
-                                        <td align="center">Attachment</td>
+                                        <td align="center">File</td>
                                     </tr>
                                     <tr class="InsertRow">
                                         <td class="centered"><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
@@ -676,7 +676,7 @@
                                             </asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Attachment" SortExpression="AttachmentName">
+                                    <asp:TemplateField HeaderText="File" SortExpression="AttachmentName">
                                         <EditItemTemplate>
                                             <asp:Label ID="Label12" runat="server" Text='<%# Bind("AttachmentName") %>'></asp:Label>
                                         </EditItemTemplate>
@@ -846,7 +846,7 @@
                 <asp:SqlDataSource ID="sqldsAP" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     
-                    SelectCommand="SELECT [id], [ProjectId], [DateStamp], [ActionId], [Responsible1], [Responsible2], [Description], [Comments], [AttachmentName], [Deadline], [Status] FROM [ActionPlans] WHERE ([ProjectId] = @ProjectId)" 
+                    SelectCommand="SELECT [id], [ProjectId], [DateStamp], [ActionId],  ISNULL([Responsible1], 0) AS Responsible1,  ISNULL([Responsible2], 0) AS Responsible2, [Description], [Comments], [AttachmentName], [Deadline], [Status] FROM [ActionPlans] WHERE ([ProjectId] = @ProjectId)" 
                     DeleteCommand="DELETE FROM [ActionPlans] WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Responsible1], [Responsible2], [Description], [AttachmentName], [Attachment], [Deadline], [Status], [MeetingDate]) VALUES (@ProjectId, @ActionId, @Responsible1, @Responsible2, @Description, @AttachmentName, @Attachment, @Deadline, @Status, GetDate())" 
                     UpdateCommand="UPDATE [ActionPlans] SET [Responsible1] = @Responsible1, [Responsible2] = @Responsible2, [Description] = @Description, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
@@ -896,7 +896,7 @@
                     <UpdateParameters>
                         <asp:Parameter Name="TimeFrom" Type="DateTime" />
                         <asp:Parameter Name="TimeTo" Type="DateTime" />
-                        <asp:Parameter Name="Subject" Type="String" />
+                        <asp:Parameter Name="Subject" Type="String" DefaultValue=" " />
                         <asp:Parameter Name="Consultant" Type="Int32" />
                         <asp:Parameter Name="Status" Type="Byte" />
                         <asp:Parameter Name="id" Type="Int32" />

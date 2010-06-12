@@ -119,7 +119,12 @@ Partial Class Projects
     End Sub
 
     Protected Sub sqldsProjects_Deleted(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsProjects.Deleted
-        Response.Redirect("~/Projects.aspx")
+        If e.AffectedRows = 0 Then
+            Session("ErrorMessage") = "The DELETE statement conflicted with the REFERENCE constraint"
+            Response.Redirect("~/Error.aspx")
+        Else
+            Response.Redirect("~/Projects.aspx")
+        End If
     End Sub
 
     Protected Sub sqldsProjects_Inserted(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsProjects.Inserted
@@ -161,11 +166,14 @@ Partial Class Projects
     End Sub
 
     Protected Sub sqldsAP_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAP.Inserting
+        Dim resp As Integer
         If gvAP.Rows.Count > 0 Then
             e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
             e.Command.Parameters("@ActionId").Value = CType(gvAP.FooterRow.FindControl("ddlActionType"), DropDownList).SelectedValue
-            e.Command.Parameters("@Responsible1").Value = CType(gvAP.FooterRow.FindControl("ddlResp1"), DropDownList).SelectedValue
-            e.Command.Parameters("@Responsible2").Value = CType(gvAP.FooterRow.FindControl("ddlResp2"), DropDownList).SelectedValue
+            resp = CType(gvAP.FooterRow.FindControl("ddlResp1"), DropDownList).SelectedValue
+            e.Command.Parameters("@Responsible1").Value = IIf(resp = 0, DBNull.Value, resp)
+            resp = CType(gvAP.FooterRow.FindControl("ddlResp2"), DropDownList).SelectedValue
+            e.Command.Parameters("@Responsible2").Value = IIf(resp = 0, DBNull.Value, resp)
             e.Command.Parameters("@Description").Value = CType(gvAP.FooterRow.FindControl("txtAPdesc"), TextBox).Text
             e.Command.Parameters("@AttachmentName").Value = CType(gvAP.FooterRow.FindControl("fuAP"), FileUpload).FileName
             e.Command.Parameters("@Attachment").Value = CType(gvAP.FooterRow.FindControl("fuAP"), FileUpload).FileBytes
@@ -175,8 +183,10 @@ Partial Class Projects
         Else
             e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
             e.Command.Parameters("@ActionId").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("ddlActionType"), DropDownList).SelectedValue
-            e.Command.Parameters("@Responsible1").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("ddlResp1"), DropDownList).SelectedValue
-            e.Command.Parameters("@Responsible2").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("ddlResp2"), DropDownList).SelectedValue
+            resp = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("ddlResp1"), DropDownList).SelectedValue
+            e.Command.Parameters("@Responsible1").Value = IIf(resp = 0, DBNull.Value, resp)
+            resp = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("ddlResp2"), DropDownList).SelectedValue
+            e.Command.Parameters("@Responsible2").Value = IIf(resp = 0, DBNull.Value, resp)
             e.Command.Parameters("@Description").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("txtAPdesc"), TextBox).Text
             e.Command.Parameters("@AttachmentName").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("fuAP"), FileUpload).FileName
             e.Command.Parameters("@Attachment").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("fuAP"), FileUpload).FileBytes
@@ -188,8 +198,13 @@ Partial Class Projects
 
     Protected Sub sqldsAP_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAP.Updating
         Dim ind As Integer = gvAP.EditIndex
+        Dim resp As Integer
         'e.Command.Parameters("@Deadline").Value = Support.ReadDate(CType(gvAP.Rows(ind).FindControl("txtAPdead"), TextBox).Text)
         e.Command.Parameters("@Deadline").Value = CType(gvAP.Rows(ind).FindControl("dbDeadline"), DateBox).Value
+        resp = e.Command.Parameters("@Responsible1").Value
+        e.Command.Parameters("@Responsible1").Value = IIf(resp = 0, DBNull.Value, resp)
+        resp = e.Command.Parameters("@Responsible2").Value
+        e.Command.Parameters("@Responsible2").Value = IIf(resp = 0, DBNull.Value, resp)
     End Sub
 
     Protected Sub gvAP_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvAP.DataBound
