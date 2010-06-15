@@ -64,6 +64,11 @@ Partial Class ActionPlans
         e.Command.Parameters("@ProjectId").Value = gvAP.SelectedDataKey.Values("ProjectId")
         e.Command.Parameters("@AttachmentName").Value = CType(fvAction.FindControl("fuAP"), FileUpload).FileName
         e.Command.Parameters("@Attachment").Value = CType(fvAction.FindControl("fuAP"), FileUpload).FileBytes
+        Dim resp As Integer
+        resp = e.Command.Parameters("@Responsible1").Value
+        e.Command.Parameters("@Responsible1").Value = IIf(resp = 0, DBNull.Value, resp)
+        resp = e.Command.Parameters("@Responsible2").Value
+        e.Command.Parameters("@Responsible2").Value = IIf(resp = 0, DBNull.Value, resp)
     End Sub
 
     Protected Sub sqldsAPdet_Updated(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsAPdet.Updated
@@ -100,5 +105,13 @@ Partial Class ActionPlans
         e.Command.Parameters("@Id").Value = ActionId
         e.Command.Parameters("@AttachmentName").Value = CType(fvAction.FindControl("fuAPupd"), FileUpload).FileName
         e.Command.Parameters("@Attachment").Value = CType(fvAction.FindControl("fuAPupd"), FileUpload).FileBytes
+    End Sub
+
+    Protected Sub sqldsAPdet_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAPdet.Updating
+        Dim resp As Integer
+        resp = e.Command.Parameters("@Responsible1").Value
+        e.Command.Parameters("@Responsible1").Value = IIf(resp = 0, DBNull.Value, resp)
+        resp = e.Command.Parameters("@Responsible2").Value
+        e.Command.Parameters("@Responsible2").Value = IIf(resp = 0, DBNull.Value, resp)
     End Sub
 End Class

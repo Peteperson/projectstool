@@ -292,7 +292,7 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [ActionPlans] WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Responsible1], [Responsible2], [Description], [Comments], [AttachmentName], [Attachment], [Deadline], [Status], [MeetingDate]) VALUES (@ProjectId, @ActionId, @Responsible1, @Responsible2, @Description, @Comments, @AttachmentName, @Attachment, @Deadline, @Status, GetDate())" 
-                    SelectCommand="SELECT [id], [ProjectId], [ActionId], [Responsible1], [Responsible2], [Description], [Comments], [AttachmentName], [Deadline], [Status] FROM [ActionPlans] WHERE ([id] = @id)" 
+                    SelectCommand="SELECT [id], [ProjectId], [ActionId],  ISNULL([Responsible1], 0) AS Responsible1,  ISNULL([Responsible2], 0) AS Responsible2, [Description], [Comments], [AttachmentName], [Deadline], [Status] FROM [ActionPlans] WHERE ([id] = @id)" 
                     UpdateCommand="UPDATE [ActionPlans] SET [ActionId] = @ActionId, [Responsible1] = @Responsible1, [Responsible2] = @Responsible2, [Description] = @Description, [Comments] = @Comments, [AttachmentName] = @AttachmentName, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="gvAP" Name="id" PropertyName="SelectedValue" 
