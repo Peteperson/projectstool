@@ -245,7 +245,7 @@
                     </DeleteParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="SystemVersionId" Type="Int16" />
-                        <asp:Parameter Name="Code" Type="String" />
+                        <asp:Parameter Name="Code" Type="String" DefaultValue=" " />
                         <asp:Parameter Name="Description" Type="String" />
                         <asp:Parameter Name="Status" Type="Int32" />
                         <asp:Parameter Name="StatusDate" DbType="DateTime" />
