@@ -492,9 +492,9 @@
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="File" SortExpression="AttachmentName">
-                                        <ItemTemplate>
-                                            <asp:LinkButton ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
-                                                CommandName="Download" Text='<%# Bind("AttachmentName") %>'></asp:LinkButton>
+                                        <ItemTemplate> 
+                                            <asp:ImageButton ID="btnDown" OnClientClick="this.form.onsubmit=''" runat="server" CommandArgument='<%# Bind("id") %>'
+                                                CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip='<%# Bind("AttachmentName") %>'/>
                                         </ItemTemplate>
                                         <FooterTemplate>
                                             <asp:FileUpload Font-Size="8pt" ID="fuAP" runat="server" />                                            
@@ -681,8 +681,8 @@
                                             <asp:Label ID="Label12" runat="server" Text='<%# Bind("AttachmentName") %>'></asp:Label>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="btnMeetDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
-                                                CommandName="Download" Text='<%# Bind("AttachmentName") %>'></asp:LinkButton>
+                                            <asp:ImageButton ID="btnMeetDown" OnClientClick="this.form.onsubmit=''" runat="server" CommandArgument='<%# Bind("id") %>'
+                                                CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip='<%# Bind("AttachmentName") %>'/>
                                         </ItemTemplate>
                                         <FooterTemplate>
                                             <asp:FileUpload Font-Size="8pt" ID="fuAttachment" runat="server" />                                            
@@ -749,7 +749,7 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Attachment" SortExpression="AttachmentName">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
+                                            <asp:LinkButton ID="btnDown" OnClientClick="this.form.onsubmit=''" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
                                                 CommandName="Download" Text='<%# Bind("AttachmentName") %>'></asp:LinkButton>
                                         </ItemTemplate>
                                         <FooterTemplate>

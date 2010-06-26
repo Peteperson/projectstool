@@ -255,6 +255,11 @@ Partial Class Projects
 
     Protected Sub gvAP_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvAP.RowDataBound
         InsertDeleteValidation(e, 0)
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            If CType(e.Row.FindControl("btnDown"), ImageButton).ToolTip = "" Then
+                CType(e.Row.FindControl("btnDown"), ImageButton).Visible = False
+            End If
+        End If
     End Sub
 
     Protected Sub gvFiles_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvFiles.RowDataBound
@@ -328,6 +333,11 @@ Partial Class Projects
 
     Protected Sub gvMeetings_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvMeetings.RowDataBound
         InsertDeleteValidation(e, 0)
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            If CType(e.Row.FindControl("btnMeetDown"), ImageButton).ToolTip = "" Then
+                CType(e.Row.FindControl("btnMeetDown"), ImageButton).Visible = False
+            End If
+        End If
     End Sub
 
     Protected Sub ddlPrjCode_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlPrjCode.SelectedIndexChanged

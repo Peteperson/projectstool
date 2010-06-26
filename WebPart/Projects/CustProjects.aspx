@@ -76,7 +76,7 @@
                                         SortExpression="Description" />
                                     <asp:TemplateField HeaderText="File" SortExpression="AttachmentName">
                                         <ItemTemplate>
-                                            <asp:ImageButton ID="btnDown" runat="server" CommandArgument='<%# Bind("id") %>'
+                                            <asp:ImageButton ID="btnDown" runat="server" OnClientClick="this.form.onsubmit=''" CommandArgument='<%# Bind("id") %>'
                                                 CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip='<%# Bind("AttachmentName") %>'/>
                                         </ItemTemplate>
                                     </asp:TemplateField>
@@ -110,7 +110,7 @@
                                         SortExpression="Comments" />
                                     <asp:TemplateField HeaderText="File" SortExpression="File">
                                         <ItemTemplate>
-                                            <asp:ImageButton ID="btnDown" runat="server" CommandArgument='<%# Bind("id") %>'
+                                            <asp:ImageButton ID="btnDown" runat="server" OnClientClick="this.form.onsubmit=''" CommandArgument='<%# Bind("id") %>'
                                                 CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip='<%# Bind("File") %>'/>
                                         </ItemTemplate>
                                     </asp:TemplateField>
@@ -132,7 +132,7 @@
                                         SortExpression="Datestamp" />
                                     <asp:TemplateField HeaderText="File" SortExpression="File">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="btnDown" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
+                                            <asp:LinkButton ID="btnDown" OnClientClick="this.form.onsubmit=''" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
                                                 CommandName="Download" Text='<%# Bind("File") %>'></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>

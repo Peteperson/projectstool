@@ -94,6 +94,10 @@
 function ShowPleaseWait() {
     document.getElementById("dvPleaseWait").style.display = "block";
 }
+
+function HidePleaseWait() {
+    document.getElementById("dvPleaseWait").style.display = "none";
+}
 </script>
 </head>
 <body>

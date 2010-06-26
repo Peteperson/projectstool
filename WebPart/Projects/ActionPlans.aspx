@@ -131,7 +131,7 @@
                             ReadOnly="True" SortExpression="Responsible2" />
                         <asp:TemplateField HeaderText="File" SortExpression="AttachmentName">
                             <ItemTemplate>
-                                <asp:ImageButton ID="btnDown" runat="server" CommandArgument='<%# Bind("id") %>'
+                                <asp:ImageButton ID="btnDown" runat="server" OnClientClick="this.form.onsubmit=''" CommandArgument='<%# Bind("id") %>'
                                                 CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip='<%# Bind("AttachmentName") %>'/>
                             </ItemTemplate>
                         </asp:TemplateField>
