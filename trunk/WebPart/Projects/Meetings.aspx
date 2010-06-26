@@ -95,8 +95,8 @@
                         <asp:BoundField DataField="Consultant" HeaderText="Consultant" ReadOnly="True" SortExpression="Consultant" />
                         <asp:TemplateField HeaderText="File" SortExpression="File">
                             <ItemTemplate>
-                                <asp:ImageButton ID="btnDown" runat="server" CommandArgument='<%# Bind("id") %>'
-                                                CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip='<%# Bind("File") %>'/>
+                                <asp:ImageButton ID="btnDown" OnClientClick="this.form.onsubmit=''" runat="server" CommandArgument='<%# Bind("id") %>'
+                                    CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip='<%# Bind("File") %>'/>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />

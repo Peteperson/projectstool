@@ -15,14 +15,13 @@ Partial Class ProjectList
     End Sub
 
     Protected Sub sqldsProjects_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsProjects.Selecting
-        If txtPrjId.Text = "" Then
-            Dim DeleteParam As System.Data.Common.DbParameter
-            DeleteParam = e.Command.Parameters("@SubProject")
-            e.Command.Parameters.Remove(DeleteParam)
-        End If
+        If txtPrjId.Text = "" Then e.Command.Parameters.Remove(e.Command.Parameters("@SubProject"))
+        If txtTitle.Text = "" Then e.Command.Parameters.Remove(e.Command.Parameters("@Title"))
     End Sub
 
     Protected Sub btnClearFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClearFilter.Click
         rblStatus.SelectedIndex = -1
+        txtPrjId.Text = ""
+        txtTitle.Text = ""
     End Sub
 End Class

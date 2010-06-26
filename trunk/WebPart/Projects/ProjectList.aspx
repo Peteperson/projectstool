@@ -12,9 +12,17 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="centered">Write a subproject id or part of it and press &quot;Find&quot; in order to filter data
-                <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
-                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" />
+            <td align="center">Συμπληρώστε τον κωδικό τού έργου ή τον τίτλο του και πατήστε 
+                &quot;Αναζήτηση&quot; προκειμένου να φιλτράρετε τα αποτελέσματα:<br />
+                <table style="margin:5px 0px 5px 0px">
+                    <tr>
+                        <td>Subproject:</td>
+                        <td><asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox></td>
+                        <td>&nbsp;&nbsp;Project title:</td>
+                        <td><asp:TextBox ID="txtTitle" runat="server"></asp:TextBox>&nbsp;&nbsp;</td>
+                        <td><asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /></td>
+                    </tr>
+                </table>
             </td>
         </tr>
         <tr>
@@ -89,6 +97,8 @@
                     <SelectParameters>
                         <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int16" />
                         <asp:ControlParameter ControlID="txtPrjId" Name="SubProject" 
+                            PropertyName="Text" Type="String" />
+                        <asp:ControlParameter ControlID="txtTitle" Name="Title" 
                             PropertyName="Text" Type="String" />
                         <asp:ControlParameter ControlID="rblStatus" DefaultValue="0" Name="Status" 
                             PropertyName="SelectedValue" Type="Int32" />
