@@ -256,8 +256,10 @@ Partial Class Projects
     Protected Sub gvAP_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvAP.RowDataBound
         InsertDeleteValidation(e, 0)
         If e.Row.RowType = DataControlRowType.DataRow Then
-            If CType(e.Row.FindControl("btnDown"), ImageButton).ToolTip = "" Then
-                CType(e.Row.FindControl("btnDown"), ImageButton).Visible = False
+            If Not e.Row.FindControl("btnDown") Is Nothing Then
+                If CType(e.Row.FindControl("btnDown"), ImageButton).ToolTip = "" Then
+                    CType(e.Row.FindControl("btnDown"), ImageButton).Visible = False
+                End If
             End If
         End If
     End Sub
@@ -334,8 +336,10 @@ Partial Class Projects
     Protected Sub gvMeetings_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvMeetings.RowDataBound
         InsertDeleteValidation(e, 0)
         If e.Row.RowType = DataControlRowType.DataRow Then
-            If CType(e.Row.FindControl("btnMeetDown"), ImageButton).ToolTip = "" Then
-                CType(e.Row.FindControl("btnMeetDown"), ImageButton).Visible = False
+            If Not e.Row.FindControl("btnMeetDown") Is Nothing Then
+                If CType(e.Row.FindControl("btnMeetDown"), ImageButton).ToolTip = "" Then
+                    CType(e.Row.FindControl("btnMeetDown"), ImageButton).Visible = False
+                End If
             End If
         End If
     End Sub
