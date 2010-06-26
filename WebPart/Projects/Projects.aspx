@@ -609,7 +609,7 @@
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Subject" SortExpression="Subject">
-                                        <ItemStyle CssClass="CommentsCol" />
+                                        <ItemStyle />
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox7" SkinID="txtText" MaxLength="50" runat="server" Text='<%# Bind("Subject") %>'></asp:TextBox>
                                         </EditItemTemplate>
