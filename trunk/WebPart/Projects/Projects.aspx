@@ -749,8 +749,9 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Attachment" SortExpression="AttachmentName">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="btnDown" OnClientClick="this.form.onsubmit=''" runat="server" CausesValidation="True" CommandArgument='<%# Bind("id") %>'
-                                                CommandName="Download" Text='<%# Bind("AttachmentName") %>'></asp:LinkButton>
+                                            <asp:Label ID="lblDown" runat="server" Text='<%# Bind("AttachmentName") %>'></asp:Label>
+                                            <asp:ImageButton ID="btnDown" OnClientClick="this.form.onsubmit=''" runat="server" CommandArgument='<%# Bind("id") %>'
+                                                            CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip="Click to download file"/>
                                         </ItemTemplate>
                                         <FooterTemplate>
                                             <asp:FileUpload ID="fuCtrl" runat="server" />                                            
