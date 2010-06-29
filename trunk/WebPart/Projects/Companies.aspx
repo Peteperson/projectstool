@@ -13,84 +13,110 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td>
+            <td style="width:100%">
                 <table style="width:100%">
-                    <tr class="centered">
-                        <td>Companies list (select one - <asp:Image ID="Image1" runat="server" ImageUrl="Images/Icons/Approve_16x16.png" /> - to view details).<br />
-                            <asp:TextBox ID="txtNameFilter" runat="server" SkinID="txtTextCenter" Visible="False"></asp:TextBox>
-                            </td>
-                    </tr>
                     <tr>                       
                         <td align="center" style="vertical-align:top">
-                            <asp:GridView ID="gvCompanies" runat="server" AllowPaging="True" EmptyDataText="Currently there are no registered companies"
-                                AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id,Name" 
-                                DataSourceID="sqldsCompanies" SkinID="gridviewSkinMainTbl" 
-                                ShowFooter="True">
-                                <Columns>
-                                    <asp:TemplateField ShowHeader="True" HeaderText="Action">
-                                        <ItemStyle Wrap="False" Width="60px" />
-                                        <ItemTemplate>                
-                                            <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                                                CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
-                                            &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False"
-                                                CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />
-                                            &nbsp;<asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" 
-                                                CommandName="Select" ImageUrl="~/Images/Icons/Approve_16x16.png" ToolTip="Select" />
-                                        </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                                                CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Update" />
-                                            &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                                CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Cancel" />
-                                        </EditItemTemplate>
-                                        <FooterStyle HorizontalAlign="Center" />
-                                        <FooterTemplate>
-                                            <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                                ImageUrl="~/images/icons/add16_16.png" ValidationGroup="InsGroup" ToolTip="Insert" />
-                                        </FooterTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Datestamp" SortExpression="Datestamp">
-                                        <ItemTemplate>
-                                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField>
-                                        <HeaderStyle HorizontalAlign="Center" />
-                                        <HeaderTemplate>
-                                            <table>
-                                                <tr>
-                                                    <td style="padding-right:10px">Name</td>
-                                                    <td><asp:TextBox ID="txtHeadNameFilter" SkinID="txtFilter" runat="server"></asp:TextBox></td>
-                                                    <td><asp:ImageButton ID="btnFilter" runat="server" CausesValidation="False" 
-                                                            CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Filter data" />
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </HeaderTemplate>
-                                        <EditItemTemplate>
-                                            <asp:TextBox ID="txtCompanyName" MaxLength="50" SkinID="txtText" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
-                                        </ItemTemplate>
-                                        <FooterTemplate>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" SkinID="rfvDef" runat="server" ControlToValidate="txtCompName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
-                                            <asp:TextBox ID="txtCompName" MaxLength="50" SkinID="txtText93" runat="server"></asp:TextBox>
-                                        </FooterTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Description" SortExpression="Description">
-                                        <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox3" MaxLength="150" runat="server" SkinID="txtText" Text='<%# Bind("Description") %>'></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
-                                        </ItemTemplate>
-                                        <FooterTemplate>
-                                            <asp:TextBox ID="txtCompDesc" MaxLength="150" SkinID="txtText" runat="server"></asp:TextBox>
-                                        </FooterTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                            </asp:GridView>
+                            <table style="width:100%">
+                                <tr class="centered">
+                                    <td>Companies list (select one - <asp:Image ID="Image1" runat="server" ImageUrl="Images/Icons/Approve_16x16.png" /> - to view details).<br />
+                                        <asp:TextBox ID="txtNameFilter" runat="server" SkinID="txtTextCenter" Visible="False"></asp:TextBox>
+                                        </td>
+                                    <td>Related Projects:</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:GridView ID="gvCompanies" runat="server" AllowPaging="True" EmptyDataText="Currently there are no registered companies"
+                                            AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id,Name" 
+                                            DataSourceID="sqldsCompanies" SkinID="gridviewSkinMainTbl" 
+                                            ShowFooter="True">
+                                            <Columns>
+                                                <asp:TemplateField ShowHeader="True" HeaderText="Action">
+                                                    <ItemStyle Wrap="False" Width="60px" />
+                                                    <ItemTemplate>                
+                                                        <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
+                                                            CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
+                                                        &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False"
+                                                            CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />
+                                                        &nbsp;<asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" 
+                                                            CommandName="Select" ImageUrl="~/Images/Icons/Approve_16x16.png" ToolTip="Select" />
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
+                                                            CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Update" />
+                                                        &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
+                                                            CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Cancel" />
+                                                    </EditItemTemplate>
+                                                    <FooterStyle HorizontalAlign="Center" />
+                                                    <FooterTemplate>
+                                                        <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
+                                                            ImageUrl="~/images/icons/add16_16.png" ValidationGroup="InsGroup" ToolTip="Insert" />
+                                                    </FooterTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Datestamp" SortExpression="Datestamp">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField>
+                                                    <HeaderStyle HorizontalAlign="Center" />
+                                                    <HeaderTemplate>
+                                                        <table>
+                                                            <tr>
+                                                                <td style="padding-right:10px">Name</td>
+                                                                <td><asp:TextBox ID="txtHeadNameFilter" SkinID="txtFilter" runat="server"></asp:TextBox></td>
+                                                                <td><asp:ImageButton ID="btnFilter" runat="server" CausesValidation="False" 
+                                                                        CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Filter data" />
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </HeaderTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="txtCompanyName" MaxLength="50" SkinID="txtText" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <FooterTemplate>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" SkinID="rfvDef" runat="server" ControlToValidate="txtCompName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                        <asp:TextBox ID="txtCompName" MaxLength="50" SkinID="txtText93" runat="server"></asp:TextBox>
+                                                    </FooterTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Description" SortExpression="Description">
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="TextBox3" MaxLength="150" runat="server" SkinID="txtText" Text='<%# Bind("Description") %>'></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <FooterTemplate>
+                                                        <asp:TextBox ID="txtCompDesc" MaxLength="150" SkinID="txtText" runat="server"></asp:TextBox>
+                                                    </FooterTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
+                                    </td>
+                                    <td style="vertical-align:top">
+                                        <asp:GridView ID="gvProjects" runat="server" AllowPaging="True" 
+                                            AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
+                                            DataSourceID="sqldsProjects" SkinID="gridviewSkin" >
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="SubProject" SortExpression="SubProject">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="btnSubProject" ForeColor="Black" runat="server" CommandArgument='<%# Bind("Id") %>'
+                                                                        CommandName="SelSubProject" Text='<%# Bind("SubProject") %>'></asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Title" SortExpression="Title">
+                                                    <ItemTemplate>
+                                                        <asp:ImageButton ID="imgTitle" runat="server" ImageUrl="~/Images/Icons/Logs_24x24.png" ToolTip='<%# Bind("Title") %>'/>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                 </table>
@@ -348,7 +374,16 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
-            <td></td>
+            <td>
+                <asp:SqlDataSource ID="sqldsProjects" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                    SelectCommand="SELECT [id], [SubProject], [Title] FROM [Projects] WHERE ([CustomerId] = @CustomerId) ORDER BY [id]">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="gvCompanies" Name="CustomerId" 
+                            PropertyName="SelectedValue" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </td>
             <td></td>
             <td></td>
         </tr>

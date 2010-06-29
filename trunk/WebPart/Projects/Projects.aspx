@@ -6,18 +6,18 @@
     <br />
     <table id="subPageMainTable" cellpadding="0" cellspacing="0">
         <tr>
-            <td class="title">Manage projects</td>
+            <td class="title">Διαχείριση έργων</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="centered" style="padding-bottom:5px"><asp:Panel runat="server" ID="pnl1" DefaultButton="btnFindPrj">Select a subproject from the list:
+            <td class="centered" style="padding-bottom:5px"><asp:Panel runat="server" ID="pnl1" DefaultButton="btnFindPrj">Επιλέξτε subproject από τη λίστα:
                 <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
                     DataTextField="SubProject" DataValueField="id" AutoPostBack="True">
-                </asp:DropDownList>&nbsp;or write its subproject id and press &quot;Find&quot;
+                </asp:DropDownList>&nbsp;ή συμπληρώστε το στο ακόλουθο πεδίο και πατήστε &quot;Αναζήτηση&quot;
                 <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
-                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" /></asp:Panel> 
+                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /></asp:Panel> 
             </td>
         </tr>
         <tr>
@@ -32,11 +32,11 @@
                                         <ItemTemplate>
                                             <table id="tblDetails">
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Title</td>
+                                                    <td class="tblDetailsHeader">Τίτλος έργου</td>
                                                     <td class="tblDetailsItem" colspan="5"><asp:Label ID="Label10" runat="server" Text='<%# Bind("Title") %>'></asp:Label></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Project</td>
+                                                    <td class="tblDetailsHeader">Κωδ. έργου</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label2" runat="server" Text='<%# Bind("Code") %>'></asp:Label></td>
                                                     <td class="tblDetailsHeader">SubProject</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label3" runat="server" Text='<%# Bind("SubProject") %>'></asp:Label></td>
@@ -44,11 +44,11 @@
                                                     <td class="tblDetailsItem"><asp:Label ID="Label4" runat="server" Text='<%# Bind("DateStamp", "{0:dd/MM/yyyy}") %>'></asp:Label></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Creator</td>
+                                                    <td class="tblDetailsHeader">Δημιουργός</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlCreators" runat="server" DataSourceID="sqldsCreators" 
                                                            Enabled="false" selectedvalue=<%# Bind("Creator") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Customer</td>
+                                                    <td class="tblDetailsHeader">Πελάτης</td>
                                                     <td class="tblDetailsItem">
                                                         <table>
                                                             <tr>
@@ -59,39 +59,39 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="tblDetailsHeader">Supervisor</td>
+                                                    <td class="tblDetailsHeader">Project manager</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlSupervisors" runat="server" DataSourceID="sqldsCreators" 
                                                            Enabled="false" selectedvalue=<%# Bind("Supervisor") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Consultant1</td>
+                                                    <td class="tblDetailsHeader">Σύμβουλος1</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlConsultant1" runat="server" DataSourceID="sqldsConsultants" 
                                                            Enabled="false" selectedvalue=<%# Bind("Consultant1") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Consultant2</td>
+                                                    <td class="tblDetailsHeader">Σύμβουλος2</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlConsultant2" runat="server" DataSourceID="sqldsConsultantsNN" 
                                                            Enabled="false" selectedvalue=<%# Bind("Consultant2") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Certification Fields</td>
+                                                    <td class="tblDetailsHeader">Πεδίο πιστοποίησης</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label16" runat="server" Text='<%# Bind("CertificationField") %>'></asp:Label></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Description</td>
+                                                    <td class="tblDetailsHeader">Περιγραφή</td>
                                                     <td colspan="5" class="tblDetailsItem"><asp:Label ID="Label11" runat="server" Text='<%# Bind("Description") %>'></asp:Label></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Start date</td>
+                                                    <td class="tblDetailsHeader">Έναρξη</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label8" runat="server" Text='<%# Bind("StartDate", "{0:dd/MM/yyyy}") %>'></asp:Label></td>
-                                                    <td class="tblDetailsHeader">Initial end date</td>
+                                                    <td class="tblDetailsHeader">Συμβατική λήξη</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label9" runat="server" Text='<%# Bind("InitialEndDate", "{0:dd/MM/yyyy}") %>'></asp:Label></td>
-                                                    <td class="tblDetailsHeader">Initial meetings no</td>
+                                                    <td class="tblDetailsHeader">Εκτιμώμενος αρ. συναντήσεων</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label13" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:Label></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Critical issues</td>
+                                                    <td class="tblDetailsHeader">Κρίσιμα σημεία</td>
                                                     <td colspan="3" class="tblDetailsItem"><asp:Label ID="Label14" runat="server" Text='<%# Bind("CriticalIssues") %>'></asp:Label></td>
-                                                    <td class="tblDetailsHeader">Desired Organization</td>
+                                                    <td class="tblDetailsHeader">Επιθυμητός φορέας</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label15" runat="server" Text='<%# Bind("DesiredOrganization") %>'></asp:Label></td>
                                                 </tr>
                                                 <tr>
@@ -99,7 +99,7 @@
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectStatus" runat="server" DataSourceID="sqldsProjectStatus" 
                                                             Enabled="false" selectedvalue=<%# Bind("Status") %>  DataTextField="Description" DataValueField="id">                                                
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Completion (%)</td>
+                                                    <td class="tblDetailsHeader">% Ολοκλήρωσης</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlPercent" runat="server" Enabled="false" selectedvalue=<%# Bind("CompletionPercentage") %>  >
                                                             <asp:ListItem>0</asp:ListItem>
                                                             <asp:ListItem>10</asp:ListItem>
@@ -114,7 +114,7 @@
                                                             <asp:ListItem>100</asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
-                                                    <td class="tblDetailsHeader">Modification Date</td>
+                                                    <td class="tblDetailsHeader">Ημ/νία τροποποίησης</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label6" runat="server" Text='<%# Bind("ModificationDate", "{0:dd/MM/yyyy HH:mm}") %>'></asp:Label></td>
                                                 </tr>
                                             </table>
@@ -122,11 +122,11 @@
                                         <EditItemTemplate>
 						                    <table id="tblDetails">
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Title <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox9" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                                    <td class="tblDetailsHeader">Τίτλος έργου <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox9" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem" colspan="5"><asp:TextBox ID="TextBox9" MaxLength="50" SkinID="txtText" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Project <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TextBox1" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                                    <td class="tblDetailsHeader">Κωδ. έργου <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TextBox1" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox1" MaxLength="10" runat="server" Text='<%# Bind("Code") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">SubProject <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TextBox2" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox2" MaxLength="10" runat="server" Text='<%# Bind("SubProject") %>'></asp:TextBox></td>
@@ -134,47 +134,47 @@
                                                     <td class="tblDetailsItem"><asp:Label ID="Label4" runat="server" Text='<%# Bind("DateStamp", "{0:dd/MM/yyyy}") %>'></asp:Label></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Creator</td>
+                                                    <td class="tblDetailsHeader">Δημιουργός</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlCreators" runat="server" DataSourceID="sqldsCreators" 
                                                            selectedvalue=<%# Bind("Creator") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Customer</td>
+                                                    <td class="tblDetailsHeader">Πελάτης</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlCompanies" runat="server" 
                                                            selectedvalue=<%# Bind("CustomerId") %>  DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Supervisor</td>
+                                                    <td class="tblDetailsHeader">Project manager</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlSupervisors" runat="server" DataSourceID="sqldsCreators" 
                                                            selectedvalue=<%# Bind("Supervisor") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Consultant1</td>
+                                                    <td class="tblDetailsHeader">Σύμβουλος1</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlConsultant1" runat="server" DataSourceID="sqldsConsultants" 
                                                            selectedvalue=<%# Bind("Consultant1") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Consultant2</td>
+                                                    <td class="tblDetailsHeader">Σύμβουλος2</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlConsultant2" runat="server" DataSourceID="sqldsConsultantsNN" 
                                                            selectedvalue=<%# Bind("Consultant2") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Certification Fields</td>
+                                                    <td class="tblDetailsHeader">Πεδίο πιστοποίησης</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox15" MaxLength="500" runat="server" SkinID="txtText" Text='<%# Bind("CertificationField") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Description <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TextBox10" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox10" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                                    <td class="tblDetailsHeader">Περιγραφή <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TextBox10" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox10" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RegularExpressionValidator></td>
                                                     <td colspan="5" class="tblDetailsItem"><asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Start date</td>
+                                                    <td class="tblDetailsHeader">Έναρξη</td>
                                                     <td class="tblDetailsItem"><uc1:DateBox ID="dbStartDate" runat="server" Value='<%# Bind("StartDate") %>' /></td>
-                                                    <td class="tblDetailsHeader">Initial end date</td>
+                                                    <td class="tblDetailsHeader">Συμβατική λήξη</td>
                                                     <td class="tblDetailsItem"><uc1:DateBox ID="dbEndDate" runat="server" Value='<%# Bind("InitialEndDate") %>' /></td>
-                                                    <td class="tblDetailsHeader">Initial meetings no</td>
+                                                    <td class="tblDetailsHeader">Εκτιμώμενος αρ. συναντήσεων</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox12" MaxLength="3" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Critical issues</td>
+                                                    <td class="tblDetailsHeader">Κρίσιμα σημεία</td>
                                                     <td colspan="3" class="tblDetailsItem"><asp:TextBox ID="TextBox13" SkinID="txtText" MaxLength="500" runat="server" Text='<%# Bind("CriticalIssues") %>'></asp:TextBox></td>
-                                                    <td class="tblDetailsHeader">Desired Organization</td>
+                                                    <td class="tblDetailsHeader">Επιθυμητός φορέας</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox14" MaxLength="50" runat="server" SkinID="txtText" Text='<%# Bind("DesiredOrganization") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
@@ -182,7 +182,7 @@
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectStatus" runat="server" DataSourceID="sqldsProjectStatus" 
                                                             selectedvalue=<%# Bind("Status") %>  DataTextField="Description" DataValueField="id">                                                
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Completion (%)</td>
+                                                    <td class="tblDetailsHeader">% Ολοκλήρωσης</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlPercent" runat="server" selectedvalue=<%# Bind("CompletionPercentage") %>  >
                                                             <asp:ListItem>0</asp:ListItem>
                                                             <asp:ListItem>10</asp:ListItem>
@@ -196,7 +196,7 @@
                                                             <asp:ListItem>90</asp:ListItem>
                                                             <asp:ListItem>100</asp:ListItem>
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Modification Date</td>
+                                                    <td class="tblDetailsHeader">Ημ/νία τροποποίησης</td>
                                                     <td class="tblDetailsItem"></td>
                                                 </tr>
                                             </table>                                        
@@ -204,11 +204,11 @@
                                         <InsertItemTemplate>
 						                    <table id="tblDetails">
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Title <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox9" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                                    <td class="tblDetailsHeader">Τίτλος έργου <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox9" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem" colspan="5"><asp:TextBox ID="TextBox9" MaxLength="50" SkinID="txtText" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Project <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox1" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                                    <td class="tblDetailsHeader">Κωδ. έργου <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox1" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox1" MaxLength="10" runat="server" Text='<%# Bind("Code") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">SubProject <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox2" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox2" MaxLength="10" runat="server" Text='<%# Bind("SubProject") %>'></asp:TextBox></td>
@@ -216,47 +216,47 @@
                                                     <td class="tblDetailsItem"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Creator</td>
+                                                    <td class="tblDetailsHeader">Δημιουργός</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlCreators" runat="server" DataSourceID="sqldsCreators" 
                                                            DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Customer</td>
+                                                    <td class="tblDetailsHeader">Πελάτης</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlCompanies" runat="server" 
                                                            DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Supervisor</td>
+                                                    <td class="tblDetailsHeader">Project manager</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlSupervisors" runat="server" DataSourceID="sqldsCreators" 
                                                            DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Consultant1</td>
+                                                    <td class="tblDetailsHeader">Σύμβουλος1</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlInsConsultant1" runat="server" DataSourceID="sqldsConsultants" 
                                                            DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Consultant2</td>
+                                                    <td class="tblDetailsHeader">Σύμβουλος2</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlInsConsultant2" runat="server" DataSourceID="sqldsConsultantsNN" 
                                                            DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Certification Fields</td>
+                                                    <td class="tblDetailsHeader">Πεδίο πιστοποίησης</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox15" MaxLength="500" runat="server" SkinID="txtText" Text='<%# Bind("CertificationField") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Description <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox10" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox10" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                                    <td class="tblDetailsHeader">Περιγραφή <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox10" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox10" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RegularExpressionValidator></td>
                                                     <td colspan="5" class="tblDetailsItem"><asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Start date</td>
+                                                    <td class="tblDetailsHeader">Έναρξη</td>
                                                     <td class="tblDetailsItem"><uc1:DateBox ID="dbStartDate" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>' /></td>
-                                                    <td class="tblDetailsHeader">Initial end date</td>
+                                                    <td class="tblDetailsHeader">Συμβατική λήξη</td>
                                                     <td class="tblDetailsItem"><uc1:DateBox ID="dbEndDate" runat="server" Text='<%# Today.AddMonths(6).ToString("dd/MM/yyyy") %>' /></td>
-                                                    <td class="tblDetailsHeader">Initial meetings no</td>
+                                                    <td class="tblDetailsHeader">Εκτιμώμενος αρ. συναντήσεων</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox12" MaxLength="3" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Critical issues</td>
+                                                    <td class="tblDetailsHeader">Κρίσιμα σημεία</td>
                                                     <td colspan="3" class="tblDetailsItem"><asp:TextBox ID="TextBox13" MaxLength="500" SkinID="txtText" runat="server" Text='<%# Bind("CriticalIssues") %>'></asp:TextBox></td>
-                                                    <td class="tblDetailsHeader">Desired Organization</td>
+                                                    <td class="tblDetailsHeader">Επιθυμητός φορέας</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox14" MaxLength="50" runat="server" SkinID="txtText" Text='<%# Bind("DesiredOrganization") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
@@ -264,7 +264,7 @@
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectStatus" runat="server" DataSourceID="sqldsProjectStatus" 
                                                             DataTextField="Description" DataValueField="id">                                                
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Completion (%)</td>
+                                                    <td class="tblDetailsHeader">% Ολοκλήρωσης</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlPercent" runat="server" selectedvalue=<%# Bind("CompletionPercentage") %>  >
                                                             <asp:ListItem>0</asp:ListItem>
                                                             <asp:ListItem>10</asp:ListItem>
@@ -278,7 +278,7 @@
                                                             <asp:ListItem>90</asp:ListItem>
                                                             <asp:ListItem>100</asp:ListItem>
                                                         </asp:DropDownList></td>
-                                                    <td class="tblDetailsHeader">Modification Date</td>
+                                                    <td class="tblDetailsHeader">Ημ/νία τροποποίησης</td>
                                                     <td class="tblDetailsItem"></td>
                                                 </tr>
                                             </table>                                        
@@ -343,15 +343,15 @@
                                 DataSourceID="sqldsAP" ShowFooter="false" SkinID="gridviewSkinSmall">
                             <EmptyDataTemplate>
                                 <br />
-                                There are no actions. Insert one using the controls below.<br />
+                                Δεν υπάρχουν καταχωρημένες ενέργειες.<br />
                                 <br />
                                 <table border="1" class="TblEmptyData">
                                     <tr class="InsertTabHeader">
-                                        <td>Action</td>
-                                        <td class="CommentsCol">Description <asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtAPdesc" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                        <td></td>
+                                        <td class="CommentsCol">Περιγραφή <asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtAPdesc" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
                                         <!--<td>Type</td>-->
-                                        <td>Responsible1</td>
-                                        <td>Responsible2</td>
+                                        <td>Υπεύθυνος1</td>
+                                        <td>Υπεύθυνος2</td>
                                         <td>Deadline</td>
                                         <td>Status</td>
                                         <td>File</td>
@@ -400,7 +400,7 @@
                                             ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsAP" />
                                     </FooterTemplate>
                                 </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="Description" SortExpression="Description">
+                                    <asp:TemplateField HeaderText="Περιγραφή" SortExpression="Description">
                                         <ItemStyle CssClass="CommentsCol" />
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox6" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RegularExpressionValidator>
@@ -429,7 +429,7 @@
                                             </asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Responsible1" SortExpression="Responsible1">
+                                    <asp:TemplateField HeaderText="Υπεύθυνος1" SortExpression="Responsible1">
                                         <EditItemTemplate>
                                             <asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
                                                 selectedvalue=<%# Bind("Responsible1") %> DataTextField="FullName" DataValueField="id">
@@ -446,7 +446,7 @@
                                             </asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Responsible2" SortExpression="Responsible2">
+                                    <asp:TemplateField HeaderText="Υπεύθυνος2" SortExpression="Responsible2">
                                         <EditItemTemplate>
                                             <asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
                                                 selectedvalue=<%# Bind("Responsible2") %> DataTextField="FullName" DataValueField="id">
@@ -512,15 +512,15 @@
                                 DataSourceID="sqldsMeetings"  SkinID="gridviewSkinSmall" ShowFooter="false">
                                 <EmptyDataTemplate>
                                 <br />
-                                There are no scheduled meetings for this project. Insert one using the controls below.<br />
+                                Δεν υπάρχουν καταχωρημένες συναντήσεις για αυτό το έργο.<br />
                                 <br />
                                 <table border="1" class="TblEmptyData">
                                     <tr class="InsertTabHeader">
                                         <td></td>
-                                        <td align="center">From</td>
-                                        <td align="center">To</td>
-                                        <td class="CommentsCol"><!--Kind<br />-->Subject</td>
-                                        <td align="center">Consultant</td>
+                                        <td align="center">Έναρξη</td>
+                                        <td align="center">Λήξη</td>
+                                        <td class="CommentsCol"><!--Kind<br />-->Θέμα</td>
+                                        <td align="center">Σύμβουλος</td>
                                         <td align="center">Status</td>
                                         <!--<td>NewBusiness</td>
                                         <td>Comments</td>-->
@@ -569,7 +569,7 @@
                                                 ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsMeet" />
                                         </FooterTemplate>
                                     </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="From" SortExpression="TimeFrom" ItemStyle-Wrap="false">
+                                    <asp:TemplateField HeaderText="Έναρξη" SortExpression="TimeFrom" ItemStyle-Wrap="false">
                                         <EditItemTemplate>
                                             <uc1:DateBox ID="dbTimeFrom" runat="server" Value='<%# Bind("TimeFrom") %>' ShowTime="true" />
                                         </EditItemTemplate>
@@ -580,7 +580,7 @@
                                             <uc1:DateBox ID="dbTimeFrom" runat="server" Value='<%# Bind("TimeFrom") %>' ShowTime="true" Text='<%# Now.ToString("dd/MM/yyyy") %>' />
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="To" SortExpression="TimeTo" ItemStyle-Wrap="false">
+                                    <asp:TemplateField HeaderText="Λήξη" SortExpression="TimeTo" ItemStyle-Wrap="false">
                                         <EditItemTemplate>
                                             <uc1:DateBox ID="dbTimeTo" runat="server" Value='<%# Bind("TimeTo") %>' ShowTime="true" ShowDate="false" />
                                         </EditItemTemplate>
@@ -591,7 +591,7 @@
                                             <uc1:DateBox ID="dbTimeTo" runat="server" Value='<%# Bind("TimeTo") %>' Text='<%# Now.ToString("HH:mm") %>' ShowTime="true" ShowDate="false" />                                            
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Kind" SortExpression="Kind" Visible="false">
+                                    <asp:TemplateField HeaderText="Τύπος" SortExpression="Kind" Visible="false">
                                         <EditItemTemplate>
                                             <asp:DropDownList SkinId="ddlDef" ID="ddlMeetKind" runat="server" DataSourceID="sqldsMeetKind" 
                                                 selectedvalue=<%# Bind("Kind") %> DataTextField="Description" DataValueField="id">
@@ -608,7 +608,7 @@
                                             </asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Subject" SortExpression="Subject">
+                                    <asp:TemplateField HeaderText="Θέμα" SortExpression="Subject">
                                         <ItemStyle />
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox7" SkinID="txtText" MaxLength="50" runat="server" Text='<%# Bind("Subject") %>'></asp:TextBox>
@@ -620,7 +620,7 @@
                                             <asp:TextBox ID="txtMeetSubject" MaxLength="50" SkinID="txtText" runat="server" ></asp:TextBox>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Consultant" SortExpression="Consultant">
+                                    <asp:TemplateField HeaderText="Σύμβουλος" SortExpression="Consultant">
                                         <EditItemTemplate>
                                             <asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
                                                 selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
@@ -705,9 +705,9 @@
                                     <br />
                                     <table border="1" class="TblEmptyData">
                                         <tr class="InsertTabHeader">
-                                            <td>Action</td>
-                                            <td>File</td>
-                                            <td>Comments</td>
+                                            <td></td>
+                                            <td>Αρχείο</td>
+                                            <td>Σχόλια</td>
                                         </tr>
                                         <tr class="InsertRow">
                                             <td class="centered"><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
@@ -747,7 +747,7 @@
                                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy HH:mm:ss}") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Attachment" SortExpression="AttachmentName">
+                                    <asp:TemplateField HeaderText="Αρχείο" SortExpression="AttachmentName">
                                         <ItemTemplate>
                                             <asp:Label ID="lblDown" runat="server" Text='<%# Bind("AttachmentName") %>'></asp:Label>
                                             <asp:ImageButton ID="btnDown" OnClientClick="this.form.onsubmit=''" runat="server" CommandArgument='<%# Bind("id") %>'
@@ -757,7 +757,7 @@
                                             <asp:FileUpload ID="fuCtrl" runat="server" />                                            
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Comments" SortExpression="Comments">
+                                    <asp:TemplateField HeaderText="Σχόλια" SortExpression="Comments">
                                         <ItemTemplate>
                                             <asp:Label  ID="lblComments" runat="server" Text='<%# Bind("Comments") %>'></asp:Label>
                                         </ItemTemplate>

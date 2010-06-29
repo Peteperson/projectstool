@@ -95,7 +95,10 @@ Partial Class Companies
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
-            If Request.Params("Company") <> "" Then txtNameFilter.Text = Request.Params("Company")
+            If Request.Params("Company") <> "" Then
+                txtNameFilter.Text = Request.Params("Company")
+                gvCompanies.SelectedIndex = 0
+            End If
         End If
     End Sub
 
@@ -105,5 +108,14 @@ Partial Class Companies
 
     Protected Sub btnClearFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClearFilter.Click
         txtNameFilter.Text = ""
+    End Sub
+
+    Protected Sub gvProjects_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvProjects.RowCommand
+        Select Case e.CommandName
+            Case "SelSubProject"
+                Session("ProjectId") = e.CommandArgument
+                Response.Clear()
+                Response.Redirect("~/Projects.aspx")
+        End Select
     End Sub
 End Class
