@@ -85,7 +85,7 @@
                                                     <td class="tblDetailsItem"><asp:Label ID="Label8" runat="server" Text='<%# Bind("StartDate", "{0:dd/MM/yyyy}") %>'></asp:Label></td>
                                                     <td class="tblDetailsHeader">Συμβατική λήξη</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label9" runat="server" Text='<%# Bind("InitialEndDate", "{0:dd/MM/yyyy}") %>'></asp:Label></td>
-                                                    <td class="tblDetailsHeader">Εκτιμώμενος αρ. συναντήσεων</td>
+                                                    <td class="tblDetailsHeader">Αρ. συναντήσεων</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label13" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:Label></td>
                                                 </tr>
                                                 <tr>
@@ -168,7 +168,7 @@
                                                     <td class="tblDetailsItem"><uc1:DateBox ID="dbStartDate" runat="server" Value='<%# Bind("StartDate") %>' /></td>
                                                     <td class="tblDetailsHeader">Συμβατική λήξη</td>
                                                     <td class="tblDetailsItem"><uc1:DateBox ID="dbEndDate" runat="server" Value='<%# Bind("InitialEndDate") %>' /></td>
-                                                    <td class="tblDetailsHeader">Εκτιμώμενος αρ. συναντήσεων</td>
+                                                    <td class="tblDetailsHeader">Αρ. συναντήσεων</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox12" MaxLength="3" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
@@ -250,7 +250,7 @@
                                                     <td class="tblDetailsItem"><uc1:DateBox ID="dbStartDate" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>' /></td>
                                                     <td class="tblDetailsHeader">Συμβατική λήξη</td>
                                                     <td class="tblDetailsItem"><uc1:DateBox ID="dbEndDate" runat="server" Text='<%# Today.AddMonths(6).ToString("dd/MM/yyyy") %>' /></td>
-                                                    <td class="tblDetailsHeader">Εκτιμώμενος αρ. συναντήσεων</td>
+                                                    <td class="tblDetailsHeader">Αρ. συναντήσεων</td>
                                                     <td class="tblDetailsItem"><asp:TextBox ID="TextBox12" MaxLength="3" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
