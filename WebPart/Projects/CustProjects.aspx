@@ -6,10 +6,10 @@
     <br />
     <table id="subPageMainTable" cellpadding="0" cellspacing="0">
         <tr>
-            <td class="title">Project list</td>
+            <td class="title">Λίστα έργων</td>
         </tr>
         <tr>
-            <td class="centered"><br />Click <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> in order to select a project and view its details.</td>
+            <td class="centered"><br />Πιέστε το <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> προκειμένου να επιλέξετε ένα έργο και να δείτε αναλυτικά τα στοιχεία του.</td>
         </tr>
         <tr>
             <td>
@@ -23,16 +23,16 @@
                                     CommandName="Select" ImageUrl="~/Images/Icons/Approve_16x16.png" ToolTip="Select" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Code" HeaderText="Code" SortExpression="Code" />
+                        <asp:BoundField DataField="Code" HeaderText="Έργο" SortExpression="Code" />
                         <asp:BoundField DataField="SubProject" HeaderText="SubProject" 
                             SortExpression="SubProject" />
-                        <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
-                        <asp:BoundField DataField="Supervisor" HeaderText="Supervisor" ReadOnly="True" 
+                        <asp:BoundField DataField="Title" HeaderText="Τίτλος" SortExpression="Title" />
+                        <asp:BoundField DataField="Supervisor" HeaderText="Project manager" ReadOnly="True" 
                             SortExpression="Supervisor" />
-                        <asp:BoundField DataField="Consultant" HeaderText="Consultant" ReadOnly="True" 
+                        <asp:BoundField DataField="Consultant" HeaderText="Σύμβουλος" ReadOnly="True" 
                             SortExpression="Consultant" />
                         <asp:BoundField DataField="InitialEndDate" DataFormatString="{0:dd/MM/yyyy}" 
-                            HeaderText="InitialEndDate" SortExpression="InitialEndDate" />
+                            HeaderText="Λήξη" SortExpression="InitialEndDate" />
                         <asp:BoundField DataField="CompletionPercentage" HeaderText="%" 
                             SortExpression="CompletionPercentage" />
                         <asp:BoundField DataField="Status" HeaderText="Status" 
@@ -68,13 +68,13 @@
                                 <Columns>
                                     <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
                                         SortExpression="A/A" />
-                                    <asp:BoundField DataField="Responsible1" HeaderText="Responsible1" 
+                                    <asp:BoundField DataField="Responsible1" HeaderText="Υπεύθυνος1" 
                                         ReadOnly="True" SortExpression="Responsible1" />
-                                    <asp:BoundField DataField="Responsible2" HeaderText="Responsible2" 
+                                    <asp:BoundField DataField="Responsible2" HeaderText="Υπεύθυνος2" 
                                         ReadOnly="True" SortExpression="Responsible2" />
-                                    <asp:BoundField DataField="Description" HeaderText="Description" 
+                                    <asp:BoundField DataField="Description" HeaderText="Περιγραφή" 
                                         SortExpression="Description" />
-                                    <asp:TemplateField HeaderText="File" SortExpression="AttachmentName">
+                                    <asp:TemplateField HeaderText="Αρχείο" SortExpression="AttachmentName">
                                         <ItemTemplate>
                                             <asp:ImageButton ID="btnDown" runat="server" OnClientClick="this.form.onsubmit=''" CommandArgument='<%# Bind("id") %>'
                                                 CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip='<%# Bind("AttachmentName") %>'/>
@@ -96,19 +96,19 @@
                                     <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
                                         SortExpression="A/A" />
                                     <asp:BoundField DataField="Date" DataFormatString="{0:dd/MM/yyyy}" 
-                                        HeaderText="Date" SortExpression="Date" />
-                                    <asp:BoundField DataField="From" DataFormatString="{0:HH:mm}" HeaderText="From" 
+                                        HeaderText="Ημ/νία" SortExpression="Date" />
+                                    <asp:BoundField DataField="From" DataFormatString="{0:HH:mm}" HeaderText="Έναρξη" 
                                         SortExpression="From" />
-                                    <asp:BoundField DataField="To" DataFormatString="{0:HH:mm}" HeaderText="To" 
+                                    <asp:BoundField DataField="To" DataFormatString="{0:HH:mm}" HeaderText="Λήξη" 
                                         SortExpression="To" />
-                                    <asp:BoundField DataField="Kind" HeaderText="Kind" SortExpression="Kind" />
-                                    <asp:BoundField DataField="Subject" HeaderText="Subject" 
+                                    <asp:BoundField DataField="Kind" HeaderText="Τύπος" SortExpression="Kind" />
+                                    <asp:BoundField DataField="Subject" HeaderText="Θέμα" 
                                         SortExpression="Subject" />
-                                    <asp:BoundField DataField="Consultant" HeaderText="Consultant" ReadOnly="True" 
+                                    <asp:BoundField DataField="Consultant" HeaderText="Σύμβουλος" ReadOnly="True" 
                                         SortExpression="Consultant" />
-                                    <asp:BoundField DataField="Comments" HeaderText="Comments" 
+                                    <asp:BoundField DataField="Comments" HeaderText="Σχόλια" 
                                         SortExpression="Comments" />
-                                    <asp:TemplateField HeaderText="File" SortExpression="File">
+                                    <asp:TemplateField HeaderText="Αρχείο" SortExpression="File">
                                         <ItemTemplate>
                                             <asp:ImageButton ID="btnDown" runat="server" OnClientClick="this.form.onsubmit=''" CommandArgument='<%# Bind("id") %>'
                                                 CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip='<%# Bind("File") %>'/>
@@ -128,16 +128,16 @@
                                 <Columns>
                                     <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
                                         SortExpression="A/A" />
-                                    <asp:BoundField DataField="Datestamp" HeaderText="Datestamp" 
+                                    <asp:BoundField DataField="Datestamp" HeaderText="Ημ/νία" 
                                         SortExpression="Datestamp" />
-                                    <asp:TemplateField HeaderText="File" SortExpression="File">
+                                    <asp:TemplateField HeaderText="Αρχείο" SortExpression="File">
                                         <ItemTemplate>
                                             <asp:Label ID="lblDown" runat="server" Text='<%# Bind("File") %>'></asp:Label>
                                             <asp:ImageButton ID="btnDown" OnClientClick="this.form.onsubmit=''" runat="server" CommandArgument='<%# Bind("id") %>'
                                                     CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip="Click to download file"/>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="Comments" HeaderText="Comments" 
+                                    <asp:BoundField DataField="Comments" HeaderText="Σχόλια" 
                                         SortExpression="Comments" />
                                 </Columns>
                             </asp:GridView>
