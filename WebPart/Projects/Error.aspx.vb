@@ -16,6 +16,8 @@ Partial Class [Error]
                 lblError.Text = "Δεν μπορείτε να διαγράψετε την συγκεκριμένη εγγραφή γιατί υπάρχουν συσχετισμένες εγγραφές σε άλλους πίνακες."
             ElseIf msg.Contains("permission was denied on the object") Then
                 lblError.Text = "Δεν έχετε επαρκή δικαιώματα για να εκτελέσετε τη συγκεκριμένη ενέργεια."
+            ElseIf msg.Contains("'ddlPrjCode' has a SelectedValue which is invalid because it does not exist") Then
+                lblError.Text = "Δεν έχετε επαρκή δικαιώματα για να δείτε το συγκεκριμένο έργο."
             Else
                 lblError.Text = msg
             End If
