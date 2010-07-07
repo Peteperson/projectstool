@@ -7,7 +7,7 @@
     <asp:Panel runat="server" ID="pnl1" DefaultButton="btnFilterQ" >
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Manage companies</td>
+            <td class="title">Διαχείριση πελατών</td>
         </tr>
         <tr>
             <td>&nbsp;</td>

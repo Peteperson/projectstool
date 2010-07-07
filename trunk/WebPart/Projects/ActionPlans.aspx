@@ -73,7 +73,9 @@
             <td align="center">
                 <table style="border: solid 1px white">
                     <tr>
-                        <td>Προβολή ενεργειών που βρίσκονται σε status:</td>
+                        <td colspan="2" class="ShowStatus">Προβολή ενεργειών που βρίσκονται σε status:</td>
+                    </tr>
+                    <tr>
                         <td>
                             <asp:RadioButtonList ID="rblStatus" runat="server" RepeatDirection="Horizontal" 
                                 DataSourceID="sqldsActionStatus" DataTextField="Description" 

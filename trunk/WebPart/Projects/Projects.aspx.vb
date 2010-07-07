@@ -28,6 +28,7 @@ Partial Class Projects
                 btnMTins.Visible = False
                 gvFiles.Visible = False
                 btnFlsIns.Visible = False
+                gvProgress.Visible = False
                 gvAP.DataBind()
             Case 1
                 gvAP.Visible = False
@@ -36,6 +37,7 @@ Partial Class Projects
                 btnMTins.Visible = True
                 gvFiles.Visible = False
                 btnFlsIns.Visible = False
+                gvProgress.Visible = False
                 gvMeetings.DataBind()
             Case 2
                 gvAP.Visible = False
@@ -44,6 +46,7 @@ Partial Class Projects
                 btnAPins.Visible = False
                 gvFiles.Visible = True
                 btnFlsIns.Visible = True
+                gvProgress.Visible = False
                 gvFiles.DataBind()
             Case 3
                 gvAP.Visible = False
@@ -52,7 +55,8 @@ Partial Class Projects
                 btnMTins.Visible = False
                 gvFiles.Visible = False
                 btnFlsIns.Visible = False
-
+                gvProgress.Visible = True
+                gvProgress.DataBind()
         End Select
     End Sub
 
@@ -73,6 +77,7 @@ Partial Class Projects
         gvAP.Visible = True
         gvMeetings.Visible = False
         gvFiles.Visible = False
+        gvProgress.Visible = False
         btnAPins.Visible = True
         btnFlsIns.Visible = False
         btnMTins.Visible = False
@@ -94,7 +99,6 @@ Partial Class Projects
         Select Case e.CommandName
             Case "Insert"
                 sqldsAttachments.Insert()
-                gvFiles.DataBind()
             Case "Download"
                 Session("DownloadFileId") = e.CommandArgument
                 Session("TableName") = "Attachments"
@@ -280,7 +284,6 @@ Partial Class Projects
         Select Case e.CommandName
             Case "Insert"
                 sqldsMeetings.Insert()
-                gvMeetings.DataBind()
             Case "Download"
                 Session("DownloadFileId") = e.CommandArgument
                 Session("TableName") = "Meetings"
@@ -385,5 +388,29 @@ Partial Class Projects
 
     Protected Sub sqldsSysVer_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsSysVer.Inserting
         e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+    End Sub
+
+    Protected Sub gvProgress_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvProgress.RowCommand
+        Select Case e.CommandName
+            Case "Insert"
+                sqldsProgress.Insert()
+        End Select
+        ShowTab(3)
+    End Sub
+
+    Protected Sub sqldsProgress_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsProgress.Inserting
+        If gvProgress.Rows.Count > 0 Then
+            e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+            e.Command.Parameters("@Writer").Value = CType(gvProgress.FooterRow.FindControl("ddlWriter"), DropDownList).SelectedValue
+            e.Command.Parameters("@Comments").Value = CType(gvProgress.FooterRow.FindControl("txtComments"), TextBox).Text
+        Else
+            e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+            e.Command.Parameters("@Writer").Value = CType(gvProgress.Controls(0).Controls(0).Controls(0).FindControl("ddlWriter"), DropDownList).SelectedValue
+            e.Command.Parameters("@Comments").Value = CType(gvProgress.Controls(0).Controls(0).Controls(0).FindControl("txtComments"), TextBox).Text
+        End If
+    End Sub
+
+    Protected Sub gvProgress_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvProgress.RowDataBound
+        InsertDeleteValidation(e, 0)
     End Sub
 End Class

@@ -6,7 +6,7 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Attachment list</td>
+            <td class="title">Λίστα Αρχείων</td>
         </tr>
         <tr>
             <td>&nbsp;</td>

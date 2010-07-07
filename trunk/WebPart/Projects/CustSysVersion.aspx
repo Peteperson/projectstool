@@ -6,13 +6,13 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">System design</td>
+            <td class="title">Σχεδιασμός συστήματος</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="centered" style="padding-bottom:5px">In case of multiple projects, select one from the list:
+            <td class="centered" style="padding-bottom:5px">Σε περίπτωση πολλών έργων, επιλέξτε ένα από τη λίστα:
                 <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
                     DataTextField="SubProject" DataValueField="id" AutoPostBack="True">
                 </asp:DropDownList>
@@ -30,17 +30,12 @@
                     AutoGenerateColumns="False" DataKeyNames="id" 
                     DataSourceID="sqldsProcesses" SkinID="gridviewSkin">
                     <Columns>
-                        <asp:BoundField DataField="Code" HeaderText="Code" SortExpression="Code" />
-                        <asp:BoundField DataField="Description" HeaderText="Description" 
-                            SortExpression="Description" />
-                        <asp:BoundField DataField="Status" HeaderText="Status" 
-                            SortExpression="Status" />
-                        <asp:BoundField DataField="StatusDate" HeaderText="StatusDate" 
-                            SortExpression="StatusDate" DataFormatString="{0:dd/MM/yyyy}" />
-                        <asp:BoundField DataField="Responsible" HeaderText="Responsible" 
-                            ReadOnly="True" SortExpression="Responsible" />
-                        <asp:BoundField DataField="Comments" HeaderText="Comments" 
-                            SortExpression="Comments" />
+                        <asp:BoundField DataField="Code" HeaderText="Κωδικός" SortExpression="Code" />
+                        <asp:BoundField DataField="Description" HeaderText="Περιγραφή" SortExpression="Description" />
+                        <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
+                        <asp:BoundField DataField="StatusDate" HeaderText="StatusDate" SortExpression="StatusDate" DataFormatString="{0:dd/MM/yyyy}" />
+                        <asp:BoundField DataField="Responsible" HeaderText="Υπεύθυνος" ReadOnly="True" SortExpression="Responsible" />
+                        <asp:BoundField DataField="Comments" HeaderText="Σχόλια" SortExpression="Comments" />
                     </Columns>
                 </asp:GridView>
             </td>
