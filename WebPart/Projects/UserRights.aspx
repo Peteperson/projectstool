@@ -5,7 +5,7 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Manage user rights</td>
+            <td class="title">Διαχείριση Δικαιωμάτων</td>
         </tr>
         <tr>
             <td>

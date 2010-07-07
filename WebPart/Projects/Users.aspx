@@ -5,7 +5,7 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Manage Users</td>
+            <td class="title">Διαχείριση Χρηστών</td>
         </tr>
         <tr>
             <td>

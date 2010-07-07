@@ -8,13 +8,13 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Meetings</td>
+            <td class="title">Λίστα Συναντήσεων</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="centered">Click <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> in order to select a meeting and view its details.<br />
+            <td class="centered">Πιέστε το <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> προκειμένου να επιλέξετε μία συνάντηση και να δείτε αναλυτικά τα στοιχεία της.<br />
                 <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter" Visible="false"></asp:TextBox>
             </td>
         </tr>
@@ -22,7 +22,9 @@
             <td align="center">
                 <table style="border: solid 1px white">
                     <tr>
-                        <td>Show status:</td>
+                        <td colspan="2" class="ShowStatus">Προβολή συναντήσεων που βρίσκονται σε status:</td>
+                    </tr>
+                    <tr>
                         <td><asp:RadioButtonList ID="rblStatus" runat="server" RepeatDirection="Horizontal" 
                                 DataSourceID="sqldsMeetStat" DataTextField="Description" 
                                 DataValueField="id" AutoPostBack="True">
@@ -113,7 +115,7 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="title">Meeting's details</td>
+            <td class="title">Λεπτομέρειες</td>
         </tr>
         <tr>
             <td class="DetFormView">

@@ -7,7 +7,7 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">View log list</td>
+            <td class="title">Παρακολούθηση Δραστηριότητας</td>
         </tr>
         <tr>
             <td>

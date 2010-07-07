@@ -79,3 +79,4 @@
 <asp:DropDownList SkinId="ddlDef" Width="100%" runat="server"></asp:DropDownList>
 
 <asp:RequiredFieldValidator SkinId="rfvDef" ForeColor="Black" runat="server"></asp:RequiredFieldValidator>
+<asp:RegularExpressionValidator SkinId="revDef" ForeColor="Black" runat="server" ></asp:RegularExpressionValidator>

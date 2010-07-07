@@ -6,7 +6,7 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Manage all types</td>
+            <td class="title">Διαχείριση Παραμέτρων</td>
         </tr>
         <tr>
             <td>

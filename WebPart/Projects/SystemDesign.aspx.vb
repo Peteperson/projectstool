@@ -77,11 +77,12 @@ Partial Class SystemDesign
 
     Protected Sub ddlSysVersions_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlSysVersions.DataBound
         gvProcesses.DataBind()
+        If ddlSysVersions.Items.Count < 2 Then btnDelVersion.Visible = False Else btnDelVersion.Visible = True
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        btnAddVersion.Attributes("onclick") = "if(!confirm('Create a new version with the current processes?'))return   false;"
-        btnDelVersion.Attributes("onclick") = "if(!confirm('Delete current version?'))return   false;"
+        btnAddVersion.Attributes("onclick") = "if(!confirm('Θέλετε να δημιουργήσετε νέα έκδοση με τις παρακάτω διαδικασίες;'))return   false;"
+        btnDelVersion.Attributes("onclick") = "if(!confirm('Θέλετε να διαγράψετε την παρκάτω έκδοση;'))return   false;"
         If Not IsPostBack Then
             If Request.Params("Project") <> "" Then ddlPrjCode.SelectedValue = Request.Params("Project")
         End If
@@ -99,6 +100,12 @@ Partial Class SystemDesign
 
     Protected Sub btnDelVersion_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnDelVersion.Click
         sqldsSysVersions.Delete()
+        ddlSysVersions.DataBind()
+    End Sub
+
+    Protected Sub Button1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Button1.Click
+        sqldsSysVersions.Update()
+        ddlPrjCode.SelectedIndex = ddlCopyProjects.SelectedIndex
         ddlSysVersions.DataBind()
     End Sub
 End Class

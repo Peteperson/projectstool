@@ -6,7 +6,7 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Project list</td>
+            <td class="title">Λίστα Έργων</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
@@ -29,7 +29,7 @@
             <td align="center">
                 <table style="border: solid 1px white">
                     <tr>
-                        <td align="center">Show status:</td>
+                        <td class="ShowStatus">Προβολή έργων που βρίσκονται σε κατάσταση:</td>
                     </tr>
                     <tr>
                         <td>

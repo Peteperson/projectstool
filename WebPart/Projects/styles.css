@@ -258,6 +258,14 @@ a:hover {
     color:#842829;
 }
 
+#tdProgress a{
+    color:black;
+}
+
+#tdProgress a:hover{
+    color:#842829;
+}
+
 #tblCngPass {
     /*background-color: #E4E4C0;*/
     width:350px;
@@ -300,4 +308,13 @@ a:hover {
     color: Black;
     font-weight: bold;
     display:none;
+}
+
+.ShowStatus{
+    text-align: left;
+    font-weight: bold;    
+}
+
+.MinWidth {
+    width:0%;
 }

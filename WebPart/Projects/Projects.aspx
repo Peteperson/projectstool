@@ -403,13 +403,13 @@
                                     <asp:TemplateField HeaderText="Περιγραφή" SortExpression="Description">
                                         <ItemStyle CssClass="CommentsCol" />
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox6" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox6" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RegularExpressionValidator><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label7" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:TextBox ID="txtAPdesc" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>' ></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtAPdesc" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtAPdesc" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator><asp:TextBox ID="txtAPdesc" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>' ></asp:TextBox>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Type" Visible="false" SortExpression="ActionId">
@@ -509,7 +509,7 @@
                         <td id="tdMeetings" align="center">
                             <asp:GridView ID="gvMeetings" runat="server" AllowPaging="True" 
                                 AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
-                                DataSourceID="sqldsMeetings"  SkinID="gridviewSkinSmall" ShowFooter="false">
+                                DataSourceID="sqldsMeetings" SkinID="gridviewSkinSmall" ShowFooter="false">
                                 <EmptyDataTemplate>
                                 <br />
                                 Δεν υπάρχουν καταχωρημένες συναντήσεις για αυτό το έργο.<br />
@@ -639,13 +639,13 @@
                                     </asp:TemplateField>
 				                    <asp:TemplateField HeaderText="NewBusiness" Visible="false" SortExpression="NewBusiness">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("NewBusiness") %>'></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox10" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdMeet" ErrorMessage="*"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox10" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdMeet" ErrorMessage="*"></asp:RegularExpressionValidator><asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("NewBusiness") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label11" runat="server" Text='<%# Bind("NewBusiness") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:TextBox ID="txtMeetNewBus" SkinID="txtTextLong" TextMode="MultiLine" runat="server" ></asp:TextBox><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtMeetNewBus" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtMeetNewBus" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RegularExpressionValidator><asp:TextBox ID="txtMeetNewBus" SkinID="txtTextLong" TextMode="MultiLine" runat="server" ></asp:TextBox>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Comments" Visible="false" SortExpression="Comments">
@@ -701,7 +701,7 @@
                                 ShowFooter="false">
                                 <EmptyDataTemplate>
                                     <br />
-                                    There are no files uploaded. Insert one using the controls below.<br />
+                                    Δεν υπάρχουν καταχωρημένα αρχεία στο συγκεκριμένο έργο.<br />
                                     <br />
                                     <table border="1" class="TblEmptyData">
                                         <tr class="InsertTabHeader">
@@ -771,6 +771,93 @@
                                 </Columns>
                             </asp:GridView>
                             <asp:Button ID="btnFlsIns" runat="server" Text="Enable/Disable insertion" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="tdProgress" align="center">
+                            <asp:GridView ID="gvProgress" runat="server" AllowPaging="True" ShowFooter="true" 
+                                AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
+                                DataSourceID="sqldsProgress" SkinID="gridviewSkinSmall" >
+                                <EmptyDataTemplate>
+                                    <br />
+                                    Δεν υπάρχουν καταχωρημένες εγγραφές.<br />
+                                    <br />
+                                    <table border="1" class="TblEmptyData">
+                                        <tr class="InsertTabHeader">
+                                            <td></td>
+                                            <td>Ημ/νία</td>
+                                            <td>Σχολιαστής</td>
+                                            <td>Σχόλιο <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtComments" ValidationGroup="InsProg" ErrorMessage="*"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtComments" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsProg" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                        </tr>
+                                        <tr class="InsertRow">
+                                            <td class="centered"><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
+                                                ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsProg" />
+                                            </td>
+                                            <td></td>
+                                            <td><asp:DropDownList ID="ddlWriter" runat="server" DataSourceID="sqldsCreators" 
+                                                    selectedvalue=<%# Session("UserId") %>  DataTextField="FullName" DataValueField="id">
+                                                </asp:DropDownList></td>
+                                            <td><asp:TextBox ID="txtComments" TextMode="MultiLine" SkinID="txtTextLong" runat="server"></asp:TextBox></td>
+                                        </tr>
+                                    </table>
+                                </EmptyDataTemplate>
+                                <Columns>
+                                    <asp:TemplateField ShowHeader="False">
+                                        <ItemStyle Wrap="false" />
+                                        <ItemTemplate>                
+                                            <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
+                                                CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
+                                            &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
+                                                CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" ValidationGroup="UpdProg"
+                                                CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Update" />
+                                            &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
+                                                CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Cancel" />
+                                        </EditItemTemplate>
+                                        <FooterStyle HorizontalAlign="Center" />
+                                        <FooterTemplate>
+                                            <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
+                                                ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsProg" />
+                                        </FooterTemplate>
+                                    </asp:TemplateField> 
+                                    <asp:TemplateField HeaderText="Ημ/νία" SortExpression="Datestamp">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("DateStamp", "{0:dd/MM/yyyy HH:mm}") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Σχολιαστής" SortExpression="Writer">
+                                        <ItemStyle CssClass="MinWidth" />
+                                        <ItemTemplate>
+                                            <asp:DropDownList ID="ddlWriter" runat="server" DataSourceID="sqldsCreators" 
+                                                Enabled="false" selectedvalue=<%# Bind("Writer") %>  DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:DropDownList ID="ddlWriter" runat="server" DataSourceID="sqldsCreators" 
+                                                selectedvalue=<%# Bind("Writer") %>  DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
+                                        </EditItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:DropDownList ID="ddlWriter" runat="server" DataSourceID="sqldsCreators" 
+                                                selectedvalue=<%# Session("UserId") %>  DataTextField="FullName" DataValueField="id">
+                                            </asp:DropDownList>
+                                        </FooterTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Σχόλιο" SortExpression="Comments">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("Comments") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:RegularExpressionValidator ID="RegExpVal3" SkinID="revDef" runat="server" ControlToValidate="TextBox4" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdProg" ErrorMessage="*"></asp:RegularExpressionValidator><asp:TextBox ID="TextBox4" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" SkinID="rfvDef" runat="server" ControlToValidate="txtComments" ValidationGroup="InsProg" ErrorMessage="*"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegExpVal2" SkinID="revDef" runat="server" ControlToValidate="txtComments" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsProg" ErrorMessage="*"></asp:RegularExpressionValidator><asp:TextBox ID="txtComments" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>' ></asp:TextBox>
+                                        </FooterTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
                         </td>
                     </tr>
                 </table>
@@ -1045,7 +1132,32 @@
             </td>
         </tr>
         <tr>
-            <td></td>
+            <td>
+                <asp:SqlDataSource ID="sqldsProgress" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                    DeleteCommand="DELETE FROM [Progress] WHERE [id] = @id" 
+                    InsertCommand="INSERT INTO [Progress] ([ProjectId], [Writer], [Comments]) VALUES (@ProjectId, @Writer, @Comments)" 
+                    SelectCommand="SELECT [id], [Datestamp], [ProjectId], [Writer], [Comments] FROM [Progress] WHERE ([ProjectId] = @ProjectId) ORDER BY [Datestamp] DESC" 
+                    UpdateCommand="UPDATE [Progress] SET [Writer] = @Writer, [Comments] = @Comments WHERE [id] = @id">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
+                            PropertyName="SelectedValue" Type="Int32" />
+                    </SelectParameters>
+                    <DeleteParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </DeleteParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="Writer" Type="Int32" />
+                        <asp:Parameter Name="Comments" Type="String" />
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </UpdateParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="ProjectId" Type="Int32" />
+                        <asp:Parameter Name="Writer" Type="Int32" />
+                        <asp:Parameter Name="Comments" Type="String" />
+                    </InsertParameters>
+                </asp:SqlDataSource>
+            </td>
             <td></td>
             <td></td>
             <td></td>

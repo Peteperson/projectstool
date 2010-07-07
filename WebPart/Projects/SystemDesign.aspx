@@ -7,18 +7,18 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">System design</td>
+            <td class="title">Σχεδιασμός Συστήματος</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="centered" style="padding-bottom:5px"> <asp:Panel ID="pnl1" runat="server" DefaultButton="btnFindPrj">Select a subproject from the list:
+            <td class="centered" style="padding-bottom:5px"> <asp:Panel ID="pnl1" runat="server" DefaultButton="btnFindPrj">Επιλέξτε subproject από τη λίστα:
                 <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
                     DataTextField="SubProject" DataValueField="id" AutoPostBack="True">
-                </asp:DropDownList>&nbsp;or write its subproject id and press &quot;Find&quot;
+                </asp:DropDownList>&nbsp;ή συμπληρώστε το στο ακόλουθο πεδίο και πατήστε &quot;Αναζήτηση&quot;
                 <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
-                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Find" /></asp:Panel> 
+                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /></asp:Panel> 
             </td>
         </tr>
         <tr>
@@ -28,12 +28,12 @@
                         <td align="center">
                             <table>
                                 <tr>
-                                    <td>Available versions:&nbsp;</td>
+                                    <td>Διαθέσιμες εκδόσεις:&nbsp;</td>
                                     <td><asp:DropDownList ID="ddlSysVersions" runat="server" 
                                         DataSourceID="sqldsSysVersions" DataTextField="VersionNo" 
                                         DataValueField="id" AutoPostBack="True">
                                     </asp:DropDownList></td>
-                                    <td> - Version actions:&nbsp;</td>
+                                    <td> - Ενέργειες έκδοσης:&nbsp;</td>
                                     <td><asp:ImageButton ID="btnAddVersion" runat="server" ImageUrl="~/Images/Icons/add_24x24.png" ToolTip="Add new version" /></td>
                                     <td><asp:ImageButton ID="btnDelVersion" runat="server" ImageUrl="~/Images/Icons/Delete_24x24.png" ToolTip="Delete current version" /></td>
                                 </tr>
@@ -64,12 +64,12 @@
                         <table border="1" class="TblEmptyData">
                             <tr class="InsertTabHeader">
                                 <td></td>
-                                <td>Code</td>
-                                <td class="CommentsCol">Description <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="InsProc" ControlToValidate="txtDescr" ErrorMessage="*"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtDescr" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsProc" ErrorMessage="*"></asp:RegularExpressionValidator></td>
+                                <td>Κωδικός</td>
+                                <td class="CommentsCol">Περιγραφή <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="InsProc" ControlToValidate="txtDescr" ErrorMessage="*"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtDescr" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsProc" ErrorMessage="*"></asp:RegularExpressionValidator></td>
                                 <td>Status</td>
                                 <td>StatusDate</td>
-                                <td>Responsible</td>
-                                <td>Comments</td>
+                                <td>Υπεύθυνος</td>
+                                <td>Σχόλια</td>
                             </tr>
                             <tr class="InsertRow">
                                 <td class="centered"><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
@@ -108,7 +108,7 @@
                                     ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsProc" />
                             </FooterTemplate>
                         </asp:TemplateField> 
-                        <asp:TemplateField HeaderText="Code" SortExpression="Code">
+                        <asp:TemplateField HeaderText="Κωδικός" SortExpression="Code">
                             <ItemStyle Width="50px" Wrap="false" />
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox1" SkinID="txtText93" runat="server" Text='<%# Bind("Code") %>'></asp:TextBox>
@@ -120,7 +120,7 @@
                                 <asp:TextBox ID="txtCode" SkinID="txtTime" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Description" SortExpression="Description">
+                        <asp:TemplateField HeaderText="Περιγραφή" SortExpression="Description">
                             <ItemStyle HorizontalAlign="Center" />
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox2" SkinID="txtDef" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox>
@@ -166,7 +166,7 @@
                                 <uc1:DateBox ID="dbStatDate" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>' />
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Responsible" SortExpression="Responsible">
+                        <asp:TemplateField HeaderText="Υπεύθυνος" SortExpression="Responsible">
                             <ItemStyle Width="120px" Wrap="false" />
                             <EditItemTemplate>
                                 <asp:DropDownList ID="ddlResp" runat="server" DataSourceID="sqldsResponsibles" 
@@ -184,7 +184,7 @@
                                 </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Comments" SortExpression="Comments">
+                        <asp:TemplateField HeaderText="Σχόλια" SortExpression="Comments">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox6" SkinID="txtText" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -198,6 +198,18 @@
                     </Columns>
                 </asp:GridView>
             </td>
+        </tr>
+    </table>
+    <br />
+    <br />
+    <table>
+        <tr>
+            <td>Μπορείτε να αντιγράψετε τις παραπάνω διαδικασίες επιλέγοντας το έργο στο οποίο θέλετε να αντιγραφούν από τη λίστα και πατώντας &quot;Αντιγραφή&quot;</td>
+        </tr>
+        <tr>
+            <td align="center"><asp:DropDownList ID="ddlCopyProjects" runat="server" 
+                    DataSourceID="sqldsPrjCodes" DataTextField="SubProject" DataValueField="id">
+                </asp:DropDownList>&nbsp;<asp:Button ID="Button1" runat="server" Text="Αντιγραφή" /></td>
         </tr>
     </table>
     <table>
@@ -217,13 +229,19 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     SelectCommand="SELECT [id], [VersionNo] FROM [SystemVersion] WHERE ([ProjectId] = @ProjectId) ORDER BY [VersionNo] DESC" 
                     InsertCommand="InsertVersion" InsertCommandType="StoredProcedure"
+                    UpdateCommand="InsertVersion" UpdateCommandType="StoredProcedure"
                     DeleteCommand="DeleteVersion" DeleteCommandType="StoredProcedure">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" PropertyName="SelectedValue" Type="Int32" />
                     </SelectParameters>
                     <InsertParameters>
                         <asp:ControlParameter ControlID="ddlSysVersions" Name="VersionId" PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="ddlPrjCode" Name="ToProjectId" PropertyName="SelectedValue" Type="Int32" />
                     </InsertParameters>
+                    <UpdateParameters>
+                        <asp:ControlParameter ControlID="ddlSysVersions" Name="VersionId" PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="ddlCopyProjects" Name="ToProjectId" PropertyName="SelectedValue" Type="Int32" />
+                    </UpdateParameters>
                     <DeleteParameters>
                         <asp:ControlParameter ControlID="ddlSysVersions" Name="VersionId" PropertyName="SelectedValue" Type="Int32" />
                     </DeleteParameters>
