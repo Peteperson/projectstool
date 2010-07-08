@@ -22,6 +22,7 @@
                 Session.Add("UserFullName", lr.UserFullName)
                 Session.Add("UserName", lr.UserName)
                 Session.Add("UserType", lr.UserType)
+                Session.Add("Message", Database.LatestMessage(Session("UserId")))
                 e.Authenticated = True
                 Response.Redirect(IIf(lr.DefPage = "---", "~/MainPanel.aspx", lr.DefPage)) 'FormsAuthentication.GetRedirectUrl(username, False)
             Case LoginResultStatus.InvalidCredentials

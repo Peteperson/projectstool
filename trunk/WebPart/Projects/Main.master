@@ -115,8 +115,13 @@ function HidePleaseWait() {
                 <asp:Image ID="Image1" ImageUrl="~/Images/eurobank.png" runat="server" Height="70px" />
             </td>
             <td style="width:100%; text-align: right; vertical-align: bottom; background-color: white">
-                <asp:ImageButton ID="btnQwe" runat="server" style="visibility:hidden" />
-                <asp:ImageButton ID="btnLogoff" runat="server" ImageUrl="~/Images/logout.png" ToolTip="Exit application" />
+                <table style="width:100%">
+                    <tr>
+                        <td style="width:100%"><asp:Literal ID="ltrMessage" runat="server"></asp:Literal></td>
+                        <td><asp:ImageButton ID="btnQwe" runat="server" style="visibility:hidden" /></td>
+                        <td><asp:ImageButton ID="btnLogoff" runat="server" ImageUrl="~/Images/logout.png" ToolTip="Exit application" /></td>
+                    </tr>
+                </table>
             </td>
         </tr>
         </table>
@@ -159,10 +164,16 @@ function HidePleaseWait() {
         </tr>
         </table>
         <table style="width:100%">
-        <tr>
-            <td style="background: url(Images/Blue.png) repeat-x; text-align:right; height: 27px; vertical-align:top"><a href="http://advent.com.gr">AG ADVENT 2010</a></td>
-        </tr>
+            <tr>
+                <td style="background: url(Images/Blue.png) repeat-x; text-align:right; height: 27px; vertical-align:top"><a href="http://advent.com.gr">AG ADVENT 2010</a></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
         </table>
+        <table>
+            <tr>
+                <td>
         <asp:SqlDataSource ID="sqldsMenu" runat="server" 
             ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="MenuItems" 
             SelectCommandType="StoredProcedure">
@@ -170,6 +181,11 @@ function HidePleaseWait() {
                 <asp:SessionParameter Name="UserType" SessionField="UserType" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
+                </td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+        </table>
     </form>
 </body>
 </html>
