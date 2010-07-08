@@ -1,5 +1,6 @@
 ﻿Imports Microsoft.VisualBasic
 Imports System.Data
+Imports System.Data.SqlClient
 
 Public Module Database
     Function CheckEmail(ByVal email As String) As ChkEmailResult
@@ -150,6 +151,25 @@ Public Module Database
         Dim result As Integer = cmd.ExecuteScalar()
         cn.Close()
     End Sub
+
+    Public Function LatestMessage(ByVal UserId As Integer) As String
+        Dim cmd As New SqlClient.SqlCommand("LatestMessage")
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = UserId
+
+        Dim cn As New SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings("cnMain").ConnectionString)
+        cmd.Connection = cn
+        cn.Open()
+        Dim ret As String = ""
+        Dim dr As SqlDataReader = cmd.ExecuteReader
+        While dr.Read
+            ret &= "|" & dr("Message") & "|"
+        End While
+        ret = ret.Replace("||", "|").Replace("|", "   ===   ")
+        dr.Close()
+        cn.Close()
+        Return ret
+    End Function
 
     Public Function CompanyName(ByVal ProjectId As Integer) As String
         Dim cmd As New SqlClient.SqlCommand("CompNameFromPrj")

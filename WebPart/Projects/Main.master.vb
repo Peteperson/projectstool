@@ -38,6 +38,7 @@
             End If
         End If
         lblMessage.Visible = False
+        ltrMessage.Text = "<marquee style='width:100%; color: black'>" & Session("Message") & "</marquee>"
     End Sub
 
     Protected Sub btnLogoff_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnLogoff.Click

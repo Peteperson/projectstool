@@ -82,7 +82,7 @@ Partial Class SystemDesign
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         btnAddVersion.Attributes("onclick") = "if(!confirm('Θέλετε να δημιουργήσετε νέα έκδοση με τις παρακάτω διαδικασίες;'))return   false;"
-        btnDelVersion.Attributes("onclick") = "if(!confirm('Θέλετε να διαγράψετε την παρκάτω έκδοση;'))return   false;"
+        btnDelVersion.Attributes("onclick") = "if(!confirm('Θέλετε να διαγράψετε την παρακάτω έκδοση;'))return   false;"
         If Not IsPostBack Then
             If Request.Params("Project") <> "" Then ddlPrjCode.SelectedValue = Request.Params("Project")
         End If
