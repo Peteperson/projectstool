@@ -20,7 +20,7 @@
                         <asp:TemplateField ShowHeader="False">
                             <ItemTemplate>
                                 <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                                    CommandName="Select" ImageUrl="~/Images/Icons/Approve_16x16.png" ToolTip="Select" />
+                                    CommandName="Select" ImageUrl="~/Images/Icons/Approve_16x16.png" ToolTip="Επιλογή εγγραφής" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="Code" HeaderText="Έργο" SortExpression="Code" />
@@ -134,7 +134,7 @@
                                         <ItemTemplate>
                                             <asp:Label ID="lblDown" runat="server" Text='<%# Bind("File") %>'></asp:Label>
                                             <asp:ImageButton ID="btnDown" OnClientClick="this.form.onsubmit=''" runat="server" CommandArgument='<%# Bind("id") %>'
-                                                    CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip="Click to download file"/>
+                                                    CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip="Πιέστε εδώ για να κατεβάσετε το αρχείο"/>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:BoundField DataField="Comments" HeaderText="Σχόλια" 

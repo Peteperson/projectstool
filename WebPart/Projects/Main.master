@@ -119,7 +119,7 @@ function HidePleaseWait() {
                     <tr>
                         <td style="width:100%"><asp:Literal ID="ltrMessage" runat="server"></asp:Literal></td>
                         <td><asp:ImageButton ID="btnQwe" runat="server" style="visibility:hidden" /></td>
-                        <td><asp:ImageButton ID="btnLogoff" runat="server" ImageUrl="~/Images/logout.png" ToolTip="Exit application" /></td>
+                        <td><asp:ImageButton ID="btnLogoff" runat="server" ImageUrl="~/Images/logout.png" ToolTip="Έξοδος" /></td>
                     </tr>
                 </table>
             </td>

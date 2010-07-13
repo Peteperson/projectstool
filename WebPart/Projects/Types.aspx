@@ -23,20 +23,20 @@
                             <ItemStyle Wrap="false" Width="60px" />
                             <ItemTemplate>                
                                 <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                                    CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
+                                    CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Διόρθωση" />
                                 &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                    CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />
+                                    CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Διαγραφή" />
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                                    CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Update" />
+                                    CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Ενημέρωση εγγραφής" />
                                 &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                    CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Cancel" />
+                                    CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Ακύρωση" />
                             </EditItemTemplate>
                             <FooterStyle HorizontalAlign="Center" />
                             <FooterTemplate>
                                 <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsGroup" />
+                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Εισαγωγή εγγραφής" ValidationGroup="InsGroup" />
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Category" SortExpression="Category">
@@ -47,7 +47,7 @@
                                         <td style="padding-right:10px">Category</td>
                                         <td><asp:TextBox ID="txtHeadCatFilter" SkinID="txtFilter" runat="server"></asp:TextBox></td>
                                         <td><asp:ImageButton ID="btnFilterCat" runat="server" CausesValidation="False" 
-                                                CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Filter data" />
+                                                CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Φιλτράρισμα δεδομένων" />
                                         </td>
                                     </tr>
                                 </table>

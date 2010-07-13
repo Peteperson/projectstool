@@ -25,20 +25,20 @@
                             <ItemStyle Wrap="false" />
                             <ItemTemplate>                
                                 <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                                    CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" />
+                                    CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Διόρθωση" />
                                 &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                    CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />
+                                    CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Διαγραφή" />
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                                    CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Update" />
+                                    CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Ενημέρωση εγγραφής" />
                                 &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                    CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Cancel" />
+                                    CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Ακύρωση" />
                             </EditItemTemplate>
                             <FooterStyle HorizontalAlign="Center" />
                             <FooterTemplate>
                                 <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsFile" />
+                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Εισαγωγή εγγραφής" ValidationGroup="InsFile" />
                             </FooterTemplate>
                         </asp:TemplateField> 
                         <asp:TemplateField HeaderText="A/A" SortExpression="A/A">
@@ -62,7 +62,7 @@
                                     <tr>
                                         <td><asp:TextBox ID="txtHeadFFilter" SkinID="txtFilterSmall" runat="server"></asp:TextBox></td>
                                         <td><asp:ImageButton ID="btnFilter" runat="server" CausesValidation="False" 
-                                                CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Filter data" /></td>                                        
+                                                CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Φιλτράρισμα δεδομένων" /></td>                                        
                                     </tr>
                                 </table>
                             </HeaderTemplate>                            <ItemTemplate>
@@ -79,7 +79,7 @@
                             <ItemTemplate>
                                 <asp:Label ID="lblDown" runat="server" Text='<%# Bind("File") %>'></asp:Label>
                                 <asp:ImageButton ID="btnDown" OnClientClick="this.form.onsubmit=''" runat="server" CommandArgument='<%# Bind("id") %>'
-                                                CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip="Click to download file"/>
+                                                CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip="Πιέστε εδώ για να κατεβάσετε το αρχείο"/>
                             </ItemTemplate>
                             <FooterTemplate>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="fuCtrl" SkinID="rfvDef" ValidationGroup="InsFile" ErrorMessage="*"></asp:RequiredFieldValidator> <asp:FileUpload ID="fuCtrl" runat="server" />                                            

@@ -44,7 +44,7 @@
                         <asp:TemplateField ShowHeader="False">
                             <ItemTemplate>
                                 <asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" 
-                                    CommandName="Select" ImageUrl="~/Images/Icons/Approve_16x16.png" ToolTip="Select" />
+                                    CommandName="Select" ImageUrl="~/Images/Icons/Approve_16x16.png" ToolTip="Επιλογή εγγραφής" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
@@ -59,7 +59,7 @@
                                     <tr>
                                         <td><asp:TextBox ID="txtHeadMtFilter" SkinID="txtFilterSmall" runat="server"></asp:TextBox></td>
                                         <td><asp:ImageButton ID="btnFilter" runat="server" CausesValidation="False" 
-                                                CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Filter data" /></td>                                        
+                                                CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Φιλτράρισμα δεδομένων" /></td>                                        
                                     </tr>
                                 </table>
                             </HeaderTemplate>
@@ -156,7 +156,7 @@
                                             <td><asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="fuMtupd" ValidationGroup="UpdFile" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                             <td><asp:FileUpload ID="fuMtupd" runat="server" /></td>
                                             <td><asp:ImageButton ID="ImageButton6" runat="server" CausesValidation="True" ValidationGroup="UpdFile" CommandArgument='<%# Bind("Id") %>' 
-                                                CommandName="FileUpd" ImageUrl="~/Images/Icons/Update1_24x24.png" ToolTip="Update file" /></td>
+                                                CommandName="FileUpd" ImageUrl="~/Images/Icons/Update1_24x24.png" ToolTip="Αποθήκευση αρχείου" /></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -171,11 +171,11 @@
                             </tr>
                         </table>
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" ValidationGroup="UpdMeet"
-                            CommandName="Update" ImageUrl="~/Images/Icons/Save24_24.png" ToolTip="Update" />
+                            CommandName="Update" ImageUrl="~/Images/Icons/Save24_24.png" ToolTip="Ενημέρωση εγγραφής" />
                         &nbsp;<asp:ImageButton ID="ImageButton4" runat="server" CausesValidation="False" 
-                            CommandName="New" ImageUrl="~/Images/Icons/add_24x24.png" Tooltip="New" />
+                            CommandName="New" ImageUrl="~/Images/Icons/add_24x24.png" ToolTip="Νέα εγγραφή" />
                         <!--&nbsp;<asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" 
-                            CommandName="Delete" ImageUrl="~/Images/Icons/Remove22_22.png" ToolTip="Delete" />-->
+                            CommandName="Delete" ImageUrl="~/Images/Icons/Remove22_22.png" ToolTip="Διαγραφή" />-->
                     </EditItemTemplate>
                     <InsertItemTemplate>
                         <table id="tblDetails">
@@ -217,9 +217,9 @@
                             </tr>
                         </table>
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                            CommandName="Insert" ImageUrl="~/Images/Icons/add_24x24.png" ToolTip="Insert" ValidationGroup="InsMeet" />
+                            CommandName="Insert" ImageUrl="~/Images/Icons/add_24x24.png" ToolTip="Εισαγωγή εγγραφής" ValidationGroup="InsMeet" />
                         &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                            CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel32_32.png" ToolTip="Cancel" />
+                            CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel32_32.png" ToolTip="Ακύρωση" />
                     </InsertItemTemplate>
                 </asp:FormView>
             </td>
