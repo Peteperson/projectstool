@@ -14,7 +14,7 @@
       <table>
         <tr>
             <td style="background-color:white; border-bottom: solid 3px white">
-                <asp:Image ID="Image1" ImageUrl="~/Images/eurobank.png" runat="server" Height="71px" />
+                <asp:Image ID="Image1" ImageUrl="~/Images/AdvLogoWhiteBack.png" runat="server" Height="71px" />
             </td>
         </tr>
         <tr>
@@ -41,8 +41,8 @@
                                 <td align="center" style="vertical-align:top; padding-bottom:5px">
                                     <asp:TextBox ID="UserName" runat="server" Width="130px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
-                                        ControlToValidate="UserName" ErrorMessage="User Name is required." 
-                                        ToolTip="User Name is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                        ControlToValidate="UserName" ErrorMessage="Το πεδίο Username είναι υποχρεωτικό." 
+                                        ToolTip="Το πεδίο Username είναι υποχρεωτικό." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -50,8 +50,8 @@
                                 <td align="center" style="vertical-align:top; padding-bottom:5px">
                                     <asp:TextBox ID="Password" runat="server" TextMode="Password" Width="130px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
-                                        ControlToValidate="Password" ErrorMessage="Password is required." 
-                                        ToolTip="Password is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                        ControlToValidate="Password" ErrorMessage="Το πεδίο Password είναι υποχρεωτικό." 
+                                        ToolTip="Το πεδίο Password είναι υποχρεωτικό." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
                                     <br />
                                 </td>
                             </tr>
