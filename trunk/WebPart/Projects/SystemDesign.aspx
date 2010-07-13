@@ -34,8 +34,8 @@
                                         DataValueField="id" AutoPostBack="True">
                                     </asp:DropDownList></td>
                                     <td> - Ενέργειες έκδοσης:&nbsp;</td>
-                                    <td><asp:ImageButton ID="btnAddVersion" runat="server" ImageUrl="~/Images/Icons/add_24x24.png" ToolTip="Add new version" /></td>
-                                    <td><asp:ImageButton ID="btnDelVersion" runat="server" ImageUrl="~/Images/Icons/Delete_24x24.png" ToolTip="Delete current version" /></td>
+                                    <td><asp:ImageButton ID="btnAddVersion" runat="server" ImageUrl="~/Images/Icons/add_24x24.png" ToolTip="Προσθήκη νέας έκδοσης" /></td>
+                                    <td><asp:ImageButton ID="btnDelVersion" runat="server" ImageUrl="~/Images/Icons/Delete_24x24.png" ToolTip="Διαγραφή τρέχουσας έκδοσης" /></td>
                                 </tr>
                             </table>
                         </td>
@@ -73,7 +73,7 @@
                             </tr>
                             <tr class="InsertRow">
                                 <td class="centered"><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsProc" /></td>
+                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Εισαγωγή εγγραφής" ValidationGroup="InsProc" /></td>
                                 <td><asp:TextBox ID="txtCode" SkinID="txtTime" runat="server" Text='<%# Bind("Code") %>' ></asp:TextBox></td>
                                 <td><asp:TextBox ID="txtDescr" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>' ></asp:TextBox></td>
                                 <td><asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
@@ -92,20 +92,20 @@
                             <ItemStyle Wrap="false" />
                             <ItemTemplate>                
                                 <asp:ImageButton ID="ImageButton1" runat="server" 
-                                    CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Edit" /> &nbsp;
+                                    CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Διόρθωση" /> &nbsp;
                                 <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False"
-                                    CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Delete" />
+                                    CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Διαγραφή" />
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" ValidationGroup="UpdMeet" 
-                                    CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Update" />
+                                    CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Ενημέρωση εγγραφής" />
                                 &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                    CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Cancel" />
+                                    CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Ακύρωση" />
                             </EditItemTemplate>
                             <FooterStyle HorizontalAlign="Center" />
                             <FooterTemplate>
                                 <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Insert" ValidationGroup="InsProc" />
+                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Εισαγωγή εγγραφής" ValidationGroup="InsProc" />
                             </FooterTemplate>
                         </asp:TemplateField> 
                         <asp:TemplateField HeaderText="Κωδικός" SortExpression="Code">

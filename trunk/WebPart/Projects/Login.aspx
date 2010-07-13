@@ -34,10 +34,10 @@
                     <td align="center" style="vertical-align:top; padding-top:90px">
                         <table border="0" cellpadding="0" style="width:400px;">
                             <tr>
-                                <td align="center" colspan="2" style="color:black; padding-bottom: 30px;font-weight:bold">Please insert your username and password:</td>
+                                <td align="center" colspan="2" style="color:black; padding-bottom: 30px;font-weight:bold">Παρακαλώ εισάγετε username και password:</td>
                             </tr>
                             <tr>
-                                <td align="right" style="vertical-align:top; padding-bottom:5px">User Name:<br /></td>
+                                <td align="right" style="vertical-align:top; padding-bottom:5px">Username:<br /></td>
                                 <td align="center" style="vertical-align:top; padding-bottom:5px">
                                     <asp:TextBox ID="UserName" runat="server" Width="130px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
@@ -58,7 +58,7 @@
                             <tr>
                                 <td align="center" colspan="2" style="padding-top:12px; padding-bottom:2px">
                                     <asp:Button ID="LoginButton" runat="server" CommandName="Login" 
-                                        Font-Names="Tahoma, Calibri, Verdana" Text="Enter site" style="text-align:center" ValidationGroup="Login1" />
+                                        Font-Names="Tahoma, Calibri, Verdana" Text="Είσοδος" style="text-align:center" ValidationGroup="Login1" />
                                 </td>
                             </tr>
                             <tr>
@@ -67,11 +67,11 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" colspan="2" style="padding-bottom:5px; padding-top:8px;">Forgot your password? Fill in the field below and press 'Reset'.</td>
+                                <td align="center" colspan="2" style="padding-bottom:5px; padding-top:8px;">Έκδοση νέου password:</td>
                             </tr>
                             <tr>
                                 <td align="center" colspan="2">e-mail: <asp:TextBox ID="txtemail" runat="server"></asp:TextBox>
-                                    <asp:Button ID="btnResetMail" runat="server" Text="Reset" 
+                                    <asp:Button ID="btnResetMail" runat="server" Text="Αποστολή" 
                                         onclick="btnResetMail_Click" />
                                 </td>
                             </tr>

@@ -18,7 +18,7 @@
                     <tr>
                         <td>Subproject:</td>
                         <td><asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox></td>
-                        <td>&nbsp;&nbsp;Project title:</td>
+                        <td>&nbsp;&nbsp;Τίτλος έργου:</td>
                         <td><asp:TextBox ID="txtTitle" runat="server"></asp:TextBox>&nbsp;&nbsp;</td>
                         <td><asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /></td>
                     </tr>
@@ -53,7 +53,7 @@
                     <Columns>
                         <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
                             SortExpression="A/A" />
-                        <asp:BoundField DataField="Code" HeaderText="Code" 
+                        <asp:BoundField DataField="Code" HeaderText="Κωδικός" 
                             SortExpression="Code" />
                         <asp:TemplateField HeaderText="SubProject" SortExpression="SubProject">
                             <ItemTemplate>
@@ -61,19 +61,19 @@
                                                 CommandName="SelSubProject" Text='<%# Bind("SubProject") %>'></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Title" HeaderText="Title" 
+                        <asp:BoundField DataField="Title" HeaderText="Τίτλος έργου" 
                             SortExpression="Title" />
-                        <asp:TemplateField HeaderText="Customer" SortExpression="Customer">
+                        <asp:TemplateField HeaderText="Πελάτης" SortExpression="Customer">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnCust" runat="server" CommandArgument='<%# Bind("Customer") %>'
                                                 CommandName="SelCompany" Text='<%# Bind("Customer") %>'></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Supervisor" HeaderText="Supervisor" ReadOnly="True" 
+                        <asp:BoundField DataField="Supervisor" HeaderText="Project manager" ReadOnly="True" 
                             SortExpression="Supervisor" />
-                        <asp:BoundField DataField="Consultant" HeaderText="Consultant" 
+                        <asp:BoundField DataField="Consultant" HeaderText="Σύμβουλος" 
                             SortExpression="Consultant" ReadOnly="True" />
-                        <asp:BoundField DataField="InitialEndDate" HeaderText="InitialEndDate" 
+                        <asp:BoundField DataField="InitialEndDate" HeaderText="Συμβατική λήξη" 
                             SortExpression="InitialEndDate" DataFormatString="{0:dd/MM/yyyy}" />
                         <asp:BoundField DataField="CompletionPercentage" HeaderText="(%)" 
                             SortExpression="CompletionPercentage" />

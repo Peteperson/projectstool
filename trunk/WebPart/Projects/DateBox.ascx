@@ -7,7 +7,7 @@
                 <tr>
                     <td><asp:TextBox id="txtDate" Runat="server" MaxLength='10' ReadOnly="True" style="text-align:center" SkinID="txtDate"></asp:TextBox></td>
                     <td>&nbsp;</td>
-                    <td><asp:Image Runat="server" Enabled="True" ID="imgButton" onmouseover="this.style.cursor='hand'" ToolTip="Click to display calendar" EnableViewState="False" BorderWidth="0px" ImageAlign="AbsMiddle"></asp:Image></td>
+                    <td><asp:Image Runat="server" Enabled="True" ID="imgButton" onmouseover="this.style.cursor='hand'" ToolTip="Πατήστε εδώ για να εμφανιστεί το ημερολόγιο" EnableViewState="False" BorderWidth="0px" ImageAlign="AbsMiddle"></asp:Image></td>
                 </tr>
             </table>
         </td>
