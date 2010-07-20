@@ -9,9 +9,6 @@
             <td class="title">Λίστα Αρχείων</td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
             <td class="centered"><asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter" Visible="false"></asp:TextBox>
             </td>
         </tr>
@@ -106,6 +103,10 @@
             <td align="right">(*): Default ordering</td>
         </tr>
         -->
+        <tr>
+            <td id="tdPrint"><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
+                                ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
+        </tr>
     </table>
     <table>
         <tr>

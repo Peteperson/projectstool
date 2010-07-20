@@ -5,8 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>AG ADVENT - Project management tool</title>
-    <asp:ContentPlaceHolder id="head" runat="server">
-    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
     <link href="styles.css" rel="stylesheet" type="text/css" />
     <script language="javascript" type="text/javascript">
     
@@ -98,6 +97,15 @@ function ShowPleaseWait() {
 function HidePleaseWait() {
     document.getElementById("dvPleaseWait").style.display = "none";
 }
+
+CurrentLocation = document.location
+function PrintPage() {
+    document.getElementById("subPageMainTable").rows[1].style.display = "none";
+    document.getElementById("tdPrint").style.display = "none";    
+    print();
+    document.location = CurrentLocation;
+}
+
 </script>
 </head>
 <body>
@@ -127,7 +135,7 @@ function HidePleaseWait() {
         </table>
         <table cellpadding="0" cellspacing="0">
         <tr>
-            <td id="tdMenu">
+            <td id="tdMenu" runat="server" style="vertical-align: top">
                 <div id="dvMenu">
                     <div id="mnuHeader"><font class="Yellow">User:</font>&nbsp;<asp:Label ID="lblUser" Font-Size="9pt" runat="server" Text="user"></asp:Label><br />
                       <font class="Yellow">Last&nbsp;Login:</font>&nbsp;<asp:Label ID="lblLogin" Font-Size="9pt" runat="server" Text="login"></asp:Label></div>
@@ -151,7 +159,7 @@ function HidePleaseWait() {
                     </div>
                 </div>
             </td>
-            <td id="tdChild">
+            <td id="tdChild" runat="server" style="width:100%; text-align:center; vertical-align:top">
                 <div align="center" style="width: 100%">
                     <asp:ContentPlaceHolder ID="content" runat="server">
                     </asp:ContentPlaceHolder>

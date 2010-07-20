@@ -9,9 +9,6 @@
             <td class="title">Διαχείριση μηνυμάτων</td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
             <td>
                 <asp:GridView ID="gvMessages" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 

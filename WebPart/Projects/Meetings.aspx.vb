@@ -113,4 +113,8 @@ Partial Class Meetings
         e.Command.Parameters("@AttachmentName").Value = CType(fvMeetings.FindControl("fuMtupd"), FileUpload).FileName
         e.Command.Parameters("@Attachment").Value = CType(fvMeetings.FindControl("fuMtupd"), FileUpload).FileBytes
     End Sub
+
+    Protected Sub btnPrint_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnPrint.Click
+        CType(Me.Master, Main).HideEverythingExcept("gvMeetings")
+    End Sub
 End Class

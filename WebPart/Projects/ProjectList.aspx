@@ -9,24 +9,16 @@
             <td class="title">Λίστα Έργων</td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td align="center">Συμπληρώστε τον κωδικό τού έργου ή τον τίτλο του και πατήστε 
+            <td id="tdBelowTitle">
+                <img alt="info" src="Images/Icons/Logs_24x24.png" />:
+                Συμπληρώστε τον κωδικό τού έργου ή τον τίτλο του και πατήστε 
                 &quot;Αναζήτηση&quot; προκειμένου να φιλτράρετε τα αποτελέσματα:<br />
-                <table style="margin:5px 0px 5px 0px">
-                    <tr>
-                        <td>Subproject:</td>
-                        <td><asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox></td>
-                        <td>&nbsp;&nbsp;Τίτλος έργου:</td>
-                        <td><asp:TextBox ID="txtTitle" runat="server"></asp:TextBox>&nbsp;&nbsp;</td>
-                        <td><asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td align="center">
+                Subproject:
+                <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
+                &nbsp;&nbsp;Τίτλος έργου:
+                <asp:TextBox ID="txtTitle" runat="server"></asp:TextBox>&nbsp;&nbsp;
+                <asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /><br />
+                <div style="height: 5px"></div>
                 <table style="border: solid 1px white">
                     <tr>
                         <td class="ShowStatus">Προβολή έργων που βρίσκονται σε κατάσταση:</td>
@@ -87,6 +79,10 @@
         <tr>
             <td align="right">(*): Default ordering</td>
         </tr>-->
+        <tr>
+            <td id="tdPrint"><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
+                                ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
+        </tr>
     </table>
     <table>
         <tr>

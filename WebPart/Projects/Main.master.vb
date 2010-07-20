@@ -1,9 +1,11 @@
 ﻿Partial Class Main
     Inherits System.Web.UI.MasterPage
 
+    Private CurrPage As String = ""
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         form1.Attributes.Add("onsubmit", "ShowPleaseWait()")
-        Dim CurrPage As String = Request.AppRelativeCurrentExecutionFilePath.ToLower
+        CurrPage = Request.AppRelativeCurrentExecutionFilePath.ToLower
         Dim Authorized As Boolean = False
         If Session("UserId") Is Nothing Then
             Response.Redirect("~/Login.aspx")
@@ -45,5 +47,28 @@
         Session.Clear()
         Response.Redirect("~/Login.aspx")
     End Sub
+
+    Public Sub HideEverythingExcept(ByVal id As String)
+        tdMenu.Style.Add("display", "none")
+        CType(FindControlRecursively(form1, id), GridView).AllowPaging = False
+        form1.Style.Add("background-color", "white")
+
+        Page.ClientScript.RegisterStartupScript(Me.GetType(), "Javascript", "javascript: PrintPage(); ", True)
+    End Sub
+
+    Public Function FindControlRecursively(ByVal ParentControl As Control, ByVal ControlTobeSearched As String) As Control
+        Dim FoundControl As New Control
+        For Each CurrentControl As Control In ParentControl.Controls
+            Diagnostics.Debug.WriteLine(CurrentControl.ID)
+            If (CurrentControl.ID = ControlTobeSearched) Then
+                FoundControl = CurrentControl
+                Exit For
+            End If
+            If (CurrentControl.HasControls) Then
+                FoundControl = FindControlRecursively(CurrentControl, ControlTobeSearched)
+            End If
+        Next
+        Return FoundControl
+    End Function
 End Class
 

@@ -9,9 +9,6 @@
             <td class="title">Σχεδιασμός συστήματος</td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
             <td class="centered" style="padding-bottom:5px">Σε περίπτωση πολλών έργων, επιλέξτε ένα από τη λίστα:
                 <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
                     DataTextField="SubProject" DataValueField="id" AutoPostBack="True">

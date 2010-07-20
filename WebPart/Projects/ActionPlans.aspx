@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
-<script language="javascript" type="text/javascript">
+    <script language="javascript" type="text/javascript">
     function setCaretPosition(elemId, caretPos) {
         var elem = document.getElementById(elemId);
 
@@ -62,27 +62,28 @@
             <td class="title">Λίστα action plan</td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td class="centered">Πιέστε το <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> προκειμένου να επιλέξετε μία ενέργεια και να δείτε αναλυτικά τα στοιχεία της.<br />
-                <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter" Visible="false"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td align="center">
-                <table style="border: solid 1px white">
+            <td id="tdBelowTitle">
+                <table>
                     <tr>
-                        <td colspan="2" class="ShowStatus">Προβολή ενεργειών που βρίσκονται σε status:</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:RadioButtonList ID="rblStatus" runat="server" RepeatDirection="Horizontal" 
-                                DataSourceID="sqldsActionStatus" DataTextField="Description" 
-                                DataValueField="id" AutoPostBack="True">
-                            </asp:RadioButtonList>
+                        <td align="center">
+                            <table style="border: solid 1px white">
+                                <tr>
+                                    <td colspan="2" class="ShowStatus">Προβολή ενεργειών που βρίσκονται σε status:</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:RadioButtonList ID="rblStatus" runat="server" RepeatDirection="Horizontal" 
+                                            DataSourceID="sqldsActionStatus" DataTextField="Description" 
+                                            DataValueField="id" AutoPostBack="True">
+                                        </asp:RadioButtonList>
+                                    </td>
+                                    <td><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
+                                </tr>
+                            </table>
+                        </td> 
+                        <td id="tdInfo"><img alt="info" src="Images/Icons/Logs_24x24.png" />: Πιέστε το <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> προκειμένου να επιλέξετε μία ενέργεια και να δείτε αναλυτικά τα στοιχεία της.<br />
+                            <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter" Visible="false"></asp:TextBox>
                         </td>
-                        <td><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
                     </tr>
                 </table>
             </td>
@@ -156,7 +157,8 @@
         </tr>
         -->
         <tr>
-            <td>&nbsp;</td>
+            <td id="tdPrint"><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
+                                ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
         </tr>
         <tr>
             <td class="title">Λεπτομέρειες επιλεγμένης ενέργειας</td>

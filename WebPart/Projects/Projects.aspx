@@ -9,9 +9,6 @@
             <td class="title">Διαχείριση έργων</td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
             <td class="centered" style="padding-bottom:5px"><asp:Panel runat="server" ID="pnl1" DefaultButton="btnFindPrj">Επιλέξτε subproject από τη λίστα:
                 <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
                     DataTextField="SubProject" DataValueField="id" AutoPostBack="True">
