@@ -114,4 +114,8 @@ Partial Class ActionPlans
         resp = e.Command.Parameters("@Responsible2").Value
         e.Command.Parameters("@Responsible2").Value = IIf(resp = 0, DBNull.Value, resp)
     End Sub
+
+    Protected Sub btnPrint_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnPrint.Click
+        CType(Me.Master, Main).HideEverythingExcept("gvAP")
+    End Sub
 End Class

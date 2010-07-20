@@ -126,4 +126,8 @@ Partial Class Files
             .Item("@Comments").Value = comments
         End With
     End Sub
+
+    Protected Sub btnPrint_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnPrint.Click
+        CType(Me.Master, Main).HideEverythingExcept("gvFiles")
+    End Sub
 End Class

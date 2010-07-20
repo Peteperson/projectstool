@@ -24,4 +24,8 @@ Partial Class ProjectList
         txtPrjId.Text = ""
         txtTitle.Text = ""
     End Sub
+
+    Protected Sub btnPrint_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnPrint.Click
+        CType(Me.Master, Main).HideEverythingExcept("gvProjects")
+    End Sub
 End Class

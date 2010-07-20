@@ -10,7 +10,7 @@
             <td class="title">Διαχείριση πελατών</td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <td></td>
         </tr>
         <tr>
             <td style="width:100%">
@@ -19,10 +19,10 @@
                         <td align="center" style="vertical-align:top">
                             <table style="width:100%">
                                 <tr class="centered">
-                                    <td>Companies list (select one - <asp:Image ID="Image1" runat="server" ImageUrl="Images/Icons/Approve_16x16.png" /> - to view details).<br />
+                                    <td>Λίστα εταιρειών (επιλέξτε μία - <asp:Image ID="Image1" runat="server" ImageUrl="Images/Icons/Approve_16x16.png" /> - για να δείτε λεπτομέρειες):<br />
                                         <asp:TextBox ID="txtNameFilter" runat="server" SkinID="txtTextCenter" Visible="False"></asp:TextBox>
                                         </td>
-                                    <td>Related Projects:</td>
+                                    <td>Συσχετιζόμενα έργα:</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -31,7 +31,7 @@
                                             DataSourceID="sqldsCompanies" SkinID="gridviewSkinMainTbl" 
                                             ShowFooter="True">
                                             <Columns>
-                                                <asp:TemplateField ShowHeader="True" HeaderText="Action">
+                                                <asp:TemplateField ShowHeader="True" HeaderText="Ενέργεια">
                                                     <ItemStyle Wrap="False" Width="60px" />
                                                     <ItemTemplate>                
                                                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
@@ -53,7 +53,7 @@
                                                             ImageUrl="~/images/icons/add16_16.png" ValidationGroup="InsGroup" ToolTip="Εισαγωγή εγγραφής" />
                                                     </FooterTemplate>
                                                 </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Datestamp" SortExpression="Datestamp">
+                                                <asp:TemplateField HeaderText="Ημ/νία" SortExpression="Datestamp">
                                                     <ItemTemplate>
                                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
                                                     </ItemTemplate>
@@ -63,7 +63,7 @@
                                                     <HeaderTemplate>
                                                         <table>
                                                             <tr>
-                                                                <td style="padding-right:10px">Name</td>
+                                                                <td style="padding-right:10px">Όνομα</td>
                                                                 <td><asp:TextBox ID="txtHeadNameFilter" SkinID="txtFilter" runat="server"></asp:TextBox></td>
                                                                 <td><asp:ImageButton ID="btnFilter" runat="server" CausesValidation="False" 
                                                                         CommandName="Filter" ImageUrl="~/Images/Icons/Filter1_24x24.png" ToolTip="Φιλτράρισμα δεδομένων" />
@@ -82,7 +82,7 @@
                                                         <asp:TextBox ID="txtCompName" MaxLength="50" SkinID="txtText93" runat="server"></asp:TextBox>
                                                     </FooterTemplate>
                                                 </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Description" SortExpression="Description">
+                                                <asp:TemplateField HeaderText="Περιγραφή" SortExpression="Description">
                                                     <EditItemTemplate>
                                                         <asp:TextBox ID="TextBox3" MaxLength="150" runat="server" SkinID="txtText" Text='<%# Bind("Description") %>'></asp:TextBox>
                                                     </EditItemTemplate>
@@ -107,7 +107,7 @@
                                                                         CommandName="SelSubProject" Text='<%# Bind("SubProject") %>'></asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Title" SortExpression="Title">
+                                                <asp:TemplateField HeaderText="Τίτλος" SortExpression="Title">
                                                     <ItemTemplate>
                                                         <asp:ImageButton ID="imgTitle" runat="server" ImageUrl="~/Images/Icons/Logs_24x24.png" ToolTip='<%# Bind("Title") %>'/>
                                                     </ItemTemplate>
@@ -123,8 +123,16 @@
             </td>
         </tr>
         <tr>
-            <td align="center">
-                <asp:Button ID="btnClearFilter" runat="server" Text="Clear filtering" />
+            <td id="tdPrint">
+                <table style="width:100%">
+                    <tr>
+                        <td align="center">
+                            <asp:Button ID="btnClearFilter" runat="server" Text="Clear filtering" />
+                        </td>
+                        <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
+                                ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
+                    </tr>
+                </table>
             </td>
         </tr>
         <tr>
@@ -137,7 +145,7 @@
             <td>&nbsp;</td>
         </tr>
         <tr class="title">
-            <td><asp:Label ID="lblCompName2" runat="server" Text="..."></asp:Label> employees</td>
+            <td>Υπάλληλοι της εταιρείας: <asp:Label ID="lblCompName2" runat="server" Text="..."></asp:Label></td>
         </tr>
         <tr>
             <td align="center">
@@ -195,12 +203,12 @@
                                     ImageUrl="~/images/icons/add16_16.png" ToolTip="Εισαγωγή εγγραφής" ValidationGroup="InsEmp" />
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Datestamp" SortExpression="Datestamp">
+                        <asp:TemplateField HeaderText="Ημ/νία" SortExpression="Datestamp">
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="LastName" SortExpression="LastName">
+                        <asp:TemplateField HeaderText="Επίθετο" SortExpression="LastName">
                             <EditItemTemplate>
                                 <asp:TextBox SkinID="txtDef" MaxLength="50" ID="TextBox3" runat="server" Text='<%# Bind("LastName") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -211,7 +219,7 @@
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" SkinID="rfvDef" runat="server" ControlToValidate="txt2LastName" ValidationGroup="InsEmp" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox SkinID="txtDef" ID="txt2LastName" MaxLength="50" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="FirstName" SortExpression="FirstName">
+                        <asp:TemplateField HeaderText="Όνομα" SortExpression="FirstName">
                             <EditItemTemplate>
                                 <asp:TextBox SkinID="txtDef" MaxLength="50" ID="TextBox4" runat="server" Text='<%# Bind("FirstName") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -222,7 +230,7 @@
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" SkinID="rfvDef" runat="server" ControlToValidate="txt2FirstName" ValidationGroup="InsEmp" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox SkinID="txtDef" MaxLength="50" ID="txt2FirstName" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Position" SortExpression="Position">
+                        <asp:TemplateField HeaderText="Θέση" SortExpression="Position">
                             <EditItemTemplate>
                                 <asp:DropDownList SkinId="ddlDef" ID="ddl2Position" runat="server" DataSourceID="sqldsEmplType" 
                                     selectedvalue=<%# Bind("Position") %> DataTextField="Description" DataValueField="id">
@@ -239,7 +247,7 @@
                                 </asp:DropDownList>
                             </FooterTemplate>                            
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Telephone" SortExpression="Telephone">
+                        <asp:TemplateField HeaderText="Τηλέφωνο" SortExpression="Telephone">
                             <EditItemTemplate>
                                 <asp:TextBox SkinID="txtDef" MaxLength="12" ID="TextBox6" runat="server" Text='<%# Bind("Telephone") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -250,7 +258,7 @@
                                 <asp:TextBox SkinID="txtDef" MaxLength="12" ID="txt2Tel" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Mobile" SortExpression="Mobile">
+                        <asp:TemplateField HeaderText="Κινητό" SortExpression="Mobile">
                             <EditItemTemplate>
                                 <asp:TextBox SkinID="txtDef" ID="TextBox7" MaxLength="12" runat="server" Text='<%# Bind("Mobile") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -272,7 +280,7 @@
                                 <asp:TextBox SkinID="txtDef" MaxLength="50" ID="txt2Email" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="IsUser" SortExpression="IsUser">
+                        <asp:TemplateField HeaderText="Είναι<br/>χρήστης" SortExpression="IsUser">
                             <ItemTemplate>
                                 <asp:CheckBox ID="CheckBox2" runat="server" Checked='<%# Bind("IsUser") %>' 
                                     Enabled="false" />

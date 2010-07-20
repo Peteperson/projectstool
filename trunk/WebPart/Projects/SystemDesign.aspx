@@ -10,44 +10,23 @@
             <td class="title">Σχεδιασμός Συστήματος</td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td class="centered" style="padding-bottom:5px"> <asp:Panel ID="pnl1" runat="server" DefaultButton="btnFindPrj">Επιλέξτε subproject από τη λίστα:
+            <td id="tdBelowTitle"> <asp:Panel ID="pnl1" runat="server" DefaultButton="btnFindPrj">
+                <img alt="info" src="Images/Icons/Logs_24x24.png" />: Επιλέξτε subproject από τη 
+                λίστα:
                 <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
                     DataTextField="SubProject" DataValueField="id" AutoPostBack="True">
                 </asp:DropDownList>&nbsp;ή συμπληρώστε το στο ακόλουθο πεδίο και πατήστε &quot;Αναζήτηση&quot;
                 <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
                 &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /></asp:Panel> 
+                Διαθέσιμες εκδόσεις:&nbsp;
+                <asp:DropDownList ID="ddlSysVersions" runat="server" 
+                    DataSourceID="sqldsSysVersions" DataTextField="VersionNo" 
+                    DataValueField="id" AutoPostBack="True">
+                </asp:DropDownList>
+                 - Ενέργειες έκδοσης:&nbsp;
+                <asp:ImageButton ID="btnAddVersion" runat="server" ImageUrl="~/Images/Icons/add_24x24.png" ToolTip="Προσθήκη νέας έκδοσης" />
+                <asp:ImageButton ID="btnDelVersion" runat="server" ImageUrl="~/Images/Icons/Delete_24x24.png" ToolTip="Διαγραφή τρέχουσας έκδοσης" />
             </td>
-        </tr>
-        <tr>
-            <td>
-                <table style="width:100%">
-                    <tr>
-                        <td align="center">
-                            <table>
-                                <tr>
-                                    <td>Διαθέσιμες εκδόσεις:&nbsp;</td>
-                                    <td><asp:DropDownList ID="ddlSysVersions" runat="server" 
-                                        DataSourceID="sqldsSysVersions" DataTextField="VersionNo" 
-                                        DataValueField="id" AutoPostBack="True">
-                                    </asp:DropDownList></td>
-                                    <td> - Ενέργειες έκδοσης:&nbsp;</td>
-                                    <td><asp:ImageButton ID="btnAddVersion" runat="server" ImageUrl="~/Images/Icons/add_24x24.png" ToolTip="Προσθήκη νέας έκδοσης" /></td>
-                                    <td><asp:ImageButton ID="btnDelVersion" runat="server" ImageUrl="~/Images/Icons/Delete_24x24.png" ToolTip="Διαγραφή τρέχουσας έκδοσης" /></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>                       
-                        <td align="center">&nbsp;</td>
-                    </tr>
-                </table>                
-            </td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
         </tr>
         <tr class="title">
             <td>Processes - <asp:Label ID="lblCompany" runat="server"></asp:Label></td>
@@ -199,17 +178,23 @@
                 </asp:GridView>
             </td>
         </tr>
-    </table>
-    <br />
-    <br />
-    <table>
+        </table>
+        <table style="width:95%">
         <tr>
-            <td>Μπορείτε να αντιγράψετε τις παραπάνω διαδικασίες επιλέγοντας το έργο στο οποίο θέλετε να αντιγραφούν από τη λίστα και πατώντας &quot;Αντιγραφή&quot;</td>
-        </tr>
-        <tr>
-            <td align="center"><asp:DropDownList ID="ddlCopyProjects" runat="server" 
-                    DataSourceID="sqldsPrjCodes" DataTextField="SubProject" DataValueField="id">
-                </asp:DropDownList>&nbsp;<asp:Button ID="Button1" runat="server" Text="Αντιγραφή" /></td>
+            <td id="tdPrint">
+                <table style="width:100%">
+                    <tr>
+                        <td align="center"><img alt="info" src="Images/Icons/Logs_24x24.png" />: Μπορείτε να αντιγράψετε τις παραπάνω διαδικασίες επιλέγοντας το έργο στο οποίο θέλετε να αντιγραφούν από τη λίστα και πατώντας &quot;Αντιγραφή&quot;</td>
+                        <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
+                                ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><asp:DropDownList ID="ddlCopyProjects" runat="server" 
+                                DataSourceID="sqldsPrjCodes" DataTextField="SubProject" DataValueField="id">
+                            </asp:DropDownList>&nbsp;<asp:Button ID="Button1" runat="server" Text="Αντιγραφή" /></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
     </table>
     <table>
@@ -222,7 +207,6 @@
                         <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int32" />
                     </SelectParameters>
                 </asp:SqlDataSource>
-
             </td>
             <td>
                 <asp:SqlDataSource ID="sqldsSysVersions" runat="server" 
