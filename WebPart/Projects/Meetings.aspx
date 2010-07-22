@@ -8,7 +8,16 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Λίστα Συναντήσεων</td>
+            <td class="title">
+                <table style="width:100%">
+                    <tr>
+                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Αφαίρεση σελιδοποίησης" /></td>
+                        <td style="width:100%" align="center">Λίστα Συναντήσεων</td>
+                        <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
+                                ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
         <tr>
             <td id="tdBelowTitle">
@@ -113,9 +122,7 @@
         </tr>
         -->
         <tr>
-            <td id="tdPrint"><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
-                                ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
-        </tr>
+            <td>&nbsp;</td>
         </tr>
         <tr>
             <td class="title">Λεπτομέρειες</td>

@@ -6,7 +6,16 @@
     <br />
     <table id="subPageMainTable" cellpadding="0" cellspacing="0">
         <tr>
-            <td class="title">Λίστα έργων</td>
+            <td class="title">
+                <table style="width:100%">
+                    <tr>
+                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Αφαίρεση σελιδοποίησης" /></td>
+                        <td style="width:100%" align="center">Λίστα έργων</td>
+                        <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
+                                ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
         <tr>
             <td class="centered"><br />Πιέστε το <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> προκειμένου να επιλέξετε ένα έργο και να δείτε αναλυτικά τα στοιχεία του.</td>

@@ -7,7 +7,16 @@
     <asp:Panel runat="server" ID="pnl1" DefaultButton="btnFilterQ" >
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Διαχείριση πελατών</td>
+            <td class="title">
+                <table style="width:100%">
+                    <tr>
+                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Αφαίρεση σελιδοποίησης" /></td>
+                        <td style="width:100%" align="center">Διαχείριση πελατών</td>
+                        <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
+                                ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
         <tr>
             <td></td>
@@ -123,16 +132,8 @@
             </td>
         </tr>
         <tr>
-            <td id="tdPrint">
-                <table style="width:100%">
-                    <tr>
-                        <td align="center">
-                            <asp:Button ID="btnClearFilter" runat="server" Text="Clear filtering" />
-                        </td>
-                        <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
-                                ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
-                    </tr>
-                </table>
+            <td align="center">
+                <asp:Button ID="btnClearFilter" runat="server" Text="Clear filtering" />
             </td>
         </tr>
         <tr>
@@ -145,7 +146,15 @@
             <td>&nbsp;</td>
         </tr>
         <tr class="title">
-            <td>Υπάλληλοι της εταιρείας: <asp:Label ID="lblCompName2" runat="server" Text="..."></asp:Label></td>
+            <td>
+                <table style="width:100%">
+                    <tr>
+                        <td style="width:40px; text-align:left"><asp:ImageButton ID="btnRemovePaging2" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Αφαίρεση σελιδοποίησης" /></td>
+                        <td align="center">Υπάλληλοι της εταιρείας: <asp:Label ID="lblCompName2" runat="server" Text="..."></asp:Label></td>
+                        <td style="width:40px"></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
         <tr>
             <td align="center">
