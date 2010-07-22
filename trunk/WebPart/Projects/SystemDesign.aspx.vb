@@ -110,6 +110,10 @@ Partial Class SystemDesign
     End Sub
 
     Protected Sub btnPrint_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnPrint.Click
-        CType(Me.Master, Main).HideEverythingExcept("gvProcesses")
+        CType(Me.Master, Main).HideAndPrint()
+    End Sub
+
+    Protected Sub btnRemovePaging1_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging1.Click
+        gvProcesses.AllowPaging = Not gvProcesses.AllowPaging
     End Sub
 End Class

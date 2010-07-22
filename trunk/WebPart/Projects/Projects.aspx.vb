@@ -413,4 +413,15 @@ Partial Class Projects
     Protected Sub gvProgress_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvProgress.RowDataBound
         InsertDeleteValidation(e, 0)
     End Sub
+
+    Protected Sub btnRemovePaging1_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging1.Click
+        gvAP.AllowPaging = Not gvAP.AllowPaging
+        gvFiles.AllowPaging = Not gvFiles.AllowPaging
+        gvMeetings.AllowPaging = Not gvMeetings.AllowPaging
+        gvProgress.AllowPaging = Not gvProgress.AllowPaging
+    End Sub
+
+    Protected Sub btnPrint_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnPrint.Click
+        CType(Me.Master, Main).HideAndPrint()
+    End Sub
 End Class

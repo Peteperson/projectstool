@@ -101,7 +101,7 @@ function HidePleaseWait() {
 CurrentLocation = document.location
 function PrintPage() {
     document.getElementById("subPageMainTable").rows[1].style.display = "none";
-    document.getElementById("tdPrint").style.display = "none";    
+    //document.getElementById("tdPrint").style.display = "none";    
     print();
     document.location = CurrentLocation;
 }

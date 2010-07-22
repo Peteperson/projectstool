@@ -6,7 +6,16 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Σχεδιασμός συστήματος</td>
+            <td class="title">
+                <table style="width:100%">
+                    <tr>
+                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Αφαίρεση σελιδοποίησης" /></td>
+                        <td style="width:100%" align="center">Σχεδιασμός συστήματος</td>
+                        <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
+                                ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
         <tr>
             <td class="centered" style="padding-bottom:5px">Σε περίπτωση πολλών έργων, επιλέξτε ένα από τη λίστα:

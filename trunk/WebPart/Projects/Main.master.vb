@@ -48,9 +48,9 @@
         Response.Redirect("~/Login.aspx")
     End Sub
 
-    Public Sub HideEverythingExcept(ByVal id As String)
+    Public Sub HideAndPrint()
         tdMenu.Style.Add("display", "none")
-        CType(FindControlRecursively(form1, id), GridView).AllowPaging = False
+        'CType(FindControlRecursively(form1, id), GridView).AllowPaging = False
         form1.Style.Add("background-color", "white")
 
         Page.ClientScript.RegisterStartupScript(Me.GetType(), "Javascript", "javascript: PrintPage(); ", True)

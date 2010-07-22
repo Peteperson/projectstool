@@ -103,4 +103,14 @@ Partial Class CustProjects
         End Select
         ShowTab(2)
     End Sub
+
+    Protected Sub btnRemovePaging1_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging1.Click
+        gvAP.AllowPaging = Not gvAP.AllowPaging
+        gvAttachments.AllowPaging = Not gvAttachments.AllowPaging
+        gvMeetings.AllowPaging = Not gvMeetings.AllowPaging
+    End Sub
+
+    Protected Sub btnPrint_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnPrint.Click
+        CType(Me.Master, Main).HideAndPrint()
+    End Sub
 End Class

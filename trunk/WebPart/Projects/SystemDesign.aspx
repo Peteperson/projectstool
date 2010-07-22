@@ -7,7 +7,16 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Σχεδιασμός Συστήματος</td>
+            <td class="title">
+                <table style="width:100%">
+                    <tr>
+                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Αφαίρεση σελιδοποίησης" /></td>
+                        <td style="width:100%" align="center">Σχεδιασμός Συστήματος</td>
+                        <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
+                                ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
         <tr>
             <td id="tdBelowTitle"> <asp:Panel ID="pnl1" runat="server" DefaultButton="btnFindPrj">
@@ -185,8 +194,6 @@
                 <table style="width:100%">
                     <tr>
                         <td align="center"><img alt="info" src="Images/Icons/Logs_24x24.png" />: Μπορείτε να αντιγράψετε τις παραπάνω διαδικασίες επιλέγοντας το έργο στο οποίο θέλετε να αντιγραφούν από τη λίστα και πατώντας &quot;Αντιγραφή&quot;</td>
-                        <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
-                                ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
                     </tr>
                     <tr>
                         <td align="center"><asp:DropDownList ID="ddlCopyProjects" runat="server" 
