@@ -10,7 +10,7 @@
             <td class="title">
                 <table style="width:100%">
                     <tr>
-                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Αφαίρεση σελιδοποίησης" /></td>
+                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
                         <td style="width:100%" align="center">Διαχείριση πελατών</td>
                         <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
                                 ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
@@ -149,7 +149,7 @@
             <td>
                 <table style="width:100%">
                     <tr>
-                        <td style="width:40px; text-align:left"><asp:ImageButton ID="btnRemovePaging2" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Αφαίρεση σελιδοποίησης" /></td>
+                        <td style="width:40px; text-align:left"><asp:ImageButton ID="btnRemovePaging2" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
                         <td align="center">Υπάλληλοι της εταιρείας: <asp:Label ID="lblCompName2" runat="server" Text="..."></asp:Label></td>
                         <td style="width:40px"></td>
                     </tr>
