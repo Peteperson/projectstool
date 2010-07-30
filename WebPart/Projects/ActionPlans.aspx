@@ -154,8 +154,13 @@
 
                         <HeaderStyle Wrap="False"></HeaderStyle>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Status" HeaderText="Status" 
-                            SortExpression="Status" />
+                        <asp:TemplateField HeaderText="Status" SortExpression="Status">
+                            <ItemTemplate>
+                                <asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" AutoPostBack="true" 
+                                    selectedvalue=<%# Bind("Status") %> OnSelectedIndexChanged="ddlActionStatus_IndexChanged" ToolTip='<%# Bind("id") %>' DataTextField="Description" DataValueField="id">
+                                </asp:DropDownList>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </td>
@@ -362,10 +367,16 @@
             <td>
                 <asp:SqlDataSource ID="sqldsActionStatus" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [Description]">
+                    SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [Description]"
+                    UpdateCommand="UPDATE [ActionPlans] SET [Status] = @Status WHERE id = @id"
+                    >
                     <SelectParameters>
                         <asp:Parameter DefaultValue="ActionStatus" Name="Category" Type="String" />
                     </SelectParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="Status" Type="Int16" />
+                        <asp:Parameter Name="id" Type="Int16" />
+                    </UpdateParameters>
                 </asp:SqlDataSource>
             </td>
             <td>
