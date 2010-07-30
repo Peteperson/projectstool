@@ -147,8 +147,7 @@
                     DeleteCommand="DELETE FROM [Messages] WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [Messages] ([Message], [Writer], [ToUserId], [ToCompanyId], [ToEveryone]) VALUES (@Message, @Writer, @ToUserId, @ToCompanyId, @ToEveryone)" 
                     SelectCommand="SELECT [id], [datestamp], [Message], [Writer], [ToUserId], [ToCompanyId], [ToEveryone] FROM [Messages] ORDER BY [id] DESC" 
-                    
-                    UpdateCommand="UPDATE [Messages] SET [datestamp] = @datestamp, [Message] = @Message, [Writer] = @Writer, [ToUserId] = @ToUserId, [ToCompanyId] = @ToCompanyId, [ToEveryone] = @ToEveryone WHERE [id] = @id">
+                    UpdateCommand="UPDATE [Messages] SET [datestamp] = GetDate(), [Message] = @Message, [Writer] = @Writer, [ToUserId] = @ToUserId, [ToCompanyId] = @ToCompanyId, [ToEveryone] = @ToEveryone WHERE [id] = @id">
                     <DeleteParameters>
                         <asp:Parameter Name="id" Type="Int32" />
                     </DeleteParameters>
