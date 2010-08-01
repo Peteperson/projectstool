@@ -113,7 +113,7 @@ function PrintPage() {
         <div id="dvPleaseWait">
             <table style="width: 100%; height: 100%">
                 <tr>                
-                    <td style="text-align:center;">Please wait...<br /><asp:Image ID="imgPleaseWait" runat="server" ImageUrl="~/Images/Animated/ClockPlain.gif" /></td>
+                    <td style="text-align:center;" align="center"><asp:Image ID="imgWait" runat="server" ImageUrl="~/Images/WaitText.png"/><br /><asp:Image ID="imgPleaseWait" runat="server" ImageUrl="~/Images/Animated/ClockPlain.gif" /></div></td>
                 </tr>
             </table>
         </div>
