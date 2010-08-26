@@ -22,7 +22,30 @@ Partial Class Meetings
                 Response.Redirect("~/Companies.aspx?Company=" & e.CommandArgument)
             Case "Filter"
                 txtPrjId.Text = CType(gvMeetings.HeaderRow.FindControl("txtHeadMtFilter"), TextBox).Text
+            Case "UpdStatus"
+                UpdateStatus()
+                gvMeetings.DataBind()
+            Case "CheckAll"
+                CheckAllRecords()
         End Select
+    End Sub
+
+    Private Sub CheckAllRecords()
+        For i As Integer = 0 To gvMeetings.Rows.Count - 1
+            With CType(gvMeetings.Rows(i).FindControl("chkSelected"), CheckBox)
+                .Checked = Not .Checked
+            End With
+        Next
+    End Sub
+
+    Private Sub UpdateStatus()
+        ddlValue = CType(gvMeetings.FooterRow.FindControl("ddlMeetingStatus"), DropDownList).SelectedValue
+        For i As Integer = 0 To gvMeetings.Rows.Count - 1
+            If CType(gvMeetings.Rows(i).FindControl("chkSelected"), CheckBox).Checked Then
+                ddlId = CType(gvMeetings.Rows(i).FindControl("lblId"), Label).Text
+                sqldsMeetStat.Update()
+            End If
+        Next
     End Sub
 
     Protected Sub sqldsMeetingsDet_Inserted(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsMeetingsDet.Inserted
@@ -120,5 +143,12 @@ Partial Class Meetings
 
     Protected Sub btnRemovePaging1_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging1.Click
         gvMeetings.AllowPaging = Not gvMeetings.AllowPaging
+    End Sub
+
+    Private ddlValue As Int16
+    Private ddlId As Int16
+    Protected Sub sqldsMeetStat_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsMeetStat.Updating
+        e.Command.Parameters("@Status").Value = ddlValue
+        e.Command.Parameters("@id").Value = ddlId
     End Sub
 End Class

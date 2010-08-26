@@ -49,7 +49,7 @@
             <td id="tdMeetings">
                 <asp:GridView ID="gvMeetings" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id,ProjectId" 
-                    DataSourceID="sqldsMeetings" SkinID="gridviewSkinList">
+                    DataSourceID="sqldsMeetings" SkinID="gridviewSkinList" ShowFooter="true">
                     <Columns>
                         <asp:TemplateField ShowHeader="False">
                             <ItemTemplate>
@@ -111,7 +111,29 @@
                                     CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip='<%# Bind("File") %>'/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
+                        <asp:TemplateField HeaderText="Status" SortExpression="Status">
+                            <ItemTemplate>
+                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:DropDownList ID="ddlMeetingStatus" Font-Size="8pt" runat="server" DataSourceID="sqldsMeetStat" 
+                                    DataTextField="Description" DataValueField="id">
+                                </asp:DropDownList>
+                            </FooterTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <HeaderTemplate>
+                                <asp:Button ID="btnCheckAll" CommandName="CheckAll" runat="server" CssClass="btnCheckAll" ToolTip="Επιλογή όλων" />
+                            </HeaderTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                            <ItemTemplate>
+                                <asp:CheckBox id="chkSelected" runat="server"></asp:CheckBox>
+                                <asp:Label ID="lblId" runat="server" Text='<%# Bind("id") %>' Visible="false"></asp:Label>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:Button ID="Button1" CommandName="UpdStatus" runat="server" CssClass="btnUpdStatus" ToolTip="Αλλαγή του status όλων των επιλεγμένων εγγραφών" />
+                            </FooterTemplate>
+                        </asp:TemplateField>                        
                     </Columns>
                 </asp:GridView>
             </td>
@@ -313,10 +335,15 @@
             <td>
                 <asp:SqlDataSource ID="sqldsMeetStat" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="TypesByCategory" SelectCommandType="StoredProcedure">
+                    SelectCommand="TypesByCategory" SelectCommandType="StoredProcedure"
+                    UpdateCommand="UPDATE [Meetings] SET [Status] = @Status WHERE id = @id">
                     <SelectParameters>
                         <asp:Parameter DefaultValue="MeetingStatus" Name="Category" Type="String" />
                     </SelectParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="Status" Type="Int16" />
+                        <asp:Parameter Name="id" Type="Int16" />
+                    </UpdateParameters>
                 </asp:SqlDataSource>
             </td>
             <td>

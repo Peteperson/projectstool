@@ -383,8 +383,7 @@
                 <asp:SqlDataSource ID="sqldsActionStatus" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [Description]"
-                    UpdateCommand="UPDATE [ActionPlans] SET [Status] = @Status WHERE id = @id"
-                    >
+                    UpdateCommand="UPDATE [ActionPlans] SET [Status] = @Status WHERE id = @id">
                     <SelectParameters>
                         <asp:Parameter DefaultValue="ActionStatus" Name="Category" Type="String" />
                     </SelectParameters>

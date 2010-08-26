@@ -48,7 +48,7 @@
             <td id="tdMeetings">
                 <asp:GridView ID="gvProjects" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" 
-                    DataSourceID="sqldsProjects" SkinID="gridviewSkinList">
+                    DataSourceID="sqldsProjects" SkinID="gridviewSkinList" ShowFooter="true">
                     <Columns>
                         <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
                             SortExpression="A/A" />
@@ -76,8 +76,29 @@
                             SortExpression="InitialEndDate" DataFormatString="{0:dd/MM/yyyy}" />
                         <asp:BoundField DataField="CompletionPercentage" HeaderText="(%)" 
                             SortExpression="CompletionPercentage" />
-                        <asp:BoundField DataField="Status" HeaderText="Status" 
-                            SortExpression="Status" />
+                        <asp:TemplateField HeaderText="Status" SortExpression="Status">
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:DropDownList ID="ddlPrjStatus" Font-Size="8pt" runat="server" DataSourceID="sqldsPrjStatus" 
+                                    DataTextField="Description" DataValueField="id">
+                                </asp:DropDownList>
+                            </FooterTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <HeaderTemplate>
+                                <asp:Button ID="btnCheckAll" CommandName="CheckAll" runat="server" CssClass="btnCheckAll" ToolTip="Επιλογή όλων" />
+                            </HeaderTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                            <ItemTemplate>
+                                <asp:CheckBox id="chkSelected" runat="server"></asp:CheckBox>
+                                <asp:Label ID="lblId" runat="server" Text='<%# Bind("ProjectId") %>' Visible="false"></asp:Label>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:Button ID="Button1" CommandName="UpdStatus" runat="server" CssClass="btnUpdStatus" ToolTip="Αλλαγή του status όλων των επιλεγμένων εγγραφών" />
+                            </FooterTemplate>
+                        </asp:TemplateField>                        
                     </Columns>
                 </asp:GridView>
             </td>
@@ -107,10 +128,15 @@
             <td>
                 <asp:SqlDataSource ID="sqldsPrjStatus" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="TypesByCategory" SelectCommandType="StoredProcedure">
+                    SelectCommand="TypesByCategory" SelectCommandType="StoredProcedure"
+                    UpdateCommand="UPDATE [ActionPlans] SET [Status] = @Status WHERE id = @id">
                     <SelectParameters>
                         <asp:Parameter DefaultValue="ProjectStatus" Name="Category" Type="String" />
                     </SelectParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="Status" Type="Int16" />
+                        <asp:Parameter Name="id" Type="Int16" />
+                    </UpdateParameters>
                 </asp:SqlDataSource>
             </td>
             <td></td>
