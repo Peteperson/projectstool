@@ -24,7 +24,7 @@
                 <table>
                     <tr>
                         <td align="center">
-                            <table style="border: solid 1px white">
+                            <table id="tblStatus">
                                 <tr>
                                     <td colspan="2" class="ShowStatus">Προβολή συναντήσεων που βρίσκονται σε status:</td>
                                 </tr>
@@ -128,7 +128,7 @@
             <td class="title">Λεπτομέρειες</td>
         </tr>
         <tr>
-            <td class="DetFormView">
+            <td>
                 <asp:FormView ID="fvMeetings" runat="server" DataKeyNames="id" 
                     DataSourceID="sqldsMeetingsDet" DefaultMode="Edit" Width="100%">
                     <EditRowStyle CssClass="centered" />

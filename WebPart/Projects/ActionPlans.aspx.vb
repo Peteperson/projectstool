@@ -22,7 +22,30 @@ Partial Class ActionPlans
                 Response.Redirect("~/Companies.aspx?Company=" & e.CommandArgument)
             Case "Filter"
                 txtPrjId.Text = CType(gvAP.HeaderRow.FindControl("txtHeadAPFilter"), TextBox).Text
+            Case "UpdStatus"
+                UpdateStatus()
+                gvAP.DataBind()
+            Case "CheckAll"
+                CheckAllRecords()
         End Select
+    End Sub
+
+    Private Sub CheckAllRecords()
+        For i As Integer = 0 To gvAP.Rows.Count - 1
+            With CType(gvAP.Rows(i).FindControl("chkSelected"), CheckBox)
+                .Checked = Not .Checked
+            End With
+        Next
+    End Sub
+
+    Private Sub UpdateStatus()
+        ddlValue = CType(gvAP.FooterRow.FindControl("ddlActionStatus"), DropDownList).SelectedValue
+        For i As Integer = 0 To gvAP.Rows.Count - 1
+            If CType(gvAP.Rows(i).FindControl("chkSelected"), CheckBox).Checked Then
+                ddlId = CType(gvAP.Rows(i).FindControl("lblId"), Label).Text
+                sqldsActionStatus.Update()
+            End If
+        Next
     End Sub
 
     Protected Sub gvAP_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvAP.RowDataBound

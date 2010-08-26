@@ -75,7 +75,7 @@
                 <table>
                     <tr>
                         <td align="center">
-                            <table style="border: solid 1px white">
+                            <table id="tblStatus">
                                 <tr>
                                     <td colspan="2" class="ShowStatus">Προβολή ενεργειών που βρίσκονται σε status:</td>
                                 </tr>
@@ -101,7 +101,7 @@
             <td id="tdAP">
                 <asp:GridView ID="gvAP" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id,ProjectId" 
-                    DataSourceID="sqldsAP" SkinID="gridviewSkinList">
+                    DataSourceID="sqldsAP" SkinID="gridviewSkinList" ShowFooter="true">
                     <Columns>
                         <asp:TemplateField ShowHeader="False">
                             <ItemTemplate>
@@ -151,16 +151,31 @@
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Deadline", "{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
-
                         <HeaderStyle Wrap="False"></HeaderStyle>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Status" SortExpression="Status">
                             <ItemTemplate>
-                                <asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" AutoPostBack="true" 
-                                    selectedvalue=<%# Bind("Status") %> OnSelectedIndexChanged="ddlActionStatus_IndexChanged" ToolTip='<%# Bind("id") %>' DataTextField="Description" DataValueField="id">
-                                </asp:DropDownList>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
                             </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:DropDownList ID="ddlActionStatus" Font-Size="8pt" runat="server" DataSourceID="sqldsActionStatus" 
+                                    DataTextField="Description" DataValueField="id">
+                                </asp:DropDownList>
+                            </FooterTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField>
+                            <HeaderTemplate>
+                                <asp:Button ID="btnCheckAll" CommandName="CheckAll" runat="server" CssClass="btnCheckAll" ToolTip="Επιλογή όλων" />
+                            </HeaderTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                            <ItemTemplate>
+                                <asp:CheckBox id="chkSelected" runat="server"></asp:CheckBox>
+                                <asp:Label ID="lblId" runat="server" Text='<%# Bind("id") %>' Visible="false"></asp:Label>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:Button ID="Button1" CommandName="UpdStatus" runat="server" CssClass="btnUpdStatus" ToolTip="Αλλαγή του status όλων των επιλεγμένων εγγραφών" />
+                            </FooterTemplate>
+                        </asp:TemplateField>                        
                     </Columns>
                 </asp:GridView>
             </td>
@@ -177,7 +192,7 @@
             <td class="title">Λεπτομέρειες επιλεγμένης ενέργειας</td>
         </tr>
         <tr>
-            <td class="DetFormView">
+            <td>
                 <asp:FormView ID="fvAction" runat="server" DataKeyNames="id"
                     DataSourceID="sqldsAPdet" DefaultMode="Edit" Width="100%">
                     <EditRowStyle CssClass="centered" />

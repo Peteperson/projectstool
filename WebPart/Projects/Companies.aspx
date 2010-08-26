@@ -145,8 +145,8 @@
         <tr>
             <td>&nbsp;</td>
         </tr>
-        <tr class="title">
-            <td>
+        <tr>
+            <td class="title">
                 <table style="width:100%">
                     <tr>
                         <td style="width:40px; text-align:left"><asp:ImageButton ID="btnRemovePaging2" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
