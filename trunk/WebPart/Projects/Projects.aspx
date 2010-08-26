@@ -308,7 +308,7 @@
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="false" 
                                                 CommandName="Edit" ImageUrl="~/Images/Icons/Edit22_22.png" ToolTip="Διόρθωση" />
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                                CommandName="Νέα εγγραφή" ImageUrl="~/Images/Icons/add_24x24.png" Tooltip="Νέα εγγραφή" />
+                                                CommandName="New" ImageUrl="~/Images/Icons/add_24x24.png" Tooltip="Νέα εγγραφή" />
                                             &nbsp;<asp:ImageButton ID="btnDeletePrj" runat="server" CausesValidation="False" 
                                                 CommandName="Delete" ImageUrl="~/Images/Icons/Delete_24x24.png" ToolTip="Διαγραφή" />
                                             &nbsp;&nbsp;&nbsp;&nbsp;<asp:ImageButton ID="btnSysDesign" runat="server" CausesValidation="False" 
