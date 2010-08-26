@@ -121,39 +121,6 @@
                                 <asp:TextBox ID="txtDescr" SkinID="txtDef" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Status" SortExpression="Status">
-                            <ItemStyle Width="120px" Wrap="false" />
-                            <EditItemTemplate>
-                                <asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
-                                    selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
-                                </asp:DropDownList>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
-                                    Enabled="false" selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
-                                </asp:DropDownList>
-                            </ItemTemplate>
-                            <FooterTemplate>
-                                <asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
-                                    DataTextField="Description" DataValueField="id">
-                                </asp:DropDownList>
-                            </FooterTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="StatusDate" SortExpression="StatusDate">
-                            <ItemStyle Width="100px" />
-                            <EditItemTemplate>
-                                <!--<uc1:DateBox ID="dbStatDate" runat="server" Value='<%# Bind("StatusDate") %>' />-->
-                                <asp:Label ID="Label11" runat="server" 
-                                    Text='<%# Bind("StatusDate", "{0:dd/MM/yyyy}") %>'></asp:Label>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label4" runat="server" 
-                                    Text='<%# Bind("StatusDate", "{0:dd/MM/yyyy}") %>'></asp:Label>
-                            </ItemTemplate>
-                            <FooterTemplate>
-                                <uc1:DateBox ID="dbStatDate" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>' />
-                            </FooterTemplate>
-                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Υπεύθυνος" SortExpression="Responsible">
                             <ItemStyle Width="120px" Wrap="false" />
                             <EditItemTemplate>
@@ -181,6 +148,53 @@
                             </ItemTemplate>
                             <FooterTemplate>
                                 <asp:TextBox ID="txtComm" SkinID="txtText" runat="server"></asp:TextBox>
+                            </FooterTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Status" SortExpression="Status">
+                            <ItemStyle Width="120px" Wrap="false" />
+                            <EditItemTemplate>
+                                <asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
+                                    selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
+                                </asp:DropDownList>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
+                                    Enabled="false" selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
+                                </asp:DropDownList>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
+                                    DataTextField="Description" DataValueField="id">
+                                </asp:DropDownList>
+                            </FooterTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <HeaderTemplate>
+                                <asp:Button ID="btnCheckAll" CommandName="CheckAll" runat="server" CssClass="btnCheckAll" ToolTip="Επιλογή όλων" />
+                            </HeaderTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                            <ItemTemplate>
+                                <asp:CheckBox id="chkSelected" runat="server"></asp:CheckBox>
+                                <asp:Label ID="lblId" runat="server" Text='<%# Bind("id") %>' Visible="false"></asp:Label>
+                            </ItemTemplate>
+                            <FooterStyle HorizontalAlign="Center" />
+                            <FooterTemplate>
+                                <asp:Button ID="Button1" CommandName="UpdStatus" runat="server" CssClass="btnUpdStatus" ToolTip="Αλλαγή του status όλων των επιλεγμένων εγγραφών" />
+                            </FooterTemplate>
+                        </asp:TemplateField>                        
+                        <asp:TemplateField HeaderText="StatusDate" SortExpression="StatusDate">
+                            <ItemStyle Width="100px" />
+                            <EditItemTemplate>
+                                <!--<uc1:DateBox ID="dbStatDate" runat="server" Value='<%# Bind("StatusDate") %>' />-->
+                                <asp:Label ID="Label11" runat="server" 
+                                    Text='<%# Bind("StatusDate", "{0:dd/MM/yyyy}") %>'></asp:Label>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label4" runat="server" 
+                                    Text='<%# Bind("StatusDate", "{0:dd/MM/yyyy}") %>'></asp:Label>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                <uc1:DateBox ID="dbStatDate" runat="server" Text='<%# Today.ToString("dd/MM/yyyy") %>' />
                             </FooterTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -279,10 +293,15 @@
             <td>
                 <asp:SqlDataSource ID="sqldsProcStat" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="TypesByCategory" SelectCommandType="StoredProcedure">
+                    SelectCommand="TypesByCategory" SelectCommandType="StoredProcedure"
+                    UpdateCommand="UPDATE [Processes] SET [Status] = @Status, StatusDate=GetDate() WHERE id = @id">
                     <SelectParameters>
                         <asp:Parameter DefaultValue="ProcessStatus" Name="Category" Type="String" />
                     </SelectParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="Status" Type="Int16" />
+                        <asp:Parameter Name="id" Type="Int16" />
+                    </UpdateParameters>
                 </asp:SqlDataSource>
             </td>
             <td><asp:SqlDataSource ID="sqldsResponsibles" runat="server" 

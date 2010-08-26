@@ -129,7 +129,7 @@
                 <asp:SqlDataSource ID="sqldsPrjStatus" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     SelectCommand="TypesByCategory" SelectCommandType="StoredProcedure"
-                    UpdateCommand="UPDATE [ActionPlans] SET [Status] = @Status WHERE id = @id">
+                    UpdateCommand="UPDATE [Projects] SET [Status] = @Status WHERE id = @id">
                     <SelectParameters>
                         <asp:Parameter DefaultValue="ProjectStatus" Name="Category" Type="String" />
                     </SelectParameters>
