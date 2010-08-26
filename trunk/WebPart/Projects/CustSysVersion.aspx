@@ -27,8 +27,8 @@
         <tr>
             <td style="padding-top: 40px">&nbsp;</td>
         </tr>
-        <tr class="title">
-            <td>Processes</td>
+        <tr>
+            <td class="title">Processes</td>
         </tr>
         <tr>
             <td>

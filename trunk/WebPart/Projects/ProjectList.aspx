@@ -28,7 +28,7 @@
                 <asp:TextBox ID="txtTitle" runat="server"></asp:TextBox>&nbsp;&nbsp;
                 <asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /><br />
                 <div style="height: 5px"></div>
-                <table style="border: solid 1px white">
+                <table id="tblStatus" style="width: 100%">
                     <tr>
                         <td class="ShowStatus">Προβολή έργων που βρίσκονται σε κατάσταση:</td>
                     </tr>
@@ -36,12 +36,10 @@
                         <td>
                             <asp:RadioButtonList ID="rblStatus" runat="server" RepeatDirection="Horizontal" 
                                 DataSourceID="sqldsPrjStatus" DataTextField="Description" 
-                                DataValueField="id" AutoPostBack="True">
+                                DataValueField="id" AutoPostBack="True" RepeatColumns="5">
                             </asp:RadioButtonList>
                         </td>
-                    </tr>
-                    <tr>
-                        <td align="center"><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
+                        <td valign="bottom" align="right"><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
                     </tr>
                 </table>
             </td>
@@ -74,7 +72,7 @@
                             SortExpression="Supervisor" />
                         <asp:BoundField DataField="Consultant" HeaderText="Σύμβουλος" 
                             SortExpression="Consultant" ReadOnly="True" />
-                        <asp:BoundField DataField="InitialEndDate" HeaderText="Συμβατική λήξη" 
+                        <asp:BoundField DataField="InitialEndDate" HeaderText="Λήξη" 
                             SortExpression="InitialEndDate" DataFormatString="{0:dd/MM/yyyy}" />
                         <asp:BoundField DataField="CompletionPercentage" HeaderText="(%)" 
                             SortExpression="CompletionPercentage" />

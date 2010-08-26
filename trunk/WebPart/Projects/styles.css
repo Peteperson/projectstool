@@ -52,10 +52,11 @@ a:hover {
     /*background-color:#788CA5;*/
     background-color:#842829;
 	padding: 5px 0px 5px 0px;
-	border: 1px solid #FFFFFF;
+	/*border: 1px solid #FFFFFF;*/
 	font-size:large;
 	font-weight:bolder;
 	/*color: white;*/
+	-moz-border-radius: 15px;
 }
 
 .centered {
@@ -153,6 +154,7 @@ a:hover {
 
 #subPageMainTable {
     width:95%;
+    border-collapse:separate;
 }
 
 .ErrorMessage {
@@ -320,4 +322,28 @@ a:hover {
     text-align:center;
     padding-top: 6px;
     padding-bottom: 6px;
+}
+
+#tblStatus {
+    border: solid 1px #CCCCCC;
+}
+
+#tblStatus td {
+    text-align:left;
+}
+
+.btnUpdStatus {
+    background: url(Images/icons/Update1_16x16.png);
+    background-repeat:no-repeat;
+    background-color: #DDDDDD;
+    width:21px;
+    height:21px;
+}
+
+.btnCheckAll {
+    background: url(Images/icons/Approve2_16x16.png);
+    background-repeat:no-repeat;
+    background-color: #DDDDDD;
+    width:21px;
+    height:21px;
 }

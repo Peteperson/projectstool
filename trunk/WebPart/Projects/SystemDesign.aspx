@@ -37,8 +37,8 @@
                 <asp:ImageButton ID="btnDelVersion" runat="server" ImageUrl="~/Images/Icons/Delete_24x24.png" ToolTip="Διαγραφή τρέχουσας έκδοσης" />
             </td>
         </tr>
-        <tr class="title">
-            <td>Processes - <asp:Label ID="lblCompany" runat="server"></asp:Label></td>
+        <tr>
+            <td class="title">Processes - <asp:Label ID="lblCompany" runat="server"></asp:Label></td>
         </tr>
         <tr>
             <td>
