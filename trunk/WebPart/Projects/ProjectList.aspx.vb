@@ -11,7 +11,30 @@ Partial Class ProjectList
             Case "SelCompany"
                 Response.Clear()
                 Response.Redirect("~/Companies.aspx?Company=" & e.CommandArgument)
+            Case "UpdStatus"
+                UpdateStatus()
+                gvProjects.DataBind()
+            Case "CheckAll"
+                CheckAllRecords()
         End Select
+    End Sub
+
+    Private Sub CheckAllRecords()
+        For i As Integer = 0 To gvProjects.Rows.Count - 1
+            With CType(gvProjects.Rows(i).FindControl("chkSelected"), CheckBox)
+                .Checked = Not .Checked
+            End With
+        Next
+    End Sub
+
+    Private Sub UpdateStatus()
+        ddlValue = CType(gvProjects.FooterRow.FindControl("ddlActionStatus"), DropDownList).SelectedValue
+        For i As Integer = 0 To gvProjects.Rows.Count - 1
+            If CType(gvProjects.Rows(i).FindControl("chkSelected"), CheckBox).Checked Then
+                ddlId = CType(gvProjects.Rows(i).FindControl("lblId"), Label).Text
+                sqldsPrjStatus.Update()
+            End If
+        Next
     End Sub
 
     Protected Sub sqldsProjects_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsProjects.Selecting
@@ -35,5 +58,12 @@ Partial Class ProjectList
 
     Protected Sub btnFindPrj_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnFindPrj.Click
         rblStatus.SelectedIndex = -1
+    End Sub
+
+    Private ddlValue As Int16
+    Private ddlId As Int16
+    Protected Sub sqldsPrjStatus_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsPrjStatus.Updating
+        e.Command.Parameters("@Status").Value = ddlValue
+        e.Command.Parameters("@id").Value = ddlId
     End Sub
 End Class

@@ -148,14 +148,6 @@ Partial Class ActionPlans
 
     Private ddlValue As Int16
     Private ddlId As Int16
-    Protected Sub ddlActionStatus_IndexChanged(ByVal sender As Object, ByVal e As System.EventArgs)
-        With CType(sender, DropDownList)
-            ddlId = .ToolTip
-            ddlValue = .SelectedValue
-        End With
-        sqldsActionStatus.Update()
-    End Sub
-
     Protected Sub sqldsActionStatus_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsActionStatus.Updating
         e.Command.Parameters("@Status").Value = ddlValue
         e.Command.Parameters("@id").Value = ddlId
