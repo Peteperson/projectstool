@@ -47,7 +47,30 @@ Partial Class SystemDesign
         Select Case e.CommandName
             Case "Insert"
                 sqldsProcesses.Insert()
+            Case "UpdStatus"
+                UpdateStatus()
+                gvProcesses.DataBind()
+            Case "CheckAll"
+                CheckAllRecords()
         End Select
+    End Sub
+
+    Private Sub CheckAllRecords()
+        For i As Integer = 0 To gvProcesses.Rows.Count - 1
+            With CType(gvProcesses.Rows(i).FindControl("chkSelected"), CheckBox)
+                .Checked = Not .Checked
+            End With
+        Next
+    End Sub
+
+    Private Sub UpdateStatus()
+        ddlValue = CType(gvProcesses.FooterRow.FindControl("ddlProcStat"), DropDownList).SelectedValue
+        For i As Integer = 0 To gvProcesses.Rows.Count - 1
+            If CType(gvProcesses.Rows(i).FindControl("chkSelected"), CheckBox).Checked Then
+                ddlId = CType(gvProcesses.Rows(i).FindControl("lblId"), Label).Text
+                sqldsProcStat.Update()
+            End If
+        Next
     End Sub
 
     Protected Sub gvProcesses_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvProcesses.RowDataBound
@@ -115,5 +138,12 @@ Partial Class SystemDesign
 
     Protected Sub btnRemovePaging1_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging1.Click
         gvProcesses.AllowPaging = Not gvProcesses.AllowPaging
+    End Sub
+
+    Private ddlValue As Int16
+    Private ddlId As Int16
+    Protected Sub sqldsProcStat_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsProcStat.Updating
+        e.Command.Parameters("@Status").Value = ddlValue
+        e.Command.Parameters("@id").Value = ddlId
     End Sub
 End Class

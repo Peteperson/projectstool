@@ -28,7 +28,7 @@ Partial Class ProjectList
     End Sub
 
     Private Sub UpdateStatus()
-        ddlValue = CType(gvProjects.FooterRow.FindControl("ddlActionStatus"), DropDownList).SelectedValue
+        ddlValue = CType(gvProjects.FooterRow.FindControl("ddlPrjStatus"), DropDownList).SelectedValue
         For i As Integer = 0 To gvProjects.Rows.Count - 1
             If CType(gvProjects.Rows(i).FindControl("chkSelected"), CheckBox).Checked Then
                 ddlId = CType(gvProjects.Rows(i).FindControl("lblId"), Label).Text
