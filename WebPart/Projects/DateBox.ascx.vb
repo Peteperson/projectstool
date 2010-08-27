@@ -11,6 +11,15 @@ Partial Class DateBox
     Private _ShowTime As Boolean = False
     Private _ShowDate As Boolean = True
 
+    Public Property Tooltip() As String
+        Get
+            Return txtDate.ToolTip
+        End Get
+        Set(ByVal value As String)
+            txtDate.ToolTip = value
+        End Set
+    End Property
+
     Public Property ShowDate() As Boolean
         Get
             Return _ShowDate
