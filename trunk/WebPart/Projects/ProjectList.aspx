@@ -48,7 +48,7 @@
             <td id="tdMeetings">
                 <asp:GridView ID="gvProjects" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" 
-                    DataSourceID="sqldsProjects" SkinID="gridviewSkinList" ShowFooter="true">
+                    DataSourceID="sqldsProjects" SkinID="gridviewSkinList" ShowFooter="True">
                     <Columns>
                         <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
                             SortExpression="A/A" />
@@ -72,8 +72,11 @@
                             SortExpression="Supervisor" />
                         <asp:BoundField DataField="Consultant" HeaderText="Σύμβουλος" 
                             SortExpression="Consultant" ReadOnly="True" />
-                        <asp:BoundField DataField="InitialEndDate" HeaderText="Λήξη" 
-                            SortExpression="InitialEndDate" DataFormatString="{0:dd/MM/yyyy}" />
+                        <asp:TemplateField HeaderText="Λήξη" SortExpression="InitialEndDate">
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("InitialEndDate", "{0:dd/MM/yyyy}") %>' ToolTip='<%# Bind("EndDate", "Πραγματική ημ/νία λήξης: {0:dd/MM/yyyy}") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="CompletionPercentage" HeaderText="(%)" 
                             SortExpression="CompletionPercentage" />
                         <asp:TemplateField HeaderText="Status" SortExpression="Status">

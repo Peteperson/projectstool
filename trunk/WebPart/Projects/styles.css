@@ -5,6 +5,19 @@
 	color: #FFFFFF;	
 }
 
+/*
+input[type=text]:focus {
+    background-color: #FFFFEE;
+}
+
+select:focus {
+    background-color: #FFFFEE;
+}
+*/
+select:disabled {
+    color: #666666;
+}
+
 table {
     border-collapse:collapse;
 }
@@ -12,7 +25,6 @@ table {
 a {
 	color: #EEEEEE;
 }
-
 
 a:hover {
     color: White;

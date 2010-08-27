@@ -11,7 +11,7 @@
         }
     }
 </script>
-<img src="Images/Icons/Calendar_16x16.png" alt="clnd" onmouseover="this.style.cursor = 'hand'" onclick="ShowDv('dvHidden', true)" />
+<img src="Images/Icons/Calendar_16x16.png" alt="clnd" onmouseover="this.style.cursor = 'pointer'" onclick="ShowDv('dvHidden', true)" />
 <div id="dvHidden" style="DISPLAY: none; Z-INDEX: -1; POSITION: absolute; background-color: #C64221">
     <table width="200px">
         <tr>
