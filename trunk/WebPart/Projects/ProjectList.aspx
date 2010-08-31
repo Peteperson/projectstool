@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Main.master" AutoEventWireup="false" CodeFile="ProjectList.aspx.vb" Inherits="ProjectList" Theme="MainSkin" %>
 
+<%@ Register src="ctrlDateTime.ascx" tagname="ctrlDateTime" tagprefix="uc1" %>
+<%@ Register src="DateBox.ascx" tagname="DateBox" tagprefix="uc2" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
@@ -22,11 +25,19 @@
                 <img alt="info" src="Images/Icons/Logs_24x24.png" />:
                 Συμπληρώστε τον κωδικό τού έργου ή τον τίτλο του και πατήστε 
                 &quot;Αναζήτηση&quot; προκειμένου να φιλτράρετε τα αποτελέσματα:<br />
-                Subproject:
-                <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
-                &nbsp;&nbsp;Τίτλος έργου:
-                <asp:TextBox ID="txtTitle" runat="server"></asp:TextBox>&nbsp;&nbsp;
-                <asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /><br />
+                <table style="margin-left:auto; margin-right:auto;">
+                    <tr>
+                        <td>Subproject:</td>
+                        <td><asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox></td>
+                        <td>&nbsp;&nbsp;Τίτλος έργου:</td>
+                        <td><asp:TextBox ID="txtTitle" runat="server"></asp:TextBox></td>
+                        <td>&nbsp;&nbsp;Από:</td>
+                        <td><uc2:DateBox ID="dbFrom" runat="server" ShowTime="False" /></td>
+                        <td>&nbsp;&nbsp;Έως:</td>
+                        <td><uc2:DateBox ID="dbTo" runat="server" ShowTime="False" /></td>
+                        <td>&nbsp;&nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /></td>
+                    </tr>
+                </table>
                 <div style="height: 5px"></div>
                 <table id="tblStatus" style="width: 100%">
                     <tr>
@@ -81,7 +92,10 @@
                             SortExpression="CompletionPercentage" />
                         <asp:TemplateField HeaderText="Status" SortExpression="Status">
                             <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
+                                <asp:DropDownList ID="ddlPrjStatusOne" Font-Size="8pt" runat="server" DataSourceID="sqldsPrjStatus" 
+                                    selectedvalue='<%# Bind("StatusNo") %>' DataTextField="Description" DataValueField="id"
+                                    AutoPostBack="true" OnSelectedIndexChanged="ddlPrjStatusOne_IndexChanged" ToolTip='<%# Bind("ProjectId") %>' >
+                                </asp:DropDownList>
                             </ItemTemplate>
                             <FooterTemplate>
                                 <asp:DropDownList ID="ddlPrjStatus" Font-Size="8pt" runat="server" DataSourceID="sqldsPrjStatus" 
@@ -125,6 +139,8 @@
                             PropertyName="Text" Type="String" />
                         <asp:ControlParameter ControlID="rblStatus" DefaultValue="0" Name="Status" 
                             PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="dbFrom" Name="dtFrom" PropertyName="Value" Type="DateTime" />
+                        <asp:ControlParameter ControlID="dbTo" Name="dtTo" PropertyName="Value" Type="DateTime" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>

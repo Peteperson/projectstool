@@ -155,7 +155,10 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Status" SortExpression="Status">
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
+                                <asp:DropDownList ID="ddlActionStatusOne" Font-Size="8pt" runat="server" DataSourceID="sqldsActionStatus" 
+                                    selectedvalue=<%# Bind("StatusNo") %> AutoPostBack="true" DataTextField="Description" 
+                                    OnSelectedIndexChanged="ddlActionStatusOne_IndexChanged" ToolTip='<%# Bind("id") %>' DataValueField="id">
+                                </asp:DropDownList>
                             </ItemTemplate>
                             <FooterTemplate>
                                 <asp:DropDownList ID="ddlActionStatus" Font-Size="8pt" runat="server" DataSourceID="sqldsActionStatus" 

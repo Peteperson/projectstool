@@ -18,6 +18,10 @@ select:disabled {
     color: #666666;
 }
 
+span[id*=lblActual] {
+    color: #0000CC;
+}
+
 table {
     border-collapse:collapse;
 }

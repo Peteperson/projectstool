@@ -34,12 +34,25 @@
                                             DataValueField="id" AutoPostBack="True">
                                         </asp:RadioButtonList>
                                     </td>
-                                    <td><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
                                 </tr>
                             </table>
                         </td>
                         <td id="tdInfo"><img alt="info" src="Images/Icons/Logs_24x24.png" />: Πιέστε το <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> προκειμένου να επιλέξετε μία συνάντηση και να δείτε αναλυτικά τα στοιχεία της.<br />
                             <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter" Visible="false"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" colspan="2">
+                            <table>
+                                <tr>
+                                    <td>Από:</td>
+                                    <td><uc1:DateBox ID="dbFrom" runat="server" ShowTime="False" /></td>
+                                    <td>Έως:</td>
+                                    <td><uc1:DateBox ID="dbTo" runat="server" ShowTime="False" /></td>
+                                    <td><asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /></td>
+                                    <td style="padding-left:10px"><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                 </table>
@@ -90,7 +103,7 @@
                             </ItemTemplate>
                         <HeaderStyle Wrap="False"></HeaderStyle>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="From *" HeaderStyle-Wrap="false" SortExpression="From">
+                        <asp:TemplateField HeaderText="From" HeaderStyle-Wrap="false" SortExpression="From">
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("From", "{0:HH:mm}") %>'></asp:Label>
                             </ItemTemplate>
@@ -113,7 +126,10 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Status" SortExpression="Status">
                             <ItemTemplate>
-                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
+                                <asp:DropDownList ID="ddlMeetingStatusOne" Font-Size="8pt" runat="server" DataSourceID="sqldsMeetStat" 
+                                    selectedvalue='<%# Bind("StatusNo") %>' DataTextField="Description" DataValueField="id" AutoPostBack="true"
+                                    OnSelectedIndexChanged="ddlMeetingStatusOne_IndexChanged" ToolTip='<%# Bind("id") %>' >
+                                </asp:DropDownList>
                             </ItemTemplate>
                             <FooterTemplate>
                                 <asp:DropDownList ID="ddlMeetingStatus" Font-Size="8pt" runat="server" DataSourceID="sqldsMeetStat" 
@@ -272,6 +288,8 @@
                         <asp:Parameter Name="MtngsId" Type="Int16" DefaultValue="0" />
                         <asp:ControlParameter ControlID="rblStatus" DefaultValue="0" Name="Status" 
                             PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="dbFrom" Name="dtFrom" PropertyName="Value" Type="DateTime" />
+                        <asp:ControlParameter ControlID="dbTo" Name="dtTo" PropertyName="Value" Type="DateTime" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>

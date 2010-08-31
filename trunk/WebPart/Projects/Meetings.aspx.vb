@@ -65,11 +65,11 @@ Partial Class Meetings
     End Sub
 
     Protected Sub sqldsMeetings_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsMeetings.Selecting
-        If txtPrjId.Text = "" Then
-            Dim DeleteParam As System.Data.Common.DbParameter
-            DeleteParam = e.Command.Parameters("@SubProject")
-            e.Command.Parameters.Remove(DeleteParam)
-        End If
+        With e.Command
+            If txtPrjId.Text = "" Then .Parameters.Remove(.Parameters("@SubProject"))
+            If dbFrom.Text = Nothing Then .Parameters.Remove(.Parameters("@dtFrom"))
+            If dbTo.Text = Nothing Then .Parameters.Remove(.Parameters("@dtTo"))
+        End With
 
         If Not Session("MeetingId") Is Nothing AndAlso Session("MeetingId") > -1 Then
             e.Command.Parameters("@MtngsId").Value = CInt(Session("MeetingId"))
@@ -116,6 +116,10 @@ Partial Class Meetings
 
     Protected Sub btnClearFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClearFilter.Click
         rblStatus.SelectedIndex = -1
+        dbFrom.Text = ""
+        dbTo.Text = ""
+        dbFrom.Value = Nothing
+        dbTo.Value = Nothing
     End Sub
 
     Private ActionId As Integer
@@ -150,5 +154,18 @@ Partial Class Meetings
     Protected Sub sqldsMeetStat_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsMeetStat.Updating
         e.Command.Parameters("@Status").Value = ddlValue
         e.Command.Parameters("@id").Value = ddlId
+    End Sub
+
+    Protected Sub ddlMeetingStatusOne_IndexChanged(ByVal sender As Object, ByVal e As System.EventArgs)
+        With CType(sender, DropDownList)
+            ddlId = .ToolTip
+            ddlValue = .SelectedValue
+        End With
+        sqldsMeetStat.Update()
+        gvMeetings.DataBind()
+    End Sub
+
+    Protected Sub btnFindPrj_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnFindPrj.Click
+        gvMeetings.DataBind()
     End Sub
 End Class
