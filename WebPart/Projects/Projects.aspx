@@ -94,9 +94,9 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Έναρξη</td>
-                                                    <td class="tblDetailsItem"><asp:Label ID="Label8" runat="server" ToolTip="Συμβατική ημ/νία έναρξης" Text='<%# Bind("InitialStartDate", "{0:dd/MM/yyyy}") %>'></asp:Label>&nbsp;&nbsp;(<asp:Label ID="Label1" runat="server" ToolTip="Πραγματική ημ/νία έναρξης" Text='<%# Bind("StartDate", "{0:dd/MM/yyyy}") %>'></asp:Label>)</td>
+                                                    <td class="tblDetailsItem"><asp:Label ID="Label8" runat="server" ToolTip="Συμβατική ημ/νία έναρξης" Text='<%# Bind("InitialStartDate", "{0:dd/MM/yyyy}") %>'></asp:Label>&nbsp;&nbsp;(<asp:Label ID="lblActualStartDate" runat="server" ToolTip="Πραγματική ημ/νία έναρξης" Text='<%# Bind("StartDate", "{0:dd/MM/yyyy}") %>'></asp:Label>)</td>
                                                     <td class="tblDetailsHeader">Λήξη</td>
-                                                    <td class="tblDetailsItem"><asp:Label ID="Label9" runat="server" ToolTip="Συμβατική ημ/νία λήξης" Text='<%# Bind("InitialEndDate", "{0:dd/MM/yyyy}") %>'></asp:Label>&nbsp;&nbsp;(<asp:Label ID="Label17" runat="server" ToolTip="Πραγματική ημ/νία λήξης" Text='<%# Bind("EndDate", "{0:dd/MM/yyyy}") %>'></asp:Label>)</td>
+                                                    <td class="tblDetailsItem"><asp:Label ID="Label9" runat="server" ToolTip="Συμβατική ημ/νία λήξης" Text='<%# Bind("InitialEndDate", "{0:dd/MM/yyyy}") %>'></asp:Label>&nbsp;&nbsp;(<asp:Label ID="lblActualEndDate" runat="server" ToolTip="Πραγματική ημ/νία λήξης" Text='<%# Bind("EndDate", "{0:dd/MM/yyyy}") %>'></asp:Label>)</td>
                                                     <td class="tblDetailsHeader">Αρ. συναντήσεων</td>
                                                     <td class="tblDetailsItem"><asp:Label ID="Label13" runat="server" Text='<%# Bind("InitialMeetingsNo") %>'></asp:Label></td>
                                                 </tr>

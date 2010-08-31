@@ -38,8 +38,12 @@ Partial Class ProjectList
     End Sub
 
     Protected Sub sqldsProjects_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsProjects.Selecting
-        If txtPrjId.Text = "" Then e.Command.Parameters.Remove(e.Command.Parameters("@SubProject"))
-        If txtTitle.Text = "" Then e.Command.Parameters.Remove(e.Command.Parameters("@Title"))
+        With e.Command
+            If txtPrjId.Text = "" Then .Parameters.Remove(.Parameters("@SubProject"))
+            If txtTitle.Text = "" Then .Parameters.Remove(.Parameters("@Title"))
+            If dbFrom.Text = Nothing Then .Parameters.Remove(.Parameters("@dtFrom"))
+            If dbTo.Text = Nothing Then .Parameters.Remove(.Parameters("@dtTo"))
+        End With
     End Sub
 
     Protected Sub btnClearFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClearFilter.Click
@@ -57,11 +61,21 @@ Partial Class ProjectList
     End Sub
 
     Protected Sub btnFindPrj_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnFindPrj.Click
-        rblStatus.SelectedIndex = -1
+        gvProjects.DataBind()
     End Sub
 
     Private ddlValue As Int16
     Private ddlId As Int16
+
+    Protected Sub ddlPrjStatusOne_IndexChanged(ByVal sender As Object, ByVal e As System.EventArgs)
+        With CType(sender, DropDownList)
+            ddlId = .ToolTip
+            ddlValue = .SelectedValue
+        End With
+        sqldsPrjStatus.Update()
+        gvProjects.DataBind()
+    End Sub
+
     Protected Sub sqldsPrjStatus_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsPrjStatus.Updating
         e.Command.Parameters("@Status").Value = ddlValue
         e.Command.Parameters("@id").Value = ddlId

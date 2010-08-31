@@ -336,7 +336,7 @@
                     SelectCommand="SELECT * FROM [Users] WHERE [Company] = @CompanyId ORDER BY [LastName], [FirstName]" 
                     DeleteCommand="DELETE FROM [Users] WHERE [Id] = @Id" 
                     InsertCommand="INSERT INTO [Users] ([UserName], [UserType], [Company], [Position], [LastName], [FirstName], [Telephone], [Mobile], [Email], [DefaultPage], [IsUser]) VALUES (@UserName, 41, @CompanyId, @Position, @LastName, @FirstName, @Telephone, @Mobile, @Email, 18, 0)" 
-                    UpdateCommand="UPDATE [Users] SET [LastName] = @LastName, [FirstName] = @FirstName, [Position] = @Position, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email WHERE [Id] = @Id">
+                    UpdateCommand="UPDATE [Users] SET [LastName] = @LastName, [FirstName] = @FirstName, [Position] = @Position, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email, [IsUser] = @IsUser WHERE [Id] = @Id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="gvCompanies" Name="CompanyId" 
                             PropertyName="SelectedValue" Type="Int32" />

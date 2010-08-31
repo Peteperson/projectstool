@@ -333,9 +333,12 @@ Partial Class Projects
     End Sub
 
     Protected Sub sqldsMeetings_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsMeetings.Updating
-        Dim dtFrom As DateTime = e.Command.Parameters("@TimeFrom").Value
-        Dim dtTo As DateTime = e.Command.Parameters("@TimeTo").Value
-        e.Command.Parameters("@TimeTo").Value = dtFrom.Date.AddHours(dtTo.Hour).AddMinutes(dtTo.Minute)
+        With gvMeetings.Rows(gvMeetings.EditIndex)
+            Dim dtFrom As DateTime = CType(.FindControl("dbTimeFrom"), DateBox).Value
+            Dim dtTo As DateTime = CType(.FindControl("dbTimeTo"), DateBox).Value
+            e.Command.Parameters("@TimeFrom").Value = dtFrom
+            e.Command.Parameters("@TimeTo").Value = dtFrom.Date.AddHours(dtTo.Hour).AddMinutes(dtTo.Minute)
+        End With
     End Sub
 
     Protected Sub gvMeetings_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvMeetings.RowDataBound

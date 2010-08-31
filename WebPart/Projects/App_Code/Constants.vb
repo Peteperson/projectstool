@@ -35,6 +35,8 @@ Public Module Support
         Dim al As New ArrayList
         al.Add("")
         al.Add("Ολοκληρωμένο")
+        al.Add("Άκυρο")
+        al.Add("Ακυρωμένο")
         Return al
     End Function
     Public Sub FormatDateCell(ByVal FieldName As String, ByVal PrmIdx As Byte, ByVal CompareFieldName As String, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs)
