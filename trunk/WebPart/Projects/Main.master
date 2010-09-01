@@ -125,7 +125,7 @@ function PrintPage() {
             <td style="width:100%; text-align: right; vertical-align: bottom; background-color: white">
                 <table style="width:100%">
                     <tr>
-                        <td style="width:100%"><asp:Literal ID="ltrMessage" runat="server"></asp:Literal></td>
+                        <td style="width:100%"></td>
                         <td><asp:ImageButton ID="btnQwe" runat="server" style="visibility:hidden" /></td>
                         <td><asp:ImageButton ID="btnLogoff" runat="server" ImageUrl="~/Images/logout.png" ToolTip="Έξοδος" /></td>
                     </tr>
@@ -160,7 +160,7 @@ function PrintPage() {
                 </div>
             </td>
             <td id="tdChild" runat="server" style="width:100%; text-align:center; vertical-align:top">
-                <div align="center" style="width: 100%">
+                <div align="center" style="width: 100%; min-height: 400px">
                     <asp:ContentPlaceHolder ID="content" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>
@@ -172,8 +172,9 @@ function PrintPage() {
         </tr>
         </table>
         <table style="width:100%">
-            <tr>
-                <td style="background: url(Images/Blue.png) repeat-x; text-align:right; height: 27px; vertical-align:top"><a href="http://advent.com.gr">AG ADVENT 2010</a></td>
+            <tr style="background: url(Images/Blue.png) repeat-x;">
+                <td style="width:100%"><asp:Literal ID="ltrMessage" runat="server"></asp:Literal></td>
+                <td style="white-space:nowrap; text-align:right; height: 27px; vertical-align:top"><a href="http://advent.com.gr">AG ADVENT 2010</a></td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
