@@ -86,7 +86,9 @@
                                             DataValueField="id" AutoPostBack="True">
                                         </asp:RadioButtonList>
                                     </td>
-                                    <td><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
+                                    <td align="right" style="padding-left:10px; text-align:right">Από:<br />Έως:</td>
+                                    <td><uc2:DateBox ID="dbFrom" runat="server" ShowTime="False" /><uc2:DateBox ID="dbTo" runat="server" ShowTime="False" /></td>
+                                    <td><asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /><br /><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
                                 </tr>
                             </table>
                         </td> 
@@ -319,6 +321,8 @@
                         <asp:Parameter Name="APId" Type="Int16" DefaultValue="0" />
                         <asp:ControlParameter ControlID="rblStatus" DefaultValue="0" Name="Status" 
                             PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="dbFrom" Name="dtFrom" PropertyName="Value" Type="DateTime" />
+                        <asp:ControlParameter ControlID="dbTo" Name="dtTo" PropertyName="Value" Type="DateTime" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>

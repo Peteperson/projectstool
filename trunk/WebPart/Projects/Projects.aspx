@@ -72,8 +72,8 @@
                                                         </table>
                                                     </td>
                                                     <td class="tblDetailsHeader">Project manager</td>
-                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlSupervisors" runat="server" DataSourceID="sqldsCreators" 
-                                                           Enabled="false" selectedvalue=<%# Bind("Supervisor") %>  DataTextField="FullName" DataValueField="id">
+                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectManagers" runat="server" DataSourceID="sqldsCreators" 
+                                                           Enabled="false" selectedvalue=<%# Bind("ProjectManager") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                 </tr>
                                                 <tr>
@@ -161,8 +161,8 @@
                                                            selectedvalue=<%# Bind("CustomerId") %>  DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Project manager</td>
-                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlSupervisors" runat="server" DataSourceID="sqldsCreators" 
-                                                           selectedvalue=<%# Bind("Supervisor") %>  DataTextField="FullName" DataValueField="id">
+                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectManagers" runat="server" DataSourceID="sqldsCreators" 
+                                                           selectedvalue=<%# Bind("ProjectManager") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                 </tr>
                                                 <tr>
@@ -249,7 +249,7 @@
                                                            DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Project manager</td>
-                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlSupervisors" runat="server" DataSourceID="sqldsCreators" 
+                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectManagers" runat="server" DataSourceID="sqldsCreators" 
                                                            DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                 </tr>
@@ -903,9 +903,9 @@
                 <asp:SqlDataSource ID="sqldsProjects" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [Projects] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [Projects] ([Code], [SubProject], [Creator], [Type], [CustomerId], [InitialStartDate], [StartDate], [InitialEndDate], [EndDate], [Title], [Description], [Supervisor], [Consultant1], [Consultant2], [InitialMeetingsNo], [CriticalIssues], [DesiredOrganization], [CertificationField], [CompletionPercentage], [Status]) VALUES (@Code, @SubProject, @Creator, @Type, @CustomerId, @InitialStartDate, @InitialStartDate, @InitialEndDate, @InitialEndDate, @Title, @Description, @Supervisor, @Consultant1, @Consultant2, @InitialMeetingsNo, @CriticalIssues, @DesiredOrganization, @CertificationField, @CompletionPercentage, @Status)" 
-                    SelectCommand="SELECT [id], [Code], [Type], [SubProject], [DateStamp], [Creator], [ModificationDate], [CustomerId], [InitialStartDate], [StartDate], [InitialEndDate], [EndDate], [Title], [Description], [Supervisor], [Consultant1], ISNULL([Consultant2], 0) AS Consultant2, [InitialMeetingsNo], [CriticalIssues], [DesiredOrganization], [CertificationField], [CompletionPercentage], [Status]  FROM [Projects] WHERE ([id] = @id)" 
-                    UpdateCommand="UPDATE [Projects] SET [Code] = @Code, [Type] = @Type, [SubProject] = @SubProject, [Creator] = @Creator, [ModificationDate] = @ModificationDate, [CustomerId] = @CustomerId, [InitialStartDate] = @InitialStartDate, [StartDate] = @StartDate, [InitialEndDate] = @InitialEndDate, [EndDate] = @EndDate, [Title] = @Title, [Description] = @Description, [Supervisor] = @Supervisor, [Consultant1] = @Consultant1, [Consultant2] = @Consultant2, [InitialMeetingsNo] = @InitialMeetingsNo, [CriticalIssues] = @CriticalIssues, [DesiredOrganization] = @DesiredOrganization, [CertificationField] = @CertificationField, [CompletionPercentage] = @CompletionPercentage, [Status] = @Status WHERE [id] = @id">
+                    InsertCommand="INSERT INTO [Projects] ([Code], [SubProject], [Creator], [Type], [CustomerId], [InitialStartDate], [StartDate], [InitialEndDate], [EndDate], [Title], [Description], [ProjectManager], [Consultant1], [Consultant2], [InitialMeetingsNo], [CriticalIssues], [DesiredOrganization], [CertificationField], [CompletionPercentage], [Status]) VALUES (@Code, @SubProject, @Creator, @Type, @CustomerId, @InitialStartDate, @InitialStartDate, @InitialEndDate, @InitialEndDate, @Title, @Description, @ProjectManager, @Consultant1, @Consultant2, @InitialMeetingsNo, @CriticalIssues, @DesiredOrganization, @CertificationField, @CompletionPercentage, @Status)" 
+                    SelectCommand="SELECT [id], [Code], [Type], [SubProject], [DateStamp], [Creator], [ModificationDate], [CustomerId], [InitialStartDate], [StartDate], [InitialEndDate], [EndDate], [Title], [Description], [ProjectManager], [Consultant1], ISNULL([Consultant2], 0) AS Consultant2, [InitialMeetingsNo], [CriticalIssues], [DesiredOrganization], [CertificationField], [CompletionPercentage], [Status]  FROM [Projects] WHERE ([id] = @id)" 
+                    UpdateCommand="UPDATE [Projects] SET [Code] = @Code, [Type] = @Type, [SubProject] = @SubProject, [Creator] = @Creator, [ModificationDate] = @ModificationDate, [CustomerId] = @CustomerId, [InitialStartDate] = @InitialStartDate, [StartDate] = @StartDate, [InitialEndDate] = @InitialEndDate, [EndDate] = @EndDate, [Title] = @Title, [Description] = @Description, [ProjectManager] = @ProjectManager, [Consultant1] = @Consultant1, [Consultant2] = @Consultant2, [InitialMeetingsNo] = @InitialMeetingsNo, [CriticalIssues] = @CriticalIssues, [DesiredOrganization] = @DesiredOrganization, [CertificationField] = @CertificationField, [CompletionPercentage] = @CompletionPercentage, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="id" PropertyName="SelectedValue" Type="Int32" />
                     </SelectParameters>
@@ -925,7 +925,7 @@
                         <asp:Parameter Name="EndDate" Type="DateTime" />
                         <asp:Parameter Name="Title" Type="String" />
                         <asp:Parameter Name="Description" Type="String" />
-                        <asp:Parameter Name="Supervisor" Type="Int32" />
+                        <asp:Parameter Name="ProjectManager" Type="Int32" />
                         <asp:Parameter Name="Consultant1" Type="Int32" />
                         <asp:Parameter Name="Consultant2" Type="Int32" />
                         <asp:Parameter Name="InitialMeetingsNo" Type="Byte" />
@@ -946,7 +946,7 @@
                         <asp:Parameter Name="InitialEndDate" Type="DateTime" />
                         <asp:Parameter Name="Title" Type="String" />
                         <asp:Parameter Name="Description" Type="String" DefaultValue=" " />
-                        <asp:Parameter Name="Supervisor" Type="Int32" />
+                        <asp:Parameter Name="ProjectManager" Type="Int32" />
                         <asp:Parameter Name="Consultant1" Type="Int32" />
                         <asp:Parameter Name="Consultant2" Type="Int32" />
                         <asp:Parameter Name="InitialMeetingsNo" Type="Byte" DefaultValue="10" />
@@ -1146,7 +1146,7 @@
                 <asp:SqlDataSource ID="sqldsConsultants" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="SELECT Users.id, LastName + ' ' + FirstName AS Fullname FROM Users
                     INNER JOIN VariousTypes ON Users.UserType = VariousTypes.id
-                    WHERE VariousTypes.[Description] IN ('Consultant', 'Supervisor') AND users.IsActive = 1">
+                    WHERE VariousTypes.[Description] IN ('Consultant', 'ProjectManager') AND users.IsActive = 1">
                 </asp:SqlDataSource>
             </td>
             <td>

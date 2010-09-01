@@ -152,7 +152,7 @@ Partial Class Projects
         'e.Command.Parameters("@InitialEndDate").Value = Support.ReadDate(CType(dvProject.FindControl("txtProjectEDate"), TextBox).Text)
         e.Command.Parameters("@InitialEndDate").Value = CType(dvProject.FindControl("dbEndDate"), DateBox).Value
         e.Command.Parameters("@Creator").Value = CType(dvProject.FindControl("ddlCreators"), DropDownList).SelectedValue
-        e.Command.Parameters("@Supervisor").Value = CType(dvProject.FindControl("ddlSupervisors"), DropDownList).SelectedValue
+        e.Command.Parameters("@ProjectManager").Value = CType(dvProject.FindControl("ddlProjectManagers"), DropDownList).SelectedValue
         e.Command.Parameters("@CustomerId").Value = CType(dvProject.FindControl("ddlCompanies"), DropDownList).SelectedValue
         e.Command.Parameters("@Status").Value = CType(dvProject.FindControl("ddlProjectStatus"), DropDownList).SelectedValue
         e.Command.Parameters("@Consultant1").Value = CType(dvProject.FindControl("ddlInsConsultant1"), DropDownList).SelectedValue

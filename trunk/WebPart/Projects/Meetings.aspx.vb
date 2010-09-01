@@ -116,10 +116,8 @@ Partial Class Meetings
 
     Protected Sub btnClearFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClearFilter.Click
         rblStatus.SelectedIndex = -1
-        dbFrom.Text = ""
-        dbTo.Text = ""
-        dbFrom.Value = Nothing
-        dbTo.Value = Nothing
+        CType(gvMeetings.HeaderRow.FindControl("txtHeadMtFilter"), TextBox).Text = ""
+        txtPrjId.Text = ""
     End Sub
 
     Private ActionId As Integer

@@ -79,8 +79,8 @@
                                                 CommandName="SelCompany" Text='<%# Bind("Customer") %>'></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Supervisor" HeaderText="Project manager" ReadOnly="True" 
-                            SortExpression="Supervisor" />
+                        <asp:BoundField DataField="ProjectManager" HeaderText="Project manager" ReadOnly="True" 
+                            SortExpression="ProjectManager" />
                         <asp:BoundField DataField="Consultant" HeaderText="Σύμβουλος" 
                             SortExpression="Consultant" ReadOnly="True" />
                         <asp:TemplateField HeaderText="Λήξη" SortExpression="InitialEndDate">
