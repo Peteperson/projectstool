@@ -214,6 +214,8 @@
                                     ImageUrl="~/Images/Icons/Update2_22x22.png" CommandArgument='<%# Bind("Id") %>' 
                                     ToolTip="Έκδοση νέου κωδικού" />
                             </ItemTemplate>
+                            <EditItemTemplate>
+                            </EditItemTemplate>
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>

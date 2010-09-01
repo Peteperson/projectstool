@@ -36,8 +36,8 @@
                         <asp:BoundField DataField="SubProject" HeaderText="SubProject" 
                             SortExpression="SubProject" />
                         <asp:BoundField DataField="Title" HeaderText="Τίτλος" SortExpression="Title" />
-                        <asp:BoundField DataField="Supervisor" HeaderText="Project manager" ReadOnly="True" 
-                            SortExpression="Supervisor" />
+                        <asp:BoundField DataField="ProjectManager" HeaderText="Project manager" ReadOnly="True" 
+                            SortExpression="ProjectManager" />
                         <asp:BoundField DataField="Consultant" HeaderText="Σύμβουλος" ReadOnly="True" 
                             SortExpression="Consultant" />
                         <asp:BoundField DataField="InitialEndDate" DataFormatString="{0:dd/MM/yyyy}" 

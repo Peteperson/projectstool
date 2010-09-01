@@ -63,11 +63,11 @@ Partial Class ActionPlans
     End Sub
 
     Protected Sub sqldsAP_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsAP.Selecting
-        If txtPrjId.Text = "" Then
-            Dim DeleteParam As System.Data.Common.DbParameter
-            DeleteParam = e.Command.Parameters("@SubProject")
-            e.Command.Parameters.Remove(DeleteParam)
-        End If
+        With e.Command
+            If txtPrjId.Text = "" Then .Parameters.Remove(.Parameters("@SubProject"))
+            If dbFrom.Text = Nothing Then .Parameters.Remove(.Parameters("@dtFrom"))
+            If dbTo.Text = Nothing Then .Parameters.Remove(.Parameters("@dtTo"))
+        End With
 
         If Not Session("ActionPlanId") Is Nothing AndAlso Session("ActionPlanId") > -1 Then
             e.Command.Parameters("@APId").Value = CInt(Session("ActionPlanId"))
@@ -109,6 +109,8 @@ Partial Class ActionPlans
 
     Protected Sub btnClearFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClearFilter.Click
         rblStatus.SelectedIndex = -1
+        CType(gvAP.HeaderRow.FindControl("txtHeadAPFilter"), TextBox).Text = ""
+        txtPrjId.Text = ""
     End Sub
 
     Private ActionId As Integer
