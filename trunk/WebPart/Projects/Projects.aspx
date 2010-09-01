@@ -1146,7 +1146,7 @@
                 <asp:SqlDataSource ID="sqldsConsultants" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="SELECT Users.id, LastName + ' ' + FirstName AS Fullname FROM Users
                     INNER JOIN VariousTypes ON Users.UserType = VariousTypes.id
-                    WHERE VariousTypes.[Description] IN ('Consultant', 'ProjectManager') AND users.IsActive = 1">
+                    WHERE VariousTypes.[Description] IN ('Consultant', 'ProjectManager', 'OrgDirector', 'FoodDirector') AND users.IsActive = 1">
                 </asp:SqlDataSource>
             </td>
             <td>
