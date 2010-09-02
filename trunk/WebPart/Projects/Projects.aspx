@@ -227,7 +227,7 @@
                                                     <td class="tblDetailsHeader">Τύπος</td>
                                                     <td class="tblDetailsItem">
                                                         <asp:RadioButtonList ID="rbPrjType" runat="server" DataSourceID="sqldsPrjType" 
-                                                             DataTextField="Description" DataValueField="id" RepeatDirection="Horizontal">
+                                                             DataTextField="Description" selectedindex=<%# 0 %> DataValueField="id" RepeatDirection="Horizontal">
                                                         </asp:RadioButtonList>
                                                     </td>
                                                 </tr>
@@ -242,7 +242,7 @@
                                                 <tr>
                                                     <td class="tblDetailsHeader">Δημιουργός</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlCreators" runat="server" DataSourceID="sqldsCreators" 
-                                                           DataTextField="FullName" selectedvalue=<%# Session("UserId") %>  DataValueField="id">
+                                                           DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Πελάτης</td>
                                                     <td class="tblDetailsItem"><asp:DropDownList ID="ddlCompanies" runat="server" 
