@@ -227,7 +227,7 @@
                                                     <td class="tblDetailsHeader">Τύπος</td>
                                                     <td class="tblDetailsItem">
                                                         <asp:RadioButtonList ID="rbPrjType" runat="server" DataSourceID="sqldsPrjType" 
-                                                             DataTextField="Description" selectedindex=<%# 0 %> DataValueField="id" RepeatDirection="Horizontal">
+                                                             DataTextField="Description" DataValueField="id" RepeatDirection="Horizontal">
                                                         </asp:RadioButtonList>
                                                     </td>
                                                 </tr>
