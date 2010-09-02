@@ -1,6 +1,47 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Main.master" AutoEventWireup="false" CodeFile="Messages.aspx.vb" Inherits="Messages" Theme="MainSkin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <script language="javascript" type="text/javascript">
+        function ddlUsersToValueChanged(obj) {
+            Parts = obj.split("_");
+            MainPart = obj.replace(Parts[Parts.length - 1], "");
+
+            ddlcmp = document.getElementById(MainPart + "ddlCompanies");
+            ForceNoneValue(ddlcmp);
+            document.getElementById(MainPart + "cbAll").checked = false;
+        }
+
+        function ddlCompaniesValueChanged(obj) {
+            Parts = obj.split("_");
+            MainPart = obj.replace(Parts[Parts.length - 1], "");
+
+            ddlcmp = document.getElementById(MainPart + "ddlUsers");
+            ForceNoneValue(ddlcmp);
+            document.getElementById(MainPart + "cbAll").checked = false;
+        }
+
+        function cbAllValueChanged(obj) {
+            if (document.getElementById(obj).checked) {
+                Parts = obj.split("_");
+                MainPart = obj.replace(Parts[Parts.length - 1], "");
+
+                ddlcmp = document.getElementById(MainPart + "ddlCompanies");
+                ForceNoneValue(ddlcmp);
+                ddlcmp = document.getElementById(MainPart + "ddlUsers");
+                ForceNoneValue(ddlcmp);
+            }
+        }
+
+        function ForceNoneValue(ddl) {
+            i = 0;
+            for (i = 0; i <= ddl.length - 1; i++) {
+                if (ddl.options[i].value == 0) {
+                    ddl.selectedIndex = i;
+                    break;
+                }
+            }        
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
@@ -12,7 +53,7 @@
             <td>
                 <asp:GridView ID="gvMessages" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
-                    DataSourceID="sqldsMessages" SkinID="gridviewSkin" ShowFooter="true">
+                    DataSourceID="sqldsMessages" SkinID="gridviewSkin" ShowFooter="True">
                     <EmptyDataTemplate>
                         <br />
                         Δεν υπάρχουν καταχωρημένα μηνύματα που να αφορούν εσάς.<br />
@@ -71,9 +112,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Δημιουργός" SortExpression="Writer">
                             <ItemTemplate>
-                                <asp:DropDownList ID="ddlWriter" runat="server" DataSourceID="sqldsUsers" 
-                                    Enabled="false" selectedValue='<%# Bind("Writer") %>' DataTextField="Fullname" DataValueField="id">
-                                </asp:DropDownList>
+                                <asp:Label ID="lblWriter" runat="server" Text='<%# Bind("Fullname") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Μήνυμα" SortExpression="Message">
@@ -101,7 +140,7 @@
                             </EditItemTemplate>
                             <FooterTemplate>
                                 <asp:DropDownList ID="ddlUsers" runat="server" DataSourceID="sqldsUsers" 
-                                    DataTextField="Fullname" DataValueField="id">
+                                    DataTextField="Fullname" onchange="ddlUsersToValueChanged(this.id)" DataValueField="id">
                                 </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
@@ -117,21 +156,21 @@
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:DropDownList ID="ddlCompanies" runat="server" 
+                                <asp:DropDownList ID="ddlCompanies" runat="server" onchange="ddlCompaniesValueChanged(this.id)" 
                                     DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
                                 </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Όλοι;" SortExpression="ToEveryone">
                             <ItemTemplate>
-                                <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("ToEveryone") %>' 
+                                <asp:CheckBox ID="cbAll" runat="server" Checked='<%# Bind("ToEveryone") %>' 
                                     Enabled="false" />
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("ToEveryone") %>' />
+                                <asp:CheckBox ID="cbAll" runat="server" Checked='<%# Bind("ToEveryone") %>' />
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:CheckBox ID="cbAll" runat="server" Checked="false" />
+                                <asp:CheckBox ID="cbAll" runat="server" onclick="cbAllValueChanged(this.id)" Checked="false" />
                             </FooterTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -146,21 +185,23 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [Messages] WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [Messages] ([Message], [Writer], [ToUserId], [ToCompanyId], [ToEveryone]) VALUES (@Message, @Writer, @ToUserId, @ToCompanyId, @ToEveryone)" 
-                    SelectCommand="SELECT [id], [datestamp], [Message], [Writer], [ToUserId], [ToCompanyId], [ToEveryone] FROM [Messages] ORDER BY [id] DESC" 
-                    UpdateCommand="UPDATE [Messages] SET [datestamp] = GetDate(), [Message] = @Message, [Writer] = @Writer, [ToUserId] = @ToUserId, [ToCompanyId] = @ToCompanyId, [ToEveryone] = @ToEveryone WHERE [id] = @id">
+                    SelectCommand="MyMessages"
+                    UpdateCommand="UPDATE [Messages] SET [datestamp] = GetDate(), [Message] = @Message, [ToUserId] = @ToUserId, [ToCompanyId] = @ToCompanyId, [ToEveryone] = @ToEveryone WHERE [id] = @id" 
+                    SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int32" />
+                    </SelectParameters>
                     <DeleteParameters>
                         <asp:Parameter Name="id" Type="Int32" />
                     </DeleteParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="Message" Type="String" />
-                        <asp:Parameter Name="Writer" Type="Int32" />
                         <asp:Parameter Name="ToUserId" Type="Int32" />
                         <asp:Parameter Name="ToCompanyId" Type="Int32" />
                         <asp:Parameter Name="ToEveryone" Type="Boolean" />
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
                     <InsertParameters>
-                        <asp:Parameter Name="datestamp" Type="DateTime" />
                         <asp:Parameter Name="Message" Type="String" />
                         <asp:Parameter Name="Writer" Type="Int32" />
                         <asp:Parameter Name="ToUserId" Type="Int32" />
