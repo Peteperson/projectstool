@@ -74,7 +74,7 @@ Partial Class ActionPlans
             btnReset.Visible = True
             With CType(Master.FindControl("lblMessage"), Label)
                 .Visible = True
-                .Text = "The results are filtered. Press 'Remove filtering' to view all data"
+                .Text = "Πατήστε το κουμπί 'Remove filtering' για να δείτε όλα τα data."
             End With
         End If
     End Sub
