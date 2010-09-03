@@ -206,6 +206,8 @@
                             <tr>
                                 <td class="tblDetailsHeader">Deadline</td>
                                 <td class="tblDetailsItem"><uc2:DateBox ID="DateBox1" runat="server" Value='<%# Bind("Deadline") %>' /></td>
+                                <td class="tblDetailsHeader">Meeting</td>
+                                <td class="tblDetailsItem"><uc2:DateBox ID="dbMeeting" runat="server" Value='<%# Bind("MeetingDate") %>' /></td>
                                 <td class="tblDetailsHeader">Υπεύθυνος1</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
                                                 selectedvalue=<%# Bind("Responsible1") %> DataTextField="FullName" DataValueField="id">
@@ -217,7 +219,7 @@
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">Περιγραφή<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox6" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox6" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
-                                <td class="tblDetailsItem" colspan="5"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
+                                <td class="tblDetailsItem" colspan="7"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                             </tr>
                             <tr>
                                 <!--<td class="tblDetailsHeader">ActionId</td>
@@ -225,7 +227,7 @@
                                        selectedvalue=<%# Bind("ActionId") %> DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList></td>-->
                                 <td class="tblDetailsHeader">Όνομα αρχείου</td>
-                                <td class="tblDetailsItem"><asp:label ID="AttachmentNameTextBox" runat="server" Text='<%# Bind("AttachmentName") %>' /></td>
+                                <td class="tblDetailsItem" colspan="3"><asp:label ID="AttachmentNameTextBox" runat="server" Text='<%# Bind("AttachmentName") %>' /></td>
                                 <td class="tblDetailsHeader">Αρχείο</td>
                                 <td class="tblDetailsItem">
                                     <table>
@@ -244,7 +246,7 @@
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">Σχόλια<asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox1" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
-                                <td class="tblDetailsItem" colspan="5"><asp:TextBox ID="TextBox1" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox></td>
+                                <td class="tblDetailsItem" colspan="7"><asp:TextBox ID="TextBox1" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox></td>
                             </tr>
                         </table>
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
@@ -259,6 +261,8 @@
                             <tr>
                                 <td class="tblDetailsHeader">Deadline</td>
                                 <td class="tblDetailsItem"><uc2:DateBox ID="dbDeadline" runat="server" Value='<%# Bind("Deadline") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' /></td>
+                                <td class="tblDetailsHeader">Meeting</td>
+                                <td class="tblDetailsItem"><uc2:DateBox ID="dbMeeting" runat="server" Value='<%# Bind("MeetingDate") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' /></td>
                                 <td class="tblDetailsHeader">Υπεύθυνος1</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
                                                 selectedvalue=<%# Bind("Responsible1") %> DataTextField="FullName" DataValueField="id">
@@ -270,7 +274,7 @@
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">Περιγραφή<asp:RegularExpressionValidator ID="RegExpVal3" runat="server" ControlToValidate="TextBox6" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox6" ValidationGroup="InsAP" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                <td class="tblDetailsItem" colspan="5"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
+                                <td class="tblDetailsItem" colspan="7"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                             </tr>
                             <tr>
                                 <!--<td class="tblDetailsHeader">ActionId</td>
@@ -278,7 +282,7 @@
                                        selectedvalue=<%# Bind("ActionId") %> DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList></td>-->
                                 <td class="tblDetailsHeader">Όνομα αρχείου</td>
-                                <td class="tblDetailsItem"></td>
+                                <td class="tblDetailsItem" colspan="3"></td>
                                 <td class="tblDetailsHeader">Αρχείο</td>
                                 <td class="tblDetailsItem"><asp:FileUpload ID="fuAP" runat="server" /></td>
                                 <td class="tblDetailsHeader">Status</td>
@@ -288,7 +292,7 @@
                             </tr>
                             <tr>
                                 <td class="tblDetailsHeader">Σχόλια<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox2" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator></td>
-                                <td class="tblDetailsItem" colspan="5"><asp:TextBox ID="TextBox2" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox></td>
+                                <td class="tblDetailsItem" colspan="7"><asp:TextBox ID="TextBox2" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox></td>
                             </tr>
                         </table>
                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
@@ -330,9 +334,9 @@
                 <asp:SqlDataSource ID="sqldsAPdet" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [ActionPlans] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Responsible1], [Responsible2], [Description], [Comments], [AttachmentName], [Attachment], [Deadline], [Status], [MeetingDate]) VALUES (@ProjectId, @ActionId, @Responsible1, @Responsible2, @Description, @Comments, @AttachmentName, @Attachment, @Deadline, @Status, GetDate())" 
-                    SelectCommand="SELECT [id], [ProjectId], [ActionId],  ISNULL([Responsible1], 0) AS Responsible1,  ISNULL([Responsible2], 0) AS Responsible2, [Description], [Comments], [AttachmentName], [Deadline], [Status] FROM [ActionPlans] WHERE ([id] = @id)" 
-                    UpdateCommand="UPDATE [ActionPlans] SET [ActionId] = @ActionId, [Responsible1] = @Responsible1, [Responsible2] = @Responsible2, [Description] = @Description, [Comments] = @Comments, [AttachmentName] = @AttachmentName, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
+                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Responsible1], [Responsible2], [Description], [Comments], [AttachmentName], [Attachment], [Deadline], [Status], [MeetingDate]) VALUES (@ProjectId, @ActionId, @Responsible1, @Responsible2, @Description, @Comments, @AttachmentName, @Attachment, @Deadline, @Status, @MeetingDate)" 
+                    SelectCommand="SELECT [id], [ProjectId], [ActionId],  ISNULL([Responsible1], 0) AS Responsible1,  ISNULL([Responsible2], 0) AS Responsible2, [Description], [Comments], [AttachmentName], [Deadline], [Status], [MeetingDate] FROM [ActionPlans] WHERE ([id] = @id)" 
+                    UpdateCommand="UPDATE [ActionPlans] SET [ActionId] = @ActionId, [Responsible1] = @Responsible1, [Responsible2] = @Responsible2, [Description] = @Description, [Comments] = @Comments, [AttachmentName] = @AttachmentName, [Deadline] = @Deadline, [Status] = @Status, [MeetingDate] = @MeetingDate WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="gvAP" Name="id" PropertyName="SelectedValue" 
                             Type="Int32" />
@@ -350,6 +354,7 @@
                         <asp:Parameter Name="Deadline" Type="DateTime" />
                         <asp:Parameter Name="Status" Type="Byte" />
                         <asp:Parameter Name="id" Type="Int32" />
+                        <asp:Parameter Name="Meetingdate" Type="DateTime" />
                     </UpdateParameters>
                     <InsertParameters>
                         <asp:Parameter Name="ProjectId" Type="Int32" />
@@ -362,6 +367,7 @@
                         <asp:Parameter Name="Attachment"  />
                         <asp:Parameter Name="Deadline" Type="DateTime" />
                         <asp:Parameter Name="Status" Type="Byte" />
+                        <asp:Parameter Name="Meetingdate" Type="DateTime" />
                     </InsertParameters>
                 </asp:SqlDataSource>
             </td>

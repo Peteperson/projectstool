@@ -363,3 +363,14 @@ a:hover {
     width:21px;
     height:21px;
 }
+
+.txtMassiveImport {
+    height:200px;
+    width:98%;
+}
+
+.lblHelpIds {
+    border: none;
+    width:30px;
+    text-align:center;
+}

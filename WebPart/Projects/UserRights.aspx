@@ -17,7 +17,11 @@
             </td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <td>Προβολή δικαιωμάτων για τον ρόλο:
+                <asp:DropDownList ID="ddlShowRole" runat="server" AutoPostBack="True" 
+                    DataSourceID="sqldsUserTypes" DataTextField="Description" DataValueField="id">
+                </asp:DropDownList>
+            </td>
         </tr>
         <tr>
             <td>
@@ -113,15 +117,20 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [UserPages] WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [UserPages] ([UserType], [PageId], [Description], [Ordering]) VALUES (@UserType, @PageId, @Description, @Ordering)" 
-                    SelectCommand="SELECT * FROM [UserPages]"                     
+                    SelectCommand="SELECT * FROM [UserPages] WHERE ([UserType] = @UserType)"                     
+                    
                     UpdateCommand="UPDATE [UserPages] SET [UserType] = @UserType, [PageId] = @PageId, [Description] = @Description, [Ordering] = @Ordering WHERE [id] = @id">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="ddlShowRole" Name="UserType" 
+                            PropertyName="SelectedValue" Type="Int32" />
+                    </SelectParameters>
                     <DeleteParameters>
                         <asp:Parameter Name="id" Type="Int32" />
                     </DeleteParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="UserType" Type="Int32" />
                         <asp:Parameter Name="PageId" Type="Int32" />
-                        <asp:Parameter Name="Description" Type="String" DefaultValue=" " />
+                        <asp:Parameter Name="Description" Type="String" />
                         <asp:Parameter Name="Ordering" Type="Int32" />
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>

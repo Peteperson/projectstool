@@ -224,10 +224,10 @@
                                                 <tr>
                                                     <td class="tblDetailsHeader">Τίτλος έργου <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox9" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox9" MaxLength="50" SkinID="txtText" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox></td>
-                                                    <td class="tblDetailsHeader">Τύπος</td>
+                                                    <td class="tblDetailsHeader">Τύπος <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="rbPrjType" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem">
                                                         <asp:RadioButtonList ID="rbPrjType" runat="server" DataSourceID="sqldsPrjType" 
-                                                             DataTextField="Description" selectedindex=<%# 0 %> DataValueField="id" RepeatDirection="Horizontal">
+                                                             DataTextField="Description" DataValueField="id" RepeatDirection="Horizontal">
                                                         </asp:RadioButtonList>
                                                     </td>
                                                 </tr>
@@ -1146,7 +1146,7 @@
                 <asp:SqlDataSource ID="sqldsConsultants" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="SELECT Users.id, LastName + ' ' + FirstName AS Fullname FROM Users
                     INNER JOIN VariousTypes ON Users.UserType = VariousTypes.id
-                    WHERE VariousTypes.[Description] IN ('Consultant', 'ProjectManager', 'OrgDirector', 'FoodDirector') AND users.IsActive = 1">
+                    WHERE VariousTypes.[Description] IN ('Consultant', 'ProjectManager', 'OrgDirector', 'FoodDirector', 'ITDirector') AND users.IsActive = 1">
                 </asp:SqlDataSource>
             </td>
             <td>
