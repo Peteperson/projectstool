@@ -20,7 +20,7 @@
         <tr>
             <td id="tdBelowTitle"><img alt="info" src="Images/Icons/Logs_24x24.png" />: Κάντε 
                 paste τα data από το excel στο παρακάτω textbox και πατήστε &#39;Import Data&#39;. Τα data πρέπει να είναι τής μορφής: 
-                <b>projectId</b>&lt;tab&gt;<b>περιγραφή</b>&lt;tab&gt;<b>deadline</b>&lt;tab&gt;<b>status</b>&lt;tab&gt;<b>σχόλια</b>. 
+                <b>subprojectId</b>&lt;tab&gt;<b>περιγραφή</b>&lt;tab&gt;<b>deadline</b>&lt;tab&gt;<b>statusId</b>&lt;tab&gt;<b>σχόλια</b>. 
                 Μπορείτε να βρείτε τα projectId και status με τη βοήθεια των παρακάτω controls.</td>
         </tr>
         <tr>
