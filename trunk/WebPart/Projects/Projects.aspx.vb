@@ -158,6 +158,7 @@ Partial Class Projects
         e.Command.Parameters("@Consultant1").Value = CType(dvProject.FindControl("ddlInsConsultant1"), DropDownList).SelectedValue
         Dim cons2 As String = CType(dvProject.FindControl("ddlInsConsultant2"), DropDownList).SelectedValue
         e.Command.Parameters("@Consultant2").Value = IIf(cons2 = 0, System.DBNull.Value, cons2)
+        e.Command.Parameters("@Type").Value = CType(dvProject.FindControl("rbPrjType"), RadioButtonList).SelectedValue
     End Sub
 
     Protected Sub sqldsProjects_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsProjects.Updating
