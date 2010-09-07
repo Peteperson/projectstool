@@ -131,10 +131,16 @@ Partial Class Projects
         End If
     End Sub
 
+    Protected Sub sqldsProjects_Deleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsProjects.Deleting
+        sqldsSysVer.Delete()
+    End Sub
+
     Protected Sub sqldsProjects_Inserted(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsProjects.Inserted
-        ddlPrjCode.DataBind()
-        SetDdlValue(e.Command.Parameters("@SubProject").Value)
-        sqldsSysVer.Insert()
+        If e.AffectedRows > 0 Then
+            ddlPrjCode.DataBind()
+            SetDdlValue(e.Command.Parameters("@SubProject").Value)
+            sqldsSysVer.Insert()
+        End If
     End Sub
 
     Private Sub SetDdlValue(ByVal text As String)
@@ -147,9 +153,7 @@ Partial Class Projects
     End Sub
 
     Protected Sub sqldsProjects_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsProjects.Inserting
-        'e.Command.Parameters("@StartDate").Value = Support.ReadDate(CType(dvProject.FindControl("txtProjectSDate"), TextBox).Text)
         e.Command.Parameters("@InitialStartDate").Value = CType(dvProject.FindControl("dbStartDate"), DateBox).Value
-        'e.Command.Parameters("@InitialEndDate").Value = Support.ReadDate(CType(dvProject.FindControl("txtProjectEDate"), TextBox).Text)
         e.Command.Parameters("@InitialEndDate").Value = CType(dvProject.FindControl("dbEndDate"), DateBox).Value
         e.Command.Parameters("@Creator").Value = CType(dvProject.FindControl("ddlCreators"), DropDownList).SelectedValue
         e.Command.Parameters("@ProjectManager").Value = CType(dvProject.FindControl("ddlProjectManagers"), DropDownList).SelectedValue
@@ -167,8 +171,6 @@ Partial Class Projects
         e.Command.Parameters("@StartDate").Value = CType(dvProject.FindControl("dbStartDate"), DateBox).Value
         e.Command.Parameters("@InitialEndDate").Value = CType(dvProject.FindControl("dbInitialEndDate"), DateBox).Value
         e.Command.Parameters("@EndDate").Value = CType(dvProject.FindControl("dbEndDate"), DateBox).Value
-        'e.Command.Parameters("@StartDate").Value = Support.ReadDate(CType(dvProject.FindControl("txtProjectSDate"), TextBox).Text)
-        'e.Command.Parameters("@InitialEndDate").Value = Support.ReadDate(CType(dvProject.FindControl("txtProjectEDate"), TextBox).Text)
         If e.Command.Parameters("@Consultant2").Value = 0 Then e.Command.Parameters("@Consultant2").Value = System.DBNull.Value
     End Sub
 
@@ -184,7 +186,6 @@ Partial Class Projects
             e.Command.Parameters("@Description").Value = CType(gvAP.FooterRow.FindControl("txtAPdesc"), TextBox).Text
             e.Command.Parameters("@AttachmentName").Value = CType(gvAP.FooterRow.FindControl("fuAP"), FileUpload).FileName
             e.Command.Parameters("@Attachment").Value = CType(gvAP.FooterRow.FindControl("fuAP"), FileUpload).FileBytes
-            'e.Command.Parameters("@Deadline").Value = Support.ReadDate(CType(gvAP.FooterRow.FindControl("txtAPdead"), TextBox).Text)
             e.Command.Parameters("@Deadline").Value = CType(gvAP.FooterRow.FindControl("dbDeadline"), DateBox).Value
             e.Command.Parameters("@Status").Value = CType(gvAP.FooterRow.FindControl("ddlActionStatus"), DropDownList).SelectedValue
         Else
@@ -197,7 +198,6 @@ Partial Class Projects
             e.Command.Parameters("@Description").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("txtAPdesc"), TextBox).Text
             e.Command.Parameters("@AttachmentName").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("fuAP"), FileUpload).FileName
             e.Command.Parameters("@Attachment").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("fuAP"), FileUpload).FileBytes
-            'e.Command.Parameters("@Deadline").Value = Support.ReadDate(CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("txtAPdead"), TextBox).Text)
             e.Command.Parameters("@Deadline").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("dbDeadline"), DateBox).Value
             e.Command.Parameters("@Status").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("ddlActionStatus"), DropDownList).SelectedValue
         End If
@@ -206,7 +206,6 @@ Partial Class Projects
     Protected Sub sqldsAP_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAP.Updating
         Dim ind As Integer = gvAP.EditIndex
         Dim resp As Integer
-        'e.Command.Parameters("@Deadline").Value = Support.ReadDate(CType(gvAP.Rows(ind).FindControl("txtAPdead"), TextBox).Text)
         e.Command.Parameters("@Deadline").Value = CType(gvAP.Rows(ind).FindControl("dbDeadline"), DateBox).Value
         resp = e.Command.Parameters("@Responsible1").Value
         e.Command.Parameters("@Responsible1").Value = IIf(resp = 0, DBNull.Value, resp)
@@ -374,7 +373,7 @@ Partial Class Projects
     Protected Sub dvProject_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles dvProject.DataBound
         If dvProject.CurrentMode = DetailsViewMode.ReadOnly Then
             If Not dvProject.FindControl("btnDeletePrj") Is Nothing Then
-                CType(dvProject.FindControl("btnDeletePrj"), ImageButton).Attributes("onclick") = "if(!confirm('Really delete this row?'))return   false;"
+                CType(dvProject.FindControl("btnDeletePrj"), ImageButton).Attributes("onclick") = "if(!confirm('Really delete this project?'))return   false;"
             Else
                 dvProject.ChangeMode(DetailsViewMode.Insert)
             End If

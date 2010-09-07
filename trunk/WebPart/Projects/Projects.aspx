@@ -72,13 +72,13 @@
                                                         </table>
                                                     </td>
                                                     <td class="tblDetailsHeader">Project manager</td>
-                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectManagers" runat="server" DataSourceID="sqldsCreators" 
+                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectManagers" runat="server" DataSourceID="sqldsPrjManagers" 
                                                            Enabled="false" selectedvalue=<%# Bind("ProjectManager") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Σύμβουλος1</td>
-                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlConsultant1" runat="server" DataSourceID="sqldsConsultants" 
+                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlConsultant1" runat="server" DataSourceID="sqldsPrjManagers" 
                                                            Enabled="false" selectedvalue=<%# Bind("Consultant1") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Σύμβουλος2</td>
@@ -161,13 +161,13 @@
                                                            selectedvalue=<%# Bind("CustomerId") %>  DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Project manager</td>
-                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectManagers" runat="server" DataSourceID="sqldsCreators" 
+                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectManagers" runat="server" DataSourceID="sqldsPrjManagers" 
                                                            selectedvalue=<%# Bind("ProjectManager") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Σύμβουλος1</td>
-                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlConsultant1" runat="server" DataSourceID="sqldsConsultants" 
+                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlConsultant1" runat="server" DataSourceID="sqldsPrjManagers" 
                                                            selectedvalue=<%# Bind("Consultant1") %>  DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Σύμβουλος2</td>
@@ -249,13 +249,13 @@
                                                            DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Project manager</td>
-                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectManagers" runat="server" DataSourceID="sqldsCreators" 
+                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectManagers" runat="server" DataSourceID="sqldsPrjManagers" 
                                                            DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Σύμβουλος1</td>
-                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlInsConsultant1" runat="server" DataSourceID="sqldsConsultants" 
+                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlInsConsultant1" runat="server" DataSourceID="sqldsPrjManagers" 
                                                            DataTextField="FullName" DataValueField="id">
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">Σύμβουλος2</td>
@@ -558,7 +558,7 @@
                                         <td><!--<asp:DropDownList SkinId="ddlDef" ID="ddlMeetKind" runat="server" DataSourceID="sqldsMeetKind" 
                                                 DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList><br />--><asp:TextBox ID="txtMeetSubject" MaxLength="50" SkinID="txtText" runat="server" ></asp:TextBox></td>
-                                        <td><asp:DropDownList SkinId="ddlDef" ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
+                                        <td><asp:DropDownList SkinId="ddlDef" ID="ddlMeetCons" runat="server" DataSourceID="sqldsPrjManagers" 
                                                 DataTextField="Fullname" DataValueField="id">
                                             </asp:DropDownList></td>
                                         <td><asp:DropDownList SkinId="ddlDef" ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
@@ -646,17 +646,17 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Σύμβουλος" SortExpression="Consultant">
                                         <EditItemTemplate>
-                                            <asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
+                                            <asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsPrjManagers" 
                                                 selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
                                             </asp:DropDownList>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
+                                            <asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsPrjManagers" 
                                                 Enabled="false" selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
                                             </asp:DropDownList>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
+                                            <asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsPrjManagers" 
                                                 DataTextField="Fullname" DataValueField="id">
                                             </asp:DropDownList>
                                         </FooterTemplate>
@@ -1063,10 +1063,14 @@
             <td>
                 <asp:SqlDataSource ID="sqldsSysVer" runat="server" ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     InsertCommand="INSERT INTO [SystemVersion] ([ProjectId], [VersionNo], [Comments]) VALUES (@ProjectId, 1, '')" 
-                    SelectCommand="SELECT [id], [ProjectId], [VersionNo], [Comments] FROM [SystemVersion]" >
+                    SelectCommand="SELECT [id], [ProjectId], [VersionNo], [Comments] FROM [SystemVersion]" 
+                    DeleteCommand="DELETE FROM [SystemVersion] WHERE [ProjectId] = @ProjectId" >
                     <InsertParameters>
                         <asp:Parameter Name="ProjectId" Type="Int32" />
                     </InsertParameters>
+                    <DeleteParameters>
+                        <asp:ControlParameter Name="ProjectId" Type="Int32" ControlID="ddlPrjCode" PropertyName="SelectedValue" />
+                    </DeleteParameters>
                 </asp:SqlDataSource>
             </td>
             <td>
@@ -1095,6 +1099,7 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     SelectCommand="UsersByType" SelectCommandType="StoredProcedure">
                     <SelectParameters>
+                        <asp:Parameter DefaultValue="allusers" Name="Function" Type="String" />
                         <asp:Parameter DefaultValue="*" Name="UserType" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
@@ -1142,13 +1147,7 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
-            <td>
-                <asp:SqlDataSource ID="sqldsConsultants" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="SELECT Users.id, LastName + ' ' + FirstName AS Fullname FROM Users
-                    INNER JOIN VariousTypes ON Users.UserType = VariousTypes.id
-                    WHERE VariousTypes.[Description] IN ('Consultant', 'ProjectManager', 'OrgDirector', 'FoodDirector', 'ITDirector') AND users.IsActive = 1">
-                </asp:SqlDataSource>
-            </td>
+            <td></td>
             <td>
                 <asp:SqlDataSource ID="sqldsConsultantsNN" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
@@ -1195,7 +1194,17 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
-            <td></td>
+            <td>
+                <asp:SqlDataSource ID="sqldsPrjManagers" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="UsersByType" 
+                    SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="include" Name="Function" Type="String" />
+                        <asp:Parameter DefaultValue="Consultant,ProjectManager,FoodDirector,OrgDirector,ITDirector" 
+                            Name="UserType" Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </td>
             <td></td>
         </tr>
     </table>
