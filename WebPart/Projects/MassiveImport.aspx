@@ -33,7 +33,7 @@
         </tr>
         <tr>
             <td align="center">
-                <table cellpadding="3px">
+                <table cellpadding="3px" style="text-align:left">
                     <tr>
                         <td>SubProject:</td>
                         <td>
@@ -55,7 +55,7 @@
                         <td><input id="lblStatusId" class="lblHelpIds" type="text" readonly="readonly" /></td>
                     </tr>
                     <tr>
-                        <td>Status</td>
+                        <td>User</td>
                         <td><asp:DropDownList ID="ddlUsers" onchange="ShowValue(this, 'lblUserId')" 
                                 runat="server" DataSourceID="sqldsResponsibles" DataTextField="FullName" 
                                 DataValueField="id" Font-Size="8pt">
