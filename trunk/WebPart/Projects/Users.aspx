@@ -205,7 +205,7 @@
                                 <asp:CheckBox ID="CheckBox2" runat="server" Checked='<%# Bind("IsUser") %>' />
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:CheckBox ID="chkIsUser" runat="server" Checked="true" />
+                                <asp:CheckBox ID="chkIsUser" runat="server" />
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>

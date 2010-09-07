@@ -9,6 +9,14 @@
         function ShowPrjValue(obj) {
             document.getElementById("lblProjectId").value = obj.value;
         }
+
+        function ShowUserValue(obj) {
+            document.getElementById("lblUserId").value = obj.value;
+        }
+
+        function ShowValue(obj, lbl) {
+            document.getElementById(lbl).value = obj.value;
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
@@ -20,7 +28,7 @@
         <tr>
             <td id="tdBelowTitle"><img alt="info" src="Images/Icons/Logs_24x24.png" />: Κάντε 
                 paste τα data από το excel στο παρακάτω textbox και πατήστε &#39;Import Data&#39;. Τα data πρέπει να είναι τής μορφής: 
-                <b>subprojectId</b>&lt;tab&gt;<b>περιγραφή</b>&lt;tab&gt;<b>deadline</b>&lt;tab&gt;<b>statusId</b>&lt;tab&gt;<b>σχόλια</b>. 
+                <b>subprojectId</b>&lt;tab&gt;<b>περιγραφή</b>&lt;tab&gt;<b>userId</b>&lt;tab&gt;<b>deadline</b>&lt;tab&gt;<b>statusId</b>&lt;tab&gt;<b>σχόλια</b>. 
                 Μπορείτε να βρείτε τα projectId και status με τη βοήθεια των παρακάτω controls.</td>
         </tr>
         <tr>
@@ -29,22 +37,31 @@
                     <tr>
                         <td>SubProject:</td>
                         <td>
-                            <asp:DropDownList ID="ddlProjects" onchange="ShowPrjValue(this)" runat="server" DataSourceID="sqldsProjects" 
-                                DataTextField="SubProject" DataValueField="id">
+                            <asp:DropDownList ID="ddlProjects" runat="server" DataSourceID="sqldsProjects" 
+                                DataTextField="SubProject" DataValueField="id" AutoPostBack="True">
                             </asp:DropDownList>
                         </td>
                         <td>id = </td>
-                        <td><input id="lblProjectId" class="lblHelpIds" type="text" readonly="readonly" /></td>
+                        <td><input id="lblProjectId" runat="server" class="lblHelpIds" type="text" readonly="readonly" /></td>
                     </tr>
                     <tr>
                         <td>Status</td>
                         <td>
-                            <asp:DropDownList ID="ddlStatus" onchange="ShowStatValue(this)" runat="server" DataSourceID="sqldsStatus" 
+                            <asp:DropDownList ID="ddlStatus" onchange="ShowValue(this, 'lblStatusId')" runat="server" DataSourceID="sqldsStatus" 
                                 DataTextField="Description" DataValueField="id">
                             </asp:DropDownList>
                         </td>
                         <td>id =</td>
                         <td><input id="lblStatusId" class="lblHelpIds" type="text" readonly="readonly" /></td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td><asp:DropDownList ID="ddlUsers" onchange="ShowValue(this, 'lblUserId')" 
+                                runat="server" DataSourceID="sqldsResponsibles" DataTextField="FullName" 
+                                DataValueField="id" Font-Size="8pt">
+                            </asp:DropDownList></td>
+                        <td>id =</td>
+                        <td><input id="lblUserId" class="lblHelpIds" type="text" readonly="readonly" /></td>
                     </tr>
                 </table>
             </td>
@@ -78,10 +95,11 @@
                 <asp:SqlDataSource ID="sqldsAP" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     SelectCommand="SELECT TOP 10 * FROM [ActionPlans]" 
-                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Description], [Deadline], [Status], [Comments]) VALUES (@ProjectId, 5, @Description, @Deadline, @Status, @Comments)">
+                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Description], [Responsible1], [Deadline], [Status], [Comments]) VALUES (@ProjectId, 5, @Description, @Responsible, @Deadline, @Status, @Comments)">
                     <InsertParameters>
                         <asp:Parameter Name="ProjectId" Type="Int32" />
                         <asp:Parameter Name="Description" Type="String" />
+                        <asp:Parameter Name="Responsible" Type="Int32" />
                         <asp:Parameter Name="Deadline" Type="DateTime" />
                         <asp:Parameter Name="Status" Type="Int16" />
                         <asp:Parameter Name="Comments" Type="String" />
@@ -106,7 +124,16 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
-            <td>&nbsp;</td>
+            <td>
+                <asp:SqlDataSource ID="sqldsResponsibles" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
+                    SelectCommand="GetResponsible" SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="ddlProjects" Name="ProjectId" 
+                            PropertyName="SelectedValue" Type="Int16" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </td>
         </tr>
     </table>
 </asp:Content>
