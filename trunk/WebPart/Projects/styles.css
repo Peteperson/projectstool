@@ -5,15 +5,18 @@
 	color: #FFFFFF;	
 }
 
-/*
+textarea:focus {
+    border: solid 2px black;
+}
+
 input[type=text]:focus {
-    background-color: #FFFFEE;
+    border: solid 2px black;
 }
 
 select:focus {
-    background-color: #FFFFEE;
+    border: solid 2px black;
 }
-*/
+
 select:disabled {
     color: #666666;
 }
