@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -45,5 +46,5 @@ AS
 	INNER JOIN VariousTypes vt2 ON vt2.id = Meetings.[Status]
 	WHERE Projects.SubProject LIKE ('%'+ @SubProject +'%') AND (Meetings.Id = @MtngsId OR @MtngsId=0) AND (Meetings.Status = @Status OR @Status = 0)
 		AND Meetings.TimeFrom BETWEEN @DtFrom AND @DtTo
-	ORDER BY Meetings.TimeFrom
+	ORDER BY Meetings.TimeFrom DESC 
 GO
