@@ -28,8 +28,8 @@
         <tr>
             <td id="tdBelowTitle"><img alt="info" src="Images/Icons/Logs_24x24.png" />: Κάντε 
                 paste τα data από το excel στο παρακάτω textbox και πατήστε &#39;Import Data&#39;. Τα data πρέπει να είναι τής μορφής: 
-                <b>subprojectId</b>&lt;tab&gt;<b>περιγραφή</b>&lt;tab&gt;<b>userId</b>&lt;tab&gt;<b>deadline</b>&lt;tab&gt;<b>statusId</b>&lt;tab&gt;<b>σχόλια</b>. 
-                Μπορείτε να βρείτε τα projectId και status με τη βοήθεια των παρακάτω controls.</td>
+                <b>subprojectId</b>&lt;tab&gt;<b>περιγραφή</b>&lt;tab&gt;<b>υπεύθυνος1(id)</b>&gt;<b>υπεύθυνος2(id)</b>&lt;tab&gt;<b>deadline</b>&lt;tab&gt;<b>statusId</b>&lt;tab&gt;<b>σχόλια</b>. 
+                <br />Μπορείτε να βρείτε τα projectId, υπεύθυνος1, υπεύθυνος2 και status με τη βοήθεια των παρακάτω controls.</td>
         </tr>
         <tr>
             <td align="center">
@@ -95,11 +95,12 @@
                 <asp:SqlDataSource ID="sqldsAP" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     SelectCommand="SELECT TOP 10 * FROM [ActionPlans]" 
-                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Description], [Responsible1], [Deadline], [Status], [Comments]) VALUES (@ProjectId, 5, @Description, @Responsible, @Deadline, @Status, @Comments)">
+                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Description], [Responsible1], [Responsible2], [Deadline], [Status], [Comments]) VALUES (@ProjectId, 5, @Description, @Responsible1, @Responsible2, @Deadline, @Status, @Comments)">
                     <InsertParameters>
                         <asp:Parameter Name="ProjectId" Type="Int32" />
                         <asp:Parameter Name="Description" Type="String" />
-                        <asp:Parameter Name="Responsible" Type="Int32" />
+                        <asp:Parameter Name="Responsible1" Type="Int32" />
+                        <asp:Parameter Name="Responsible2" Type="Int32" />
                         <asp:Parameter Name="Deadline" Type="DateTime" />
                         <asp:Parameter Name="Status" Type="Int16" />
                         <asp:Parameter Name="Comments" Type="String" />
