@@ -69,10 +69,6 @@ Partial Class MassiveImport
         e.Command.Parameters("@Comments").Value = MIcomments
     End Sub
 
-    Protected Sub ddlUsers_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlUsers.DataBound
-        ddlUsers.Items.Insert(0, " ")
-    End Sub
-
     Protected Sub ddlProjects_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlProjects.SelectedIndexChanged
         lblProjectId.Value = IIf(ddlProjects.SelectedValue <> -1, ddlProjects.SelectedValue, "")
     End Sub
