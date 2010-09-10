@@ -35,7 +35,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <asp:GridView ID="gvCompanies" runat="server" AllowPaging="True" EmptyDataText="Currently there are no registered companies"
+                                        <asp:GridView ID="gvCompanies" runat="server" AllowPaging="True" EmptyDataText="Δεν υπάρχουν καταγεγραμμένοι πελάτες"
                                             AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id,Name" 
                                             DataSourceID="sqldsCompanies" SkinID="gridviewSkinMainTbl" 
                                             ShowFooter="True">
@@ -163,7 +163,7 @@
                     AllowSorting="True" SkinID="gridviewSkin" ShowFooter="True" 
                     Visible="False">
                     <EmptyDataTemplate>
-                        Currently there are no registered employees<br />
+                        Δεν υπάρχουν καταγεγραμμένοι υπάλληλοι.<br />
                         <br />
                         <div class="InsertRow">
                             <table>
@@ -317,7 +317,7 @@
                     </DeleteParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="Name" Type="String" />
-                        <asp:Parameter Name="Description" Type="String" />
+                        <asp:Parameter Name="Description" Type="String" DefaultValue=" " />
                         <asp:Parameter Name="Id" Type="Int32" />
                     </UpdateParameters>
                     <InsertParameters>

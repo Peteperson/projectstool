@@ -11,12 +11,12 @@ Partial Class MassiveImport
         ddlProjects.Items.Insert(0, li)
     End Sub
 
-    Private MIprojectId, MIstatus, MIresponsible As Integer
+    Private MIprojectId, MIstatus, MIresponsible1, MIresponsible2 As Integer
     Private MIdeadline As Date
     Private MIdescription, MIcomments As String
 
     Protected Sub btnImport_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnImport.Click
-        Dim line() As String = txtData.Text.Split(vbCrLf)
+        Dim line() As String = txtData.Text.Split(vbCrLf.ToCharArray, StringSplitOptions.RemoveEmptyEntries)
         Dim items() As String
         For i As Integer = 0 To line.Length - 1
             MIprojectId = Nothing
@@ -24,9 +24,10 @@ Partial Class MassiveImport
             MIdeadline = Nothing
             MIdescription = Nothing
             MIcomments = Nothing
-            MIresponsible = Nothing
-            items = line(i).Trim.Split(vbTab)
-            If items.Length = 6 Then
+            MIresponsible1 = Nothing
+            MIresponsible2 = Nothing
+            items = line(i).Split(vbTab)
+            If items.Length = 7 Then
                 Try
                     If Not ddlProjects.Items.FindByValue(items(0)) Is Nothing Then
                         MIprojectId = items(0)
@@ -36,19 +37,25 @@ Partial Class MassiveImport
                     End If
                     MIdescription = items(1)
                     If Not ddlUsers.Items.FindByValue(items(2)) Is Nothing Then
-                        MIresponsible = items(2)
+                        MIresponsible1 = items(2)
                     Else
-                        lblResults.InnerHtml += "Line " & i + 1 & " <b>error:</b>Wrong UserId.<br/>"
+                        lblResults.InnerHtml += "Line " & i + 1 & " <b>error:</b>Wrong User1Id.<br/>"
                         Exit Try
                     End If
-                    MIdeadline = items(3)
-                    If Not ddlStatus.Items.FindByValue(items(4)) Is Nothing Then
-                        MIstatus = items(4)
+                    If Not ddlUsers.Items.FindByValue(items(3)) Is Nothing Then
+                        MIresponsible2 = items(3)
+                    Else
+                        lblResults.InnerHtml += "Line " & i + 1 & " <b>error:</b>Wrong User2Id.<br/>"
+                        Exit Try
+                    End If
+                    MIdeadline = items(4)
+                    If Not ddlStatus.Items.FindByValue(items(5)) Is Nothing Then
+                        MIstatus = items(5)
                     Else
                         lblResults.InnerHtml += "Line " & i + 1 & " <b>error:</b>Wrong StatusId.<br/>"
                         Exit Try
                     End If
-                    MIcomments = items(5)
+                    MIcomments = items(6)
                     sqldsAP.Insert()
                     lblResults.InnerHtml += "Line " & i + 1 & " <b>Ok</b>.<br/>"
                 Catch ex As Exception
@@ -63,7 +70,8 @@ Partial Class MassiveImport
     Protected Sub sqldsAP_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAP.Inserting
         e.Command.Parameters("@ProjectId").Value = MIprojectId
         e.Command.Parameters("@Description").Value = MIdescription
-        e.Command.Parameters("@Responsible").Value = MIresponsible
+        e.Command.Parameters("@Responsible1").Value = MIresponsible1
+        e.Command.Parameters("@Responsible2").Value = MIresponsible2
         e.Command.Parameters("@Deadline").Value = MIdeadline
         e.Command.Parameters("@Status").Value = MIstatus
         e.Command.Parameters("@Comments").Value = MIcomments
