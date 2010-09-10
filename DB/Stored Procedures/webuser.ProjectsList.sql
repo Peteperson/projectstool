@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -36,5 +37,5 @@ AS
 	INNER JOIN Companies on Companies.id = prj.CustomerId
 	WHERE prj.SubProject LIKE ('%'+ @SubProject +'%') AND (prj.Status = @Status OR @Status = 0)
 		AND prj.Title LIKE ('%'+ @Title +'%') AND prj.EndDate BETWEEN @DtFrom AND @DtTo
-
+	ORDER BY prj.InitialEndDate DESC 
 GO

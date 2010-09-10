@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -44,6 +45,6 @@ AS
 	LEFT  JOIN Users usr2 ON usr2.[id] = ActionPlans.Responsible2
 	WHERE Projects.SubProject LIKE ('%'+ @SubProject +'%') AND (ActionPlans.Id = @APId OR @APId=0) AND (ActionPlans.Status = @Status OR @Status = 0)
 			AND Deadline BETWEEN @DtFrom AND @DtTo
-	ORDER BY ActionPlans.Deadline
+	ORDER BY ActionPlans.Deadline DESC
 
 GO
