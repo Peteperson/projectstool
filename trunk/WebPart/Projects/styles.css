@@ -6,19 +6,19 @@
 }
 
 textarea:focus {
-    border: solid 2px black;
+    background-color: #FFFFDD;
 }
 
 input[type=text]:focus {
-    border: solid 2px black;
+    background-color: #FFFFDD;
 }
 
 input[type=password]:focus {
-    border: solid 2px black;
+    background-color: #FFFFDD;
 }
 
 select:focus {
-    border: solid 2px black;
+    background-color: #FFFFEE;
 }
 
 select:disabled {
