@@ -19,6 +19,28 @@ input[type=password]:focus {
 
 select:focus {
     background-color: #FFFFEE;
+    border: solid 1px #355379;
+}
+
+input[type=text] {
+    background-color: White;
+    border: solid 1px #355379;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+textarea {
+    background-color: White;
+    border: solid 1px #355379;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+input[type=password] {
+    background-color: White;
+    border: solid 1px #355379;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 
 select:disabled {
@@ -72,14 +94,12 @@ a:hover {
 
 .title {
     text-align: center;
-    /*background-color:#788CA5;*/
     background-color:#842829;
 	padding: 5px 0px 5px 0px;
-	/*border: 1px solid #FFFFFF;*/
 	font-size:large;
 	font-weight:bolder;
-	/*color: white;*/
-	-moz-border-radius: 15px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 
 .centered {
