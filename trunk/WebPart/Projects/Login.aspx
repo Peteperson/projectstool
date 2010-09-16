@@ -67,7 +67,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" colspan="2" style="padding-bottom:5px; padding-top:8px;">Έκδοση νέου password:</td>
+                                <td align="center" colspan="2" style="padding-bottom:5px; padding-top:10px;">Έκδοση νέου password:</td>
                             </tr>
                             <tr>
                                 <td align="center" colspan="2">e-mail: <asp:TextBox ID="txtemail" runat="server"></asp:TextBox>
