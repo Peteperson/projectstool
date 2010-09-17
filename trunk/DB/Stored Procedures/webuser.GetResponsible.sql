@@ -13,7 +13,7 @@ AS
 	INNER JOIN Companies ON Companies.id = Users.Company
 	INNER JOIN VariousTypes ON Users.UserType = VariousTypes.id
 	WHERE Company = (SELECT CustomerId FROM Projects WHERE id = @ProjectId) 
-		OR VariousTypes.Description NOT IN ('Admin', 'Partner', 'Client')
+		OR VariousTypes.Description NOT IN ('Admin', 'Client')
 	UNION ALL 
 	SELECT 0, ' ' + [Description] FROM VariousTypes WHERE Category = 'NoResponsibleText'
 	ORDER BY FullName
