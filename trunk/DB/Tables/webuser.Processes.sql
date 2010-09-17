@@ -10,12 +10,13 @@ CREATE TABLE [webuser].[Processes]
 [Responsible] [int] NULL,
 [Comments] [nvarchar] (250) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
 ) ON [PRIMARY]
+ALTER TABLE [webuser].[Processes] WITH NOCHECK ADD
+CONSTRAINT [FK_Processes_VariousTypes] FOREIGN KEY ([Status]) REFERENCES [webuser].[VariousTypes] ([id])
 ALTER TABLE [webuser].[Processes] ADD
 CONSTRAINT [FK_Processes_Users] FOREIGN KEY ([Responsible]) REFERENCES [webuser].[Users] ([id])
 GO
 ALTER TABLE [webuser].[Processes] ADD CONSTRAINT [PK_Processes_Temp] PRIMARY KEY CLUSTERED  ([id]) ON [PRIMARY]
 GO
-ALTER TABLE [webuser].[Processes] ADD CONSTRAINT [FK_Processes_VariousTypes] FOREIGN KEY ([Status]) REFERENCES [webuser].[VariousTypes] ([id])
-GO
+
 ALTER TABLE [webuser].[Processes] ADD CONSTRAINT [FK_Processes_SystemVersion] FOREIGN KEY ([SystemVersionId]) REFERENCES [webuser].[SystemVersion] ([id])
 GO
