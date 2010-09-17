@@ -1153,7 +1153,8 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     SelectCommand="UsersByTypeNoone" SelectCommandType="StoredProcedure">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="Consultant" Name="UserType" Type="String" />
+                        <asp:Parameter DefaultValue="include" Name="Function" Type="String" />
+                        <asp:Parameter DefaultValue="Consultant,Partner" Name="UserType" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
