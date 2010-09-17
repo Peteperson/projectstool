@@ -257,7 +257,7 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [Processes] WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [Processes] ([SystemVersionId], [Code], [Description], [Status], [StatusDate], [Responsible], [Comments]) VALUES (@SystemVersionId, @Code, @Description, @Status, @StatusDate, @Responsible, @Comments)" 
-                    SelectCommand="SELECT [id], [Datestamp], [SystemVersionId], [Code], [Description], [Status], [StatusDate], [Responsible], [Comments] FROM [Processes] WHERE ([SystemVersionId] = @SystemVersionId) ORDER BY [Code]" 
+                    SelectCommand="SELECT [id], [Datestamp], [SystemVersionId], [Code], [Description], [Status], [StatusDate], ISNULL([Responsible], 0) AS Responsible, [Comments] FROM [Processes] WHERE ([SystemVersionId] = @SystemVersionId) ORDER BY [Code]" 
                     UpdateCommand="UPDATE [Processes] SET [SystemVersionId] = @SystemVersionId, [Code] = @Code, [Description] = @Description, [Status] = @Status, [StatusDate] = @StatusDate, [Responsible] = @Responsible, [Comments] = @Comments WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlSysVersions" Name="SystemVersionId" 

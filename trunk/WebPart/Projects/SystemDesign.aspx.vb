@@ -20,7 +20,8 @@ Partial Class SystemDesign
             e.Command.Parameters("@Description").Value = CType(gvProcesses.FooterRow.FindControl("txtDescr"), TextBox).Text
             e.Command.Parameters("@Status").Value = CType(gvProcesses.FooterRow.FindControl("ddlProcStat"), DropDownList).SelectedValue
             e.Command.Parameters("@StatusDate").Value = CType(gvProcesses.FooterRow.FindControl("dbStatDate"), DateBox).Value
-            e.Command.Parameters("@Responsible").Value = CType(gvProcesses.FooterRow.FindControl("ddlResp"), DropDownList).SelectedValue
+            Dim resp As Integer = CType(gvProcesses.FooterRow.FindControl("ddlResp"), DropDownList).SelectedValue
+            e.Command.Parameters("@Responsible").Value = IIf(resp = 0, System.DBNull.Value, resp)
             e.Command.Parameters("@Comments").Value = CType(gvProcesses.FooterRow.FindControl("txtComm"), TextBox).Text
         Else
             e.Command.Parameters("@SystemVersionId").Value = ddlSysVersions.SelectedValue
@@ -28,7 +29,8 @@ Partial Class SystemDesign
             e.Command.Parameters("@Description").Value = CType(gvProcesses.Controls(0).Controls(0).Controls(0).FindControl("txtDescr"), TextBox).Text
             e.Command.Parameters("@Status").Value = CType(gvProcesses.Controls(0).Controls(0).Controls(0).FindControl("ddlProcStat"), DropDownList).SelectedValue
             e.Command.Parameters("@StatusDate").Value = CType(gvProcesses.Controls(0).Controls(0).Controls(0).FindControl("dbStatDate"), DateBox).Value
-            e.Command.Parameters("@Responsible").Value = CType(gvProcesses.Controls(0).Controls(0).Controls(0).FindControl("ddlResp"), DropDownList).SelectedValue
+            Dim resp As Integer = CType(gvProcesses.Controls(0).Controls(0).Controls(0).FindControl("ddlResp"), DropDownList).SelectedValue
+            e.Command.Parameters("@Responsible").Value = IIf(resp = 0, System.DBNull.Value, resp)
             e.Command.Parameters("@Comments").Value = CType(gvProcesses.Controls(0).Controls(0).Controls(0).FindControl("txtComm"), TextBox).Text
         End If
     End Sub
@@ -36,6 +38,7 @@ Partial Class SystemDesign
     Protected Sub sqldsProcesses_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsProcesses.Updating
         e.Command.Parameters("@SystemVersionId").Value = ddlSysVersions.SelectedValue
         If StatusChanged Then e.Command.Parameters("@StatusDate").Value = Now
+        If e.Command.Parameters("@Responsible").Value = 0 Then e.Command.Parameters("@Responsible").Value = System.DBNull.Value
     End Sub
 
     Protected Sub gvProcesses_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvProcesses.DataBound
