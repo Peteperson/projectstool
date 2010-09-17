@@ -7,9 +7,11 @@ CREATE TABLE [webuser].[Processes]
 [Description] [nvarchar] (500) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 [Status] [int] NOT NULL,
 [StatusDate] [datetime] NOT NULL,
-[Responsible] [int] NOT NULL,
+[Responsible] [int] NULL,
 [Comments] [nvarchar] (250) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
 ) ON [PRIMARY]
+ALTER TABLE [webuser].[Processes] ADD
+CONSTRAINT [FK_Processes_Users] FOREIGN KEY ([Responsible]) REFERENCES [webuser].[Users] ([id])
 GO
 ALTER TABLE [webuser].[Processes] ADD CONSTRAINT [PK_Processes_Temp] PRIMARY KEY CLUSTERED  ([id]) ON [PRIMARY]
 GO

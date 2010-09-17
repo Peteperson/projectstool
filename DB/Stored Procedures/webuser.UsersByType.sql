@@ -12,12 +12,15 @@ AS
 	IF (@Function='allusers')
 		SELECT Users.id, LastName + ' ' + FirstName AS Fullname FROM Users
 		WHERE users.IsActive = 1 AND IsUser = 1
+		ORDER BY LastName, FirstName
 	ELSE IF @Function='include'
 		SELECT Users.id, LastName + ' ' + FirstName AS Fullname FROM Users
 		INNER JOIN VariousTypes ON Users.UserType = VariousTypes.id
 		WHERE PATINDEX('%' + RTRIM(VariousTypes.[Description]) + '%', @UserType) > 0 AND users.IsActive = 1 AND IsUser = 1
+		ORDER BY LastName, FirstName
 	ELSE IF @Function='exclude'
 		SELECT Users.id, LastName + ' ' + FirstName AS Fullname FROM Users
 		INNER JOIN VariousTypes ON Users.UserType = VariousTypes.id
 		WHERE PATINDEX('%' + RTRIM(VariousTypes.[Description]) + '%', @UserType) = 0 AND users.IsActive = 1 AND IsUser = 1
+		ORDER BY LastName, FirstName
 GO
