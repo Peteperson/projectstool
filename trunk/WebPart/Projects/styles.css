@@ -405,3 +405,23 @@ a:hover {
     width:30px;
     text-align:center;
 }
+
+.LoginFirstTable
+{
+    border: solid 1px black;
+    -moz-border-radius: 10px;
+    border-collapse: separate;
+    background-image: -moz-linear-gradient(100% 10% 90deg, #842829, #F49899);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1a82f7), to(#2F2727));
+    width:460px;
+}
+
+.LoginSecondTable
+{
+    border: solid 1px black;
+    background-color: #DDDDDD;
+    -moz-border-radius: 10px;
+    border-collapse: separate;
+    width:420px;
+    color: Black;
+}
