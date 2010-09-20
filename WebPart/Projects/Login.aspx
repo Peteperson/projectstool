@@ -2,7 +2,7 @@
 
 <%@ Register src="ctrlDateTime.ascx" tagname="ctrlDateTime" tagprefix="uc1" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -83,6 +83,63 @@
         <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
         <TitleTextStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
         </asp:Login>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <table class="LoginFirstTable">
+                    <tr>
+                        <td align="center" style="padding-top: 30px; padding-bottom: 10px;">
+                            <table class="LoginSecondTable" cellspacing="0">
+                                <tr>
+                                    <td align="center" colspan="2" style="color:black; padding-top:10px; padding-bottom: 10px; font-weight:bold; border-bottom: solid 1px black">Παρακαλώ εισάγετε username και password:</td>
+                                </tr>                                
+                                <tr>
+                                    <td align="right" style="vertical-align:top; padding-top:15px; padding-bottom:5px; border-top: solid 1px white">Username:<br /></td>
+                                    <td align="center" style="vertical-align:top; padding-top:15px; padding-bottom:5px; border-top: solid 1px white">
+                                        <asp:TextBox ID="UserName" runat="server" Width="130px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
+                                            ControlToValidate="UserName" ErrorMessage="Το πεδίο Username είναι υποχρεωτικό." 
+                                            ToolTip="Το πεδίο Username είναι υποχρεωτικό." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right" style="vertical-align:top; padding-bottom:5px">Password:</td>
+                                    <td align="center" style="vertical-align:top; padding-bottom:5px">
+                                        <asp:TextBox ID="Password" runat="server" TextMode="Password" Width="130px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
+                                            ControlToValidate="Password" ErrorMessage="Το πεδίο Password είναι υποχρεωτικό." 
+                                            ToolTip="Το πεδίο Password είναι υποχρεωτικό." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                        <br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" colspan="2" style="padding-top:12px; padding-bottom:2px">
+                                        <asp:Button ID="LoginButton" runat="server" CommandName="Login" 
+                                            Font-Names="Tahoma, Calibri, Verdana" Text="Είσοδος" style="text-align:center" ValidationGroup="Login1" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="color:Red; border-bottom: solid 1px black" colspan="2">&nbsp;
+                                        <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" colspan="2" style="padding-bottom:5px; border-top: solid 1px white">Έκδοση νέου password:</td>
+                                </tr>
+                                <tr>
+                                    <td align="center" colspan="2" style="padding-bottom: 5px;" >e-mail: <asp:TextBox ID="txtemail" runat="server"></asp:TextBox>
+                                        <asp:Button ID="btnResetMail" runat="server" Text="Αποστολή" 
+                                            onclick="btnResetMail_Click" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </table>
             </td>
         </tr>
         <tr>
