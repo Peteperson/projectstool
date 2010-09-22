@@ -11,8 +11,7 @@
         Try
             lr = Database.DoLogin(username, password, Request.UserHostAddress)
         Catch ex As Exception
-            lblMessage.Visible = True
-            lblMessage.Text = ex.Message
+            ctrlLogin.FailureText = ex.Message
             Exit Sub
         End Try
         Select Case lr.Status
@@ -38,7 +37,6 @@
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         ctrlLogin.Focus()
-        lblMessage.Visible = False
     End Sub
 
     Protected Sub btnResetMail_Click(ByVal sender As Object, ByVal e As System.EventArgs)

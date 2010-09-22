@@ -1,6 +1,10 @@
 ﻿body {
-	background-color: #355379;
+	/*background-color: #355379;*/
+	background-color: #2C486E;
 	background: url(Images/Background2.png) repeat-y;
+    /*background-image: -moz-linear-gradient(60% 100% 315deg, #2C486E, #5C789E);
+    background-repeat: no-repeat;
+    background-image: -webkit-gradient(linear, right bottom, left top, from(#5C789E), to(#2C486E));*/
 	font: normal 10pt Tahoma, Calibri, Verdana;
 	color: #FFFFFF;	
 }
@@ -71,17 +75,6 @@ a:hover {
     border: solid 1px #355379;
 }
 
-#tblLogin {
-    border-collapse:collapse;
-    /*border-top: solid 3px #AAAAAA;
-    border-left: solid 3px #AAAAAA;
-    border-right: solid 3px #666666;
-    border-bottom: solid 3px #666666;*/
-    background-image: url(Images/LogInTblBack.png);
-    width:510px;
-    height:376px;
-}
-
 #tblMain {
     width: 100%;
 }
@@ -142,12 +135,11 @@ a:hover {
 
 .MenuItem {
     height:25px;
-    background: url(Images/GrayGradTopBottom3.png) repeat-x;
+    /*background: url(Images/GrayGradTopBottom3.png) repeat-x;*/
+    background-color: #BBBBBB;
+    background-image: -moz-linear-gradient(0% 50% 90deg, #BBBBBB, #EEEEEE);
+    background-image: -webkit-gradient(linear, 30 0, 30 30, from(#EEEEEE), to(#BBBBBB));
     color: black;
-    border-top: none 0px;
-    border-left: none 0px;
-    border-right: none 0px;
-    border-bottom: none 0px;
     padding: 0px 2px 0px 0px;
 }
 
@@ -410,9 +402,11 @@ a:hover {
 {
     border: solid 1px black;
     -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
     border-collapse: separate;
-    background-image: -moz-linear-gradient(100% 10% 90deg, #842829, #F49899);
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1a82f7), to(#2F2727));
+    background-color: #943839;
+    background-image: -moz-linear-gradient(100% 10% 90deg, #943839, #F49899);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 10%, from(#F49899), to(#943839));
     width:460px;
 }
 
@@ -421,6 +415,7 @@ a:hover {
     border: solid 1px black;
     background-color: #DDDDDD;
     -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
     border-collapse: separate;
     width:420px;
     color: Black;
