@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -10,6 +11,6 @@ AS
     
     SELECT [Messages].*, Users.LastName + ' ' + users.FirstName AS Fullname FROM [Messages] 
     INNER JOIN Users ON [Messages].Writer = Users.id
-    WHERE ToUserId = @UserId OR ToCompanyId = @UserId OR ToEveryone = 1
+    WHERE (ToUserId = @UserId OR ToCompanyId = @UserId OR ToEveryone = 1) AND writer <> @UserId
     ORDER BY id DESC 
 GO
