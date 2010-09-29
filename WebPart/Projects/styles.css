@@ -138,12 +138,11 @@ a:hover {
 
 .MenuItem {
     height:25px;
-    background-color: #BBBBBB;
-    background-image: -moz-linear-gradient(0% 50% 90deg, #BBBBBB, #EEEEEE);
-    background-image: -webkit-gradient(linear, 30 0, 30 30, from(#EEEEEE), to(#BBBBBB));
-    filter: PROGID:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#EEEEEE', EndColorStr='#00BBBB'); 
+    background-color: #DDDDDD;
     color: black;
     padding: 0px 2px 0px 0px;
+    background-image: -webkit-gradient(linear, 30 0, 30 30, from(#EEEEEE), to(#BBBBBB));
+    background-image: -moz-linear-gradient (45deg, green, yellow);
 }
 
 .TabMenuItem {
@@ -322,6 +321,11 @@ a:hover {
     width: 250px;
 }
 
+.MessageCol {
+    text-align:center;
+    width: 100%;
+}
+
 .DetFormView{
     border: solid 1px white;
 }
@@ -409,13 +413,12 @@ a:hover {
     -webkit-border-radius: 10px;
     border-collapse: separate;
     background-color: #943839;
-    background-image: -moz-linear-gradient(100% 10% 90deg, #943839, #F49899);
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 10%, from(#F49899), to(#943839));
-    filter: PROGID:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#943839', EndColorStr='#F49899'); 
-    width:460px;
+    width: 460px;
     box-shadow: 10px 10px 10px #000000;
     -moz-box-shadow: 10px 10px 10px #000000;
     -webkit-box-shadow: 10px 10px 10px #000000;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 10%, from(#F49899), to(#943839));
+    /*background-image: -moz-linear-gradient (bottom, green, yellow);*/
 }
 
 .LoginSecondTable
@@ -431,10 +434,8 @@ a:hover {
 }
 
 #tdError1 {
-    background-image: -moz-linear-gradient(right, #943839, #355379);
     background-image: -webkit-gradient(linear, left center, right center, from(#355379), to(#943839));
-    filter: PROGID:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#2C486E', EndColorStr='#943839'); 
-}
+    }
 
 .tdError2 {
     height: 198px; 
@@ -444,7 +445,10 @@ a:hover {
 }
 
 #tdError3 {
-    background-image: -moz-linear-gradient(left, #943839, #456389);
     background-image: -webkit-gradient(linear, right center, left center, from(#456389), to(#943839));
-    filter: PROGID:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#943839', EndColorStr='#456389') 
+}
+
+#advlink {
+    -webkit-box-reflect: below 5px
+        -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, 0.25)));
 }
