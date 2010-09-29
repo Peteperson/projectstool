@@ -9,4 +9,6 @@ CREATE TABLE [webuser].[ActivityLog]
 [ServerName] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 [ExtraInfo] [nvarchar] (500) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL CONSTRAINT [DF_ActivityLog_ExtraInfo] DEFAULT ('')
 ) ON [PRIMARY]
+ALTER TABLE [webuser].[ActivityLog] ADD
+CONSTRAINT [FK_ActivityLog_LogStatus] FOREIGN KEY ([Status]) REFERENCES [webuser].[LogStatus] ([id])
 GO
