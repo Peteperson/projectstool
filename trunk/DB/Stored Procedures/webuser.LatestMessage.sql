@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -15,5 +16,6 @@ AS
     WHERE [Messages].datestamp > DATEADD(d, -3, GETDATE()) 
 		AND (Writer = @UserId OR ToUserId = @UserId 
 			OR ToCompanyId = @CompanyId OR ToEveryone = 1)
+	ORDER BY [Messages].id DESC 
 
 GO
