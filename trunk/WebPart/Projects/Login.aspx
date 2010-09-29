@@ -13,7 +13,7 @@
     <form id="form1" runat="server">
       <table>
         <tr>
-            <td style="background-color:white; border-bottom: solid 3px white">
+            <td style="background-color:white">
                 <asp:Image ID="Image1" ImageUrl="~/Images/AdvLogoWhiteBack.png" runat="server" Height="71px" />
             </td>
         </tr>
@@ -111,7 +111,7 @@
                 binding procedures ... Obtaining or attempt of obtaining an unauthorized access to the application can cause bearing criminal responsibility or civil liability.</td>
         </tr>
         <tr>
-            <td style="background: url(Images/Blue.png) repeat-x; text-align:right; height: 27px; vertical-align:top"><a href="http://advent.com.gr">AG ADVENT 2010</a></td>
+            <td id="advlink" style="background: url(Images/Blue.png) repeat-x; text-align:right; vertical-align:top"><a href="http://advent.com.gr">AG ADVENT 2010</a></td>
         </tr>
       </table>
     </form>

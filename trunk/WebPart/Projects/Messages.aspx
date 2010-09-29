@@ -47,13 +47,33 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Διαχείριση μηνυμάτων</td>
+            <td class="title">Μηνύματα για εμένα</td>
         </tr>
         <tr>
-            <td>
+            <td><br />
+                <asp:GridView ID="gvToMeMsgs" runat="server" AllowPaging="True" 
+                    AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
+                    DataSourceID="sqldsMsgForMe" SkinID="gridviewSkin" PageSize="5">
+                    <Columns>
+                        <asp:BoundField DataField="datestamp" HeaderText="datestamp" SortExpression="datestamp" />
+                        <asp:BoundField DataField="Fullname" HeaderText="From" ReadOnly="True" SortExpression="Fullname" />
+                        <asp:BoundField DataField="Message" HeaderText="Message" SortExpression="Message" />
+                    </Columns>
+                </asp:GridView>
+            </td>
+        </tr>
+        <tr>
+            <td><br /><br /></td>
+        </tr>
+        <tr>
+            <td class="title">Μηνύματα από εμένα</td>
+        </tr>
+        <tr>
+            <td><br />
                 <asp:GridView ID="gvMessages" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
-                    DataSourceID="sqldsMessages" SkinID="gridviewSkin" ShowFooter="True">
+                    DataSourceID="sqldsMessages" SkinID="gridviewSkin" ShowFooter="True" 
+                    PageSize="5">
                     <EmptyDataTemplate>
                         <br />
                         Δεν υπάρχουν καταχωρημένα μηνύματα που να αφορούν εσάς.<br />
@@ -116,7 +136,7 @@
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Μήνυμα" SortExpression="Message">
-                            <ItemStyle CssClass="CommentsCol" />
+                            <ItemStyle CssClass="MessageCol" />
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Message") %>'></asp:Label>
                             </ItemTemplate>
@@ -129,48 +149,65 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Παραλήπτης" SortExpression="ToUserId">
                             <ItemTemplate>
-                                <asp:DropDownList ID="ddlUsers" runat="server" DataSourceID="sqldsUsers" 
-                                    Enabled="false" selectedValue='<%# Bind("ToUserId") %>' DataTextField="Fullname" DataValueField="id">
-                                </asp:DropDownList>
+                                <table>
+                                    <tr>
+                                        <td>Άτομο: </td>
+                                        <td><asp:DropDownList ID="ddlUsers" runat="server" DataSourceID="sqldsUsers" 
+                                                Enabled="false" selectedValue='<%# Bind("ToUserId") %>' DataTextField="Fullname" DataValueField="id">
+                                            </asp:DropDownList></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Εταιρεία: </td>
+                                        <td><asp:DropDownList ID="ddlCompanies" runat="server" 
+                                                Enabled="false" selectedValue='<%# Bind("ToCompanyId") %>' DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
+                                            </asp:DropDownList></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Όλοι: </td>
+                                        <td><asp:CheckBox ID="cbAll" runat="server" Checked='<%# Bind("ToEveryone") %>' Enabled="false" /></td>
+                                    </tr>
+                                </table>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:DropDownList ID="ddlUsers" runat="server" DataSourceID="sqldsUsers" 
-                                    selectedValue='<%# Bind("ToUserId") %>' DataTextField="Fullname" DataValueField="id">
-                                </asp:DropDownList>
+                                <table>
+                                    <tr>
+                                        <td>Άτομο: </td>
+                                        <td><asp:DropDownList ID="ddlUsers" runat="server" DataSourceID="sqldsUsers" 
+                                                selectedValue='<%# Bind("ToUserId") %>' DataTextField="Fullname" DataValueField="id">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Εταιρεία: </td>
+                                        <td><asp:DropDownList ID="ddlCompanies" runat="server" 
+                                                selectedValue='<%# Bind("ToCompanyId") %>' DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
+                                            </asp:DropDownList></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Όλοι: </td>
+                                        <td><asp:CheckBox ID="cbAll" runat="server" Checked='<%# Bind("ToEveryone") %>' /></td>
+                                    </tr>
+                                </table>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:DropDownList ID="ddlUsers" runat="server" DataSourceID="sqldsUsers" 
-                                    DataTextField="Fullname" onchange="ddlUsersToValueChanged(this.id)" DataValueField="id">
-                                </asp:DropDownList>
-                            </FooterTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Εταιρεία" SortExpression="ToCompanyId">
-                            <ItemTemplate>
-                                <asp:DropDownList ID="ddlCompanies" runat="server" 
-                                    Enabled="false" selectedValue='<%# Bind("ToCompanyId") %>' DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
-                                </asp:DropDownList>
-                            </ItemTemplate>
-                            <EditItemTemplate>
-                                <asp:DropDownList ID="ddlCompanies" runat="server" 
-                                    selectedValue='<%# Bind("ToCompanyId") %>' DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
-                                </asp:DropDownList>
-                            </EditItemTemplate>
-                            <FooterTemplate>
-                                <asp:DropDownList ID="ddlCompanies" runat="server" onchange="ddlCompaniesValueChanged(this.id)" 
-                                    DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
-                                </asp:DropDownList>
-                            </FooterTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Όλοι;" SortExpression="ToEveryone">
-                            <ItemTemplate>
-                                <asp:CheckBox ID="cbAll" runat="server" Checked='<%# Bind("ToEveryone") %>' 
-                                    Enabled="false" />
-                            </ItemTemplate>
-                            <EditItemTemplate>
-                                <asp:CheckBox ID="cbAll" runat="server" Checked='<%# Bind("ToEveryone") %>' />
-                            </EditItemTemplate>
-                            <FooterTemplate>
-                                <asp:CheckBox ID="cbAll" runat="server" onclick="cbAllValueChanged(this.id)" Checked="false" />
+                                <table>
+                                    <tr>
+                                        <td>Άτομο: </td>
+                                        <td><asp:DropDownList ID="ddlUsers" runat="server" DataSourceID="sqldsUsers" 
+                                                DataTextField="Fullname" onchange="ddlUsersToValueChanged(this.id)" DataValueField="id">
+                                            </asp:DropDownList><br /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Εταιρεία: </td>
+                                        <td><asp:DropDownList ID="ddlCompanies" runat="server" onchange="ddlCompaniesValueChanged(this.id)" 
+                                                DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
+                                            </asp:DropDownList><br /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Όλοι: </td>
+                                        <td><asp:CheckBox ID="cbAll" runat="server" onclick="cbAllValueChanged(this.id)" Checked="false" /></td>
+                                    </tr>
+                                </table>
                             </FooterTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -228,7 +265,15 @@
             <td></td>
         </tr>
         <tr>
-            <td></td>
+            <td>
+                <asp:SqlDataSource ID="sqldsMsgForMe" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="ToMeMessages" 
+                    SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </td>
             <td></td>
             <td></td>
             <td></td>
