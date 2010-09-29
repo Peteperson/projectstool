@@ -53,7 +53,7 @@
             <td><br />
                 <asp:GridView ID="gvToMeMsgs" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
-                    DataSourceID="sqldsMsgForMe" SkinID="gridviewSkin" PageSize="5">
+                    DataSourceID="sqldsMsgForMe" SkinID="gridviewSkinSmall">
                     <Columns>
                         <asp:BoundField DataField="datestamp" HeaderText="datestamp" SortExpression="datestamp" />
                         <asp:BoundField DataField="Fullname" HeaderText="From" ReadOnly="True" SortExpression="Fullname" />
@@ -72,8 +72,7 @@
             <td><br />
                 <asp:GridView ID="gvMessages" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
-                    DataSourceID="sqldsMessages" SkinID="gridviewSkin" ShowFooter="True" 
-                    PageSize="5">
+                    DataSourceID="sqldsMessages" SkinID="gridviewSkinSmall" ShowFooter="True">
                     <EmptyDataTemplate>
                         <br />
                         Δεν υπάρχουν καταχωρημένα μηνύματα που να αφορούν εσάς.<br />
