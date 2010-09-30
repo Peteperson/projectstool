@@ -177,10 +177,10 @@ function PrintPage() {
         <table style="width:100%">
             <tr style="background: url(Images/Blue.png) repeat-x;">
                 <td style="width:100%"><asp:Literal ID="ltrMessage" runat="server"></asp:Literal></td>
-                <td style="white-space:nowrap; text-align:right; height: 27px; vertical-align:top"><a href="http://advent.com.gr">AG ADVENT 2010</a></td>
+                <td style="white-space:nowrap; text-align:right; vertical-align:top"><div id="advlink"><a href="http://advent.com.gr">AG ADVENT 2010</a></div></td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
+                <td colspan="2">&nbsp;</td>
             </tr>
         </table>
         <table>

@@ -142,7 +142,7 @@ a:hover {
     color: black;
     padding: 0px 2px 0px 0px;
     background-image: -webkit-gradient(linear, 30 0, 30 30, from(#EEEEEE), to(#BBBBBB));
-    background-image: -moz-linear-gradient (45deg, green, yellow);
+    background-image:-moz-linear-gradient(bottom, #BBBBBB 60%, #EEEEEE);
 }
 
 .TabMenuItem {
@@ -405,8 +405,7 @@ a:hover {
     text-align:center;
 }
 
-.LoginFirstTable
-{
+.LoginFirstTable {
     border: solid 1px black;
     border-radius: 10px;
     -moz-border-radius: 10px;
@@ -418,11 +417,10 @@ a:hover {
     -moz-box-shadow: 10px 10px 10px #000000;
     -webkit-box-shadow: 10px 10px 10px #000000;
     background-image: -webkit-gradient(linear, 0% 0%, 0% 10%, from(#F49899), to(#943839));
-    /*background-image: -moz-linear-gradient (bottom, green, yellow);*/
+    background-image:-moz-linear-gradient(bottom, #943839 90%, #F49899);
 }
 
-.LoginSecondTable
-{
+.LoginSecondTable {
     border: solid 1px black;
     border-radius: 10px;
     background-color: #DDDDDD;
@@ -435,7 +433,8 @@ a:hover {
 
 #tdError1 {
     background-image: -webkit-gradient(linear, left center, right center, from(#355379), to(#943839));
-    }
+    background-image:-moz-linear-gradient(left center, #355379, #943839);
+}
 
 .tdError2 {
     height: 198px; 
@@ -446,9 +445,9 @@ a:hover {
 
 #tdError3 {
     background-image: -webkit-gradient(linear, right center, left center, from(#456389), to(#943839));
+    background-image:-moz-linear-gradient(right center, #456389, #943839);
 }
 
 #advlink {
-    -webkit-box-reflect: below 5px
-        -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, 0.25)));
+    -webkit-box-reflect: below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, 0.25)));
 }

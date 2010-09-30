@@ -107,13 +107,13 @@
         </tr>
         <tr>
             <td style="border-top: solid 3px white">Legal Notice. <br />
-                                Application can be used only by an authorized person with preservation of 
+                Application can be used only by an authorized person with preservation of 
                 binding procedures ... Obtaining or attempt of obtaining an unauthorized access to the application can cause bearing criminal responsibility or civil liability.</td>
         </tr>
         <tr>
-            <td id="advlink" style="background: url(Images/Blue.png) repeat-x; text-align:right; vertical-align:top"><a href="http://advent.com.gr">AG ADVENT 2010</a></td>
+            <td style="background: url(Images/Blue.png) repeat-x; text-align:right; vertical-align:top"><div id="advlink"><a href="http://advent.com.gr">AG ADVENT 2010</a></div></td>
         </tr>
       </table>
-    </form>
+    </form>    
 </body>
 </html>
