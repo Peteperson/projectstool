@@ -47,7 +47,7 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Μηνύματα για εμένα</td>
+            <td class="FormTitle">Μηνύματα για εμένα</td>
         </tr>
         <tr>
             <td><br />
@@ -66,7 +66,7 @@
             <td><br /><br /></td>
         </tr>
         <tr>
-            <td class="title">Μηνύματα από εμένα</td>
+            <td class="FormTitle">Μηνύματα από εμένα</td>
         </tr>
         <tr>
             <td><br />

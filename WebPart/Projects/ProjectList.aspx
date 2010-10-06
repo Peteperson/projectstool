@@ -9,7 +9,7 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">
+            <td class="FormTitle">
                 <table style="width:100%">
                     <tr>
                         <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
@@ -41,14 +41,14 @@
                 <div style="height: 5px"></div>
                 <table id="tblStatus" style="width: 100%">
                     <tr>
-                        <td class="ShowStatus">Προβολή έργων που βρίσκονται σε κατάσταση:</td>
+                        <td colspan="2" class="ShowStatus">Προβολή έργων που βρίσκονται σε κατάσταση:</td>
                     </tr>
                     <tr>
                         <td>
-                            <asp:RadioButtonList ID="rblStatus" runat="server" RepeatDirection="Horizontal" 
-                                DataSourceID="sqldsPrjStatus" DataTextField="Description" 
-                                DataValueField="id" AutoPostBack="True" RepeatColumns="5">
-                            </asp:RadioButtonList>
+                            <asp:CheckBoxList ID="cblStatus" runat="server" DataSourceID="sqldsPrjStatus" 
+                                DataTextField="Description" DataValueField="id" RepeatColumns="5" 
+                                RepeatDirection="Horizontal" AutoPostBack="True">
+                            </asp:CheckBoxList>
                         </td>
                         <td valign="bottom" align="right"><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
                     </tr>
@@ -137,8 +137,7 @@
                             PropertyName="Text" Type="String" />
                         <asp:ControlParameter ControlID="txtTitle" Name="Title" 
                             PropertyName="Text" Type="String" />
-                        <asp:ControlParameter ControlID="rblStatus" DefaultValue="0" Name="Status" 
-                            PropertyName="SelectedValue" Type="Int32" />
+                        <asp:Parameter Name="Status" Type="String" />
                         <asp:ControlParameter ControlID="dbFrom" Name="dtFrom" PropertyName="Value" Type="DateTime" />
                         <asp:ControlParameter ControlID="dbTo" Name="dtTo" PropertyName="Value" Type="DateTime" />
                     </SelectParameters>
