@@ -8,7 +8,7 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">
+            <td class="FormTitle">
                 <table style="width:100%">
                     <tr>
                         <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
@@ -26,33 +26,23 @@
                         <td align="center">
                             <table id="tblStatus">
                                 <tr>
-                                    <td colspan="2" class="ShowStatus">Προβολή συναντήσεων που βρίσκονται σε status:</td>
+                                    <td colspan="4" class="ShowStatus">Προβολή συναντήσεων που βρίσκονται σε status:</td>
                                 </tr>
                                 <tr>
-                                    <td><asp:RadioButtonList ID="rblStatus" runat="server" RepeatDirection="Horizontal" 
-                                            DataSourceID="sqldsMeetStat" DataTextField="Description" 
-                                            DataValueField="id" AutoPostBack="True">
-                                        </asp:RadioButtonList>
+                                    <td>
+                                        <asp:CheckBoxList ID="cblStatus" runat="server" DataSourceID="sqldsMeetStat" 
+                                            DataTextField="Description" DataValueField="id" AutoPostBack="True"
+                                            RepeatDirection="Horizontal" RepeatColumns="2">
+                                        </asp:CheckBoxList>
                                     </td>
+                                    <td align="right" style="padding-left:10px; text-align:right">Από:<br />Έως:</td>
+                                    <td><uc1:DateBox ID="dbFrom" runat="server" ShowTime="False" /><uc1:DateBox ID="dbTo" runat="server" ShowTime="False" /></td>
+                                    <td><asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /><br /><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
                                 </tr>
                             </table>
                         </td>
                         <td id="tdInfo"><img alt="info" src="Images/Icons/Logs_24x24.png" />: Πιέστε το <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> προκειμένου να επιλέξετε μία συνάντηση και να δείτε αναλυτικά τα στοιχεία της.<br />
                             <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter" Visible="false"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" colspan="2">
-                            <table>
-                                <tr>
-                                    <td>Από:</td>
-                                    <td><uc1:DateBox ID="dbFrom" runat="server" ShowTime="False" /></td>
-                                    <td>Έως:</td>
-                                    <td><uc1:DateBox ID="dbTo" runat="server" ShowTime="False" /></td>
-                                    <td><asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /></td>
-                                    <td style="padding-left:10px"><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
-                                </tr>
-                            </table>
                         </td>
                     </tr>
                 </table>
@@ -163,7 +153,7 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="title">Λεπτομέρειες</td>
+            <td class="FormTitle">Λεπτομέρειες</td>
         </tr>
         <tr>
             <td>
@@ -286,8 +276,7 @@
                         <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int16" />
                         <asp:ControlParameter ControlID="txtPrjId" Name="SubProject" PropertyName="Text" Type="String" />
                         <asp:Parameter Name="MtngsId" Type="Int16" DefaultValue="0" />
-                        <asp:ControlParameter ControlID="rblStatus" DefaultValue="0" Name="Status" 
-                            PropertyName="SelectedValue" Type="Int32" />
+                        <asp:Parameter Name="Status" Type="String" />
                         <asp:ControlParameter ControlID="dbFrom" Name="dtFrom" PropertyName="Value" Type="DateTime" />
                         <asp:ControlParameter ControlID="dbTo" Name="dtTo" PropertyName="Value" Type="DateTime" />
                     </SelectParameters>

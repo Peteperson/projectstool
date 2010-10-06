@@ -23,7 +23,7 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Μαζική εισαγωγή action plan</td>
+            <td class="FormTitle">Μαζική εισαγωγή action plan</td>
         </tr>
         <tr>
             <td id="tdBelowTitle"><img alt="info" src="Images/Icons/Logs_24x24.png" />: Κάντε 
