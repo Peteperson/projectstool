@@ -63,10 +63,20 @@ Partial Class ActionPlans
     End Sub
 
     Protected Sub sqldsAP_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsAP.Selecting
+        Dim Statuses As String = ""
         With e.Command
             If txtPrjId.Text = "" Then .Parameters.Remove(.Parameters("@SubProject"))
             If dbFrom.Text = Nothing Then .Parameters.Remove(.Parameters("@dtFrom"))
             If dbTo.Text = Nothing Then .Parameters.Remove(.Parameters("@dtTo"))
+            For Each li As ListItem In cblStatus.Items
+                If li.Selected Then Statuses += li.Value & "|"
+            Next
+            If Statuses = "" Then
+                .Parameters.Remove(.Parameters("@Status"))
+            Else
+                Statuses = Statuses.Remove(Statuses.Length - 1)
+                .Parameters("@Status").Value = Statuses
+            End If
         End With
 
         If Not Session("ActionPlanId") Is Nothing AndAlso Session("ActionPlanId") > -1 Then
@@ -108,9 +118,7 @@ Partial Class ActionPlans
     End Sub
 
     Protected Sub btnClearFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClearFilter.Click
-        rblStatus.SelectedIndex = -1
-        CType(gvAP.HeaderRow.FindControl("txtHeadAPFilter"), TextBox).Text = ""
-        txtPrjId.Text = ""
+        Response.Redirect("~/ActionPlans.aspx")
     End Sub
 
     Private ActionId As Integer
@@ -163,5 +171,13 @@ Partial Class ActionPlans
     Protected Sub sqldsActionStatus_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsActionStatus.Updating
         e.Command.Parameters("@Status").Value = ddlValue
         e.Command.Parameters("@id").Value = ddlId
+    End Sub
+
+    Protected Sub btnFindPrj_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnFindPrj.Click
+        gvAP.DataBind()
+    End Sub
+
+    Protected Sub cblStatus_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cblStatus.SelectedIndexChanged
+        gvAP.DataBind()
     End Sub
 End Class

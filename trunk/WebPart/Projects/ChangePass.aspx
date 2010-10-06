@@ -8,7 +8,7 @@
     <asp:Panel runat="server" ID="pnl1" DefaultButton="btnChangePass" >
         <table id="subPageMainTable">
             <tr>
-                <td class="title">Αλλαγή κωδικού</td>
+                <td class="FormTitle">Αλλαγή κωδικού</td>
             </tr>
             <tr>
                 <td align="center">
