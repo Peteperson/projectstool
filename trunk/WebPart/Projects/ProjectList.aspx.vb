@@ -38,18 +38,26 @@ Partial Class ProjectList
     End Sub
 
     Protected Sub sqldsProjects_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsProjects.Selecting
+        Dim Statuses As String = ""
         With e.Command
             If txtPrjId.Text = "" Then .Parameters.Remove(.Parameters("@SubProject"))
             If txtTitle.Text = "" Then .Parameters.Remove(.Parameters("@Title"))
             If dbFrom.Text = Nothing Then .Parameters.Remove(.Parameters("@dtFrom"))
             If dbTo.Text = Nothing Then .Parameters.Remove(.Parameters("@dtTo"))
+            For Each li As ListItem In cblStatus.Items
+                If li.Selected Then Statuses += li.Value & "|"
+            Next
+            If Statuses = "" Then
+                .Parameters.Remove(.Parameters("@Status"))
+            Else
+                Statuses = Statuses.Remove(Statuses.Length - 1)
+                .Parameters("@Status").Value = Statuses
+            End If
         End With
     End Sub
 
     Protected Sub btnClearFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClearFilter.Click
-        rblStatus.SelectedIndex = -1
-        txtPrjId.Text = ""
-        txtTitle.Text = ""
+        Response.Redirect("~/ProjectList.aspx")
     End Sub
 
     Protected Sub btnRemovePaging1_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging1.Click
@@ -79,5 +87,9 @@ Partial Class ProjectList
     Protected Sub sqldsPrjStatus_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsPrjStatus.Updating
         e.Command.Parameters("@Status").Value = ddlValue
         e.Command.Parameters("@id").Value = ddlId
+    End Sub
+
+    Protected Sub cblStatus_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cblStatus.SelectedIndexChanged
+        gvProjects.DataBind()
     End Sub
 End Class
