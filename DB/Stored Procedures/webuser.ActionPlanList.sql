@@ -7,7 +7,7 @@ CREATE PROCEDURE [webuser].[ActionPlanList]
     @UserId INT,
     @SubProject NVARCHAR(15) = '',
     @APId INT = 0,
-	@Status INT = 0,
+	@Status NVARCHAR(1000) = '',
 	@DtFrom DATETIME = '20010101',
 	@DtTo DATETIME = '20991231'
 AS 
@@ -19,7 +19,7 @@ AS
 	)
 
 	INSERT INTO @tmp
-	exec Projectlist @UserId
+	exec webuser.Projectlist @UserId
 
 	SELECT [A/A] = ROW_NUMBER() OVER (ORDER BY ActionPlans.[Deadline])
 		  ,ActionPlans.[id]
@@ -43,7 +43,8 @@ AS
 	INNER JOIN VariousTypes vt2 ON vt2.id = ActionPlans.[Status]
 	LEFT  JOIN Users usr1 ON usr1.[id] = ActionPlans.Responsible1
 	LEFT  JOIN Users usr2 ON usr2.[id] = ActionPlans.Responsible2
-	WHERE Projects.SubProject LIKE ('%'+ @SubProject +'%') AND (ActionPlans.Id = @APId OR @APId=0) AND (ActionPlans.Status = @Status OR @Status = 0)
+	WHERE Projects.SubProject LIKE ('%'+ @SubProject +'%') AND (ActionPlans.Id = @APId OR @APId=0) 
+			AND (ActionPlans.Status IN (SELECT VALUE FROM webuser.SplitDelimitedStr(@Status, '|')) OR @Status = '')
 			AND Deadline BETWEEN @DtFrom AND @DtTo
 	ORDER BY ActionPlans.Deadline DESC
 

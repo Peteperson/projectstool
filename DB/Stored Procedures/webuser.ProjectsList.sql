@@ -7,7 +7,7 @@ CREATE PROCEDURE [webuser].[ProjectsList]
     @UserId INT,    
     @SubProject NVARCHAR(15) = '',
     @Title NVARCHAR(50) = '', 
-	@Status INT = 0,
+	@Status NVARCHAR(1000) = '',
 	@DtFrom DATETIME = '20010101',
 	@DtTo DATETIME = '20991231'
 AS 
@@ -19,7 +19,7 @@ AS
 	)
 
 	INSERT INTO @tmp
-	EXEC Projectlist @UserId
+	EXEC [webuser].Projectlist @UserId
 	
 	SELECT [A/A] = ROW_NUMBER() OVER (ORDER BY prj.InitialEndDate), prj.id AS ProjectId
 		, prj.Code, prj.SubProject, prj.Title
@@ -35,7 +35,8 @@ AS
 	INNER JOIN users usr2 ON usr2.id = prj.Consultant1
 	INNER JOIN VariousTypes vt ON vt.id = prj.[Status]
 	INNER JOIN Companies on Companies.id = prj.CustomerId
-	WHERE prj.SubProject LIKE ('%'+ @SubProject +'%') AND (prj.Status = @Status OR @Status = 0)
+	WHERE prj.SubProject LIKE ('%'+ @SubProject +'%') 
+		AND (prj.Status IN (SELECT VALUE FROM webuser.SplitDelimitedStr(@Status, '|')) OR @Status = '')
 		AND prj.Title LIKE ('%'+ @Title +'%') AND prj.EndDate BETWEEN @DtFrom AND @DtTo
 	ORDER BY prj.InitialEndDate DESC 
 GO

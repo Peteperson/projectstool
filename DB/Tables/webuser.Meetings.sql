@@ -14,6 +14,8 @@ CREATE TABLE [webuser].[Meetings]
 [Attachment] [varbinary] (max) NULL,
 [Status] [int] NOT NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+CREATE NONCLUSTERED INDEX [IX_Meetings_ProjectId] ON [webuser].[Meetings] ([ProjectId]) ON [PRIMARY]
+
 GO
 ALTER TABLE [webuser].[Meetings] ADD CONSTRAINT [PK_Meetings] PRIMARY KEY CLUSTERED  ([id]) ON [PRIMARY]
 GO

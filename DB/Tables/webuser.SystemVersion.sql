@@ -6,6 +6,8 @@ CREATE TABLE [webuser].[SystemVersion]
 [VersionNo] [smallint] NOT NULL,
 [Comments] [nvarchar] (500) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
 ) ON [PRIMARY]
+CREATE NONCLUSTERED INDEX [IX_SystemVersion_ProjectId] ON [webuser].[SystemVersion] ([ProjectId]) ON [PRIMARY]
+
 GO
 ALTER TABLE [webuser].[SystemVersion] ADD CONSTRAINT [PK_SystemVersion] PRIMARY KEY CLUSTERED  ([id]) ON [PRIMARY]
 GO

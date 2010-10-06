@@ -10,6 +10,8 @@ CREATE TABLE [webuser].[Processes]
 [Responsible] [int] NULL,
 [Comments] [nvarchar] (250) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
 ) ON [PRIMARY]
+CREATE NONCLUSTERED INDEX [IX_Processes_SystemVersionId] ON [webuser].[Processes] ([SystemVersionId]) ON [PRIMARY]
+
 ALTER TABLE [webuser].[Processes] ADD
 CONSTRAINT [FK_Processes_VariousTypes] FOREIGN KEY ([Status]) REFERENCES [webuser].[VariousTypes] ([id])
 
