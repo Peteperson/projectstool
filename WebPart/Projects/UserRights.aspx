@@ -5,7 +5,7 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">
+            <td class="FormTitle">
                 <table style="width:100%">
                     <tr>
                         <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
