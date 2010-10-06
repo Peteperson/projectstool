@@ -43,8 +43,8 @@
                             ReadOnly="True" SortExpression="UserFullName" />
                         <asp:BoundField DataField="Status" HeaderText="Status" 
                             SortExpression="Status" />
-                        <asp:BoundField DataField="ServerName" HeaderText="ServerName" 
-                            SortExpression="ServerName" />
+                        <asp:BoundField DataField="BrowserName" HeaderText="Browser" 
+                            SortExpression="BrowserName" />
                     </Columns>
                 </asp:GridView>
             </td>

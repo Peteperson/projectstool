@@ -45,7 +45,7 @@
         If res.UserId = 0 Then
             lblMessage.Text = "Invalid email address."
         Else
-            Database.InsertActivity(Request.UserHostAddress, res.UserId, Request.Url.ToString, LogStatus.PassReset)
+            Database.InsertActivity(Request.UserHostAddress, res.UserId, Request.Url.ToString, LogStatus.PassReset, Request.Browser.Browser)
             lblMessage.Text = "You will soon receive your new password."
         End If
     End Sub
