@@ -7,7 +7,7 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">Παρακολούθηση Δραστηριότητας</td>
+            <td class="FormTitle">Παρακολούθηση Δραστηριότητας</td>
         </tr>
         <tr>
             <td>

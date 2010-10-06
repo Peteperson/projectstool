@@ -65,10 +65,20 @@ Partial Class Meetings
     End Sub
 
     Protected Sub sqldsMeetings_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsMeetings.Selecting
+        Dim Statuses As String = ""
         With e.Command
             If txtPrjId.Text = "" Then .Parameters.Remove(.Parameters("@SubProject"))
             If dbFrom.Text = Nothing Then .Parameters.Remove(.Parameters("@dtFrom"))
             If dbTo.Text = Nothing Then .Parameters.Remove(.Parameters("@dtTo"))
+            For Each li As ListItem In cblStatus.Items
+                If li.Selected Then Statuses += li.Value & "|"
+            Next
+            If Statuses = "" Then
+                .Parameters.Remove(.Parameters("@Status"))
+            Else
+                Statuses = Statuses.Remove(Statuses.Length - 1)
+                .Parameters("@Status").Value = Statuses
+            End If
         End With
 
         If Not Session("MeetingId") Is Nothing AndAlso Session("MeetingId") > -1 Then
@@ -115,9 +125,7 @@ Partial Class Meetings
     End Sub
 
     Protected Sub btnClearFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClearFilter.Click
-        rblStatus.SelectedIndex = -1
-        CType(gvMeetings.HeaderRow.FindControl("txtHeadMtFilter"), TextBox).Text = ""
-        txtPrjId.Text = ""
+        Response.Redirect("~/Meetings.aspx")
     End Sub
 
     Private ActionId As Integer
@@ -164,6 +172,10 @@ Partial Class Meetings
     End Sub
 
     Protected Sub btnFindPrj_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnFindPrj.Click
+        gvMeetings.DataBind()
+    End Sub
+
+    Protected Sub cblStatus_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cblStatus.SelectedIndexChanged
         gvMeetings.DataBind()
     End Sub
 End Class
