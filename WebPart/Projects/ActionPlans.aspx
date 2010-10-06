@@ -59,7 +59,7 @@
     <br />
     <table id="subPageMainTable">
         <tr>
-            <td class="title">
+            <td class="FormTitle">
                 <table style="width:100%">
                     <tr>
                         <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
@@ -77,14 +77,14 @@
                         <td align="center">
                             <table id="tblStatus">
                                 <tr>
-                                    <td colspan="2" class="ShowStatus">Προβολή ενεργειών που βρίσκονται σε status:</td>
+                                    <td colspan="4" class="ShowStatus">Προβολή ενεργειών που βρίσκονται σε status:</td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <asp:RadioButtonList ID="rblStatus" runat="server" RepeatDirection="Horizontal" 
+                                        <asp:CheckBoxList ID="cblStatus" runat="server" AutoPostBack="True"
                                             DataSourceID="sqldsActionStatus" DataTextField="Description" 
-                                            DataValueField="id" AutoPostBack="True">
-                                        </asp:RadioButtonList>
+                                            DataValueField="id" RepeatDirection="Horizontal" RepeatColumns="2">
+                                        </asp:CheckBoxList>
                                     </td>
                                     <td align="right" style="padding-left:10px; text-align:right">Από:<br />Έως:</td>
                                     <td><uc2:DateBox ID="dbFrom" runat="server" ShowTime="False" /><uc2:DateBox ID="dbTo" runat="server" ShowTime="False" /></td>
@@ -194,7 +194,7 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="title">Λεπτομέρειες επιλεγμένης ενέργειας</td>
+            <td class="FormTitle">Λεπτομέρειες επιλεγμένης ενέργειας</td>
         </tr>
         <tr>
             <td>
@@ -323,8 +323,7 @@
                         <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int16" />
                         <asp:ControlParameter ControlID="txtPrjId" Name="SubProject" PropertyName="Text" Type="String" />
                         <asp:Parameter Name="APId" Type="Int16" DefaultValue="0" />
-                        <asp:ControlParameter ControlID="rblStatus" DefaultValue="0" Name="Status" 
-                            PropertyName="SelectedValue" Type="Int32" />
+                        <asp:Parameter Name="Status" Type="String" />
                         <asp:ControlParameter ControlID="dbFrom" Name="dtFrom" PropertyName="Value" Type="DateTime" />
                         <asp:ControlParameter ControlID="dbTo" Name="dtTo" PropertyName="Value" Type="DateTime" />
                     </SelectParameters>
