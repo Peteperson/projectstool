@@ -24,6 +24,8 @@ CREATE TABLE [webuser].[Projects]
 [CompletionPercentage] [tinyint] NOT NULL,
 [Status] [int] NOT NULL CONSTRAINT [DF_Projects_Status] DEFAULT ((0))
 ) ON [PRIMARY]
+CREATE NONCLUSTERED INDEX [IX_Projects_CustomerId] ON [webuser].[Projects] ([CustomerId]) ON [PRIMARY]
+
 GO
 ALTER TABLE [webuser].[Projects] ADD CONSTRAINT [PK_Projects] PRIMARY KEY CLUSTERED  ([id]) ON [PRIMARY]
 GO

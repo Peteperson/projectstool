@@ -17,6 +17,10 @@ CREATE TABLE [webuser].[Users]
 [IsActive] [bit] NOT NULL CONSTRAINT [DF__Users_Tem__IsAct__69FBBC1F] DEFAULT ((1)),
 [IsUser] [bit] NULL CONSTRAINT [DF__Users_Tem__IsUse__6AEFE058] DEFAULT ((0))
 ) ON [PRIMARY]
+CREATE NONCLUSTERED INDEX [IX_Users_Company] ON [webuser].[Users] ([Company]) ON [PRIMARY]
+
+CREATE UNIQUE NONCLUSTERED INDEX [IX_Users_Username] ON [webuser].[Users] ([UserName]) ON [PRIMARY]
+
 GO
 ALTER TABLE [webuser].[Users] ADD CONSTRAINT [PK_Users_Temp] PRIMARY KEY CLUSTERED  ([id]) ON [PRIMARY]
 GO

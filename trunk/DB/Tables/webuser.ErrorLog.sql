@@ -8,6 +8,8 @@ CREATE TABLE [webuser].[ErrorLog]
 [URL] [nvarchar] (150) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 [Error] [nvarchar] (1500) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
 ) ON [PRIMARY]
+CREATE NONCLUSTERED INDEX [IS_ErrorLog_Datestamp] ON [webuser].[ErrorLog] ([Datestamp]) ON [PRIMARY]
+
 GO
 ALTER TABLE [webuser].[ErrorLog] ADD CONSTRAINT [PK_ErrorLog] PRIMARY KEY CLUSTERED  ([id]) ON [PRIMARY]
 GO
