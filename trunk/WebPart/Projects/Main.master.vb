@@ -24,14 +24,14 @@
                 If Not Authorized And Not CurrPage.EndsWith("error.aspx") And Not CurrPage.EndsWith("mainpanel.aspx") Then
                     Session("ErrorMessage") = "You do not have permission to view this page."
                     Try
-                        Database.InsertActivity(Request.UserHostAddress, Session("UserId"), Request.Url.ToString, LogStatus.DenyAccess)
+                        Database.InsertActivity(Request.UserHostAddress, Session("UserId"), Request.Url.ToString, LogStatus.DenyAccess, Request.Browser.Browser)
                     Catch ex As Exception
                         Session("ErrorMessage") = ex.Message
                     End Try
                     Response.Redirect("~/error.aspx")
                 Else
                     Try
-                        Database.InsertActivity(Request.UserHostAddress, Session("UserId"), Request.Url.ToString, LogStatus.Normal)
+                        Database.InsertActivity(Request.UserHostAddress, Session("UserId"), Request.Url.ToString, LogStatus.Normal, Request.Browser.Browser)
                     Catch ex As Exception
                         Session("ErrorMessage") = ex.Message
                         Response.Redirect("~/error.aspx")
