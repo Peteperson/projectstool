@@ -6,7 +6,7 @@ CREATE TABLE [webuser].[ActivityLog]
 [URL] [nvarchar] (150) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 [Status] [int] NULL,
 [IP] [nvarchar] (15) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-[ServerName] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[BrowserName] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 [ExtraInfo] [nvarchar] (500) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL CONSTRAINT [DF_ActivityLog_ExtraInfo] DEFAULT ('')
 ) ON [PRIMARY]
 ALTER TABLE [webuser].[ActivityLog] ADD 

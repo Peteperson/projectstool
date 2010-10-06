@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -11,7 +12,7 @@ AS
 
 	SELECT ActivityLog.id, ActivityLog.Datestamp, ActivityLog.URL, ActivityLog.ip,
 			users.LastName + ' ' + users.FirstName + ' (' + VariousTypes.[Description] + ')' AS UserFullName, 
-			 LogStatus.[Description] AS [Status], ActivityLog.ServerName, ActivityLog.ExtraInfo
+			 LogStatus.[Description] AS [Status], ActivityLog.BrowserName, ActivityLog.ExtraInfo
 	FROM ActivityLog
 	INNER JOIN Users ON users.id = ActivityLog.UserId
 	INNER JOIN LogStatus ON LogStatus.id = ActivityLog.[Status]
