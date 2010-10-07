@@ -63,9 +63,7 @@
                     <Columns>
                         <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
                             SortExpression="A/A" />
-                        <asp:BoundField DataField="Code" HeaderText="Κωδικός" 
-                            SortExpression="Code" />
-                        <asp:TemplateField HeaderText="SubProject" SortExpression="SubProject">
+                        <asp:TemplateField HeaderText="SubPrj" SortExpression="SubProject">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnSubProject" runat="server" CausesValidation="True" CommandArgument='<%# Bind("ProjectId") %>'
                                                 CommandName="SelSubProject" Text='<%# Bind("SubProject") %>'></asp:LinkButton>
@@ -73,6 +71,8 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="Title" HeaderText="Τίτλος έργου" 
                             SortExpression="Title" />
+                        <asp:BoundField DataField="Standard" HeaderText="Πρότυπο" 
+                            SortExpression="Standard" />
                         <asp:TemplateField HeaderText="Πελάτης" SortExpression="Customer">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnCust" runat="server" CommandArgument='<%# Bind("Customer") %>'
@@ -88,8 +88,6 @@
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("InitialEndDate", "{0:dd/MM/yyyy}") %>' ToolTip='<%# Bind("EndDate", "Πραγματική ημ/νία λήξης: {0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="CompletionPercentage" HeaderText="(%)" 
-                            SortExpression="CompletionPercentage" />
                         <asp:TemplateField HeaderText="Status" SortExpression="Status">
                             <ItemTemplate>
                                 <asp:DropDownList ID="ddlPrjStatusOne" Font-Size="8pt" runat="server" DataSourceID="sqldsPrjStatus" 
