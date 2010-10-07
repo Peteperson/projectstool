@@ -21,7 +21,7 @@ AS
 	INSERT INTO @tmp
 	exec webuser.Projectlist @UserId
 
-	SELECT [A/A] = ROW_NUMBER() OVER (ORDER BY ActionPlans.[Deadline])
+	SELECT [A/A] = ROW_NUMBER() OVER (ORDER BY ActionPlans.[Deadline] DESC)
 		  ,ActionPlans.[id]
 		  ,Projects.id AS ProjectId
 		  ,Projects.SubProject
