@@ -234,7 +234,7 @@
         ConnectionString="<%$ ConnectionStrings:cnMain %>" 
         DeleteCommand="DELETE FROM [Users] WHERE [id] = @id" 
         InsertCommand="INSERT INTO [Users] ([UserName], [Password], [UserType], [Company], [Position], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsUser]) VALUES (@UserName, @Password, @UserType, @Company, @Position, @FirstName, @LastName, @Telephone, @Mobile, @Email, @DefaultPage, @IsUser)" 
-        SelectCommand="SELECT [id], [UserName], [UserType], [Company], [Position], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsActive], [LastLogin], [IsUser] FROM [Users] WHERE LastName LIKE ('%'+ IsNull(@LastName, '') +'%') AND UserName LIKE ('%'+ IsNull(@UserName, '') +'%')" 
+        SelectCommand="SELECT [id], [UserName], [UserType], [Company], [Position], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsActive], [LastLogin], [IsUser] FROM [Users] WHERE LastName LIKE ('%'+ IsNull(@LastName, '') +'%') AND UserName LIKE ('%'+ IsNull(@UserName, '') +'%') AND UserType <> 38" 
         UpdateCommand="UPDATE [Users] SET [UserName] = @UserName, [UserType] = @UserType, [Company] = @Company, [Position] = @Position, [FirstName] = @FirstName, [LastName] = @LastName, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email, [DefaultPage] = @DefaultPage, [IsActive] = @IsActive, [IsUser] = @IsUser WHERE [id] = @id">
         <DeleteParameters>
             <asp:Parameter Name="id" Type="Int32" />
@@ -277,7 +277,7 @@
                 <td>
     <asp:SqlDataSource ID="sqldsUserTypes" runat="server" 
         ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-        SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category)"
+        SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) AND [Description] <> 'Admin'"
         UpdateCommand="UPDATE [Users] SET [Password] = @Password WHERE [id] = @id" >
         <SelectParameters>
             <asp:Parameter DefaultValue="UserType" Name="Category" Type="String" />
