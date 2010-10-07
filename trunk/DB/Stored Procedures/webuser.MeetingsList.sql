@@ -21,7 +21,7 @@ AS
 	INSERT INTO @tmp
 	EXEC webuser.ProjectList @UserId
 	
-	SELECT [A/A] = ROW_NUMBER() OVER (ORDER BY Meetings.TimeFrom)
+	SELECT [A/A] = ROW_NUMBER() OVER (ORDER BY Meetings.TimeFrom DESC)
 		  ,Meetings.[id]
 		  ,Projects.id AS ProjectId
 		  ,Projects.SubProject
