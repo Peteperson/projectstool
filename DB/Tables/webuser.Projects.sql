@@ -4,7 +4,6 @@ CREATE TABLE [webuser].[Projects]
 [Code] [nvarchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 [SubProject] [nvarchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 [DateStamp] [datetime] NOT NULL CONSTRAINT [DF_Projects_DateStamp] DEFAULT (getdate()),
-[Standard] [nvarchar] (50) COLLATE Greek_CI_AS NOT NULL CONSTRAINT [DF_Projects_Standard] DEFAULT (''),
 [Creator] [int] NOT NULL,
 [Type] [int] NOT NULL,
 [ModificationDate] [datetime] NULL,

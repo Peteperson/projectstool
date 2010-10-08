@@ -22,7 +22,7 @@ AS
 	EXEC [webuser].Projectlist @UserId
 	
 	SELECT [A/A] = ROW_NUMBER() OVER (ORDER BY prj.InitialEndDate DESC), prj.id AS ProjectId
-		, prj.Code, prj.SubProject, prj.Title, prj.Standard
+		, prj.Code, prj.SubProject, prj.Title
 		, Companies.[Name] as Customer
 		, usr1.Lastname + ' ' + usr1.firstName AS ProjectManager
 		, usr2.Lastname + ' ' + usr2.firstName AS Consultant
