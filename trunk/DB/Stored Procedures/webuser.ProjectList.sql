@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -13,41 +14,45 @@ AS
 	IF @UserType = 'Consultant' 
 		Begin
 			SELECT id, SubProject FROM Projects 
-			WHERE (Consultant1 = @UserId OR Consultant2 = @UserId OR Creator = @UserId) 
+			WHERE (Consultant1 = @UserId OR Consultant2 = @UserId OR Creator = @UserId)  
+				OR CustomerId = (SELECT Company FROM Users WHERE id = @userId)
 			UNION
 			SELECT Projects.id, SubProject FROM Projects 
 			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
-			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId) 
+			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId)
 			ORDER BY SubProject
 		END
 	ELSE IF @UserType = 'ProjectManager' 
 		BEGIN
 			SELECT id, SubProject FROM Projects 
-			WHERE (Consultant1 = @UserId OR Consultant2 = @UserId OR ProjectManager = @userId OR Creator = @UserId)
+			WHERE (Consultant1 = @UserId OR Consultant2 = @UserId OR ProjectManager = @userId OR Creator = @UserId) 
+				OR CustomerId = (SELECT Company FROM Users WHERE id = @userId)
 			UNION
 			SELECT Projects.id, SubProject FROM Projects 
 			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
-			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId) 
+			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId)
 			ORDER BY SubProject
 		END
 	ELSE IF @UserType = 'FoodDirector' 
 		BEGIN
 			SELECT id, SubProject FROM Projects 
-			WHERE [Type] = (SELECT id FROM VariousTypes WHERE [Description] = (N'Τρόφιμα'))
+			WHERE [Type] = (SELECT id FROM VariousTypes WHERE [Description] = (N'Τρόφιμα')) 
+				OR CustomerId = (SELECT Company FROM Users WHERE id = @userId)
 			UNION
 			SELECT Projects.id, SubProject FROM Projects 
 			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
-			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId) 
+			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId)
 			ORDER BY SubProject
 		END
 	ELSE IF @UserType = 'OrgDirector' 
 		BEGIN
 			SELECT id, SubProject FROM Projects 
-			WHERE [Type] = (SELECT id FROM VariousTypes WHERE [Description] = (N'Οργάνωση'))
+			WHERE [Type] = (SELECT id FROM VariousTypes WHERE [Description] = (N'Οργάνωση')) 
+				OR CustomerId = (SELECT Company FROM Users WHERE id = @userId)
 			UNION
 			SELECT Projects.id, SubProject FROM Projects 
 			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
-			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId) 
+			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId)  
 			ORDER BY SubProject
 		END
 	ELSE IF @UserType = 'Admin' OR @UserType = 'DataEntry' OR @UserType = 'ITDirector'
