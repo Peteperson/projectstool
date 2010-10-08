@@ -71,7 +71,7 @@
             </td>
         </tr>
         <tr>
-            <td id="tdBelowTitle">
+            <td class="tdBelowTitle">
                 <table>
                     <tr>
                         <td align="center">
@@ -197,7 +197,7 @@
             <td class="FormTitle">Λεπτομέρειες επιλεγμένης ενέργειας</td>
         </tr>
         <tr>
-            <td>
+            <td class="tdBelowTitle">
                 <asp:FormView ID="fvAction" runat="server" DataKeyNames="id"
                     DataSourceID="sqldsAPdet" DefaultMode="Edit" Width="100%">
                     <EditRowStyle CssClass="centered" />

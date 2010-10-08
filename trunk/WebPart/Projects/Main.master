@@ -101,8 +101,13 @@ function HidePleaseWait() {
 CurrentLocation = document.location
 function PrintPage() {
     document.getElementById("subPageMainTable").rows[1].style.display = "none";
-    //document.getElementById("tdPrint").style.display = "none";    
+    document.getElementById("trHeaderLogo").style.display = "None";
+    document.getElementById("tblFooterLogo").style.display = "None";
     print();
+    setTimeout("ReloadPage()", 500);
+}
+
+function ReloadPage() {
     document.location = CurrentLocation;
 }
 
@@ -113,34 +118,36 @@ function PrintPage() {
         <div id="dvPleaseWait">
             <table style="width: 100%; height: 100%">
                 <tr>                
-                    <td style="text-align:center;" align="center"><asp:Image ID="imgWait" runat="server" ImageUrl="~/Images/WaitText.png"/><br /><asp:Image ID="imgPleaseWait" runat="server" ImageUrl="~/Images/Animated/ClockPlain.gif" /></div></td>
+                    <td style="text-align:center;" align="center">
+                        <asp:Image ID="imgWait" runat="server" ImageUrl="~/Images/WaitText.png"/><br /><asp:Image ID="imgPleaseWait" runat="server" ImageUrl="~/Images/Animated/ClockPlain.gif" />
+                    </td>
                 </tr>
             </table>
         </div>
         <table cellpadding="0" cellspacing="0">
-        <tr>
-            <td style="background-color:white">
-                <asp:Image ID="Image1" ImageUrl="~/Images/AdvLogoWhiteBack.png" runat="server" Height="70px" />
-            </td>
-            <td style="width:100%; text-align: right; vertical-align: bottom; background-color: white">
-                <table style="width:100%">
-                    <tr>
-                        <td>
-                            <table>
-                                <tr>
-                                    <td></td>
-                                    <td><asp:ImageButton ID="btnQwe" runat="server" style="visibility:hidden" /></td>
-                                </tr>
-                                <tr>
-                                    <td style="width:100%; vertical-align: bottom"><asp:Literal ID="ltrMessage" runat="server"></asp:Literal></td>
-                                    <td><asp:ImageButton ID="btnLogoff" runat="server" ImageUrl="~/Images/logout.png" ToolTip="Έξοδος" /></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
+            <tr id="trHeaderLogo">
+                <td style="background-color:white">
+                    <asp:Image ID="Image1" ImageUrl="~/Images/AdvLogoWhiteBack.png" runat="server" Height="70px" />
+                </td>
+                <td style="width:100%; text-align: right; vertical-align: bottom; background-color: white">
+                    <table style="width:100%">
+                        <tr>
+                            <td>
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td></td>
+                                        <td><asp:ImageButton ID="btnQwe" runat="server" style="visibility:hidden" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:100%; vertical-align: bottom"><asp:Literal ID="ltrMessage" runat="server"></asp:Literal></td>
+                                        <td><asp:ImageButton ID="btnLogoff" runat="server" ImageUrl="~/Images/logout.png" ToolTip="Έξοδος" /></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
         </table>
         <table cellpadding="0" cellspacing="0">
         <tr>
@@ -183,7 +190,7 @@ function PrintPage() {
             <td id="tdMessage"><asp:Label ID="lblMessage" Visible="false" runat="server">This is a test</asp:Label></td>
         </tr>
         </table>
-        <table style="width:100%">
+        <table id="tblFooterLogo" style="width:100%">
             <tr style="background: url(Images/Blue.png) repeat-x;">
                 <td style="white-space:nowrap; text-align:right; vertical-align:top"><div id="advlink"><a href="http://advent.com.gr">AG ADVENT 2010</a></div></td>
             </tr>

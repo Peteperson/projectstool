@@ -18,7 +18,7 @@
             </td>
         </tr>
         <tr>
-            <td class="centered"><br />Πιέστε το <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> προκειμένου να επιλέξετε ένα έργο και να δείτε αναλυτικά τα στοιχεία του.</td>
+            <td class="tdBelowTitle"><br />Πιέστε το <img alt="Green check" src="Images/Icons/Approve_16x16.png" /> προκειμένου να επιλέξετε ένα έργο και να δείτε αναλυτικά τα στοιχεία του.</td>
         </tr>
         <tr>
             <td>
@@ -32,7 +32,6 @@
                                     CommandName="Select" ImageUrl="~/Images/Icons/Approve_16x16.png" ToolTip="Επιλογή εγγραφής" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Code" HeaderText="Έργο" SortExpression="Code" />
                         <asp:BoundField DataField="SubProject" HeaderText="SubProject" 
                             SortExpression="SubProject" />
                         <asp:BoundField DataField="Title" HeaderText="Τίτλος" SortExpression="Title" />

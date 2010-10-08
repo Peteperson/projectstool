@@ -157,7 +157,7 @@
             </td>
         </tr>
         <tr>
-            <td align="center">
+            <td class="tdBelowTitle">
                 <asp:GridView ID="gvCompEmpl" runat="server" AutoGenerateColumns="False"
                     DataKeyNames="Id" DataSourceID="sqldsCompEmployees" AllowPaging="True" 
                     AllowSorting="True" SkinID="gridviewSkin" ShowFooter="True" 

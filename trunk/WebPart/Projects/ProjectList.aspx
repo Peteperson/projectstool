@@ -21,7 +21,7 @@
             </td>
         </tr>
         <tr>
-            <td id="tdBelowTitle">
+            <td class="tdBelowTitle">
                 <img alt="info" src="Images/Icons/Logs_24x24.png" />:
                 Συμπληρώστε τον κωδικό τού έργου ή τον τίτλο του και πατήστε 
                 &quot;Αναζήτηση&quot; προκειμένου να φιλτράρετε τα αποτελέσματα:<br />
@@ -71,8 +71,6 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="Title" HeaderText="Τίτλος έργου" 
                             SortExpression="Title" />
-                        <asp:BoundField DataField="Standard" HeaderText="Πρότυπο" 
-                            SortExpression="Standard" />
                         <asp:TemplateField HeaderText="Πελάτης" SortExpression="Customer">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnCust" runat="server" CommandArgument='<%# Bind("Customer") %>'

@@ -20,7 +20,7 @@
             <td></td>
         </tr>
         <tr>
-            <td>
+            <td class="tdBelowTitle">
                 <asp:GridView ID="gvPages" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
                     DataSourceID="sqldsPages" SkinID="gridviewSkin" ShowFooter="true">

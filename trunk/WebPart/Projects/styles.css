@@ -364,9 +364,9 @@ a:hover {
     width: 30%;
 }
 
-#tdBelowTitle {
+.tdBelowTitle {
     text-align:center;
-    padding-top: 6px;
+    padding-top: 8px;
     padding-bottom: 6px;
 }
 
@@ -450,4 +450,8 @@ a:hover {
 
 #advlink {
     -webkit-box-reflect: below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, 0.25)));
+}
+
+.MaxWidth80px{
+    max-width: 80px;
 }

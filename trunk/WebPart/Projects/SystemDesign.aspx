@@ -19,7 +19,7 @@
             </td>
         </tr>
         <tr>
-            <td id="tdBelowTitle"> <asp:Panel ID="pnl1" runat="server" DefaultButton="btnFindPrj">
+            <td class="tdBelowTitle"> <asp:Panel ID="pnl1" runat="server" DefaultButton="btnFindPrj">
                 <img alt="info" src="Images/Icons/Logs_24x24.png" />: Επιλέξτε subproject από τη 
                 λίστα:
                 <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
@@ -41,7 +41,7 @@
             <td class="FormTitle">Processes - <asp:Label ID="lblCompany" runat="server"></asp:Label></td>
         </tr>
         <tr>
-            <td>
+            <td class="tdBelowTitle">
                 <asp:GridView ID="gvProcesses" runat="server" AllowPaging="True" ShowFooter="true"
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
                     DataSourceID="sqldsProcesses" SkinID="gridviewSkin">

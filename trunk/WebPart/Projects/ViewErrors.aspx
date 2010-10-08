@@ -10,7 +10,7 @@
             <td class="FormTitle">Λίστα Προβλημάτων</td>
         </tr>
         <tr>
-            <td>
+            <td class="tdBelowTitle">
                 <table style="width:0%">
                     <tr>
                         <td>From</td>
