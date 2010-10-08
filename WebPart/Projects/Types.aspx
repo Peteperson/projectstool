@@ -18,7 +18,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td class="tdBelowTitle">
                 <asp:TextBox ID="txtCatFilter" runat="server" Visible="False"></asp:TextBox>
             </td>
         </tr>

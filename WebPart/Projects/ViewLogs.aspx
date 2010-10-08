@@ -10,7 +10,7 @@
             <td class="FormTitle">Παρακολούθηση Δραστηριότητας</td>
         </tr>
         <tr>
-            <td>
+            <td class="tdBelowTitle">
                 <table style="width:0%">
                     <tr>
                         <td>From</td>

@@ -20,7 +20,7 @@
             </td>
         </tr>
         <tr>
-            <td id="tdBelowTitle">
+            <td class="tdBelowTitle">
                 <table>
                     <tr>
                         <td align="center">
@@ -156,7 +156,7 @@
             <td class="FormTitle">Λεπτομέρειες</td>
         </tr>
         <tr>
-            <td>
+            <td class="tdBelowTitle">
                 <asp:FormView ID="fvMeetings" runat="server" DataKeyNames="id" 
                     DataSourceID="sqldsMeetingsDet" DefaultMode="Edit" Width="100%">
                     <EditRowStyle CssClass="centered" />

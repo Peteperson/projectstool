@@ -18,7 +18,7 @@
             </td>
         </tr>
         <tr>
-            <td class="centered" style="padding-bottom:5px">Σε περίπτωση πολλών έργων, επιλέξτε ένα από τη λίστα:
+            <td class="tdBelowTitle">Σε περίπτωση πολλών έργων, επιλέξτε ένα από τη λίστα:
                 <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
                     DataTextField="SubProject" DataValueField="id" AutoPostBack="True">
                 </asp:DropDownList>
@@ -31,7 +31,7 @@
             <td class="FormTitle">Processes</td>
         </tr>
         <tr>
-            <td>
+            <td class="tdBelowTitle">
                 <asp:GridView ID="gvProcesses" runat="server" AllowSorting="True" 
                     AutoGenerateColumns="False" DataKeyNames="id" 
                     DataSourceID="sqldsProcesses" SkinID="gridviewSkin">

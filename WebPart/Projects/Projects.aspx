@@ -18,7 +18,7 @@
             </td>
         </tr>
         <tr>
-            <td class="centered" style="padding-bottom:5px"><asp:Panel runat="server" ID="pnl1" DefaultButton="btnFindPrj">Επιλέξτε subproject από τη λίστα:
+            <td class="tdBelowTitle"><asp:Panel runat="server" ID="pnl1" DefaultButton="btnFindPrj">Επιλέξτε subproject από τη λίστα:
                 <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
                     DataTextField="SubProject" DataValueField="id" AutoPostBack="True">
                 </asp:DropDownList>&nbsp;ή συμπληρώστε το στο ακόλουθο πεδίο και πατήστε &quot;Αναζήτηση&quot;
@@ -38,8 +38,8 @@
                                         <ItemTemplate>
                                             <table id="tblDetails">
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Τίτλος/πρότυπο</td>
-                                                    <td class="tblDetailsItem" colspan="3"><asp:Label ID="Label10" runat="server" Text='<%# Bind("Title") %>'></asp:Label>&nbsp;/&nbsp;<asp:Label ID="Label1" runat="server" Text='<%# Bind("Standard") %>'></asp:Label></td>
+                                                    <td class="tblDetailsHeader">Τίτλος έργου</td>
+                                                    <td class="tblDetailsItem" colspan="3"><asp:Label ID="Label10" runat="server" Text='<%# Bind("Title") %>'></asp:Label></td>
                                                     <td class="tblDetailsHeader">Τύπος</td>
                                                     <td class="tblDetailsItem">
                                                         <asp:RadioButtonList ID="rbPrjType" runat="server" DataSourceID="sqldsPrjType" 
@@ -134,8 +134,8 @@
                                         <EditItemTemplate>
 						                    <table id="tblDetails">
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Τίτλος/πρότυπο<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox9" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                                    <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox9" MaxLength="50" runat="server" SkinID="txtMain" Text='<%# Bind("Title") %>'></asp:TextBox>&nbsp;/&nbsp;<asp:TextBox ID="TextBox3" MaxLength="50" runat="server" SkinID="txtSupl" Text='<%# Bind("Standard") %>'></asp:TextBox></td>
+                                                    <td class="tblDetailsHeader">Τίτλος έργου <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox9" ValidationGroup="UpdPrj" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                                    <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox9" MaxLength="50" SkinID="txtText" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">Τύπος</td>
                                                     <td class="tblDetailsItem">
                                                         <asp:RadioButtonList ID="rbPrjType" runat="server" DataSourceID="sqldsPrjType" 
@@ -222,8 +222,8 @@
                                         <InsertItemTemplate>
 						                    <table id="tblDetails">
                                                 <tr>
-                                                    <td class="tblDetailsHeader">Τίτλος/πρότυπο<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox9" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
-                                                    <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox9" MaxLength="50" runat="server" SkinID="txtMain" Text='<%# Bind("Title") %>'></asp:TextBox>&nbsp;/&nbsp;<asp:TextBox ID="TextBox5" MaxLength="50" runat="server" SkinID="txtSupl" Text='<%# Bind("Standard") %>'></asp:TextBox></td>
+                                                    <td class="tblDetailsHeader">Τίτλος έργου <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox9" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
+                                                    <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox9" MaxLength="50" SkinID="txtText" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">Τύπος <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="rbPrjType" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem">
                                                         <asp:RadioButtonList ID="rbPrjType" runat="server" DataSourceID="sqldsPrjType" 
@@ -903,9 +903,9 @@
                 <asp:SqlDataSource ID="sqldsProjects" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [Projects] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [Projects] ([Code], [SubProject], [Creator], [Type], [CustomerId], [InitialStartDate], [StartDate], [InitialEndDate], [EndDate], [Title], [Standard], [Description], [ProjectManager], [Consultant1], [Consultant2], [InitialMeetingsNo], [CriticalIssues], [DesiredOrganization], [CertificationField], [CompletionPercentage], [Status]) VALUES (@Code, @SubProject, @Creator, @Type, @CustomerId, @InitialStartDate, @InitialStartDate, @InitialEndDate, @InitialEndDate, @Title, @Standard, @Description, @ProjectManager, @Consultant1, @Consultant2, @InitialMeetingsNo, @CriticalIssues, @DesiredOrganization, @CertificationField, @CompletionPercentage, @Status)" 
-                    SelectCommand="SELECT [id], [Code], [Type], [SubProject], [DateStamp], [Standard], [Creator], [ModificationDate], [CustomerId], [InitialStartDate], [StartDate], [InitialEndDate], [EndDate], [Title], [Description], [ProjectManager], [Consultant1], ISNULL([Consultant2], 0) AS Consultant2, [InitialMeetingsNo], [CriticalIssues], [DesiredOrganization], [CertificationField], [CompletionPercentage], [Status]  FROM [Projects] WHERE ([id] = @id)" 
-                    UpdateCommand="UPDATE [Projects] SET [Code] = @Code, [Type] = @Type, [Standard] = @Standard, [SubProject] = @SubProject, [Creator] = @Creator, [ModificationDate] = @ModificationDate, [CustomerId] = @CustomerId, [InitialStartDate] = @InitialStartDate, [StartDate] = @StartDate, [InitialEndDate] = @InitialEndDate, [EndDate] = @EndDate, [Title] = @Title, [Description] = @Description, [ProjectManager] = @ProjectManager, [Consultant1] = @Consultant1, [Consultant2] = @Consultant2, [InitialMeetingsNo] = @InitialMeetingsNo, [CriticalIssues] = @CriticalIssues, [DesiredOrganization] = @DesiredOrganization, [CertificationField] = @CertificationField, [CompletionPercentage] = @CompletionPercentage, [Status] = @Status WHERE [id] = @id">
+                    InsertCommand="INSERT INTO [Projects] ([Code], [SubProject], [Creator], [Type], [CustomerId], [InitialStartDate], [StartDate], [InitialEndDate], [EndDate], [Title], [Description], [ProjectManager], [Consultant1], [Consultant2], [InitialMeetingsNo], [CriticalIssues], [DesiredOrganization], [CertificationField], [CompletionPercentage], [Status]) VALUES (@Code, @SubProject, @Creator, @Type, @CustomerId, @InitialStartDate, @InitialStartDate, @InitialEndDate, @InitialEndDate, @Title, @Description, @ProjectManager, @Consultant1, @Consultant2, @InitialMeetingsNo, @CriticalIssues, @DesiredOrganization, @CertificationField, @CompletionPercentage, @Status)" 
+                    SelectCommand="SELECT [id], [Code], [Type], [SubProject], [DateStamp], [Creator], [ModificationDate], [CustomerId], [InitialStartDate], [StartDate], [InitialEndDate], [EndDate], [Title], [Description], [ProjectManager], [Consultant1], ISNULL([Consultant2], 0) AS Consultant2, [InitialMeetingsNo], [CriticalIssues], [DesiredOrganization], [CertificationField], [CompletionPercentage], [Status]  FROM [Projects] WHERE ([id] = @id)" 
+                    UpdateCommand="UPDATE [Projects] SET [Code] = @Code, [Type] = @Type, [SubProject] = @SubProject, [Creator] = @Creator, [ModificationDate] = @ModificationDate, [CustomerId] = @CustomerId, [InitialStartDate] = @InitialStartDate, [StartDate] = @StartDate, [InitialEndDate] = @InitialEndDate, [EndDate] = @EndDate, [Title] = @Title, [Description] = @Description, [ProjectManager] = @ProjectManager, [Consultant1] = @Consultant1, [Consultant2] = @Consultant2, [InitialMeetingsNo] = @InitialMeetingsNo, [CriticalIssues] = @CriticalIssues, [DesiredOrganization] = @DesiredOrganization, [CertificationField] = @CertificationField, [CompletionPercentage] = @CompletionPercentage, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="id" PropertyName="SelectedValue" Type="Int32" />
                     </SelectParameters>
@@ -924,7 +924,6 @@
                         <asp:Parameter Name="InitialEndDate" Type="DateTime" />
                         <asp:Parameter Name="EndDate" Type="DateTime" />
                         <asp:Parameter Name="Title" Type="String" />
-                        <asp:Parameter Name="Standard" Type="String" />
                         <asp:Parameter Name="Description" Type="String" />
                         <asp:Parameter Name="ProjectManager" Type="Int32" />
                         <asp:Parameter Name="Consultant1" Type="Int32" />
@@ -946,7 +945,6 @@
                         <asp:Parameter Name="InitialStartDate" Type="DateTime" />
                         <asp:Parameter Name="InitialEndDate" Type="DateTime" />
                         <asp:Parameter Name="Title" Type="String" />
-                        <asp:Parameter Name="Standard" Type="String" />
                         <asp:Parameter Name="Description" Type="String" DefaultValue=" " />
                         <asp:Parameter Name="ProjectManager" Type="Int32" />
                         <asp:Parameter Name="Consultant1" Type="Int32" />

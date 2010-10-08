@@ -50,7 +50,7 @@
             <td class="FormTitle">Μηνύματα για εμένα</td>
         </tr>
         <tr>
-            <td><br />
+            <td class="tdBelowTitle">
                 <asp:GridView ID="gvToMeMsgs" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
                     DataSourceID="sqldsMsgForMe" SkinID="gridviewSkinSmall">
@@ -69,7 +69,7 @@
             <td class="FormTitle">Μηνύματα από εμένα</td>
         </tr>
         <tr>
-            <td><br />
+            <td class="tdBelowTitle">
                 <asp:GridView ID="gvMessages" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
                     DataSourceID="sqldsMessages" SkinID="gridviewSkinSmall" ShowFooter="True">

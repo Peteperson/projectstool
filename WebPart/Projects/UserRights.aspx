@@ -17,7 +17,7 @@
             </td>
         </tr>
         <tr>
-            <td>Προβολή δικαιωμάτων για τον ρόλο:
+            <td class="tdBelowTitle">Προβολή δικαιωμάτων για τον ρόλο:
                 <asp:DropDownList ID="ddlShowRole" runat="server" AutoPostBack="True" 
                     DataSourceID="sqldsUserTypes" DataTextField="Description" DataValueField="id">
                 </asp:DropDownList>

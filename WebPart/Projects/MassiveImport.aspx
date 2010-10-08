@@ -26,7 +26,7 @@
             <td class="FormTitle">Μαζική εισαγωγή action plan</td>
         </tr>
         <tr>
-            <td id="tdBelowTitle"><img alt="info" src="Images/Icons/Logs_24x24.png" />: Κάντε 
+            <td class="tdBelowTitle"><img alt="info" src="Images/Icons/Logs_24x24.png" />: Κάντε 
                 paste τα data από το excel στο παρακάτω textbox και πατήστε &#39;Import Data&#39;. Τα data πρέπει να είναι τής μορφής: 
                 <b>subprojectId</b>&lt;tab&gt;<b>περιγραφή</b>&lt;tab&gt;<b>υπεύθυνος1(id)</b>&gt;<b>υπεύθυνος2(id)</b>&lt;tab&gt;<b>deadline</b>&lt;tab&gt;<b>statusId</b>&lt;tab&gt;<b>σχόλια</b>. 
                 <br />Μπορείτε να βρείτε τα projectId, υπεύθυνος1, υπεύθυνος2 και status με τη βοήθεια των παρακάτω controls.</td>

@@ -17,16 +17,16 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td class="tdBelowTitle">
                 <asp:TextBox ID="txtUNameFilter" runat="server" Visible="False"></asp:TextBox>
                 <asp:TextBox ID="txtLastNameFilter" runat="server" Visible="False"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td>
-                <asp:GridView ID="gvUsers" runat="server" AllowPaging="True" 
+                <asp:GridView ID="gvUsers" runat="server" AllowPaging="True"
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id"
-                    DataSourceID="sqldsUsers" SkinID="gridviewSkin" ShowFooter="True">
+                    DataSourceID="sqldsUsers" SkinID="gridviewSkin" ShowFooter="false">
                     <Columns>
                         <asp:TemplateField ShowHeader="False">
                             <ItemStyle Wrap="false" />
@@ -70,7 +70,7 @@
                             </EditItemTemplate>
                             <FooterTemplate>
                                 <asp:RequiredFieldValidator SkinID="rfvDef" ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtInsUserName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
-                                <asp:TextBox ID="txtInsUserName" SkinID="txtReqFld" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtInsUserName" SkinID="txtReqFld" CssClass="MaxWidth80px" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="User Type" SortExpression="UserType">
@@ -140,9 +140,9 @@
                             </EditItemTemplate>
                             <FooterTemplate>
                                 <asp:RequiredFieldValidator SkinID="rfvDef" ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtInsLastName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
-                                <asp:TextBox ID="txtInsLastName" SkinID="txtReqFld" runat="server"></asp:TextBox><br />
+                                <asp:TextBox ID="txtInsLastName" CssClass="MaxWidth80px" SkinID="txtReqFld" runat="server"></asp:TextBox><br />
                                 <asp:RequiredFieldValidator SkinID="rfvDef" ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtInsFirstName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
-                                <asp:TextBox ID="txtInsFirstName" SkinID="txtReqFld" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtInsFirstName" CssClass="MaxWidth80px" SkinID="txtReqFld" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Mobile<br>Telephone" SortExpression="Mobile">
@@ -155,8 +155,8 @@
                                 <asp:TextBox ID="TextBox5" SkinID="txtDef" runat="server" Text='<%# Bind("Telephone") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="txtInsMobile" SkinID="txtDef" runat="server"></asp:TextBox><br />
-                                <asp:TextBox ID="txtInsTelephone" SkinID="txtDef" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtInsMobile" CssClass="MaxWidth80px" SkinID="txtDef" runat="server"></asp:TextBox><br />
+                                <asp:TextBox ID="txtInsTelephone" CssClass="MaxWidth80px" SkinID="txtDef" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Email<br>Default Page" SortExpression="Email">
@@ -223,6 +223,7 @@
         </tr>
         <tr>
             <td align="center">
+                <asp:Button ID="btnInsertion" runat="server" Text="Enable/Disable insertion" />
                 <asp:Button ID="btnclearFilters" runat="server" Text="Clear filtering" />
             </td>
         </tr>

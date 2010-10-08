@@ -18,7 +18,7 @@
             </td>
         </tr>
         <tr>
-            <td class="centered"><asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter" Visible="false"></asp:TextBox>
+            <td class="tdBelowTitle"><asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter" Visible="false"></asp:TextBox>
             </td>
         </tr>
         <tr>
