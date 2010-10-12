@@ -26,7 +26,7 @@
             <td>
                 <asp:GridView ID="gvUsers" runat="server" AllowPaging="True"
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id"
-                    DataSourceID="sqldsUsers" SkinID="gridviewSkin" ShowFooter="false">
+                    DataSourceID="sqldsUsers" SkinID="gridviewSkin">
                     <Columns>
                         <asp:TemplateField ShowHeader="False">
                             <ItemStyle Wrap="false" />
@@ -75,9 +75,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="User Type" SortExpression="UserType">
                             <ItemTemplate>
-                                    <asp:DropDownList ID="ddlUserType" runat="server" DataSourceID="sqldsUserTypes" 
-                                        Enabled="false" selectedvalue=<%# Bind("UserType") %> DataTextField="Description" DataValueField="id">
-                                    </asp:DropDownList>
+                                <asp:Label ID="Label12" runat="server" Text='<%# Bind("UserTypeText") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
                                     <asp:DropDownList ID="ddlUserType" runat="server" DataSourceID="sqldsUserTypes" 
@@ -92,12 +90,8 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Company<br>Position" SortExpression="Company">
                             <ItemTemplate>
-                                <asp:DropDownList ID="ddlCompanies" runat="server" 
-                                    Enabled="false" selectedvalue=<%# Bind("Company") %> DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
-                                </asp:DropDownList><br />
-                                <asp:DropDownList ID="ddlPosition" runat="server" DataSourceID="sqldsEmplType" 
-                                    Enabled="false" selectedvalue=<%# Bind("Position") %> DataTextField="Description" DataValueField="id">
-                                </asp:DropDownList>                                
+                                <asp:Label ID="Label13" runat="server" Text='<%# Bind("CompanyText") %>'></asp:Label><br />
+                                <asp:Label ID="Label14" runat="server" Text='<%# Bind("UserPositionText") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:DropDownList ID="ddlCompanies" runat="server" 
@@ -162,9 +156,7 @@
                         <asp:TemplateField HeaderText="Email<br>Default Page" SortExpression="Email">
                             <ItemTemplate>
                                 <asp:Label ID="Label8" runat="server" Text='<%# Bind("Email") %>'></asp:Label><br />
-                                <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="sqldsPages"  
-                                    Enabled="false" selectedvalue=<%# Bind("DefaultPage") %> DataTextField="Description" DataValueField="id">
-                                </asp:DropDownList>
+                                <asp:Label ID="Label15" runat="server" Text='<%# Bind("DefaultPageText") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox7" SkinID="txtDef" runat="server" Text='<%# Bind("Email") %>'></asp:TextBox><br />
@@ -190,7 +182,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Last Login" SortExpression="LastLogin">
                             <ItemTemplate>
-                                <asp:Label ID="Label9" runat="server" Text='<%# Bind("LastLogin", "{0:dd/MM/yyyy HH:mm:ss}") %>'></asp:Label>
+                                <asp:Label ID="Label9" runat="server" Text='<%# Bind("LastLogin", "{0:dd/MM/yyyy<br />HH:mm:ss}") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:Label ID="Label9" runat="server" Text='<%# Bind("LastLogin", "{0:dd/MM/yyyy HH:mm:ss}") %>'></asp:Label>
@@ -235,8 +227,9 @@
         ConnectionString="<%$ ConnectionStrings:cnMain %>" 
         DeleteCommand="DELETE FROM [Users] WHERE [id] = @id" 
         InsertCommand="INSERT INTO [Users] ([UserName], [Password], [UserType], [Company], [Position], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsUser]) VALUES (@UserName, @Password, @UserType, @Company, @Position, @FirstName, @LastName, @Telephone, @Mobile, @Email, @DefaultPage, @IsUser)" 
-        SelectCommand="SELECT [id], [UserName], [UserType], [Company], [Position], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsActive], [LastLogin], [IsUser] FROM [Users] WHERE LastName LIKE ('%'+ IsNull(@LastName, '') +'%') AND UserName LIKE ('%'+ IsNull(@UserName, '') +'%') AND UserType <> 38" 
-        UpdateCommand="UPDATE [Users] SET [UserName] = @UserName, [UserType] = @UserType, [Company] = @Company, [Position] = @Position, [FirstName] = @FirstName, [LastName] = @LastName, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email, [DefaultPage] = @DefaultPage, [IsActive] = @IsActive, [IsUser] = @IsUser WHERE [id] = @id">
+        SelectCommand="UsersList" 
+        UpdateCommand="UPDATE [Users] SET [UserName] = @UserName, [UserType] = @UserType, [Company] = @Company, [Position] = @Position, [FirstName] = @FirstName, [LastName] = @LastName, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email, [DefaultPage] = @DefaultPage, [IsActive] = @IsActive, [IsUser] = @IsUser WHERE [id] = @id" 
+        SelectCommandType="StoredProcedure">
         <DeleteParameters>
             <asp:Parameter Name="id" Type="Int32" />
         </DeleteParameters>
@@ -270,8 +263,8 @@
             <asp:Parameter Name="IsUser" Type="Boolean" />
         </InsertParameters>
         <SelectParameters>
-            <asp:ControlParameter ControlID="txtUNameFilter" Name="UserName" PropertyName="Text" Type="String" />
             <asp:ControlParameter ControlID="txtLastNameFilter" Name="LastName" PropertyName="Text" Type="String" />
+            <asp:ControlParameter ControlID="txtUNameFilter" Name="UserName" PropertyName="Text" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
                 </td>

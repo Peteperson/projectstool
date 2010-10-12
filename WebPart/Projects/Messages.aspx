@@ -151,15 +151,11 @@
                                 <table>
                                     <tr>
                                         <td>Άτομο: </td>
-                                        <td><asp:DropDownList ID="ddlUsers" runat="server" DataSourceID="sqldsUsers" 
-                                                Enabled="false" selectedValue='<%# Bind("ToUserId") %>' DataTextField="Fullname" DataValueField="id">
-                                            </asp:DropDownList></td>
+                                        <td><asp:Label ID="Label12" runat="server" Text='<%# Bind("ToUserText") %>'></asp:Label></td>
                                     </tr>
                                     <tr>
                                         <td>Εταιρεία: </td>
-                                        <td><asp:DropDownList ID="ddlCompanies" runat="server" 
-                                                Enabled="false" selectedValue='<%# Bind("ToCompanyId") %>' DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
-                                            </asp:DropDownList></td>
+                                        <td><asp:Label ID="Label13" runat="server" Text='<%# Bind("ToCompanyText") %>'></asp:Label></td>
                                     </tr>
                                     <tr>
                                         <td>Όλοι: </td>
@@ -192,7 +188,7 @@
                                 <table>
                                     <tr>
                                         <td>Άτομο: </td>
-                                        <td><asp:DropDownList ID="ddlUsers" runat="server" DataSourceID="sqldsUsers" 
+                                        <td align="left"><asp:DropDownList ID="ddlUsers" runat="server" DataSourceID="sqldsUsers" 
                                                 DataTextField="Fullname" onchange="ddlUsersToValueChanged(this.id)" DataValueField="id">
                                             </asp:DropDownList><br /></td>
                                     </tr>
@@ -204,7 +200,7 @@
                                     </tr>
                                     <tr>
                                         <td>Όλοι: </td>
-                                        <td><asp:CheckBox ID="cbAll" runat="server" onclick="cbAllValueChanged(this.id)" Checked="false" /></td>
+                                        <td align="left"><asp:CheckBox ID="cbAll" runat="server" onclick="cbAllValueChanged(this.id)" Checked="false" /></td>
                                     </tr>
                                 </table>
                             </FooterTemplate>
