@@ -7,6 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Project management tool - Login page</title>
+    <link rel="shortcut icon" href="Images/Icons/favicon.ico" />
     <link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
