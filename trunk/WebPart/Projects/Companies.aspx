@@ -225,7 +225,7 @@
                                 <asp:Label ID="Label4" runat="server" Text='<%# Bind("LastName") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" SkinID="rfvDef" runat="server" ControlToValidate="txt2LastName" ValidationGroup="InsEmp" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox SkinID="txtDef" ID="txt2LastName" MaxLength="50" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" SkinID="rfvDef" runat="server" ControlToValidate="txt2LastName" ValidationGroup="InsEmp" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox SkinID="txtDef" CssClass="MaxWidth120px" ID="txt2LastName" MaxLength="50" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Όνομα" SortExpression="FirstName">
@@ -236,7 +236,7 @@
                                 <asp:Label ID="Label5" runat="server" Text='<%# Bind("FirstName") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" SkinID="rfvDef" runat="server" ControlToValidate="txt2FirstName" ValidationGroup="InsEmp" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox SkinID="txtDef" MaxLength="50" ID="txt2FirstName" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" SkinID="rfvDef" runat="server" ControlToValidate="txt2FirstName" ValidationGroup="InsEmp" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox SkinID="txtDef" MaxLength="50" ID="txt2FirstName" CssClass="MaxWidth120px" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Θέση" SortExpression="Position">
@@ -264,7 +264,7 @@
                                 <asp:Label ID="Label7" runat="server" Text='<%# Bind("Telephone") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox SkinID="txtDef" MaxLength="12" ID="txt2Tel" runat="server"></asp:TextBox>
+                                <asp:TextBox SkinID="txtDef" CssClass="MaxWidth80px" MaxLength="12" ID="txt2Tel" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Κινητό" SortExpression="Mobile">
@@ -275,7 +275,7 @@
                                 <asp:Label ID="Label8" runat="server" Text='<%# Bind("Mobile") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox SkinID="txtDef" MaxLength="12" ID="txt2MobTel" runat="server"></asp:TextBox>
+                                <asp:TextBox SkinID="txtDef" MaxLength="12" CssClass="MaxWidth80px" ID="txt2MobTel" runat="server"></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Email" SortExpression="Email">
