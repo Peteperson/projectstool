@@ -319,7 +319,7 @@
                                         </EditItemTemplate>
                                         <InsertItemTemplate>
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                                                CommandName="Insert" ImageUrl="~/Images/Icons/add_24x24.png" ToolTip="Εισαγωγή εγγραφής" ValidationGroup="InsGroup" />
+                                                CommandName="Insert" ImageUrl="~/Images/Icons/Add3_24x24.png" ToolTip="Εισαγωγή εγγραφής" ValidationGroup="InsGroup" />
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
                                                 CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel32_32.png" ToolTip="Ακύρωση" />
                                         </InsertItemTemplate>
@@ -328,7 +328,7 @@
                                             <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="false" 
                                                 CommandName="Edit" ImageUrl="~/Images/Icons/Edit22_22.png" ToolTip="Διόρθωση" />
                                             &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                                CommandName="New" ImageUrl="~/Images/Icons/add_24x24.png" Tooltip="Νέα εγγραφή" />
+                                                CommandName="New" ImageUrl="~/Images/Icons/Add3_24x24.png" Tooltip="Νέα εγγραφή" />
                                             &nbsp;<asp:ImageButton ID="btnDeletePrj" runat="server" CausesValidation="False" 
                                                 CommandName="Delete" ImageUrl="~/Images/Icons/Delete_24x24.png" ToolTip="Διαγραφή" />
                                             &nbsp;&nbsp;&nbsp;&nbsp;<asp:ImageButton ID="btnSysDesign" runat="server" CausesValidation="False" 
@@ -433,23 +433,6 @@
                                         </ItemTemplate>
                                         <FooterTemplate>
                                             <asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtAPdesc" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsAP" ErrorMessage="*"></asp:RegularExpressionValidator><asp:TextBox ID="txtAPdesc" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>' ></asp:TextBox>
-                                        </FooterTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Type" Visible="false" SortExpression="ActionId">
-                                        <EditItemTemplate>
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlActionType" runat="server" 
-                                               selectedvalue=<%# Bind("ActionId") %> DataSourceID="objdsActionType" DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlActionType" runat="server" 
-                                               Enabled="false" selectedvalue=<%# Bind("ActionId") %> DataSourceID="objdsActionType" DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList>
-                                        </ItemTemplate>
-                                        <FooterTemplate>
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlActionType" runat="server" 
-                                               DataSourceID="objdsActionType" DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Υπεύθυνος1" SortExpression="Responsible1">
@@ -923,7 +906,7 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     SelectCommand="PrjAPlist" SelectCommandType="StoredProcedure"
                     DeleteCommand="DELETE FROM [ActionPlans] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Responsible1], [Responsible2], [Description], [AttachmentName], [Attachment], [Deadline], [Status], [MeetingDate]) VALUES (@ProjectId, @ActionId, @Responsible1, @Responsible2, @Description, @AttachmentName, @Attachment, @Deadline, @Status, GetDate())" 
+                    InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Responsible1], [Responsible2], [Description], [AttachmentName], [Attachment], [Deadline], [Status], [MeetingDate]) VALUES (@ProjectId, 5, @Responsible1, @Responsible2, @Description, @AttachmentName, @Attachment, @Deadline, @Status, GetDate())" 
                     UpdateCommand="UPDATE [ActionPlans] SET [Responsible1] = @Responsible1, [Responsible2] = @Responsible2, [Description] = @Description, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
@@ -943,7 +926,6 @@
                     </UpdateParameters>
                     <InsertParameters>
                         <asp:Parameter Name="ProjectId" Type="Int32" />
-                        <asp:Parameter Name="ActionId" Type="Byte" />
                         <asp:Parameter Name="Responsible1" Type="Int32" />
                         <asp:Parameter Name="Responsible2" Type="Int32" />
                         <asp:Parameter Name="Description" Type="String" />

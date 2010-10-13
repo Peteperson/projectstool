@@ -112,7 +112,7 @@ function ReloadPage() {
         </table>
         <table id="tblFooterLogo" style="width:100%">
             <tr style="background: url(Images/Blue.png) repeat-x;">
-                <td style="white-space:nowrap; text-align:right; vertical-align:top"><div id="advlink"><a href="http://advent.com.gr">AG ADVENT 2010</a></div></td>
+                <td style="white-space:nowrap; text-align:right; vertical-align:top"><div id="advlink"><a href="http://advent.com.gr">AG ADVENT <%=DateTime.Today.Year%></a></div></td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
