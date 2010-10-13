@@ -12,7 +12,7 @@
             <td class="FormTitle">
                 <table style="width:100%">
                     <tr>
-                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
+                        <td><asp:ImageButton ID="btnRemovePaging" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
                         <td style="width:100%" align="center">Λίστα Έργων</td>
                         <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
                                 ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
@@ -45,7 +45,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:CheckBoxList ID="cblStatus" runat="server" DataSourceID="sqldsPrjStatus" 
+                            <asp:CheckBoxList ID="cblStatus" runat="server" DataSourceID="objdsPrjStatus" 
                                 DataTextField="Description" DataValueField="id" RepeatColumns="5" 
                                 RepeatDirection="Horizontal" AutoPostBack="True">
                             </asp:CheckBoxList>
@@ -88,13 +88,13 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Status" SortExpression="Status">
                             <ItemTemplate>
-                                <asp:DropDownList ID="ddlPrjStatusOne" Font-Size="8pt" runat="server" DataSourceID="sqldsPrjStatus" 
+                                <asp:DropDownList ID="ddlPrjStatusOne" Font-Size="8pt" runat="server" DataSourceID="objdsPrjStatus" 
                                     selectedvalue='<%# Bind("StatusNo") %>' DataTextField="Description" DataValueField="id"
                                     AutoPostBack="true" OnSelectedIndexChanged="ddlPrjStatusOne_IndexChanged" ToolTip='<%# Bind("ProjectId") %>' >
                                 </asp:DropDownList>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:DropDownList ID="ddlPrjStatus" Font-Size="8pt" runat="server" DataSourceID="sqldsPrjStatus" 
+                                <asp:DropDownList ID="ddlPrjStatus" Font-Size="8pt" runat="server" DataSourceID="objdsPrjStatus" 
                                     DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </FooterTemplate>
@@ -153,7 +153,15 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
             </td>
-            <td></td>
+            <td>
+                <asp:ObjectDataSource ID="objdsPrjStatus" runat="server" 
+                    SelectMethod="VariousTypes" TypeName="Database">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="Category = 'ProjectStatus'" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+            </td>
             <td></td>
         </tr>
     </table>

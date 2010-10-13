@@ -47,7 +47,7 @@
                     <tr>
                         <td>Status</td>
                         <td>
-                            <asp:DropDownList ID="ddlStatus" onchange="ShowValue(this, 'lblStatusId')" runat="server" DataSourceID="sqldsStatus" 
+                            <asp:DropDownList ID="ddlStatus" onchange="ShowValue(this, 'lblStatusId')" runat="server" DataSourceID="objdsActionStatus" 
                                 DataTextField="Description" DataValueField="id">
                             </asp:DropDownList>
                         </td>
@@ -117,13 +117,13 @@
                 </asp:SqlDataSource>
             </td>
             <td>
-                <asp:SqlDataSource ID="sqldsStatus" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="TypesByCategory" SelectCommandType="StoredProcedure">
+                <asp:ObjectDataSource ID="objdsActionStatus" runat="server" 
+                    SelectMethod="VariousTypes" TypeName="Database">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="ActionStatus" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Category = 'ActionStatus'" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
                     </SelectParameters>
-                </asp:SqlDataSource>
+                </asp:ObjectDataSource>
             </td>
             <td>
                 <asp:SqlDataSource ID="sqldsResponsibles" runat="server" 

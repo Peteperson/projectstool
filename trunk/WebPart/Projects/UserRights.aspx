@@ -8,7 +8,7 @@
             <td class="FormTitle">
                 <table style="width:100%">
                     <tr>
-                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
+                        <td><asp:ImageButton ID="btnRemovePaging" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
                         <td style="width:100%" align="center">Διαχείριση Δικαιωμάτων</td>
                         <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
                                 ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
@@ -19,7 +19,7 @@
         <tr>
             <td class="tdBelowTitle">Προβολή δικαιωμάτων για τον ρόλο:
                 <asp:DropDownList ID="ddlShowRole" runat="server" AutoPostBack="True" 
-                    DataSourceID="sqldsUserTypes" DataTextField="Description" DataValueField="id">
+                    DataSourceID="objdsUserTypes" DataTextField="Description" DataValueField="id">
                 </asp:DropDownList>
             </td>
         </tr>
@@ -51,26 +51,22 @@
                         </asp:TemplateField> 
                         <asp:TemplateField HeaderText="User Type" SortExpression="UserType">
                             <ItemTemplate>
-                                <asp:DropDownList SkinId="ddlDef" ID="ddlUserType" runat="server" DataSourceID="sqldsUserTypes" 
-                                    Enabled="false" selectedvalue=<%# Bind("UserType") %> DataTextField="Description" DataValueField="id">
-                                </asp:DropDownList>
+                                <asp:Label ID="Label14" runat="server" Text='<%# Bind("UserTypeText") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:DropDownList SkinId="ddlDef" ID="ddlUserType" runat="server" DataSourceID="sqldsUserTypes" 
+                                <asp:DropDownList SkinId="ddlDef" ID="ddlUserType" runat="server" DataSourceID="objdsUserTypes" 
                                     selectedvalue=<%# Bind("UserType") %> DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:DropDownList SkinId="ddlDef" ID="ddlInsUserType" runat="server" DataSourceID="sqldsUserTypes" 
+                                <asp:DropDownList SkinId="ddlDef" ID="ddlInsUserType" runat="server" DataSourceID="objdsUserTypes" 
                                     DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Page" SortExpression="PageId">
                             <ItemTemplate>
-                                <asp:DropDownList SkinId="ddlDef" ID="ddlPages" runat="server" DataSourceID="sqlPages" 
-                                    Enabled="false" selectedvalue=<%# Bind("PageId") %> DataTextField="Description" DataValueField="id">
-                                </asp:DropDownList>
+                                <asp:Label ID="Label15" runat="server" Text='<%# Bind("PageText") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:DropDownList SkinId="ddlDef" ID="ddlPages" runat="server" DataSourceID="sqlPages" 
@@ -117,8 +113,7 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [UserPages] WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [UserPages] ([UserType], [PageId], [Description], [Ordering]) VALUES (@UserType, @PageId, @Description, @Ordering)" 
-                    SelectCommand="SELECT * FROM [UserPages] WHERE ([UserType] = @UserType)"                     
-                    
+                    SelectCommand="UserRightsList" SelectCommandType="StoredProcedure"
                     UpdateCommand="UPDATE [UserPages] SET [UserType] = @UserType, [PageId] = @PageId, [Description] = @Description, [Ordering] = @Ordering WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlShowRole" Name="UserType" 
@@ -143,13 +138,13 @@
                 </asp:SqlDataSource>
             </td>
             <td>
-                <asp:SqlDataSource ID="sqldsUserTypes" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category)">
+                <asp:ObjectDataSource ID="objdsUserTypes" runat="server" 
+                    SelectMethod="VariousTypes" TypeName="Database">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="UserType" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Category = 'UserType'" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
                     </SelectParameters>
-                </asp:SqlDataSource>
+                </asp:ObjectDataSource>
             </td>
             <td>
             </td>

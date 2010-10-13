@@ -10,7 +10,8 @@
             <td class="FormTitle">
                 <table style="width:100%">
                     <tr>
-                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
+                        <td><asp:ImageButton ID="btnRemovePaging" ImageUrl="~/Images/Paging3_32x32.png" 
+                                runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
                         <td style="width:100%" align="center">Σχεδιασμός Συστήματος</td>
                         <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
                                 ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
@@ -64,7 +65,7 @@
                                     ImageUrl="~/images/icons/add16_16.png" ToolTip="Εισαγωγή εγγραφής" ValidationGroup="InsProc" /></td>
                                 <td><asp:TextBox ID="txtCode" SkinID="txtTime" runat="server" Text='<%# Bind("Code") %>' ></asp:TextBox></td>
                                 <td><asp:TextBox ID="txtDescr" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>' ></asp:TextBox></td>
-                                <td><asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
+                                <td><asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="objdsProcStat" 
                                         selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList></td>
                                 <td><uc1:DateBox ID="dbStatDate" runat="server" Value='<%# Bind("StatusDate") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' /></td>
@@ -129,9 +130,7 @@
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:DropDownList ID="ddlResp" runat="server" DataSourceID="sqldsResponsibles" 
-                                    Enabled="false" selectedvalue=<%# Bind("Responsible") %> DataTextField="FullName" DataValueField="id">
-                                </asp:DropDownList>
+                                <asp:Label ID="Label12" runat="server" Text='<%# Bind("ResponsibleText") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
                                 <asp:DropDownList ID="ddlResp" runat="server" DataSourceID="sqldsResponsibles" 
@@ -153,17 +152,15 @@
                         <asp:TemplateField HeaderText="Status" SortExpression="Status">
                             <ItemStyle Width="120px" Wrap="false" />
                             <EditItemTemplate>
-                                <asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
+                                <asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="objdsProcStat" 
                                     selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
-                                    Enabled="false" selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
-                                </asp:DropDownList>
+                                <asp:Label ID="Label16" runat="server" Text='<%# Bind("StatusText") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="sqldsProcStat" 
+                                <asp:DropDownList ID="ddlProcStat" runat="server" DataSourceID="objdsProcStat" 
                                     DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </FooterTemplate>
@@ -198,8 +195,9 @@
                             </FooterTemplate>
                         </asp:TemplateField>
                     </Columns>
-                </asp:GridView>
-            </td>
+                </asp:GridView><br />
+                <asp:Button ID="btnInsert" runat="server" Text="Enable/Disable insertion" />
+&nbsp;</td>
         </tr>
         </table>
         <table style="width:95%">
@@ -257,7 +255,7 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [Processes] WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [Processes] ([SystemVersionId], [Code], [Description], [Status], [StatusDate], [Responsible], [Comments]) VALUES (@SystemVersionId, @Code, @Description, @Status, @StatusDate, @Responsible, @Comments)" 
-                    SelectCommand="SELECT [id], [Datestamp], [SystemVersionId], [Code], [Description], [Status], [StatusDate], ISNULL([Responsible], 0) AS Responsible, [Comments] FROM [Processes] WHERE ([SystemVersionId] = @SystemVersionId) ORDER BY [Code]" 
+                    SelectCommand="ProcessesList" SelectCommandType="StoredProcedure"
                     UpdateCommand="UPDATE [Processes] SET [SystemVersionId] = @SystemVersionId, [Code] = @Code, [Description] = @Description, [Status] = @Status, [StatusDate] = @StatusDate, [Responsible] = @Responsible, [Comments] = @Comments WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlSysVersions" Name="SystemVersionId" 
@@ -312,7 +310,15 @@
                             PropertyName="SelectedValue" Type="Int16" />
                     </SelectParameters>
                 </asp:SqlDataSource></td>
-            <td></td>
+            <td>
+                <asp:ObjectDataSource ID="objdsProcStat" runat="server" 
+                    SelectMethod="VariousTypes" TypeName="Database">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="Category = 'ProcessStatus'" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+            </td>
             <td></td>
         </tr>
     </table>

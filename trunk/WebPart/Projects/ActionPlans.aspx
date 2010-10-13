@@ -62,7 +62,7 @@
             <td class="FormTitle">
                 <table style="width:100%">
                     <tr>
-                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
+                        <td><asp:ImageButton ID="btnRemovePaging" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
                         <td style="width:100%" align="center">Λίστα action plan</td>
                         <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
                                 ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
@@ -82,7 +82,7 @@
                                 <tr>
                                     <td>
                                         <asp:CheckBoxList ID="cblStatus" runat="server" AutoPostBack="True"
-                                            DataSourceID="sqldsActionStatus" DataTextField="Description" 
+                                            DataSourceID="objdsActionStatus" DataTextField="Description" 
                                             DataValueField="id" RepeatDirection="Horizontal" RepeatColumns="2">
                                         </asp:CheckBoxList>
                                     </td>
@@ -157,13 +157,13 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Status" SortExpression="Status">
                             <ItemTemplate>
-                                <asp:DropDownList ID="ddlActionStatusOne" Font-Size="8pt" runat="server" DataSourceID="sqldsActionStatus" 
+                                <asp:DropDownList ID="ddlActionStatusOne" Font-Size="8pt" runat="server" DataSourceID="objdsActionStatus" 
                                     selectedvalue=<%# Bind("StatusNo") %> AutoPostBack="true" DataTextField="Description" 
                                     OnSelectedIndexChanged="ddlActionStatusOne_IndexChanged" ToolTip='<%# Bind("id") %>' DataValueField="id">
                                 </asp:DropDownList>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:DropDownList ID="ddlActionStatus" Font-Size="8pt" runat="server" DataSourceID="sqldsActionStatus" 
+                                <asp:DropDownList ID="ddlActionStatus" Font-Size="8pt" runat="server" DataSourceID="objdsActionStatus" 
                                     DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </FooterTemplate>
@@ -222,10 +222,6 @@
                                 <td class="tblDetailsItem" colspan="7"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                             </tr>
                             <tr>
-                                <!--<td class="tblDetailsHeader">ActionId</td>
-                                <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionType" runat="server" 
-                                       selectedvalue=<%# Bind("ActionId") %> DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
-                                    </asp:DropDownList></td>-->
                                 <td class="tblDetailsHeader">Όνομα αρχείου</td>
                                 <td class="tblDetailsItem" colspan="3"><asp:label ID="AttachmentNameTextBox" runat="server" Text='<%# Bind("AttachmentName") %>' /></td>
                                 <td class="tblDetailsHeader">Αρχείο</td>
@@ -240,7 +236,7 @@
                                     </table>
                                 </td>
                                 <td class="tblDetailsHeader">Status</td>
-                                <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
+                                <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="objdsActionStatus" 
                                                 selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList></td>
                             </tr>
@@ -277,16 +273,12 @@
                                 <td class="tblDetailsItem" colspan="7"><asp:TextBox ID="TextBox6" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox></td>
                             </tr>
                             <tr>
-                                <!--<td class="tblDetailsHeader">ActionId</td>
-                                <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionType" runat="server" 
-                                       selectedvalue=<%# Bind("ActionId") %> DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
-                                    </asp:DropDownList></td>-->
                                 <td class="tblDetailsHeader">Όνομα αρχείου</td>
                                 <td class="tblDetailsItem" colspan="3"></td>
                                 <td class="tblDetailsHeader">Αρχείο</td>
                                 <td class="tblDetailsItem"><asp:FileUpload ID="fuAP" runat="server" /></td>
                                 <td class="tblDetailsHeader">Status</td>
-                                <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
+                                <td class="tblDetailsItem"><asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="objdsActionStatus" 
                                                 selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList></td>
                             </tr>
@@ -371,13 +363,13 @@
                 </asp:SqlDataSource>
             </td>
             <td>
-                <!--<asp:SqlDataSource ID="sqldsActionType" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [Description]">
+                <asp:ObjectDataSource ID="objdsActionStatus" runat="server" 
+                    SelectMethod="VariousTypes" TypeName="Database">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="ActionType" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Category = 'ActionStatus'" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
                     </SelectParameters>
-                </asp:SqlDataSource>-->
+                </asp:ObjectDataSource>
             </td>
             <td>
                 <asp:SqlDataSource ID="sqldsResponsibles" runat="server" 

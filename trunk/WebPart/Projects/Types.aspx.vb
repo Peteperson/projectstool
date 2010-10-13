@@ -45,7 +45,7 @@ Partial Class Types
         txtCatFilter.Text = ""
     End Sub
 
-    Protected Sub btnRemovePaging1_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging1.Click
+    Protected Sub btnRemovePaging_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging.Click
         gvTypes.AllowPaging = Not gvTypes.AllowPaging
     End Sub
 

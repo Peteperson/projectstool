@@ -44,7 +44,9 @@ Public Module Database
         If dr.Read Then
             Dim r As Integer = dr("Status")
             Select Case r
-                Case 1 : result.Status = LoginResultStatus.Success
+                Case 1
+                    result.Status = LoginResultStatus.Success
+                    InitializeVariousTypes()
                 Case 2 : result.Status = LoginResultStatus.InvalidCredentials
                 Case 3 : result.Status = LoginResultStatus.InvalidCredentials
                 Case 4 : result.Status = LoginResultStatus.LockedUser
@@ -182,5 +184,45 @@ Public Module Database
         Dim result As String = cmd.ExecuteScalar()
         cn.Close()
         Return result
+    End Function
+
+    Private dsVariousTypes As DataSet
+    Public Sub InitializeVariousTypes()
+        dsVariousTypes = New DataSet
+        Dim da As SqlDataAdapter = New SqlDataAdapter("SELECT * FROM webuser.VariousTypes", _
+                            ConfigurationManager.ConnectionStrings("cnMain").ConnectionString)
+        da.Fill(dsVariousTypes, "VariousTypes")
+        da = New SqlDataAdapter("SELECT * FROM webuser.Pages", _
+                            ConfigurationManager.ConnectionStrings("cnMain").ConnectionString)
+        da.Fill(dsVariousTypes, "Pages")
+    End Sub
+
+    Public Function VariousTypes(ByVal Category As String, ByVal OrderBy As String) As DataSet
+        Dim ds As New DataSet
+        Dim dt As New DataTable
+        Dim dr() As DataRow = dsVariousTypes.Tables("VariousTypes").Select(Category, OrderBy)
+        dt.Columns.Add("id")
+        dt.Columns.Add("category")
+        dt.Columns.Add("description")
+        For Each row In dr
+            dt.ImportRow(row)
+        Next
+        ds.Tables.Add(dt)
+        Return ds
+    End Function
+
+    Public Function Pages(ByVal Category As String, ByVal OrderBy As String) As DataSet
+        Dim ds As New DataSet
+        Dim dt As New DataTable
+        Dim dr() As DataRow = dsVariousTypes.Tables("Pages").Select()
+        dt.Columns.Add("id")
+        dt.Columns.Add("path")
+        dt.Columns.Add("image")
+        dt.Columns.Add("Description")
+        For Each row In dr
+            dt.ImportRow(row)
+        Next
+        ds.Tables.Add(dt)
+        Return ds
     End Function
 End Module

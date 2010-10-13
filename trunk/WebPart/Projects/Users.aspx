@@ -8,7 +8,7 @@
             <td class="FormTitle">
                 <table style="width:100%">
                     <tr>
-                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
+                        <td><asp:ImageButton ID="btnRemovePaging" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
                         <td style="width:100%" align="center">Διαχείριση Χρηστών</td>
                         <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
                                 ImageUrl="~/Images/Icons/Print1_32x32.png"/></td>
@@ -78,12 +78,12 @@
                                 <asp:Label ID="Label12" runat="server" Text='<%# Bind("UserTypeText") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                    <asp:DropDownList ID="ddlUserType" runat="server" DataSourceID="sqldsUserTypes" 
+                                    <asp:DropDownList ID="ddlUserType" runat="server" DataSourceID="objdsUserType" 
                                         selectedvalue=<%# Bind("UserType") %> DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                    <asp:DropDownList ID="ddlInsUserType" runat="server" DataSourceID="sqldsUserTypes" 
+                                    <asp:DropDownList ID="ddlInsUserType" runat="server" DataSourceID="objdsUserType" 
                                         DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList>
                             </FooterTemplate>
@@ -97,7 +97,7 @@
                                 <asp:DropDownList ID="ddlCompanies" runat="server" 
                                     selectedvalue=<%# Bind("Company") %> DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
                                 </asp:DropDownList><br />
-                                <asp:DropDownList ID="ddlPosition" runat="server" DataSourceID="sqldsEmplType" 
+                                <asp:DropDownList ID="ddlPosition" runat="server" DataSourceID="objdsEmplType" 
                                     selectedvalue=<%# Bind("Position") %> DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </EditItemTemplate>
@@ -105,7 +105,7 @@
                                 <asp:DropDownList ID="ddlCompanies" runat="server" 
                                     DataSourceID="sqldsCompanies" DataTextField="Name" DataValueField="Id">
                                 </asp:DropDownList><br />
-                                <asp:DropDownList ID="ddlPosition" runat="server" DataSourceID="sqldsEmplType" 
+                                <asp:DropDownList ID="ddlPosition" runat="server" DataSourceID="objdsEmplType" 
                                     DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </FooterTemplate>
@@ -296,15 +296,23 @@
             </tr>
             <tr>
                 <td>
-                    <asp:SqlDataSource ID="sqldsEmplType" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                        SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [id]">
+                    <asp:ObjectDataSource ID="objdsEmplType" runat="server" 
+                        SelectMethod="VariousTypes" TypeName="Database">
                         <SelectParameters>
-                            <asp:Parameter DefaultValue="EmployeeType" Name="Category" Type="String" />
+                            <asp:Parameter DefaultValue="Category ='EmployeeType'" Name="Category" Type="String" />
+                            <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
                         </SelectParameters>
-                    </asp:SqlDataSource>
+                    </asp:ObjectDataSource>
                 </td>
-                <td></td>
+                <td>
+                <asp:ObjectDataSource ID="objdsUserType" runat="server" 
+                    SelectMethod="VariousTypes" TypeName="Database">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="Category = 'UserType' AND Description <> 'Admin'" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+                </td>
                 <td></td>
                 <td></td>
             </tr>
