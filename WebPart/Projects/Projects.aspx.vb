@@ -178,7 +178,6 @@ Partial Class Projects
         Dim resp As Integer
         If gvAP.Rows.Count > 0 Then
             e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
-            e.Command.Parameters("@ActionId").Value = CType(gvAP.FooterRow.FindControl("ddlActionType"), DropDownList).SelectedValue
             resp = CType(gvAP.FooterRow.FindControl("ddlResp1"), DropDownList).SelectedValue
             e.Command.Parameters("@Responsible1").Value = IIf(resp = 0, DBNull.Value, resp)
             resp = CType(gvAP.FooterRow.FindControl("ddlResp2"), DropDownList).SelectedValue
@@ -190,7 +189,6 @@ Partial Class Projects
             e.Command.Parameters("@Status").Value = CType(gvAP.FooterRow.FindControl("ddlActionStatus"), DropDownList).SelectedValue
         Else
             e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
-            e.Command.Parameters("@ActionId").Value = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("ddlActionType"), DropDownList).SelectedValue
             resp = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("ddlResp1"), DropDownList).SelectedValue
             e.Command.Parameters("@Responsible1").Value = IIf(resp = 0, DBNull.Value, resp)
             resp = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("ddlResp2"), DropDownList).SelectedValue
