@@ -310,8 +310,6 @@ Partial Class Projects
             e.Command.Parameters("@Kind").Value = CType(gvMeetings.FooterRow.FindControl("ddlMeetKind"), DropDownList).SelectedValue
             e.Command.Parameters("@Subject").Value = CType(gvMeetings.FooterRow.FindControl("txtMeetSubject"), TextBox).Text
             e.Command.Parameters("@Consultant").Value = CType(gvMeetings.FooterRow.FindControl("ddlMeetCons"), DropDownList).SelectedValue
-            e.Command.Parameters("@Comments").Value = CType(gvMeetings.FooterRow.FindControl("txtMeetComments"), TextBox).Text
-            e.Command.Parameters("@NewBusiness").Value = CType(gvMeetings.FooterRow.FindControl("txtMeetNewBus"), TextBox).Text
             e.Command.Parameters("@AttachmentName").Value = CType(gvMeetings.FooterRow.FindControl("fuAttachment"), FileUpload).FileName
             e.Command.Parameters("@Attachment").Value = CType(gvMeetings.FooterRow.FindControl("fuAttachment"), FileUpload).FileBytes
             e.Command.Parameters("@Status").Value = CType(gvMeetings.FooterRow.FindControl("ddlMeetStat"), DropDownList).SelectedValue
@@ -324,8 +322,6 @@ Partial Class Projects
             e.Command.Parameters("@Kind").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("ddlMeetKind"), DropDownList).SelectedValue
             e.Command.Parameters("@Subject").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("txtMeetSubject"), TextBox).Text
             e.Command.Parameters("@Consultant").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("ddlMeetCons"), DropDownList).SelectedValue
-            e.Command.Parameters("@Comments").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("txtMeetComments"), TextBox).Text
-            e.Command.Parameters("@NewBusiness").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("txtMeetNewBus"), TextBox).Text
             e.Command.Parameters("@AttachmentName").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("fuAttachment"), FileUpload).FileName
             e.Command.Parameters("@Attachment").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("fuAttachment"), FileUpload).FileBytes
             e.Command.Parameters("@Status").Value = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("ddlMeetStat"), DropDownList).SelectedValue
@@ -419,7 +415,7 @@ Partial Class Projects
         InsertDeleteValidation(e, 0)
     End Sub
 
-    Protected Sub btnRemovePaging1_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging1.Click
+    Protected Sub btnRemovePaging_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging.Click
         gvAP.AllowPaging = Not gvAP.AllowPaging
         gvFiles.AllowPaging = Not gvFiles.AllowPaging
         gvMeetings.AllowPaging = Not gvMeetings.AllowPaging

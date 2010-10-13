@@ -11,7 +11,7 @@
             <td class="FormTitle">
                 <table style="width:100%">
                     <tr>
-                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
+                        <td><asp:ImageButton ID="btnRemovePaging" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
                         <td style="width:100%" align="center">Λίστα Συναντήσεων</td>
                         <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
                                 ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
@@ -30,7 +30,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <asp:CheckBoxList ID="cblStatus" runat="server" DataSourceID="sqldsMeetStat" 
+                                        <asp:CheckBoxList ID="cblStatus" runat="server" DataSourceID="objdsMeetStatus" 
                                             DataTextField="Description" DataValueField="id" AutoPostBack="True"
                                             RepeatDirection="Horizontal" RepeatColumns="2">
                                         </asp:CheckBoxList>
@@ -116,13 +116,13 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Status" SortExpression="Status">
                             <ItemTemplate>
-                                <asp:DropDownList ID="ddlMeetingStatusOne" Font-Size="8pt" runat="server" DataSourceID="sqldsMeetStat" 
+                                <asp:DropDownList ID="ddlMeetingStatusOne" Font-Size="8pt" runat="server" DataSourceID="objdsMeetStatus" 
                                     selectedvalue='<%# Bind("StatusNo") %>' DataTextField="Description" DataValueField="id" AutoPostBack="true"
                                     OnSelectedIndexChanged="ddlMeetingStatusOne_IndexChanged" ToolTip='<%# Bind("id") %>' >
                                 </asp:DropDownList>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:DropDownList ID="ddlMeetingStatus" Font-Size="8pt" runat="server" DataSourceID="sqldsMeetStat" 
+                                <asp:DropDownList ID="ddlMeetingStatus" Font-Size="8pt" runat="server" DataSourceID="objdsMeetStatus" 
                                     DataTextField="Description" DataValueField="id">
                                 </asp:DropDownList>
                             </FooterTemplate>
@@ -172,7 +172,7 @@
                                         selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
                                     </asp:DropDownList></td>
                                 <td class="tblDetailsHeader">Kind</td>
-                                <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetKind" runat="server" DataSourceID="sqldsMeetKind" 
+                                <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetKind" runat="server" DataSourceID="objdsMeetKind" 
                                         selectedvalue=<%# Bind("Kind") %> DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList>
                             </tr>
@@ -199,7 +199,7 @@
                                     </table>
                                 </td>
                                 <td class="tblDetailsHeader">Status</td>
-                                <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
+                                <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="objdsMeetStatus" 
                                         selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList></td>
                             </tr>
@@ -227,7 +227,7 @@
                                         selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
                                     </asp:DropDownList></td>
                                 <td class="tblDetailsHeader">Kind</td>
-                                <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetKind" runat="server" DataSourceID="sqldsMeetKind" 
+                                <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetKind" runat="server" DataSourceID="objdsMeetKind" 
                                         selectedvalue=<%# Bind("Kind") %> DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList>
                             </tr>
@@ -245,7 +245,7 @@
                                 <td class="tblDetailsHeader">Attachment</td>
                                 <td class="tblDetailsItem" colspan="3"><asp:FileUpload ID="FileUpload1" runat="server" /></td>
                                 <td class="tblDetailsHeader">Status</td>
-                                <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
+                                <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="objdsMeetStatus" 
                                          selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList></td>
                             </tr>
@@ -322,13 +322,13 @@
                 </asp:SqlDataSource>
             </td>
             <td>
-                <asp:SqlDataSource ID="sqldsMeetKind" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [Description]">
+                <asp:ObjectDataSource ID="objdsMeetKind" runat="server" 
+                    SelectMethod="VariousTypes" TypeName="Database">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="MeetingKind" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Category = 'MeetingKind'" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
                     </SelectParameters>
-                </asp:SqlDataSource>
+                </asp:ObjectDataSource>
             </td>
             <td style="margin-left: 40px">
                 <asp:SqlDataSource ID="sqldsConsultants" runat="server" 
@@ -365,7 +365,15 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
             </td>
-            <td></td>
+            <td>
+                <asp:ObjectDataSource ID="objdsMeetStatus" runat="server" 
+                    SelectMethod="VariousTypes" TypeName="Database">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="Category = 'MeetingStatus'" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+            </td>
             <td></td>
         </tr>
     </table>

@@ -10,7 +10,7 @@
             <td class="FormTitle">
                 <table style="width:100%">
                     <tr>
-                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
+                        <td><asp:ImageButton ID="btnRemovePaging" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
                         <td style="width:100%" align="center">Διαχείριση πελατών</td>
                         <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
                                 ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
@@ -246,9 +246,7 @@
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:DropDownList SkinId="ddlDef" ID="ddl2Position" runat="server" DataSourceID="sqldsEmplType" 
-                                    Enabled="false" selectedvalue=<%# Bind("Position") %> DataTextField="Description" DataValueField="id">
-                                </asp:DropDownList>
+                                <asp:Label ID="Label15" runat="server" Text='<%# Bind("PositionText") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
                                 <asp:DropDownList SkinId="ddlDef" ID="ddl2Position" runat="server" DataSourceID="sqldsEmplType" 
@@ -332,8 +330,7 @@
             <td>
                 <asp:SqlDataSource ID="sqldsCompEmployees" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    
-                    SelectCommand="SELECT * FROM [Users] WHERE [Company] = @CompanyId ORDER BY [LastName], [FirstName]" 
+                    SelectCommand="CmpEmplList" SelectCommandType="StoredProcedure"
                     DeleteCommand="DELETE FROM [Users] WHERE [Id] = @Id" 
                     InsertCommand="INSERT INTO [Users] ([UserName], [UserType], [Company], [Position], [LastName], [FirstName], [Telephone], [Mobile], [Email], [DefaultPage], [IsUser]) VALUES (@UserName, 41, @CompanyId, @Position, @LastName, @FirstName, @Telephone, @Mobile, @Email, 18, 0)" 
                     UpdateCommand="UPDATE [Users] SET [LastName] = @LastName, [FirstName] = @FirstName, [Position] = @Position, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email, [IsUser] = @IsUser WHERE [Id] = @Id">

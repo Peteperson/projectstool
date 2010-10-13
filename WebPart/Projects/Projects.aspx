@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Main.master" AutoEventWireup="false" CodeFile="Projects.aspx.vb" Inherits="Projects" Theme="MainSkin" %>
 <%@ Register src="DateBox.ascx" tagname="DateBox" tagprefix="uc1" %>
 
+<%@ Register assembly="System.Web.Entity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" namespace="System.Web.UI.WebControls" tagprefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
@@ -9,7 +11,7 @@
             <td class="FormTitle">
                 <table style="width:100%">
                     <tr>
-                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
+                        <td><asp:ImageButton ID="btnRemovePaging" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
                         <td style="width:100%" align="center">Διαχείριση έργων</td>
                         <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
                                 ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
@@ -42,7 +44,7 @@
                                                     <td class="tblDetailsItem" colspan="3"><asp:Label ID="Label10" runat="server" Text='<%# Bind("Title") %>'></asp:Label></td>
                                                     <td class="tblDetailsHeader">Τύπος</td>
                                                     <td class="tblDetailsItem">
-                                                        <asp:RadioButtonList ID="rbPrjType" runat="server" DataSourceID="sqldsPrjType" 
+                                                        <asp:RadioButtonList ID="rbPrjType" runat="server" DataSourceID="objdsPrjType" 
                                                              Enabled="false" selectedvalue=<%# Bind("Type") %> DataTextField="Description" DataValueField="id" RepeatDirection="Horizontal">
                                                         </asp:RadioButtonList>
                                                     </td>
@@ -108,7 +110,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Status</td>
-                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectStatus" runat="server" DataSourceID="sqldsProjectStatus" 
+                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectStatus" runat="server" DataSourceID="objdsPrjStatus" 
                                                             Enabled="false" selectedvalue=<%# Bind("Status") %>  DataTextField="Description" DataValueField="id">                                                
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">% Ολοκλήρωσης</td>
@@ -138,7 +140,7 @@
                                                     <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox9" MaxLength="50" SkinID="txtText" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">Τύπος</td>
                                                     <td class="tblDetailsItem">
-                                                        <asp:RadioButtonList ID="rbPrjType" runat="server" DataSourceID="sqldsPrjType" 
+                                                        <asp:RadioButtonList ID="rbPrjType" runat="server" DataSourceID="objdsPrjType" 
                                                              selectedvalue=<%# Bind("Type") %> DataTextField="Description" DataValueField="id" RepeatDirection="Horizontal">
                                                         </asp:RadioButtonList>
                                                     </td>
@@ -197,7 +199,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Status</td>
-                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectStatus" runat="server" DataSourceID="sqldsProjectStatus" 
+                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectStatus" runat="server" DataSourceID="objdsPrjStatus" 
                                                             selectedvalue=<%# Bind("Status") %>  DataTextField="Description" DataValueField="id">                                                
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">% Ολοκλήρωσης</td>
@@ -226,7 +228,7 @@
                                                     <td class="tblDetailsItem" colspan="3"><asp:TextBox ID="TextBox9" MaxLength="50" SkinID="txtText" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox></td>
                                                     <td class="tblDetailsHeader">Τύπος <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="rbPrjType" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                                     <td class="tblDetailsItem">
-                                                        <asp:RadioButtonList ID="rbPrjType" runat="server" DataSourceID="sqldsPrjType" 
+                                                        <asp:RadioButtonList ID="rbPrjType" runat="server" DataSourceID="objdsPrjType" 
                                                              DataTextField="Description" DataValueField="id" RepeatDirection="Horizontal">
                                                         </asp:RadioButtonList>
                                                     </td>
@@ -285,7 +287,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="tblDetailsHeader">Status</td>
-                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectStatus" runat="server" DataSourceID="sqldsProjectStatus" 
+                                                    <td class="tblDetailsItem"><asp:DropDownList ID="ddlProjectStatus" runat="server" DataSourceID="objdsPrjStatus" 
                                                             DataTextField="Description" DataValueField="id">                                                
                                                         </asp:DropDownList></td>
                                                     <td class="tblDetailsHeader">% Ολοκλήρωσης</td>
@@ -384,9 +386,6 @@
                                         <td class="centered"><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
                                             ImageUrl="~/images/icons/add16_16.png" ToolTip="Εισαγωγή εγγραφής" ValidationGroup="InsAP" /></td>
                                         <td><asp:TextBox ID="txtAPdesc" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Description") %>' ></asp:TextBox></td>
-                                        <!--<td><asp:DropDownList SkinId="ddlDef" ID="ddlActionType" runat="server" 
-                                               DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList></td>-->
                                         <td><asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
                                                 DataTextField="FullName" DataValueField="id">
                                             </asp:DropDownList></td>
@@ -394,7 +393,7 @@
                                                 DataTextField="FullName" DataValueField="id">
                                             </asp:DropDownList></td>
                                         <td><uc1:DateBox ID="dbDeadline" runat="server" Value='<%# Bind("Deadline") %>' Text='<%# Today.ToString("dd/MM/yyyy") %>' /></td>
-                                        <td><asp:DropDownList SkinId="ddlDef" ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
+                                        <td><asp:DropDownList SkinId="ddlDef" ID="ddlActionStatus" runat="server" DataSourceID="objdsActionStatus" 
                                                 DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList></td>
                                         <td><asp:FileUpload ID="fuAP" Font-Size="8pt" runat="server" /></td>
@@ -439,17 +438,17 @@
                                     <asp:TemplateField HeaderText="Type" Visible="false" SortExpression="ActionId">
                                         <EditItemTemplate>
                                             <asp:DropDownList SkinId="ddlDef" ID="ddlActionType" runat="server" 
-                                               selectedvalue=<%# Bind("ActionId") %> DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
+                                               selectedvalue=<%# Bind("ActionId") %> DataSourceID="objdsActionType" DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:DropDownList SkinId="ddlDef" ID="ddlActionType" runat="server" 
-                                               Enabled="false" selectedvalue=<%# Bind("ActionId") %> DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
+                                               Enabled="false" selectedvalue=<%# Bind("ActionId") %> DataSourceID="objdsActionType" DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </ItemTemplate>
                                         <FooterTemplate>
                                             <asp:DropDownList SkinId="ddlDef" ID="ddlActionType" runat="server" 
-                                               DataSourceID="sqldsActionType" DataTextField="Description" DataValueField="id">
+                                               DataSourceID="objdsActionType" DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
@@ -460,9 +459,7 @@
                                             </asp:DropDownList>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
-                                                Enabled="false" selectedvalue=<%# Bind("Responsible1") %> DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList>
+                                            <asp:Label ID="Label18" runat="server" Text='<%# Bind("Responsible1Text") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
                                             <asp:DropDownList ID="ddlResp1" runat="server" DataSourceID="sqldsResponsibles" 
@@ -477,9 +474,7 @@
                                             </asp:DropDownList>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
-                                                Enabled="false" selectedvalue=<%# Bind("Responsible2") %> DataTextField="FullName" DataValueField="id">
-                                            </asp:DropDownList>
+                                            <asp:Label ID="Label19" runat="server" Text='<%# Bind("Responsible2Text") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
                                             <asp:DropDownList SkinId="ddlDef" ID="ddlResp2" runat="server" DataSourceID="sqldsResponsibles" 
@@ -500,17 +495,15 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Status" SortExpression="Status">
                                         <EditItemTemplate>
-                                            <asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
+                                            <asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="objdsActionStatus" 
                                                 selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
-                                                Enabled="false" selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList>
+                                            <asp:Label ID="Label20" runat="server" Text='<%# Bind("StatusText") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="sqldsActionStatus" 
+                                            <asp:DropDownList ID="ddlActionStatus" runat="server" DataSourceID="objdsActionStatus" 
                                                 DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </FooterTemplate>
@@ -546,8 +539,6 @@
                                         <td class="CommentsCol"><!--Kind<br />-->Θέμα</td>
                                         <td align="center">Σύμβουλος</td>
                                         <td align="center">Status</td>
-                                        <!--<td>NewBusiness</td>
-                                        <td>Comments</td>-->
                                         <td align="center">File</td>
                                     </tr>
                                     <tr class="InsertRow">
@@ -555,17 +546,13 @@
                                                 ImageUrl="~/Images/Icons/add16_16.png" ToolTip="Εισαγωγή εγγραφής" ValidationGroup="InsMeet" /></td>
                                         <td><uc1:DateBox ID="dbTimeFrom" runat="server" ShowTime="true" Text='<%# Now.ToString("dd/MM/yyyy") %>' /></td>
                                         <td><uc1:DateBox ID="dbTimeTo" runat="server" ShowTime="true" ShowDate="false" Text='<%# Now.ToString("dd/MM/yyyy") %>' /></td>
-                                        <td><!--<asp:DropDownList SkinId="ddlDef" ID="ddlMeetKind" runat="server" DataSourceID="sqldsMeetKind" 
-                                                DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList><br />--><asp:TextBox ID="txtMeetSubject" MaxLength="50" SkinID="txtText" runat="server" ></asp:TextBox></td>
+                                        <td><asp:TextBox ID="txtMeetSubject" MaxLength="50" SkinID="txtText" runat="server" ></asp:TextBox></td>
                                         <td><asp:DropDownList SkinId="ddlDef" ID="ddlMeetCons" runat="server" DataSourceID="sqldsPrjManagers" 
                                                 DataTextField="Fullname" DataValueField="id">
                                             </asp:DropDownList></td>
-                                        <td><asp:DropDownList SkinId="ddlDef" ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
+                                        <td><asp:DropDownList SkinId="ddlDef" ID="ddlMeetStat" runat="server" DataSourceID="objdsMeetStat" 
 				                                DataTextField="Description" DataValueField="id">
 				                            </asp:DropDownList></td>
-                                        <!--<td><asp:TextBox ID="txtMeetNewBus" SkinID="txtTextLong" TextMode="MultiLine" runat="server" ></asp:TextBox></td>
-                                        <td><asp:TextBox ID="txtMeetComments" SkinID="txtTextLong" TextMode="MultiLine" runat="server" ></asp:TextBox></td>-->
                                         <td><asp:FileUpload Font-Size="8pt" ID="fuAttachment" runat="server" /></td>
                                     </tr>
                                 </table>
@@ -617,17 +604,17 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Τύπος" SortExpression="Kind" Visible="false">
                                         <EditItemTemplate>
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlMeetKind" runat="server" DataSourceID="sqldsMeetKind" 
+                                            <asp:DropDownList SkinId="ddlDef" ID="ddlMeetKind" runat="server" DataSourceID="objdsMeetKind" 
                                                 selectedvalue=<%# Bind("Kind") %> DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:DropDownList SkinId="ddlDef" ID="ddlMeetKind" runat="server" DataSourceID="sqldsMeetKind" 
+                                            <asp:DropDownList SkinId="ddlDef" ID="ddlMeetKind" runat="server" DataSourceID="objdsMeetKind" 
                                                 Enabled="false" selectedvalue=<%# Bind("Kind") %> DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:DropDownList ID="ddlMeetKind" SkinID="ddlDef" runat="server" DataSourceID="sqldsMeetKind" 
+                                            <asp:DropDownList ID="ddlMeetKind" SkinID="ddlDef" runat="server" DataSourceID="objdsMeetKind" 
                                                 DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </FooterTemplate>
@@ -651,9 +638,7 @@
                                             </asp:DropDownList>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsPrjManagers" 
-                                                Enabled="false" selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
-                                            </asp:DropDownList>
+                                            <asp:Label ID="Label21" runat="server" Text='<%# Bind("ConsultantText") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
                                             <asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsPrjManagers" 
@@ -661,41 +646,17 @@
                                             </asp:DropDownList>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-				                    <asp:TemplateField HeaderText="NewBusiness" Visible="false" SortExpression="NewBusiness">
-                                        <EditItemTemplate>
-                                            <asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="TextBox10" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="UpdMeet" ErrorMessage="*"></asp:RegularExpressionValidator><asp:TextBox ID="TextBox10" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("NewBusiness") %>'></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label ID="Label11" runat="server" Text='<%# Bind("NewBusiness") %>'></asp:Label>
-                                        </ItemTemplate>
-                                        <FooterTemplate>
-                                            <asp:RegularExpressionValidator ID="RegExpVal1" runat="server" ControlToValidate="txtMeetNewBus" ValidationExpression="^[\s\S]{0,500}$" ValidationGroup="InsMeet" ErrorMessage="*"></asp:RegularExpressionValidator><asp:TextBox ID="txtMeetNewBus" SkinID="txtTextLong" TextMode="MultiLine" runat="server" ></asp:TextBox>
-                                        </FooterTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Comments" Visible="false" SortExpression="Comments">
-                                        <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox9" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label ID="Label10" runat="server" Text='<%# Bind("Comments") %>'></asp:Label>
-                                        </ItemTemplate>
-                                        <FooterTemplate>
-                                            <asp:TextBox ID="txtMeetComments" SkinID="txtTextLong" TextMode="MultiLine" runat="server" ></asp:TextBox>
-                                        </FooterTemplate>
-                                    </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Status" SortExpression="status">
                                         <EditItemTemplate>
-                                            <asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
+                                            <asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="objdsMeetStat" 
                                                 selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
-                                                Enabled="false" selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
-                                            </asp:DropDownList>
+                                            <asp:Label ID="Label20" runat="server" Text='<%# Bind("StatusText") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                                            <asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="sqldsMeetStat" 
+                                            <asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="objdsMeetStat" 
                                                 DataTextField="Description" DataValueField="id">
                                             </asp:DropDownList>
                                         </FooterTemplate>
@@ -721,8 +682,7 @@
                         <td id="tdAttachments" align="center">
                             <asp:GridView ID="gvFiles" runat="server" AllowPaging="True" 
                                 AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
-                                DataSourceID="sqldsAttachments" SkinID="gridviewSkinSmall" 
-                                ShowFooter="false">
+                                DataSourceID="sqldsAttachments" SkinID="gridviewSkinSmall">
                                 <EmptyDataTemplate>
                                     <br />
                                     Δεν υπάρχουν καταχωρημένα αρχεία στο συγκεκριμένο έργο.<br />
@@ -961,8 +921,7 @@
             <td>
                 <asp:SqlDataSource ID="sqldsAP" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    
-                    SelectCommand="SELECT [id], [ProjectId], [DateStamp], [ActionId],  ISNULL([Responsible1], 0) AS Responsible1,  ISNULL([Responsible2], 0) AS Responsible2, [Description], [Comments], [AttachmentName], [Deadline], [Status] FROM [ActionPlans] WHERE ([ProjectId] = @ProjectId) ORDER BY [Deadline] DESC" 
+                    SelectCommand="PrjAPlist" SelectCommandType="StoredProcedure"
                     DeleteCommand="DELETE FROM [ActionPlans] WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Responsible1], [Responsible2], [Description], [AttachmentName], [Attachment], [Deadline], [Status], [MeetingDate]) VALUES (@ProjectId, @ActionId, @Responsible1, @Responsible2, @Description, @AttachmentName, @Attachment, @Deadline, @Status, GetDate())" 
                     UpdateCommand="UPDATE [ActionPlans] SET [Responsible1] = @Responsible1, [Responsible2] = @Responsible2, [Description] = @Description, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
@@ -998,9 +957,9 @@
             <td>
                 <asp:SqlDataSource ID="sqldsMeetings" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="SELECT [id], [Datestamp], [ProjectId], [TimeFrom], [TimeTo], [Kind], [Subject], [Consultant], [Comments], [NewBusiness], [AttachmentName], [Status] FROM [Meetings] WHERE ([ProjectId] = @ProjectId) ORDER BY [TimeFrom] DESC" 
+                    SelectCommand="PrjMeetlist" SelectCommandType="StoredProcedure" 
                     DeleteCommand="DELETE FROM [Meetings] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [Meetings] ([ProjectId], [TimeFrom], [TimeTo], [Kind], [Subject], [Consultant], [Comments], [NewBusiness], [AttachmentName], [Attachment], [Status]) VALUES (@ProjectId, @TimeFrom, @TimeTo, @Kind, @Subject, @Consultant, @Comments, @NewBusiness, @AttachmentName, @Attachment, @Status)" 
+                    InsertCommand="INSERT INTO [Meetings] ([ProjectId], [TimeFrom], [TimeTo], [Kind], [Subject], [Consultant], [Comments], [NewBusiness], [AttachmentName], [Attachment], [Status]) VALUES (@ProjectId, @TimeFrom, @TimeTo, @Kind, @Subject, @Consultant, '', '', @AttachmentName, @Attachment, @Status)" 
                     UpdateCommand="UPDATE [Meetings] SET [TimeFrom] = @TimeFrom, [TimeTo] = @TimeTo, [Subject] = @Subject, [Consultant] = @Consultant, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
@@ -1024,8 +983,6 @@
                         <asp:Parameter Name="Kind" Type="Byte" />
                         <asp:Parameter Name="Subject" Type="String" />
                         <asp:Parameter Name="Consultant" Type="Int32" />
-                        <asp:Parameter Name="Comments" Type="String" />
-                        <asp:Parameter Name="NewBusiness" Type="String" />
                         <asp:Parameter Name="AttachmentName" Type="String" />
                         <asp:Parameter Name="Attachment" />
                         <asp:Parameter Name="Status" Type="Byte" />
@@ -1074,13 +1031,13 @@
                 </asp:SqlDataSource>
             </td>
             <td>
-                <asp:SqlDataSource ID="sqldsActionType" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [Description]">
+                <asp:ObjectDataSource ID="objdsActionType" runat="server" 
+                    SelectMethod="VariousTypes" TypeName="Database">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="ActionType" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Category = 'ActionType'" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
                     </SelectParameters>
-                </asp:SqlDataSource>
+                </asp:ObjectDataSource>
             </td>
             <td>
                 <asp:SqlDataSource ID="sqldsResponsibles" runat="server" 
@@ -1110,44 +1067,44 @@
                     SelectCommand="SELECT DISTINCT [Name], [Id] FROM [Companies] ORDER BY [Name]"></asp:SqlDataSource>
             </td>
             <td>
-                <asp:SqlDataSource ID="sqldsProjectStatus" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [Description]">
+                <asp:ObjectDataSource ID="objdsPrjStatus" runat="server" 
+                    SelectMethod="VariousTypes" TypeName="Database">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="ProjectStatus" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Category = 'ProjectStatus'" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
                     </SelectParameters>
-                </asp:SqlDataSource>
+                </asp:ObjectDataSource>
             </td>
             <td>
-                <asp:SqlDataSource ID="sqldsActionStatus" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [Description]">
+                <asp:ObjectDataSource ID="objdsActionStatus" runat="server" 
+                    SelectMethod="VariousTypes" TypeName="Database">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="ActionStatus" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Category = 'ActionStatus'" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
                     </SelectParameters>
-                </asp:SqlDataSource>
+                </asp:ObjectDataSource>
             </td>
         </tr>
         <tr>
             <td>
-                <asp:SqlDataSource ID="sqldsMeetKind" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [Description]">
+                <asp:ObjectDataSource ID="objdsMeetKind" runat="server" 
+                    SelectMethod="VariousTypes" TypeName="Database">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="MeetingKind" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Category = 'MeetingKind'" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
                     </SelectParameters>
-                </asp:SqlDataSource>
-            </td>
-            <td>
-                <asp:SqlDataSource ID="sqldsMeetStat" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="TypesByCategory" SelectCommandType="StoredProcedure">
-                    <SelectParameters>
-                        <asp:Parameter DefaultValue="MeetingStatus" Name="Category" Type="String" />
-                    </SelectParameters>
-                </asp:SqlDataSource>
+                </asp:ObjectDataSource>
             </td>
             <td></td>
+            <td>
+                <asp:ObjectDataSource ID="objdsMeetStat" runat="server" 
+                    SelectMethod="VariousTypes" TypeName="Database">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="Category = 'MeetingStatus'" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+            </td>
             <td>
                 <asp:SqlDataSource ID="sqldsConsultantsNN" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
@@ -1187,13 +1144,13 @@
                 </asp:SqlDataSource>
             </td>
             <td>
-                <asp:SqlDataSource ID="sqldsPrjType" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [Description]">
+                <asp:ObjectDataSource ID="objdsPrjType" runat="server" 
+                    SelectMethod="VariousTypes" TypeName="Database">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="ProjectType" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Category = 'ProjectType'" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
                     </SelectParameters>
-                </asp:SqlDataSource>
+                </asp:ObjectDataSource>
             </td>
             <td>
                 <asp:SqlDataSource ID="sqldsPrjManagers" runat="server" 

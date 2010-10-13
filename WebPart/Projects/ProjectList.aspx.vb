@@ -60,7 +60,7 @@ Partial Class ProjectList
         Response.Redirect("~/ProjectList.aspx")
     End Sub
 
-    Protected Sub btnRemovePaging1_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging1.Click
+    Protected Sub btnRemovePaging_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging.Click
         gvProjects.AllowPaging = Not gvProjects.AllowPaging
     End Sub
 

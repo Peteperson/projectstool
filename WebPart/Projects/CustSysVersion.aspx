@@ -9,7 +9,7 @@
             <td class="FormTitle">
                 <table style="width:100%">
                     <tr>
-                        <td><asp:ImageButton ID="btnRemovePaging1" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
+                        <td><asp:ImageButton ID="btnRemovePaging" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
                         <td style="width:100%" align="center">Σχεδιασμός συστήματος</td>
                         <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
                                 ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
