@@ -158,7 +158,7 @@
                         <asp:TemplateField HeaderText="Status" SortExpression="Status">
                             <ItemTemplate>
                                 <asp:DropDownList ID="ddlActionStatusOne" Font-Size="8pt" runat="server" DataSourceID="objdsActionStatus" 
-                                    selectedvalue=<%# Bind("StatusNo") %> AutoPostBack="true" DataTextField="Description" 
+                                    selectedvalue='<%# Bind("StatusNo") %>' AutoPostBack="true" DataTextField="Description" 
                                     OnSelectedIndexChanged="ddlActionStatusOne_IndexChanged" ToolTip='<%# Bind("id") %>' DataValueField="id">
                                 </asp:DropDownList>
                             </ItemTemplate>
@@ -228,6 +228,8 @@
                                 <td class="tblDetailsItem">
                                     <table>
                                         <tr>
+                                            <td><asp:ImageButton ID="ImageButton5" runat="server" CausesValidation="True" CommandArgument='<%# Bind("Id") %>' 
+                                                CommandName="FileDel" OnClientClick="return ConfirmDelete()" ImageUrl="~/Images/Icons/Remove22_22.png" ToolTip="Διαγραφή αρχείου" /></td>
                                             <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="fuAPupd" ValidationGroup="UpdFile" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                             <td><asp:FileUpload ID="fuAPupd" runat="server" /></td>
                                             <td><asp:ImageButton ID="ImageButton6" runat="server" CausesValidation="True" ValidationGroup="UpdFile" CommandArgument='<%# Bind("Id") %>' 
@@ -301,7 +303,6 @@
                 <asp:TextBox ID="txtMaskedText" onkeyup="TestFunc(this)" runat="server"></asp:TextBox>
                 <input id="inpMT" type="text" /> 
                 -->
-                <asp:Button ID="btnReset" runat="server" Text="Remove filtering" />
             </td>
         </tr>
     </table>
@@ -411,12 +412,16 @@
                 <asp:SqlDataSource ID="sqldsFile" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     SelectCommand="SELECT [id], [AttachmentName] FROM [ActionPlans]" 
-                    UpdateCommand="UPDATE [ActionPlans] SET [Attachment] = @Attachment, [AttachmentName] = @AttachmentName WHERE [id] = @id">
+                    UpdateCommand="UPDATE [ActionPlans] SET [Attachment] = @Attachment, [AttachmentName] = @AttachmentName WHERE [id] = @id"
+                    DeleteCommand="UPDATE [ActionPlans] SET [Attachment] = null, [AttachmentName] = '' WHERE [id] = @id">
                     <UpdateParameters>
                         <asp:Parameter Name="Attachment" />
                         <asp:Parameter Name="AttachmentName" Type="String" />
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
+                    <DeleteParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </DeleteParameters>
                 </asp:SqlDataSource>
             </td>
         </tr>

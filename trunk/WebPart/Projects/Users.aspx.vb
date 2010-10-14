@@ -77,7 +77,7 @@ Partial Class Users
                     Try
                         If ctrl.GetType Is GetType(ImageButton) Then
                             If CType(ctrl, ImageButton).ImageUrl.IndexOf("Remove") > 0 Then
-                                CType(ctrl, ImageButton).Attributes("onclick") = "if(!confirm('Really delete this row?'))return   false;"
+                                CType(ctrl, ImageButton).Attributes("onclick") = "if(!confirm('Να διαγράψω την εγγραφή;'))return   false;"
                             End If
                         End If
                     Catch ex As Exception

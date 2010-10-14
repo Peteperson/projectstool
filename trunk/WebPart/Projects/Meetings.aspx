@@ -169,11 +169,11 @@
                                 <td class="tblDetailsItem"><uc1:DateBox ID="dbTimeTo" runat="server" Value='<%# Bind("TimeTo") %>' ShowTime="true" ShowDate="false" /></td>
                                 <td class="tblDetailsHeader">Consultant</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
-                                        selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
+                                        selectedvalue='<%# Bind("Consultant") %>' DataTextField="Fullname" DataValueField="id">
                                     </asp:DropDownList></td>
                                 <td class="tblDetailsHeader">Kind</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetKind" runat="server" DataSourceID="objdsMeetKind" 
-                                        selectedvalue=<%# Bind("Kind") %> DataTextField="Description" DataValueField="id">
+                                        selectedvalue='<%# Bind("Kind") %>' DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList>
                             </tr>
                             <tr>
@@ -191,6 +191,8 @@
                                 <td class="tblDetailsItem" colspan="3">
                                     <table>
                                         <tr>
+                                            <td><asp:ImageButton ID="ImageButton5" runat="server" CausesValidation="True" CommandArgument='<%# Bind("Id") %>' 
+                                                CommandName="FileDel" OnClientClick="return ConfirmDelete()" ImageUrl="~/Images/Icons/Remove22_22.png" ToolTip="Διαγραφή αρχείου" /></td>
                                             <td><asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="fuMtupd" ValidationGroup="UpdFile" ErrorMessage="*"></asp:RequiredFieldValidator></td>
                                             <td><asp:FileUpload ID="fuMtupd" runat="server" /></td>
                                             <td><asp:ImageButton ID="ImageButton6" runat="server" CausesValidation="True" ValidationGroup="UpdFile" CommandArgument='<%# Bind("Id") %>' 
@@ -200,7 +202,7 @@
                                 </td>
                                 <td class="tblDetailsHeader">Status</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="objdsMeetStatus" 
-                                        selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
+                                        selectedvalue='<%# Bind("Status") %>' DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList></td>
                             </tr>
                             <tr>
@@ -224,11 +226,11 @@
                                 <td class="tblDetailsItem"><uc1:DateBox ID="DateBox1" runat="server" Value='<%# Bind("TimeTo") %>' ShowTime="true" ShowDate="false" Text='<%# Now.AddMinutes(90).ToString("dd/MM/yyyy") %>' /></td>
                                 <td class="tblDetailsHeader">Consultant</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetCons" runat="server" DataSourceID="sqldsConsultants" 
-                                        selectedvalue=<%# Bind("Consultant") %> DataTextField="Fullname" DataValueField="id">
+                                        selectedvalue='<%# Bind("Consultant") %>' DataTextField="Fullname" DataValueField="id">
                                     </asp:DropDownList></td>
                                 <td class="tblDetailsHeader">Kind</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetKind" runat="server" DataSourceID="objdsMeetKind" 
-                                        selectedvalue=<%# Bind("Kind") %> DataTextField="Description" DataValueField="id">
+                                        selectedvalue='<%# Bind("Kind") %>' DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList>
                             </tr>
                             <tr>
@@ -246,7 +248,7 @@
                                 <td class="tblDetailsItem" colspan="3"><asp:FileUpload ID="FileUpload1" runat="server" /></td>
                                 <td class="tblDetailsHeader">Status</td>
                                 <td class="tblDetailsItem"><asp:DropDownList ID="ddlMeetStat" runat="server" DataSourceID="objdsMeetStatus" 
-                                         selectedvalue=<%# Bind("Status") %> DataTextField="Description" DataValueField="id">
+                                         selectedvalue='<%# Bind("Status") %>' DataTextField="Description" DataValueField="id">
                                     </asp:DropDownList></td>
                             </tr>
                             <tr>
@@ -263,7 +265,7 @@
             </td>
         </tr>
         <tr>
-            <td align="center"><asp:Button ID="btnReset" runat="server" Text="Remove filtering" /></td>
+            <td align="center">&nbsp;</td>
         </tr>
     </table>
     <table>
@@ -332,9 +334,13 @@
             </td>
             <td style="margin-left: 40px">
                 <asp:SqlDataSource ID="sqldsConsultants" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="SELECT Users.id, LastName + ' ' + FirstName AS Fullname FROM Users
-                    INNER JOIN VariousTypes ON Users.UserType = VariousTypes.id
-                    WHERE VariousTypes.[Description] IN ('Consultant', 'ProjectManager') AND users.IsActive = 1">
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="UsersByType" 
+                    SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="include" Name="Function" Type="String" />
+                        <asp:Parameter DefaultValue="Consultant,ProjectManager,FoodDirector,OrgDirector,ITDirector" 
+                            Name="UserType" Type="String" />
+                    </SelectParameters>
                 </asp:SqlDataSource>
             </td>
         </tr>
@@ -357,12 +363,16 @@
                 <asp:SqlDataSource ID="sqldsFiles" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     SelectCommand="SELECT [id], [AttachmentName] FROM [Meetings]" 
-                    UpdateCommand="UPDATE [Meetings] SET [AttachmentName] = @AttachmentName, [Attachment] = @Attachment WHERE [id] = @id">
+                    UpdateCommand="UPDATE [Meetings] SET [AttachmentName] = @AttachmentName, [Attachment] = @Attachment WHERE [id] = @id"
+                    DeleteCommand="UPDATE [Meetings] SET [AttachmentName] = '', [Attachment] = null WHERE [id] = @id">
                     <UpdateParameters>
                         <asp:Parameter Name="AttachmentName" Type="String" />
                         <asp:Parameter Name="Attachment" />
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
+                    <DeleteParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </DeleteParameters>
                 </asp:SqlDataSource>
             </td>
             <td>

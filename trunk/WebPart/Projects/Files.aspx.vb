@@ -28,7 +28,7 @@ Partial Class Files
 
     Protected Sub sqldsFiles_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsFiles.Inserting
         e.Command.Parameters("@ProjectId").Value = CType(gvFiles.FooterRow.FindControl("ddlPrjCode"), DropDownList).SelectedValue
-        e.Command.Parameters("@AttachmentName").Value = CType(gvFiles.FooterRow.FindControl("fuCtrl"), FileUpload).FileName
+        e.Command.Parameters("@AttachmentName").Value = CType(gvFiles.FooterRow.FindControl("fuCtrl"), FileUpload).FileName.Replace(" ", "_")
         e.Command.Parameters("@Attachment").Value = CType(gvFiles.FooterRow.FindControl("fuCtrl"), FileUpload).FileBytes
         e.Command.Parameters("@Comments").Value = CType(gvFiles.FooterRow.FindControl("txtAttachComment"), TextBox).Text
     End Sub
@@ -48,7 +48,7 @@ Partial Class Files
                     Try
                         If ctrl.GetType Is GetType(ImageButton) Then
                             If CType(ctrl, ImageButton).ImageUrl.IndexOf("Remove") > 0 Then
-                                CType(ctrl, ImageButton).Attributes("onclick") = "if(!confirm('Really delete this row?'))return   false;"
+                                CType(ctrl, ImageButton).Attributes("onclick") = "if(!confirm('Να διαγράψω την εγγραφή;'))return   false;"
                             End If
                         End If
                     Catch ex As Exception

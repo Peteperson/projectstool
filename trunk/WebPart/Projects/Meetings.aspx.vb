@@ -60,7 +60,7 @@ Partial Class Meetings
 
         'e.Command.Parameters("@TimeFrom").Value = CType(fvMeetings.FindControl("txtTimeFrom"), TextBox).Text
         'e.Command.Parameters("@TimeTo").Value = CType(fvMeetings.FindControl("txtTimeTo"), TextBox).Text
-        e.Command.Parameters("@AttachmentName").Value = CType(fvMeetings.FindControl("fuMtngs"), FileUpload).FileName
+        e.Command.Parameters("@AttachmentName").Value = CType(fvMeetings.FindControl("fuMtngs"), FileUpload).FileName.Replace(" ", "_")
         e.Command.Parameters("@Attachment").Value = CType(fvMeetings.FindControl("fuMtngs"), FileUpload).FileBytes
     End Sub
 
@@ -83,7 +83,6 @@ Partial Class Meetings
 
         If Not Session("MeetingId") Is Nothing AndAlso Session("MeetingId") > -1 Then
             e.Command.Parameters("@MtngsId").Value = CInt(Session("MeetingId"))
-            btnReset.Visible = True
             With CType(Master.FindControl("lblMessage"), Label)
                 .Visible = True
                 .Text = "Πατήστε το κουμπί 'Remove filtering' για να δείτε όλα τα data."
@@ -109,15 +108,6 @@ Partial Class Meetings
         End If
     End Sub
 
-    Protected Sub btnReset_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnReset.Click
-        Session("MeetingId") = -1
-        gvMeetings.DataBind()
-    End Sub
-
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        btnReset.Visible = False
-    End Sub
-
     Protected Sub sqldsMeetingsDet_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsMeetingsDet.Updating
         Dim dtFrom As DateTime = e.Command.Parameters("@TimeFrom").Value
         Dim dtTo As DateTime = e.Command.Parameters("@TimeTo").Value
@@ -125,15 +115,29 @@ Partial Class Meetings
     End Sub
 
     Protected Sub btnClearFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClearFilter.Click
+        If Session("MeetingId") <> -1 Then Session("MeetingId") = -1
         Response.Redirect("~/Meetings.aspx")
     End Sub
 
     Private ActionId As Integer
     Protected Sub fvMeetings_ItemCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.FormViewCommandEventArgs) Handles fvMeetings.ItemCommand
-        If e.CommandName = "FileUpd" Then
-            ActionId = e.CommandArgument
-            sqldsFiles.Update()
-        End If
+        Select Case e.CommandName
+            Case "FileUpd"
+                ActionId = e.CommandArgument
+                sqldsFiles.Update()
+            Case "FileDel"
+                ActionId = e.CommandArgument
+                sqldsFiles.Delete()
+        End Select
+    End Sub
+
+    Protected Sub sqldsFiles_Deleted(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsFiles.Deleted
+        gvMeetings.DataBind()
+        fvMeetings.DataBind()
+    End Sub
+
+    Protected Sub sqldsFiles_Deleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsFiles.Deleting
+        e.Command.Parameters("@Id").Value = ActionId
     End Sub
 
     Protected Sub sqldsFiles_Updated(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsFiles.Updated
@@ -143,7 +147,7 @@ Partial Class Meetings
 
     Protected Sub sqldsFiles_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsFiles.Updating
         e.Command.Parameters("@Id").Value = ActionId
-        e.Command.Parameters("@AttachmentName").Value = CType(fvMeetings.FindControl("fuMtupd"), FileUpload).FileName
+        e.Command.Parameters("@AttachmentName").Value = CType(fvMeetings.FindControl("fuMtupd"), FileUpload).FileName.Replace(" ", "_")
         e.Command.Parameters("@Attachment").Value = CType(fvMeetings.FindControl("fuMtupd"), FileUpload).FileBytes
     End Sub
 
