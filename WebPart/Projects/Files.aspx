@@ -83,9 +83,9 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Attachment" SortExpression="File">
                             <ItemTemplate>
-                                <asp:Label ID="lblDown" runat="server" Text='<%# Bind("File") %>'></asp:Label>
                                 <asp:ImageButton ID="btnDown" OnClientClick="this.form.onsubmit=''" runat="server" CommandArgument='<%# Bind("id") %>'
                                                 CommandName="Download" ImageUrl="~/Images/Icons/Download_16x16.png" ToolTip="Πιέστε εδώ για να κατεβάσετε το αρχείο"/>
+                                <asp:Label ID="lblDown" runat="server" Text='<%# Bind("File") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="fuCtrl" SkinID="rfvDef" ValidationGroup="InsFile" ErrorMessage="*"></asp:RequiredFieldValidator> <asp:FileUpload ID="fuCtrl" runat="server" />                                            

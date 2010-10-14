@@ -112,7 +112,7 @@
                 binding procedures ... Obtaining or attempt of obtaining an unauthorized access to the application can cause bearing criminal responsibility or civil liability.</td>
         </tr>
         <tr>
-            <td style="background: url(Images/Blue.png) repeat-x; text-align:right; vertical-align:top"><div id="advlink"><a href="http://advent.com.gr">AG ADVENT <%=DateTime.Today.Year%></a></div></td>
+            <td style="background: url(Images/Blue.png) repeat-x; text-align:right; vertical-align:top"><div id="advlink"><a href="http://advent.com.gr">&copy; AG ADVENT <%=DateTime.Today.Year%></a></div></td>
         </tr>
       </table>
     </form>    

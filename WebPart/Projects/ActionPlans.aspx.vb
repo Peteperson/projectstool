@@ -81,7 +81,6 @@ Partial Class ActionPlans
 
         If Not Session("ActionPlanId") Is Nothing AndAlso Session("ActionPlanId") > -1 Then
             e.Command.Parameters("@APId").Value = CInt(Session("ActionPlanId"))
-            btnReset.Visible = True
             With CType(Master.FindControl("lblMessage"), Label)
                 .Visible = True
                 .Text = "Πατήστε το κουμπί 'Remove filtering' για να δείτε όλα τα data."
@@ -95,7 +94,7 @@ Partial Class ActionPlans
 
     Protected Sub sqldsAPdet_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAPdet.Inserting
         e.Command.Parameters("@ProjectId").Value = gvAP.SelectedDataKey.Values("ProjectId")
-        e.Command.Parameters("@AttachmentName").Value = CType(fvAction.FindControl("fuAP"), FileUpload).FileName
+        e.Command.Parameters("@AttachmentName").Value = CType(fvAction.FindControl("fuAP"), FileUpload).FileName.Replace(" ", "_")
         e.Command.Parameters("@Attachment").Value = CType(fvAction.FindControl("fuAP"), FileUpload).FileBytes
         Dim resp As Integer
         resp = e.Command.Parameters("@Responsible1").Value
@@ -108,25 +107,30 @@ Partial Class ActionPlans
         gvAP.DataBind()
     End Sub
 
-    Protected Sub btnReset_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnReset.Click
-        Session("ActionPlanId") = -1
-        gvAP.DataBind()
-    End Sub
-
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        btnReset.Visible = False
-    End Sub
-
     Protected Sub btnClearFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClearFilter.Click
+        If Session("ActionPlanId") <> -1 Then Session("ActionPlanId") = -1
         Response.Redirect("~/ActionPlans.aspx")
     End Sub
 
     Private ActionId As Integer
     Protected Sub fvAction_ItemCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.FormViewCommandEventArgs) Handles fvAction.ItemCommand
-        If e.CommandName = "FileUpd" Then
-            ActionId = e.CommandArgument
-            sqldsFile.Update()
-        End If
+        Select Case e.CommandName
+            Case "FileUpd"
+                ActionId = e.CommandArgument
+                sqldsFile.Update()
+            Case "FileDel"
+                ActionId = e.CommandArgument
+                sqldsFile.Delete()
+        End Select
+    End Sub
+
+    Protected Sub sqldsFile_Deleted(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsFile.Deleted
+        gvAP.DataBind()
+        fvAction.DataBind()
+    End Sub
+
+    Protected Sub sqldsFile_Deleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsFile.Deleting
+        e.Command.Parameters("@Id").Value = ActionId
     End Sub
 
     Protected Sub sqldsFile_Updated(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsFile.Updated
@@ -136,7 +140,7 @@ Partial Class ActionPlans
 
     Protected Sub sqldsFile_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsFile.Updating
         e.Command.Parameters("@Id").Value = ActionId
-        e.Command.Parameters("@AttachmentName").Value = CType(fvAction.FindControl("fuAPupd"), FileUpload).FileName
+        e.Command.Parameters("@AttachmentName").Value = CType(fvAction.FindControl("fuAPupd"), FileUpload).FileName.Replace(" ", "_")
         e.Command.Parameters("@Attachment").Value = CType(fvAction.FindControl("fuAPupd"), FileUpload).FileBytes
     End Sub
 
