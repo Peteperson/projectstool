@@ -195,6 +195,9 @@ Public Module Database
         da = New SqlDataAdapter("SELECT * FROM webuser.Pages", _
                             ConfigurationManager.ConnectionStrings("cnMain").ConnectionString)
         da.Fill(dsVariousTypes, "Pages")
+        da = New SqlDataAdapter("SELECT * FROM webuser.Companies", _
+                            ConfigurationManager.ConnectionStrings("cnMain").ConnectionString)
+        da.Fill(dsVariousTypes, "Companies")
     End Sub
 
     Public Function VariousTypes(ByVal Category As String, ByVal OrderBy As String) As DataSet
@@ -203,6 +206,20 @@ Public Module Database
         Dim dr() As DataRow = dsVariousTypes.Tables("VariousTypes").Select(Category, OrderBy)
         dt.Columns.Add("id")
         dt.Columns.Add("category")
+        dt.Columns.Add("description")
+        For Each row In dr
+            dt.ImportRow(row)
+        Next
+        ds.Tables.Add(dt)
+        Return ds
+    End Function
+
+    Public Function Companies(ByVal WhereText As String, ByVal OrderBy As String) As DataSet
+        Dim ds As New DataSet
+        Dim dt As New DataTable
+        Dim dr() As DataRow = dsVariousTypes.Tables("Companies").Select(WhereText, OrderBy)
+        dt.Columns.Add("id")
+        dt.Columns.Add("name")
         dt.Columns.Add("description")
         For Each row In dr
             dt.ImportRow(row)
