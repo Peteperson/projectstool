@@ -99,7 +99,45 @@ Partial Class Users
         CType(Me.Master, Main).HideAndPrint()
     End Sub
 
-    Protected Sub Button1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnInsertion.Click
-        gvUsers.ShowFooter = Not gvUsers.ShowFooter
+    Protected Sub sqldsCompanies_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsCompanies.Inserting
+        e.Command.Parameters("@UserId").Value = gvUsers.SelectedValue
+        e.Command.Parameters("@CompanyId").Value = CType(gvCompanies.FooterRow.FindControl("ddlUsrCompany"), DropDownList).SelectedValue
+        e.Command.Parameters("@Position").Value = CType(gvCompanies.FooterRow.FindControl("ddlUsrPosition"), DropDownList).SelectedValue
+        e.Command.Parameters("@Telephone").Value = CType(gvCompanies.FooterRow.FindControl("txtCmpTel"), TextBox).Text
+        e.Command.Parameters("@Mobile").Value = CType(gvCompanies.FooterRow.FindControl("txtCmpMob"), TextBox).Text
+        e.Command.Parameters("@Email").Value = CType(gvCompanies.FooterRow.FindControl("txtCmpMail"), TextBox).Text
+    End Sub
+
+    Protected Sub sqldsCompanies_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsCompanies.Updating
+        Dim ind As Integer = gvCompanies.EditIndex
+        e.Command.Parameters("@CompanyNewId").Value = CType(gvCompanies.Rows(ind).FindControl("ddlUsrCompany"), DropDownList).SelectedValue
+    End Sub
+
+    Protected Sub gvCompanies_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvCompanies.RowCommand
+        Select Case e.CommandName
+            Case "Insert"
+                sqldsCompanies.Insert()
+        End Select
+    End Sub
+
+    Protected Sub gvCompanies_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvCompanies.RowDataBound
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            If e.Row.RowState = DataControlRowState.Normal Or e.Row.RowState = DataControlRowState.Alternate Then
+                For Each ctrl As System.Web.UI.Control In e.Row.Cells(0).Controls
+                    Try
+                        If ctrl.GetType Is GetType(ImageButton) Then
+                            If CType(ctrl, ImageButton).ImageUrl.IndexOf("Remove") > 0 Then
+                                CType(ctrl, ImageButton).Attributes("onclick") = "return ConfirmDelete()"
+                            End If
+                        End If
+                    Catch ex As Exception
+                        With CType(Master.FindControl("lblMessage"), Label)
+                            .Visible = True
+                            .Text = ex.Message
+                        End With
+                    End Try
+                Next
+            End If
+        End If
     End Sub
 End Class
