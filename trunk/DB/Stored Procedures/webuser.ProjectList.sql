@@ -9,62 +9,63 @@ AS
     SET NOCOUNT ON
 	
 	DECLARE @UserType AS NVARCHAR(50)
-	SELECT @UserType = [Description] FROM VariousTypes WHERE id = (SELECT UserType FROM Users WHERE id = @UserId)
+	SELECT @UserType = [Description] FROM webuser.VariousTypes 
+		WHERE id = (SELECT UserType FROM webuser.Users WHERE id = @UserId)
 
 	IF @UserType = 'Consultant' 
 		Begin
-			SELECT id, SubProject FROM Projects 
+			SELECT id, SubProject FROM webuser.Projects 
 			WHERE (Consultant1 = @UserId OR Consultant2 = @UserId OR Creator = @UserId)  
-				OR CustomerId = (SELECT Company FROM Users WHERE id = @userId)
+				OR CustomerId IN (SELECT Companyid FROM webuser.UsersCompanies WHERE userid = @userId)
 			UNION
-			SELECT Projects.id, SubProject FROM Projects 
+			SELECT Projects.id, SubProject FROM webuser.Projects 
 			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
 			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId)
 			ORDER BY SubProject
 		END
 	ELSE IF @UserType = 'ProjectManager' 
 		BEGIN
-			SELECT id, SubProject FROM Projects 
+			SELECT id, SubProject FROM webuser.Projects 
 			WHERE (Consultant1 = @UserId OR Consultant2 = @UserId OR ProjectManager = @userId OR Creator = @UserId) 
-				OR CustomerId = (SELECT Company FROM Users WHERE id = @userId)
+				OR CustomerId IN (SELECT Companyid FROM webuser.UsersCompanies WHERE userid = @userId)
 			UNION
-			SELECT Projects.id, SubProject FROM Projects 
+			SELECT Projects.id, SubProject FROM webuser.Projects 
 			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
 			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId)
 			ORDER BY SubProject
 		END
 	ELSE IF @UserType = 'FoodDirector' 
 		BEGIN
-			SELECT id, SubProject FROM Projects 
-			WHERE [Type] = (SELECT id FROM VariousTypes WHERE [Description] = (N'Τρόφιμα')) 
-				OR CustomerId = (SELECT Company FROM Users WHERE id = @userId)
+			SELECT id, SubProject FROM webuser.Projects 
+			WHERE [Type] = (SELECT id FROM webuser.VariousTypes WHERE [Description] = (N'Τρόφιμα')) 
+				OR CustomerId IN (SELECT Companyid FROM webuser.UsersCompanies WHERE userid = @userId)
 			UNION
-			SELECT Projects.id, SubProject FROM Projects 
+			SELECT Projects.id, SubProject FROM webuser.Projects 
 			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
 			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId)
 			ORDER BY SubProject
 		END
 	ELSE IF @UserType = 'OrgDirector' 
 		BEGIN
-			SELECT id, SubProject FROM Projects 
-			WHERE [Type] = (SELECT id FROM VariousTypes WHERE [Description] = (N'Οργάνωση')) 
-				OR CustomerId = (SELECT Company FROM Users WHERE id = @userId)
+			SELECT id, SubProject FROM webuser.Projects 
+			WHERE [Type] = (SELECT id FROM webuser.VariousTypes WHERE [Description] = (N'Οργάνωση')) 
+				OR CustomerId IN (SELECT Companyid FROM webuser.UsersCompanies WHERE userid = @userId)
 			UNION
-			SELECT Projects.id, SubProject FROM Projects 
+			SELECT Projects.id, SubProject FROM webuser.Projects 
 			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
 			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId)  
 			ORDER BY SubProject
 		END
 	ELSE IF @UserType = 'Admin' OR @UserType = 'DataEntry' OR @UserType = 'ITDirector'
 		BEGIN
-			SELECT id, SubProject FROM Projects ORDER BY SubProject
+			SELECT id, SubProject FROM webuser.Projects ORDER BY SubProject
 		END
 	ELSE 
 		BEGIN
-			SELECT id, SubProject FROM Projects 
-			WHERE CustomerId = (SELECT Company FROM Users WHERE id = @userId)
+			SELECT id, SubProject FROM webuser.Projects 
+			WHERE CustomerId IN (SELECT CompanyId FROM webuser.UsersCompanies WHERE userid = @userId)
 			UNION
-			SELECT Projects.id, SubProject FROM Projects 
+			SELECT Projects.id, SubProject FROM webuser.Projects 
 			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
 			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId) 
 			ORDER BY SubProject
