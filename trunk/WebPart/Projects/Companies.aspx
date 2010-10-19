@@ -165,53 +165,8 @@
                     <EmptyDataTemplate>
                         Δεν υπάρχουν καταγεγραμμένοι υπάλληλοι.<br />
                         <br />
-                        <div class="InsertRow">
-                            <table>
-                                <tr class="InsertHeader">
-                                    <td>Action</td>
-                                    <td>LastName</td>
-                                    <td>FirstName</td>
-                                    <td>Position</td>
-                                    <td>Telephone</td>
-                                    <td>Mobile</td>
-                                    <td>Email</td>
-                                </tr>
-                                <tr>
-                                    <td><asp:ImageButton ID="btnInsEmpl" CausesValidation="true" ValidationGroup="InsEmp1st" runat="server" CommandName="Insert"
-                                            ImageUrl="~/images/icons/add16_16.png" ToolTip="Εισαγωγή υπαλλήλου" />
-                                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" SkinID="rfvDef" runat="server" ControlToValidate="txt1LastName" ValidationGroup="InsEmp1st" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox ID="txt1LastName" MaxLength="50" SkinID="txtReqFld" runat="server"></asp:TextBox></td>
-                                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" SkinID="rfvDef" runat="server" ControlToValidate="txt1FirstName" ValidationGroup="InsEmp1st" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox ID="txt1FirstName" MaxLength="50" SkinID="txtReqFld" runat="server"></asp:TextBox></td>
-                                    <td><asp:DropDownList SkinId="ddlDef" ID="ddl1Position" runat="server" DataSourceID="sqldsEmplType" 
-                                            DataTextField="Description" DataValueField="id">
-                                        </asp:DropDownList></td>
-                                    <td><asp:TextBox ID="txt1Tel" MaxLength="12" runat="server"></asp:TextBox></td>
-                                    <td><asp:TextBox ID="txt1MobTel" MaxLength="12" runat="server"></asp:TextBox></td>
-                                    <td><asp:TextBox ID="txt1email" MaxLength="50" runat="server"></asp:TextBox></td>
-                                </tr>
-                            </table>
-                        </div>
                     </EmptyDataTemplate>
                     <Columns>
-                        <asp:TemplateField ShowHeader="False">
-                            <ItemStyle Wrap="false" />
-                            <ItemTemplate>                
-                                <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                                    CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Διόρθωση" />
-                                &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                    CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Διαγραφή" />
-                            </ItemTemplate>
-                            <EditItemTemplate>
-                                <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
-                                    CommandName="Update" ImageUrl="~/Images/Icons/Save16_16.png" ToolTip="Ενημέρωση εγγραφής" />
-                                &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" 
-                                    CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel16_16.png" ToolTip="Ακύρωση" />
-                            </EditItemTemplate>
-                            <FooterStyle HorizontalAlign="Center" />
-                            <FooterTemplate>
-                                <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Εισαγωγή εγγραφής" ValidationGroup="InsEmp" />
-                            </FooterTemplate>
-                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Ημ/νία" SortExpression="Datestamp">
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
@@ -330,38 +285,11 @@
             <td>
                 <asp:SqlDataSource ID="sqldsCompEmployees" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="CmpEmplList" SelectCommandType="StoredProcedure"
-                    DeleteCommand="DELETE FROM [Users] WHERE [Id] = @Id" 
-                    InsertCommand="INSERT INTO [Users] ([UserName], [UserType], [Company], [Position], [LastName], [FirstName], [Telephone], [Mobile], [Email], [DefaultPage], [IsUser]) VALUES (@UserName, 41, @CompanyId, @Position, @LastName, @FirstName, @Telephone, @Mobile, @Email, 18, 0)" 
-                    UpdateCommand="UPDATE [Users] SET [LastName] = @LastName, [FirstName] = @FirstName, [Position] = @Position, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email, [IsUser] = @IsUser WHERE [Id] = @Id">
+                    SelectCommand="CmpEmplList" SelectCommandType="StoredProcedure">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="gvCompanies" Name="CompanyId" 
                             PropertyName="SelectedValue" Type="Int32" />
                     </SelectParameters>
-                    <DeleteParameters>
-                        <asp:Parameter Name="Id" Type="Int32" />
-                    </DeleteParameters>
-                    <UpdateParameters>
-                        <asp:Parameter Name="LastName" Type="String" />
-                        <asp:Parameter Name="FirstName" Type="String" />
-                        <asp:Parameter Name="Position" Type="Byte" />
-                        <asp:Parameter Name="Telephone" Type="String" DefaultValue=" " />
-                        <asp:Parameter Name="Mobile" Type="String" DefaultValue=" " />
-                        <asp:Parameter Name="Email" Type="String" DefaultValue=" " />
-                        <asp:Parameter Name="Id" Type="Int32" />
-                        <asp:Parameter Name="IsUser" Type="Boolean" />
-                    </UpdateParameters>
-                    <InsertParameters>
-                        <asp:Parameter Name="UserName" Type="String" />
-                        <asp:Parameter Name="UserType" Type="Int32" />
-                        <asp:Parameter Name="CompanyId" Type="Int32" />
-                        <asp:Parameter Name="LastName" Type="String" />
-                        <asp:Parameter Name="FirstName" Type="String" />
-                        <asp:Parameter Name="Position" Type="Byte" />
-                        <asp:Parameter Name="Telephone" Type="String" />
-                        <asp:Parameter Name="Mobile" Type="String" />
-                        <asp:Parameter Name="Email" Type="String" />
-                    </InsertParameters>
                 </asp:SqlDataSource>
             </td>
             <td>
