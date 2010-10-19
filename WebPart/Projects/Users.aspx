@@ -209,6 +209,34 @@
                 <asp:GridView ID="gvCompanies" runat="server" AutoGenerateColumns="False" ShowFooter="True" 
                     DataKeyNames="UserId,CompanyId" DataSourceID="sqldsCompanies" 
                     SkinID="gridviewSkin">
+                    <EmptyDataTemplate>
+                        <br />
+                        Δεν υπάρχουν καταχωρημένες εταιρείες.<br />
+                        <br />
+                        <table border="1" class="TblEmptyData">
+                            <tr class="InsertTabHeader">
+                                <td></td>
+                                <td>Όνομα εταιρείας</td>
+                                <td>Θέση</td>
+                                <td>Τηλέφωνο</td>
+                                <td>Κινητό</td>
+                                <td>Email</td>
+                            </tr>
+                            <tr class="InsertRow">
+                                <td class="centered"><asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
+                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Εισαγωγή εγγραφής" ValidationGroup="InsAP" /></td>
+                                <td><asp:DropDownList ID="ddlUsrCompany" runat="server" 
+                                    DataSourceID="objdsCompanies" DataTextField="Name" DataValueField="Id">
+                                </asp:DropDownList></td>
+                                <td><asp:DropDownList ID="ddlUsrPosition" runat="server" DataSourceID="objdsEmplType" 
+                                        DataTextField="Description" DataValueField="id">
+                                    </asp:DropDownList></td>
+                                <td><asp:TextBox ID="txtCmpTel" runat="server" Text='<%# Bind("Telephone") %>'></asp:TextBox></td>
+                                <td><asp:TextBox ID="txtCmpMob" runat="server" Text='<%# Bind("Mobile") %>'></asp:TextBox></td>
+                                <td><asp:TextBox ID="txtCmpMail" runat="server" Text='<%# Bind("Email") %>'></asp:TextBox></td>
+                            </tr>
+                        </table>
+                    </EmptyDataTemplate>
                     <Columns>
                         <asp:TemplateField ShowHeader="False">
                             <ItemStyle Wrap="false" />
@@ -227,10 +255,10 @@
                             <FooterStyle HorizontalAlign="Center" />
                             <FooterTemplate>
                                 <asp:ImageButton ID="btnInsert" CausesValidation="true" runat="server" CommandName="Insert"
-                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Εισαγωγή εγγραφής" ValidationGroup="InsGroup" />
+                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Εισαγωγή εγγραφής" />
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Company name" SortExpression="CompanyText">
+                        <asp:TemplateField HeaderText="Όνομα εταιρείας" SortExpression="CompanyText">
                             <EditItemTemplate>
                                 <asp:DropDownList ID="ddlUsrCompany" runat="server" 
                                     selectedvalue=<%# Bind("CompanyId") %> DataSourceID="objdsCompanies" DataTextField="Name" DataValueField="Id">
@@ -245,7 +273,7 @@
                                 </asp:DropDownList><br />
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Position" SortExpression="PositionText">
+                        <asp:TemplateField HeaderText="Θέση" SortExpression="PositionText">
                             <EditItemTemplate>
                                 <asp:DropDownList ID="ddlUsrPosition" runat="server" DataSourceID="objdsEmplType" 
                                     selectedvalue=<%# Bind("Position") %> DataTextField="Description" DataValueField="id">
@@ -260,7 +288,7 @@
                                 </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Telephone" SortExpression="Telephone">
+                        <asp:TemplateField HeaderText="Τηλέφωνο" SortExpression="Telephone">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Telephone") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -271,7 +299,7 @@
                                 <asp:TextBox ID="txtCmpTel" runat="server" Text='<%# Bind("Telephone") %>'></asp:TextBox>
                             </FooterTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Mobile" SortExpression="Mobile">
+                        <asp:TemplateField HeaderText="Κινητό" SortExpression="Mobile">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Mobile") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -304,9 +332,9 @@
     <asp:SqlDataSource ID="sqldsUsers" runat="server" 
         ConnectionString="<%$ ConnectionStrings:cnMain %>" 
         DeleteCommand="DELETE FROM [Users] WHERE [id] = @id" 
-        InsertCommand="INSERT INTO [Users] ([UserName], [Password], [UserType], [Company], [Position], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsUser]) VALUES (@UserName, @Password, @UserType, @Company, @Position, @FirstName, @LastName, @Telephone, @Mobile, @Email, @DefaultPage, @IsUser)" 
+        InsertCommand="INSERT INTO [Users] ([UserName], [Password], [UserType], [FirstName], [LastName], [Telephone], [Mobile], [Email], [DefaultPage], [IsUser]) VALUES (@UserName, @Password, @UserType, @FirstName, @LastName, @Telephone, @Mobile, @Email, @DefaultPage, @IsUser)" 
         SelectCommand="UsersList" 
-        UpdateCommand="UPDATE [Users] SET [UserName] = @UserName, [UserType] = @UserType, [Company] = @Company, [Position] = @Position, [FirstName] = @FirstName, [LastName] = @LastName, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email, [DefaultPage] = @DefaultPage, [IsActive] = @IsActive, [IsUser] = @IsUser WHERE [id] = @id" 
+        UpdateCommand="UPDATE [Users] SET [UserName] = @UserName, [UserType] = @UserType, [FirstName] = @FirstName, [LastName] = @LastName, [Telephone] = @Telephone, [Mobile] = @Mobile, [Email] = @Email, [DefaultPage] = @DefaultPage, [IsActive] = @IsActive, [IsUser] = @IsUser WHERE [id] = @id" 
         SelectCommandType="StoredProcedure">
         <DeleteParameters>
             <asp:Parameter Name="id" Type="Int32" />
@@ -314,8 +342,6 @@
         <UpdateParameters>
             <asp:Parameter Name="UserName" Type="String" />
             <asp:Parameter Name="UserType" Type="Byte" />
-            <asp:Parameter Name="Company" Type="Int32" />
-            <asp:Parameter Name="Position" Type="Int32" />
             <asp:Parameter Name="FirstName" Type="String" />
             <asp:Parameter Name="LastName" Type="String" />
             <asp:Parameter Name="Telephone" Type="String" DefaultValue=" " />
@@ -330,8 +356,6 @@
             <asp:Parameter Name="UserName" Type="String" />
             <asp:Parameter Name="Password" />
             <asp:Parameter Name="UserType" Type="Byte" />
-            <asp:Parameter Name="Company" Type="Int32" />
-            <asp:Parameter Name="Position" Type="Int32" />
             <asp:Parameter Name="FirstName" Type="String" />
             <asp:Parameter Name="LastName" Type="String" />
             <asp:Parameter Name="Telephone" Type="String" DefaultValue=" " />
