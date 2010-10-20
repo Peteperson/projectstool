@@ -25,7 +25,8 @@ AS
 		ORDER BY LastName, FirstName
 	ELSE IF @Function='Advent'
 		SELECT Users.id, LastName + ' ' + FirstName AS Fullname FROM webuser.Users
-		INNER JOIN webuser.Companies ON users.Company = webuser.Companies.Id
+		INNER JOIN webuser.UsersCompanies ON Users.id = UsersCompanies.UserId
+		INNER JOIN webuser.Companies ON UsersCompanies.CompanyId = Companies.Id
 		WHERE webuser.Companies.Name = 'Advent' AND users.IsActive = 1 AND IsUser = 1
 		ORDER BY LastName, FirstName
 GO
