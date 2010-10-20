@@ -47,6 +47,14 @@ Partial Class Companies
         InsertDeleteValidation(e, 0)
     End Sub
 
+    Protected Sub gvCompEmpl_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvCompEmpl.RowCommand
+        Select Case e.CommandName
+            Case "InsertEmpl"
+                Response.Clear()
+                Response.Redirect("~/Users.aspx?Company=" & lblCompName2.Text)
+        End Select
+    End Sub
+
     Protected Sub gvCompEmpl_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvCompEmpl.RowDataBound
         InsertDeleteValidation(e, 0)
     End Sub
@@ -69,6 +77,7 @@ Partial Class Companies
             If Request.Params("Company") <> "" Then
                 txtNameFilter.Text = Request.Params("Company")
                 gvCompanies.SelectedIndex = 0
+                gvCompEmpl.Visible = True
             End If
         End If
     End Sub

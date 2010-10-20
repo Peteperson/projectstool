@@ -18,8 +18,13 @@
         </tr>
         <tr>
             <td class="tdBelowTitle">
+                Προβολή των χρηστών τής εταιρείας: <asp:DropDownList ID="ddlCompanies" runat="server" 
+                                    DataSourceID="objdsCompanies" DataTextField="Name" DataValueField="Id">
+                                </asp:DropDownList>
                 <asp:TextBox ID="txtUNameFilter" runat="server" Visible="False"></asp:TextBox>
                 <asp:TextBox ID="txtLastNameFilter" runat="server" Visible="False"></asp:TextBox>
+                <asp:TextBox ID="txtCompNameFilter" runat="server" Visible="False"></asp:TextBox>
+                <asp:Button ID="btnSetCmp" runat="server" Text="Επιλογή" />
             </td>
         </tr>
         <tr>
@@ -367,6 +372,7 @@
         <SelectParameters>
             <asp:ControlParameter ControlID="txtLastNameFilter" Name="LastName" PropertyName="Text" Type="String" />
             <asp:ControlParameter ControlID="txtUNameFilter" Name="UserName" PropertyName="Text" Type="String" />
+            <asp:ControlParameter ControlID="txtCompNameFilter" Name="CompName" PropertyName="Text" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
                 </td>
