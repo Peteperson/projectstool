@@ -160,8 +160,7 @@
             <td class="tdBelowTitle">
                 <asp:GridView ID="gvCompEmpl" runat="server" AutoGenerateColumns="False"
                     DataKeyNames="Id" DataSourceID="sqldsCompEmployees" AllowPaging="True" 
-                    AllowSorting="True" SkinID="gridviewSkin" ShowFooter="True" 
-                    Visible="False">
+                    AllowSorting="True" SkinID="gridviewSkin" Visible="False" ShowFooter="true">
                     <EmptyDataTemplate>
                         Δεν υπάρχουν καταγεγραμμένοι υπάλληλοι.<br />
                         <br />
@@ -171,6 +170,11 @@
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:Image ID="Image2" runat="server" ImageUrl="~/images/icons/add16_16.png" />
+                                <asp:ImageButton ID="btnInsert" runat="server" CommandName="InsertEmpl"
+                                    ImageUrl="~/Images/LeftMenu/Users4_24x24.png" ToolTip="Εισαγωγή υπαλλήλου" />
+                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Επίθετο" SortExpression="LastName">
                             <EditItemTemplate>
@@ -179,9 +183,6 @@
                             <ItemTemplate>
                                 <asp:Label ID="Label4" runat="server" Text='<%# Bind("LastName") %>'></asp:Label>
                             </ItemTemplate>
-                            <FooterTemplate>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" SkinID="rfvDef" runat="server" ControlToValidate="txt2LastName" ValidationGroup="InsEmp" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox SkinID="txtDef" CssClass="MaxWidth120px" ID="txt2LastName" MaxLength="50" runat="server"></asp:TextBox>
-                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Όνομα" SortExpression="FirstName">
                             <EditItemTemplate>
@@ -190,9 +191,6 @@
                             <ItemTemplate>
                                 <asp:Label ID="Label5" runat="server" Text='<%# Bind("FirstName") %>'></asp:Label>
                             </ItemTemplate>
-                            <FooterTemplate>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" SkinID="rfvDef" runat="server" ControlToValidate="txt2FirstName" ValidationGroup="InsEmp" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox SkinID="txtDef" MaxLength="50" ID="txt2FirstName" CssClass="MaxWidth120px" runat="server"></asp:TextBox>
-                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Θέση" SortExpression="Position">
                             <EditItemTemplate>
@@ -203,11 +201,6 @@
                             <ItemTemplate>
                                 <asp:Label ID="Label15" runat="server" Text='<%# Bind("PositionText") %>'></asp:Label>
                             </ItemTemplate>
-                            <FooterTemplate>
-                                <asp:DropDownList SkinId="ddlDef" ID="ddl2Position" runat="server" DataSourceID="sqldsEmplType" 
-                                    DataTextField="Description" DataValueField="id">
-                                </asp:DropDownList>
-                            </FooterTemplate>                            
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Τηλέφωνο" SortExpression="Telephone">
                             <EditItemTemplate>
@@ -216,9 +209,6 @@
                             <ItemTemplate>
                                 <asp:Label ID="Label7" runat="server" Text='<%# Bind("Telephone") %>'></asp:Label>
                             </ItemTemplate>
-                            <FooterTemplate>
-                                <asp:TextBox SkinID="txtDef" CssClass="MaxWidth80px" MaxLength="12" ID="txt2Tel" runat="server"></asp:TextBox>
-                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Κινητό" SortExpression="Mobile">
                             <EditItemTemplate>
@@ -227,9 +217,6 @@
                             <ItemTemplate>
                                 <asp:Label ID="Label8" runat="server" Text='<%# Bind("Mobile") %>'></asp:Label>
                             </ItemTemplate>
-                            <FooterTemplate>
-                                <asp:TextBox SkinID="txtDef" MaxLength="12" CssClass="MaxWidth80px" ID="txt2MobTel" runat="server"></asp:TextBox>
-                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Email" SortExpression="Email">
                             <EditItemTemplate>
@@ -238,9 +225,6 @@
                             <ItemTemplate>
                                 <asp:Label ID="Label9" runat="server" Text='<%# Bind("Email") %>'></asp:Label>
                             </ItemTemplate>
-                            <FooterTemplate>
-                                <asp:TextBox SkinID="txtDef" MaxLength="50" ID="txt2Email" runat="server"></asp:TextBox>
-                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Είναι<br/>χρήστης" SortExpression="IsUser">
                             <ItemTemplate>

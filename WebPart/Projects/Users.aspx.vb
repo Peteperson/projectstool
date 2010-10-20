@@ -51,6 +51,7 @@ Partial Class Users
     Protected Sub sqldsUsers_Selecting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sqldsUsers.Selecting
         If txtUNameFilter.Text = "" Then e.Command.Parameters("@UserName").Value = System.DBNull.Value
         If txtLastNameFilter.Text = "" Then e.Command.Parameters("@LastName").Value = System.DBNull.Value
+        If txtCompNameFilter.Text = "" Then e.Command.Parameters("@CompName").Value = System.DBNull.Value
     End Sub
 
     Protected Sub sqldsUserTypes_Updated(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsUserTypes.Updated
@@ -70,6 +71,7 @@ Partial Class Users
     Protected Sub btnclearFilters_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnclearFilters.Click
         txtLastNameFilter.Text = ""
         txtUNameFilter.Text = ""
+        txtCompNameFilter.Text = ""
     End Sub
 
     Protected Sub gvUsers_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvUsers.RowDataBound
@@ -154,5 +156,12 @@ Partial Class Users
 
     Protected Sub Page_LoadComplete(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.LoadComplete
         If gvUsers.SelectedIndex < 0 Then gvCompanies.Visible = False Else gvCompanies.Visible = True
+        If Not IsPostBack Then
+            If Request.Params("Company") <> "" Then txtCompNameFilter.Text = Request.Params("Company")
+        End If
+    End Sub
+
+    Protected Sub btnSetCmp_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSetCmp.Click
+        txtCompNameFilter.Text = ddlCompanies.SelectedItem.Text
     End Sub
 End Class
