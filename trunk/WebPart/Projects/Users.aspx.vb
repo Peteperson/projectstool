@@ -6,8 +6,10 @@ Partial Class Users
     Private UsrId As Integer
 
     Protected Sub gvUsers_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvUsers.DataBound
-        CType(gvUsers.HeaderRow.FindControl("txtHeadUsrFilter"), TextBox).Text = txtUNameFilter.Text
-        CType(gvUsers.HeaderRow.FindControl("txtHeadLstFilter"), TextBox).Text = txtLastNameFilter.Text
+        If gvUsers.Rows.Count > 0 Then
+            CType(gvUsers.HeaderRow.FindControl("txtHeadUsrFilter"), TextBox).Text = txtUNameFilter.Text
+            CType(gvUsers.HeaderRow.FindControl("txtHeadLstFilter"), TextBox).Text = txtLastNameFilter.Text
+        End If
     End Sub
     Protected Sub gvUsers_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvUsers.RowCommand
         Select Case e.CommandName
@@ -162,6 +164,11 @@ Partial Class Users
     End Sub
 
     Protected Sub btnSetCmp_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSetCmp.Click
-        txtCompNameFilter.Text = ddlCompanies.SelectedItem.Text
+        txtCompNameFilter.Text = ""
+        If ddlCompanies.SelectedIndex > 0 Then txtCompNameFilter.Text = ddlCompanies.SelectedItem.Text
+    End Sub
+
+    Protected Sub ddlCompanies_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlCompanies.DataBound
+        ddlCompanies.Items.Insert(0, "- Όλα -")
     End Sub
 End Class

@@ -42,13 +42,13 @@
                                             <Columns>
                                                 <asp:TemplateField ShowHeader="True" HeaderText="Ενέργεια">
                                                     <ItemStyle Wrap="False" Width="60px" />
-                                                    <ItemTemplate>                
+                                                    <ItemTemplate>
+                                                        <asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" 
+                                                            CommandName="Select" ImageUrl="~/Images/Icons/Approve_16x16.png" ToolTip="Επιλογή εγγραφής" />
                                                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
                                                             CommandName="Edit" ImageUrl="~/Images/Icons/Edit16_16.png" ToolTip="Διόρθωση" />
-                                                        &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False"
+                                                        <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False"
                                                             CommandName="Delete" ImageUrl="~/Images/Icons/Remove16_16.png" ToolTip="Διαγραφή" />
-                                                        &nbsp;<asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="False" 
-                                                            CommandName="Select" ImageUrl="~/Images/Icons/Approve_16x16.png" ToolTip="Επιλογή εγγραφής" />
                                                     </ItemTemplate>
                                                     <EditItemTemplate>
                                                         <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="True" 
