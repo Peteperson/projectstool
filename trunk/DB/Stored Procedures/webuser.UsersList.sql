@@ -10,11 +10,11 @@ CREATE PROCEDURE [webuser].[UsersList]
 AS 
 	SELECT DISTINCT [Users].*, t1.Description as UserTypeText, pages.Description AS DefaultPageText
 	FROM [webuser].[Users] 
-	INNER JOIN webuser.UsersCompanies ON Users.id = UsersCompanies.UserId
-	INNER JOIN webuser.Companies ON UsersCompanies.CompanyId = Companies.Id
+	LEFT  JOIN webuser.UsersCompanies ON Users.id = UsersCompanies.UserId
+	LEFT  JOIN webuser.Companies ON UsersCompanies.CompanyId = Companies.Id
 	INNER JOIN webuser.VariousTypes t1 ON Users.UserType = t1.id
 	INNER JOIN webuser.Pages ON users.DefaultPage = pages.id
 	WHERE LastName LIKE ('%'+ IsNull(@LastName, '') +'%') 
 		AND UserName LIKE ('%'+ IsNull(@UserName, '') +'%') AND UserType <> 38
-		AND webuser.Companies.Name LIKE ('%'+ IsNull(@CompName, '') +'%')
+		AND (Companies.Name LIKE ('%'+ IsNull(@CompName, '') +'%') OR Companies.Name IS NULL)
 GO
