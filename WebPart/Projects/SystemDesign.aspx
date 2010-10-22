@@ -130,7 +130,10 @@
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label12" runat="server" Text='<%# Bind("ResponsibleText") %>'></asp:Label>
+                                <asp:DropDownList ID="ddlResp" runat="server" DataSourceID="sqldsResponsibles" AutoPostBack="true" 
+                                    selectedvalue=<%# Bind("Responsible") %> DataTextField="FullName" DataValueField="id"
+                                    OnSelectedIndexChanged="ddlResp_IndexChanged" ToolTip='<%# Bind("id") %>'>
+                                </asp:DropDownList>
                             </ItemTemplate>
                             <FooterTemplate>
                                 <asp:DropDownList ID="ddlResp" runat="server" DataSourceID="sqldsResponsibles" 
@@ -205,7 +208,7 @@
             <td id="tdPrint">
                 <table style="width:100%">
                     <tr>
-                        <td align="center"><img alt="info" src="Images/Icons/Logs_24x24.png" />: Μπορείτε να αντιγράψετε τις παραπάνω διαδικασίες επιλέγοντας το έργο στο οποίο θέλετε να αντιγραφούν από τη λίστα και πατώντας &quot;Αντιγραφή&quot;</td>
+                        <td align="center"><img alt="info" src="Images/Icons/Logs_24x24.png" />: Μπορείτε να αντιγράψετε τις παραπάνω διαδικασίες επιλέγοντας το έργο στο οποίο θέλετε να αντιγραφούν από την παρακάτω λίστα και πατώντας &quot;Αντιγραφή&quot;</td>
                     </tr>
                     <tr>
                         <td align="center"><asp:DropDownList ID="ddlCopyProjects" runat="server" 
@@ -304,11 +307,16 @@
             </td>
             <td><asp:SqlDataSource ID="sqldsResponsibles" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="GetResponsible" SelectCommandType="StoredProcedure">
+                    SelectCommand="GetResponsible" SelectCommandType="StoredProcedure"
+                    UpdateCommand="UPDATE Processes SET [Responsible] = @Responsible WHERE id = @id">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
                             PropertyName="SelectedValue" Type="Int16" />
                     </SelectParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="Responsible" Type="Int16" />
+                        <asp:Parameter Name="id" Type="Int16" />
+                    </UpdateParameters>
                 </asp:SqlDataSource></td>
             <td>
                 <asp:ObjectDataSource ID="objdsProcStat" runat="server" 

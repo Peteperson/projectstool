@@ -153,4 +153,18 @@ Partial Class SystemDesign
     Protected Sub btnInsert_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnInsert.Click
         gvProcesses.ShowFooter = Not gvProcesses.ShowFooter
     End Sub
+
+    Protected Sub ddlResp_IndexChanged(ByVal sender As Object, ByVal e As System.EventArgs)
+        With CType(sender, DropDownList)
+            ddlId = .ToolTip
+            ddlValue = .SelectedValue
+        End With
+        sqldsResponsibles.Update()
+        gvProcesses.DataBind()
+    End Sub
+
+    Protected Sub sqldsResponsibles_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsResponsibles.Updating
+        e.Command.Parameters("@Responsible").Value = ddlValue
+        e.Command.Parameters("@id").Value = ddlId
+    End Sub
 End Class
