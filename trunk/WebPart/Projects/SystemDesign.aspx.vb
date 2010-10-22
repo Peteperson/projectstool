@@ -164,7 +164,7 @@ Partial Class SystemDesign
     End Sub
 
     Protected Sub sqldsResponsibles_Updating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsResponsibles.Updating
-        e.Command.Parameters("@Responsible").Value = ddlValue
+        e.Command.Parameters("@Responsible").Value = IIf(ddlValue = 0, DBNull.Value, ddlValue)
         e.Command.Parameters("@id").Value = ddlId
     End Sub
 End Class
