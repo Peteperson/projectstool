@@ -14,6 +14,8 @@ CREATE TABLE [webuser].[ActionPlans]
 [Comments] [nvarchar] (500) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL CONSTRAINT [DF__ActionPla__Comme__58D1301D] DEFAULT (''),
 [MeetingDate] [datetime] NOT NULL CONSTRAINT [DF__ActionPla__Meeti__625A9A57] DEFAULT (getdate())
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+ALTER TABLE [webuser].[ActionPlans] ADD
+CONSTRAINT [FK_ActionPlans_Projects] FOREIGN KEY ([ProjectId]) REFERENCES [webuser].[Projects] ([id])
 CREATE NONCLUSTERED INDEX [IX_ActionPlans_ProjectId] ON [webuser].[ActionPlans] ([ProjectId]) ON [PRIMARY]
 
 GO

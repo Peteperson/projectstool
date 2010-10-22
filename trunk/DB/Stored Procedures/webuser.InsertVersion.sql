@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -29,7 +30,7 @@ AS
 	SELECT @NewVersion = SCOPE_IDENTITY()
 	SELECT @Status = id FROM VariousTypes WHERE Category = 'ProcessStatus' AND [Description] like (N'%Εκκρεμεί')
 	INSERT INTO Processes (SystemVersionId, Code, [Description], [Status], StatusDate, Responsible, Comments)
-		SELECT @NewVersion, Code, [Description], @Status, GETDATE(), 0, ''
+		SELECT @NewVersion, Code, [Description], @Status, GETDATE(), null, ''
 		FROM Processes 
 		WHERE SystemVersionId = @VersionId
 GO
