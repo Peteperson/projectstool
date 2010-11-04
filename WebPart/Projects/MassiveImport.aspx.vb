@@ -84,7 +84,7 @@ Partial Class MassiveImport
         e.Command.Parameters("@ProjectId").Value = MIprojectId
         e.Command.Parameters("@Description").Value = MIdescription
         e.Command.Parameters("@Responsible1").Value = MIresponsible1
-        e.Command.Parameters("@Responsible2").Value = MIresponsible2
+        e.Command.Parameters("@Responsible2").Value = IIf(MIresponsible2 = 0, DBNull.Value, MIresponsible2)
         e.Command.Parameters("@Deadline").Value = MIdeadline
         e.Command.Parameters("@Status").Value = MIstatus
         e.Command.Parameters("@Comments").Value = MIcomments
