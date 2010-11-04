@@ -39,7 +39,7 @@ AS
 	INNER JOIN Projects ON ActionPlans.ProjectId = Projects.id
 	INNER JOIN @tmp t1 ON t1.id = projects.id
 	INNER JOIN Companies ON Companies.id = Projects.CustomerId
-	INNER JOIN VariousTypes vt1 ON vt1.id = ActionPlans.ActionId
+	LEFT  JOIN VariousTypes vt1 ON vt1.id = ActionPlans.ActionId
 	INNER JOIN VariousTypes vt2 ON vt2.id = ActionPlans.[Status]
 	LEFT  JOIN Users usr1 ON usr1.[id] = ActionPlans.Responsible1
 	LEFT  JOIN Users usr2 ON usr2.[id] = ActionPlans.Responsible2
