@@ -1,8 +1,8 @@
 ﻿body {
 	/*background-color: #355379;*/
 	background-color: #2C486E;
-	background: url(Images/Background2.png) repeat-y;
-    /*background-image: -moz-linear-gradient(60% 100% 315deg, #2C486E, #5C789E);
+	/*background: url(Images/Background2.png) repeat-y;
+    background-image: -moz-linear-gradient(60% 100% 315deg, #2C486E, #5C789E);
     background-repeat: no-repeat;
     background-image: -webkit-gradient(linear, right bottom, left top, from(#5C789E), to(#2C486E));*/
 	font: normal 10pt Tahoma, Calibri, Verdana;
