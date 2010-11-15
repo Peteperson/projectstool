@@ -77,6 +77,9 @@ Partial Class ActionPlans
                 Statuses = Statuses.Remove(Statuses.Length - 1)
                 .Parameters("@Status").Value = Statuses
             End If
+            If ddlRespFilter.SelectedIndex = 0 Then
+                .Parameters.Remove(.Parameters("@UserIdFilter"))
+            End If
         End With
 
         If Not Session("ActionPlanId") Is Nothing AndAlso Session("ActionPlanId") > -1 Then
@@ -183,5 +186,12 @@ Partial Class ActionPlans
 
     Protected Sub cblStatus_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cblStatus.SelectedIndexChanged
         gvAP.DataBind()
+    End Sub
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Dim li As New ListItem()
+        li.Value = 0
+        li.Text = "---"
+        ddlRespFilter.Items.Add(li)
     End Sub
 End Class

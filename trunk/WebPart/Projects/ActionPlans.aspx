@@ -77,7 +77,7 @@
                         <td align="center">
                             <table id="tblStatus">
                                 <tr>
-                                    <td colspan="4" class="ShowStatus">Προβολή ενεργειών που βρίσκονται σε status:</td>
+                                    <td colspan="5" class="ShowStatus">Προβολή ενεργειών που βρίσκονται σε status:</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -88,6 +88,10 @@
                                     </td>
                                     <td align="right" style="padding-left:10px; text-align:right">Από:<br />Έως:</td>
                                     <td><uc2:DateBox ID="dbFrom" runat="server" ShowTime="False" /><uc2:DateBox ID="dbTo" runat="server" ShowTime="False" /></td>
+                                    <td>Βασικός Υπεύθυνος:<br /><asp:DropDownList ID="ddlRespFilter" runat="server" 
+                                            AppendDataBoundItems="True" DataSourceID="sqldsUsers" 
+                                            DataTextField="FullName" DataValueField="id"></asp:DropDownList>
+                                    </td>
                                     <td><asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /><br /><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
                                 </tr>
                             </table>
@@ -319,6 +323,7 @@
                         <asp:Parameter Name="Status" Type="String" />
                         <asp:ControlParameter ControlID="dbFrom" Name="dtFrom" PropertyName="Value" Type="DateTime" />
                         <asp:ControlParameter ControlID="dbTo" Name="dtTo" PropertyName="Value" Type="DateTime" />
+                        <asp:ControlParameter ControlID="ddlRespFilter" Name="UserIdFilter" PropertyName="Text" Type="Int16" />                        
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
@@ -407,7 +412,17 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
-            <td>&nbsp;</td>
+            <td>
+                <asp:SqlDataSource ID="sqldsUsers" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="UsersByType" 
+                    SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="exclude" Name="Function" Type="String" />
+                        <asp:Parameter DefaultValue="Admin" 
+                            Name="UserType" Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </td>
             <td>
                 <asp:SqlDataSource ID="sqldsFile" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
