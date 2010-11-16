@@ -6,17 +6,17 @@
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         form1.Attributes.Add("onsubmit", "ShowPleaseWait()")
         CurrPage = Request.AppRelativeCurrentExecutionFilePath.ToLower
-        Dim Authorized As Boolean = False
+        Dim Authorized As Boolean = True
         If Session("UserId") Is Nothing Then
             Response.Redirect("~/Login.aspx")
         Else
             lblUser.Text = Session("UserFullName") & " (" & Session("UserType") & ")"
             lblLogin.Text = CType(Session("LastLogin"), DateTime).ToString("dd/MM/yyyy HH:mm")
-            For i As Integer = 0 To gvMenu.Rows.Count - 1
-                If CType(gvMenu.Rows(i).FindControl("MenuLink"), WebControls.HyperLink).NavigateUrl.ToLower = CurrPage Then
+            For i As Integer = 0 To rptMenu.Items.Count - 1
+                If CType(rptMenu.Items(i).FindControl("MenuLink"), WebControls.HyperLink).NavigateUrl.ToLower = CurrPage Then
                     Authorized = True
-                    gvMenu.Rows(i).Cells(0).ControlStyle.BackColor = Drawing.Color.FromArgb(&H2C, &H48, &H6E)
-                    CType(gvMenu.Rows(i).FindControl("MenuLink"), WebControls.HyperLink).ForeColor = Drawing.Color.White
+                    'rptMenu.Items(i).Cells(0).ControlStyle.BackColor = Drawing.Color.FromArgb(&H2C, &H48, &H6E)
+                    CType(rptMenu.Items(i).FindControl("MenuLink"), WebControls.HyperLink).ForeColor = Drawing.Color.White
                     Exit For
                 End If
             Next
@@ -71,6 +71,10 @@
             End If
         Next
         Return FoundControl
+    End Function
+
+    Public Function CheckSelection(ByVal CurrentLink As String) As String
+        Return IIf(CurrPage = CurrentLink.ToLower, "MenuItemSelected", "MenuItem")
     End Function
 End Class
 
