@@ -126,19 +126,28 @@ a:hover {
     width:200px;
 }
 
-#dvMenu tr:hover {
-	background: url(Images/BlueGradTopBottom.png) repeat-x;
-}
-
 .MenuItem {
     background-color: #DDDDDD;
-    /*-webkit-transition: background 1000ms linear;*/
+    border-bottom: solid 1px white;
     background-image: -webkit-gradient(linear, 30 0, 30 30, from(#EEEEEE), to(#BBBBBB));
     background-image: -moz-linear-gradient(bottom, #BBBBBB, #EEEEEE);
 }
 
+.MenuItem:hover {
+    background-color: #5C799D;
+    background-image: -webkit-gradient(linear, 30 0, 30 30, from(#EEEEEE), to(#3C597D));
+    background-image: -moz-linear-gradient(bottom, #3C597D, #EEEEEE);
+}
+
 .MenuItem a {
+    -webkit-transition: all 400ms ease-in-out;
+    margin-left: 0px;
     color: Black;
+}
+
+.MenuItem:hover a {
+    margin-left: 10px;
+    color: White;
 }
 
 .MenuItemSelected {
@@ -462,4 +471,20 @@ a:hover {
 
 .MaxWidth120px{
     max-width: 120px;
+}
+
+#dvTransTest {
+    background-color: Gray;
+    color: white;
+    height: 30px;
+    width: 200px;
+    -webkit-transition: all 1000ms ease-in-out;
+}
+
+#dvTransTest:hover {
+    background-color: white;
+}
+
+#dvTransTest:hover a{
+    color: Black;
 }
