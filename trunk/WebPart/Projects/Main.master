@@ -82,39 +82,20 @@ function ReloadPage() {
                     <div id="mnuInterMediate"><br /><br /></div>
                     <div id="mnuMain">
                         <table id="tblMenu">
-                        <asp:Repeater ID="rptMenu" runat="server" DataSourceID="sqldsMenu">
-                        <HeaderTemplate>
-                            <tr>
-                                <td colspan="2" class="gvMnuHeader">Menu:</td>
-                            </tr>
-                        </HeaderTemplate>
-                        <ItemTemplate>
-                            <tr id="trMenu" class="<%# CheckSelection(eval("Path")) %>">
-                                <td><asp:Image ID="Image2" runat="server" ImageUrl='<%# eval("Image") %>' /></td>
-                                <td style="width:100%; padding-left:20px"><asp:HyperLink Font-Underline="false" ImageUrl="" Width="100%" ID="MenuLink" NavigateUrl='<%# eval("Path") %>' runat="server"><%#Eval("Description")%></asp:HyperLink></td>
-                            </tr>
-                        </ItemTemplate>
-                        </asp:Repeater>
+                            <asp:Repeater ID="rptMenu" runat="server" DataSourceID="sqldsMenu">
+                            <HeaderTemplate>
+                                <tr>
+                                    <td colspan="2" class="gvMnuHeader">Menu:</td>
+                                </tr>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <tr id="trMenu" class="<%# CheckSelection(eval("Path")) %>">
+                                    <td><asp:Image ID="Image2" runat="server" ImageUrl='<%# eval("Image") %>' /></td>
+                                    <td style="width:100%; padding-left:20px"><asp:HyperLink Font-Underline="false" ImageUrl="" Width="100%" ID="MenuLink" NavigateUrl='<%# eval("Path") %>' runat="server"><%#Eval("Description")%></asp:HyperLink></td>
+                                </tr>
+                            </ItemTemplate>
+                            </asp:Repeater>
                         </table>
-
-<!--                        <asp:GridView ID="gvMenu" runat="server" AutoGenerateColumns="False" DataSourceID="sqldsMenu" 
-                                Width="100%" BorderStyle="None" RowStyle-CssClass="MenuItem" 
-                            HeaderStyle-CssClass="gvMnuHeader" CaptionAlign="Top" CellPadding="0" CellSpacing="0">
-                        <RowStyle CssClass="MenuItem"></RowStyle>
-                            <Columns>
-                            <asp:TemplateField HeaderText="Menu" >
-                                <ItemTemplate>
-                                    <table border="0" cellpadding="0" cellspacing="0">
-                                        <tr>
-                                            <td><asp:Image ID="Image2" runat="server" ImageUrl='<%# eval("Image") %>' /></td>
-                                            <td style="width:100%; padding-left:20px"><asp:HyperLink Font-Underline="false" style="text-align:left" ImageUrl="" BorderWidth="0px" BorderStyle="none" Width="100%" ID="MenuLink" NavigateUrl='<%# eval("Path") %>' runat="server"><%#Eval("Description")%></asp:HyperLink></td>
-                                        </tr>
-                                    </table>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            </Columns>
-                        <HeaderStyle CssClass="gvMnuHeader"></HeaderStyle>
-                        </asp:GridView> -->
                     </div>
                 </div>
             </td>

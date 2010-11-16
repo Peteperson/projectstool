@@ -88,9 +88,10 @@
                                     </td>
                                     <td align="right" style="padding-left:10px; text-align:right">Από:<br />Έως:</td>
                                     <td><uc2:DateBox ID="dbFrom" runat="server" ShowTime="False" /><uc2:DateBox ID="dbTo" runat="server" ShowTime="False" /></td>
-                                    <td>Βασικός Υπεύθυνος:<br /><asp:DropDownList ID="ddlRespFilter" runat="server" 
+                                    <td>Βασικός Υπεύθυνος:<br />
+                                        <asp:DropDownList ID="ddlRespFilter" runat="server" 
                                             AppendDataBoundItems="True" DataSourceID="sqldsUsers" 
-                                            DataTextField="FullName" DataValueField="id"></asp:DropDownList>
+                                            DataTextField="FullName" DataValueField="id" AutoPostBack="True"></asp:DropDownList>
                                     </td>
                                     <td><asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /><br /><asp:Button ID="btnClearFilter" runat="server" Text="Remove filtering" /></td>
                                 </tr>
