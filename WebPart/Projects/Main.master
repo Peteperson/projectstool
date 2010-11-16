@@ -81,7 +81,23 @@ function ReloadPage() {
                       <font class="Yellow">Last&nbsp;Login:</font>&nbsp;<asp:Label ID="lblLogin" Font-Size="9pt" runat="server" Text="login"></asp:Label></div>
                     <div id="mnuInterMediate"><br /><br /></div>
                     <div id="mnuMain">
-                        <asp:GridView ID="gvMenu" runat="server" AutoGenerateColumns="False" DataSourceID="sqldsMenu" 
+                        <table id="tblMenu">
+                        <asp:Repeater ID="rptMenu" runat="server" DataSourceID="sqldsMenu">
+                        <HeaderTemplate>
+                            <tr>
+                                <td colspan="2" class="gvMnuHeader">Menu:</td>
+                            </tr>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <tr id="trMenu" class="<%# CheckSelection(eval("Path")) %>">
+                                <td><asp:Image ID="Image2" runat="server" ImageUrl='<%# eval("Image") %>' /></td>
+                                <td style="width:100%; padding-left:20px"><asp:HyperLink Font-Underline="false" ImageUrl="" Width="100%" ID="MenuLink" NavigateUrl='<%# eval("Path") %>' runat="server"><%#Eval("Description")%></asp:HyperLink></td>
+                            </tr>
+                        </ItemTemplate>
+                        </asp:Repeater>
+                        </table>
+
+<!--                        <asp:GridView ID="gvMenu" runat="server" AutoGenerateColumns="False" DataSourceID="sqldsMenu" 
                                 Width="100%" BorderStyle="None" RowStyle-CssClass="MenuItem" 
                             HeaderStyle-CssClass="gvMnuHeader" CaptionAlign="Top" CellPadding="0" CellSpacing="0">
                         <RowStyle CssClass="MenuItem"></RowStyle>
@@ -98,7 +114,7 @@ function ReloadPage() {
                             </asp:TemplateField>
                             </Columns>
                         <HeaderStyle CssClass="gvMnuHeader"></HeaderStyle>
-                        </asp:GridView>
+                        </asp:GridView> -->
                     </div>
                 </div>
             </td>
