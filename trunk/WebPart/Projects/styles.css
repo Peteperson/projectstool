@@ -1,10 +1,10 @@
 ﻿body {
 	/*background-color: #355379;*/
 	background-color: #2C486E;
-	/*background: url(Images/Background2.png) repeat-y;
-    background-image: -moz-linear-gradient(60% 100% 315deg, #2C486E, #5C789E);
-    background-repeat: no-repeat;
-    background-image: -webkit-gradient(linear, right bottom, left top, from(#5C789E), to(#2C486E));*/
+	background: url(Images/Background2.png) repeat-y;
+    /*background-image: -moz-linear-gradient(60% 100% 315deg, #2C486E, #5C789E);
+    background-image: -webkit-gradient(linear, right bottom, left top, from(#5C789E), to(#2C486E));
+    background-repeat: no-repeat;*/
 	font: normal 10pt Tahoma, Calibri, Verdana;
 	color: #FFFFFF;	
 }
@@ -73,6 +73,7 @@ a:hover {
 .gvMnuHeader {
     background:#842829;
     border: solid 1px #355379;
+    text-align:center;
 }
 
 #tblMain {
@@ -122,14 +123,7 @@ a:hover {
 }
 
 #dvMenu {
-    /*background-color: #788CA5;
-    padding: 1px 1px 1px 1px;*/
     width:200px;
-}
-
-#dvMenu a {
-    color: black;
-    height:23px;
 }
 
 #dvMenu tr:hover {
@@ -137,12 +131,22 @@ a:hover {
 }
 
 .MenuItem {
-    height:25px;
     background-color: #DDDDDD;
-    color: black;
-    padding: 0px 2px 0px 0px;
+    /*-webkit-transition: background 1000ms linear;*/
     background-image: -webkit-gradient(linear, 30 0, 30 30, from(#EEEEEE), to(#BBBBBB));
-    background-image:-moz-linear-gradient(bottom, #BBBBBB 60%, #EEEEEE);
+    background-image: -moz-linear-gradient(bottom, #BBBBBB, #EEEEEE);
+}
+
+.MenuItem a {
+    color: Black;
+}
+
+.MenuItemSelected {
+    background-color: Transparent;
+}
+
+.MenuItemSelected a {
+    color: White;
 }
 
 .TabMenuItem {
@@ -156,7 +160,7 @@ a:hover {
     height:25px;
     background-color:#355379;
     color: black;
-    border: none 0px;
+    border: none 0px;   
     padding: 0px 20px 0px 0px;
 }
 
