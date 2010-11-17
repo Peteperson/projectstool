@@ -418,30 +418,36 @@ a:hover {
     text-align:center;
 }
 
-.LoginFirstTable {
-    border: solid 1px black;
+#LoginFirstTable {
+    color: White;
+    width: 460px;
+    /*border: solid 1px black;
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-collapse: separate;
     background-color: #943839;
-    width: 460px;
     box-shadow: 10px 10px 10px #000000;
     -moz-box-shadow: 10px 10px 10px #000000;
     -webkit-box-shadow: 10px 10px 10px #000000;
     background-image: -webkit-gradient(linear, 0% 0%, 0% 10%, from(#F49899), to(#943839));
-    background-image:-moz-linear-gradient(bottom, #943839 90%, #F49899);
+    background-image:-moz-linear-gradient(bottom, #943839 90%, #F49899);*/
 }
 
-.LoginSecondTable {
-    border: solid 1px black;
+#LoginSecondTable {
+    color: White;
+    width: 460px;
+    /*border: solid 1px black;
     border-radius: 10px;
-    background-color: #DDDDDD;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-collapse: separate;
-    width: 420px;
-    color: Black;
+    background-color: #943839;
+    box-shadow: 10px 10px 10px #000000;
+    -moz-box-shadow: 10px 10px 10px #000000;
+    -webkit-box-shadow: 10px 10px 10px #000000;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 10%, from(#F49899), to(#943839));
+    background-image:-moz-linear-gradient(bottom, #943839 90%, #F49899);*/
 }
 
 #tdError1 {
@@ -487,4 +493,32 @@ a:hover {
 
 #dvTransTest:hover a{
     color: Black;
+}
+
+#LoginFrame {
+    width: 800px;
+    height: 550px;
+}
+
+#tblUsrPass {
+    height:80px;
+}
+
+#tblUsrPass td {
+    vertical-align: bottom;
+}
+
+#tblUsrPass input[type=text] {
+    background-color: White;
+    border: groove 3px #CCCCCC;
+}
+
+#tblUsrPass input[type=password] {
+    background-color: White;
+    border: groove 3px #CCCCCC;
+}
+
+#LoginSecondTable input[type=text] {
+    background-color: White;
+    border: groove 3px #CCCCCC;
 }

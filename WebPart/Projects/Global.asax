@@ -37,7 +37,7 @@
         End Try
 
         Server.ClearError()
-        Response.Redirect("~/Error.aspx")
+        'Response.Redirect("~/Error.aspx")
     End Sub
 
     Sub Session_Start(ByVal sender As Object, ByVal e As EventArgs)
