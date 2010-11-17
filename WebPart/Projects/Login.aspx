@@ -94,7 +94,7 @@
                             <asp:RequiredFieldValidator ID="EmailRequired" runat="server" 
                                 ControlToValidate="txtemail" 
                                 ErrorMessage="Το πεδίο e-mail δεν μπορεί να είναι κενό" 
-                                ToolTip="Το πεδίο e-mail δεν μπορεί να είναι κενό" ValidationGroup="email">*</asp:RequiredFieldValidator>
+                                ToolTip="Το πεδίο e-mail δεν μπορεί να είναι κενό" ValidationGroup="email">&nbsp;&nbsp;*</asp:RequiredFieldValidator>
                         </td>
                         <td>
                             <asp:ImageButton ID="btnResetMail" runat="server" onclick="btnResetMail_Click" 
