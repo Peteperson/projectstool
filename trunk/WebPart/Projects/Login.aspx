@@ -33,12 +33,13 @@
                         <table id="LoginFirstTable">
                             <tr>
                                 <td rowspan="3">
-                                    <img alt="lockimage" src="Images/LoginLock.png" style="width: 128px; height: 128px" /></td>
+                                    <img alt="lockimage" src="Images/LoginLock.png" 
+                                        style="width: 112px; height: 112px" /></td>
                                 <td>
                                     <table id="tblUsrPass">
                                         <tr>
-                                            <td style="padding-bottom:6px;">Username:&nbsp;</td>
-                                            <td><asp:TextBox ID="UserName" runat="server" Width="130px"></asp:TextBox></td>
+                                            <td style="padding-bottom:9px;">Username:&nbsp;</td>
+                                            <td style="padding-bottom:3px;"><asp:TextBox ID="UserName" runat="server" Width="130px"></asp:TextBox></td>
                                             <td><asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
                                                     ControlToValidate="UserName" 
                                                     ErrorMessage="Το πεδίο Username είναι υποχρεωτικό." 
@@ -46,8 +47,8 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="padding-bottom:6px;">Password:&nbsp;</td>
-                                            <td><asp:TextBox ID="Password" runat="server" TextMode="Password" Width="130px"></asp:TextBox></td>
+                                            <td style="padding-bottom:9px;">Password:&nbsp;</td>
+                                            <td style="padding-bottom:3px;"><asp:TextBox ID="Password" runat="server" TextMode="Password" Width="130px"></asp:TextBox></td>
                                             <td><asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
                                                     ControlToValidate="Password" 
                                                     ErrorMessage="Το πεδίο Password είναι υποχρεωτικό." 
@@ -82,15 +83,15 @@
             <td>
                 <table id="LoginSecondTable">                            
                     <tr>
-                        <td rowspan="2"><img alt="MailImage" src="Images/OrangeMail.png" /></td>
-                        <td colspan="4">Συμπληρώστε το email σας και πατήστε &#39;Αποστολή&#39; προκειμένου να κάνετε αίτηση 
+                        <td rowspan="2" valign="bottom"><img alt="MailImage" src="Images/OrangeMail.png" style="width: 72px; height: 72px" /></td>
+                        <td colspan="4" style="font-size:8pt; height: 40px" valign="bottom">Συμπληρώστε το email σας και πατήστε &#39;Αποστολή&#39; προκειμένου να κάνετε αίτηση 
                             έκδοσης νέου password:</td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="2" style="width:100%; padding-bottom: 6px">
                             <asp:TextBox ID="txtemail" runat="server" Width="100%"></asp:TextBox>
                         </td>
-                        <td>
+                        <td style="width: 0%">
                             <asp:RequiredFieldValidator ID="EmailRequired" runat="server" 
                                 ControlToValidate="txtemail" 
                                 ErrorMessage="Το πεδίο e-mail δεν μπορεί να είναι κενό" 
