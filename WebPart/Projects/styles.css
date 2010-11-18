@@ -152,7 +152,8 @@ a:hover {
 
 .MenuItemSelected {
     background-color: Transparent;
-    border-left: solid 2px #DDDDDD;
+    border-left: solid 2px black;
+    border-top: solid 2px black;
 }
 
 .MenuItemSelected a {

@@ -83,7 +83,7 @@
             <td>
                 <table id="LoginSecondTable">                            
                     <tr>
-                        <td rowspan="2" valign="bottom"><img alt="MailImage" src="Images/OrangeMail.png" style="width: 72px; height: 72px" /></td>
+                        <td rowspan="2" valign="bottom"><img alt="MailImage" src="Images/OrangeMail.png" /></td>
                         <td colspan="4" style="font-size:8pt; height: 40px" valign="bottom">Συμπληρώστε το email σας και πατήστε &#39;Αποστολή&#39; προκειμένου να κάνετε αίτηση 
                             έκδοσης νέου password:</td>
                     </tr>
