@@ -40,7 +40,7 @@
     End Sub
 
     Protected Sub btnResetMail_Click(ByVal sender As Object, ByVal e As System.EventArgs)
-        Dim res As ChkEmailResult = Database.CheckEmail(CType(ctrlLogin.FindControl("txtemail"), TextBox).Text)
+        Dim res As ChkEmailResult = Database.CheckEmail(txtemail.Text)
         lblMessage.Visible = True
         If res.UserId = 0 Then
             lblMessage.Text = "Invalid email address."
