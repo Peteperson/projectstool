@@ -16,10 +16,13 @@
                     <br />
                     <table id="tblCngPass" cellpadding="5">
                         <tr>
-                            <td colspan="2" style="font-weight:bold; color:White; text-align:center">Συμπληρώστε 
+                            <td colspan="3" style="font-weight:bold; color:White; text-align:center">Συμπληρώστε 
                                 τα παρακάτω πεδία</td>
                         </tr>
                         <tr style="background-color:#dddddd">
+                            <td rowspan="3">
+                                    <img alt="lockimage" src="Images/LoginLock.png" 
+                                        style="width: 112px; height: 112px" /></td>
                             <td align="right">Παλιός κωδικός:</td>
                             <td>
                                 <asp:TextBox ID="txtOldPass" runat="server" TextMode="Password" AutoCompleteType="None" ></asp:TextBox>
@@ -44,7 +47,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2" style="text-align:center">
+                            <td colspan="3" style="text-align:center">
                                 <asp:Button ID="btnChangePass" runat="server" Text="Αλλαγή κωδικού" 
                                     ValidationGroup="CngPass" />
                             </td>

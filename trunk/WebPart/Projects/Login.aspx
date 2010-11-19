@@ -58,7 +58,7 @@
                                     </table>
                                 </td>
                                 <td align="left" valign="bottom" style="width:100%">
-                                    <asp:ImageButton ID="LoginButton" runat="server" CommandName="Login" 
+                                    <asp:ImageButton ID="btnLoginButton" runat="server" CommandName="Login" 
                                         Font-Names="Tahoma, Calibri, Verdana" ToolTip="Είσοδος" 
                                         ValidationGroup="Login1" ImageUrl="~/Images/ArrowNext.png" />    
                                 </td>
@@ -117,7 +117,7 @@
                 binding procedures ... Obtaining or attempt of obtaining an unauthorized access to the application can cause bearing criminal responsibility or civil liability.</td>
         </tr>
         <tr>
-            <td style="background: url(Images/Blue.png) repeat-x; text-align:right; vertical-align:top"><div id="advlink"><a href="http://advent.com.gr">&copy; AG ADVENT <%=DateTime.Today.Year%></a></div></td>
+            <td id="tdBottomLogo"><div><a href="http://advent.com.gr">&copy; AG ADVENT <%=DateTime.Today.Year%></a></div></td>
         </tr>
       </table>
     </form>    
