@@ -1,11 +1,11 @@
 ﻿body {
 	/*background-color: #355379;*/
 	background-color: #2C486E;
-	background: url(Images/Background2.png) repeat-y;
     /*background-image: -moz-linear-gradient(60% 100% 315deg, #2C486E, #5C789E);
-    background-image: -webkit-gradient(linear, right bottom, left top, from(#5C789E), to(#2C486E));
+    background-image: -webkit-gradient(linear, left top, right bottom, to(#2C486E), from(#8CA8CE));	
+    background: url(Images/Background2.png) repeat-y;
     background-repeat: no-repeat;*/
-	font: normal 10pt Tahoma, Calibri, Verdana;
+	font: normal 13px Tahoma, Calibri, Verdana;
 	color: #FFFFFF;	
 }
 
@@ -76,19 +76,7 @@ a:hover {
     background-image: -moz-linear-gradient(center bottom, #B45859 10%, #842829 66%, #943839 80%, #E48889 92%);
     border: solid 2px #842829;
     text-align:center;
-}
-
-#tblMain {
-    width: 100%;
-}
-
-#tblMain td {
-    /*border-right: solid 1px white;*/
-    padding-right: 5px;
-}
-
-#tblMain input {
-    width: 95%;
+    font: normal 16px 'Lucida Calligraphy';
 }
 
 .FormTitle {
@@ -97,14 +85,24 @@ a:hover {
     background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.1, #B45859), color-stop(0.66, #842829), color-stop(0.80, #943839), color-stop(0.92, #F49899));
     background-image: -moz-linear-gradient(center bottom, #B45859 10%, #842829 66%, #943839 80%, #F49899 92%);
 	padding: 5px 0px 5px 0px;
-	font-size:large;
+	font-size:28px;
 	font-weight:bolder;
-    border-radius: 15px;
-	-moz-border-radius: 15px;
-	-webkit-border-radius: 15px;
+	border-top-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	border-top-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	-moz-border-radius-topleft: 15px;
+	-moz-border-radius-bottomright: 15px;
+	-moz-border-radius-topright: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	-webkit-border-top-left-radius: 15px;
+	-webkit-border-bottom-right-radius: 15px;
+	-webkit-border-top-right-radius: 0px;
+	-webkit-border-bottom-left-radius: 0px;
 	box-shadow: 5px 5px 5px #000000;
     -moz-box-shadow: 5px 5px 5px #000000;
     -webkit-box-shadow: 5px 5px 5px #000000;
+    font-family: Mistral;
 }
 
 .centered {
@@ -121,7 +119,7 @@ a:hover {
 }
 
 .message {
-    font-size: 12pt;
+    font-size: 13px;
     color: Yellow;
     text-align:center;
 }
@@ -319,11 +317,6 @@ a:hover {
 
 #tblCngPass {
     width:400px;
-    border-top: solid 3px #CCCCCC;
-    border-left: solid 3px #CCCCCC;
-    border-right: solid 3px #999999;
-    border-bottom: solid 3px #999999;
-    color:Black;
 }
 
 #tblCngPass td {
@@ -522,6 +515,7 @@ a:hover {
 #tdBottomLogo {
     text-align:right; 
     vertical-align:top;
+    background-color: #557399;
     background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.1, #ADB9C8), color-stop(0.66, #355379), color-stop(0.83, #95A5B8), color-stop(0.95, #EEF0F3));
     background-image: -moz-linear-gradient(center bottom, #ADB9C8 10%, #355379 66%, #95A5B8 83%, #EEF0F3 95%);
     border-radius: 8px;

@@ -6,7 +6,7 @@
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
     <PagerSettings Mode="NumericFirstLast" />
     <SelectedRowStyle BackColor="#7593B9" ForeColor="White" Font-Bold="true" />
-    <HeaderStyle BackColor="#2C486E" ForeColor="White" Font-Size="10pt" Height="35px" />
+    <HeaderStyle BackColor="#2C486E" ForeColor="White" Font-Size="12px" Height="35px" />
     <AlternatingRowStyle BackColor="#D3D3D3" />    
 </asp:GridView>
 
@@ -17,7 +17,7 @@
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
     <PagerSettings Mode="NumericFirstLast" />
     <SelectedRowStyle BackColor="#7593B9" ForeColor="White" Font-Bold="true" />
-    <HeaderStyle BackColor="#2C486E" ForeColor="White" Font-Size="10pt" Height="35px" />
+    <HeaderStyle BackColor="#2C486E" ForeColor="White" Font-Size="12px" Height="35px" />
     <AlternatingRowStyle BackColor="#FFFBDA" />    
 </asp:GridView>
 
@@ -28,7 +28,7 @@
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
     <PagerSettings Mode="NumericFirstLast" />
     <SelectedRowStyle BackColor="#7593B9" ForeColor="White" Font-Bold="true" />
-    <HeaderStyle BackColor="#2C486E" ForeColor="White" Font-Size="10pt" Height="35px" />
+    <HeaderStyle BackColor="#2C486E" ForeColor="White" Font-Size="12px" Height="35px" />
     <AlternatingRowStyle BackColor="#D3D3D3" />    
 </asp:GridView>
 
@@ -39,13 +39,13 @@
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
     <PagerSettings Mode="NumericFirstLast" />
     <SelectedRowStyle BackColor="#7593B9" ForeColor="White" />
-    <HeaderStyle BackColor="#2C486E" ForeColor="White" Font-Size="10pt" Height="35px" />
+    <HeaderStyle BackColor="#2C486E" ForeColor="White" Font-Size="12px" Height="35px" />
     <AlternatingRowStyle BackColor="#D3D3D3" />    
 </asp:GridView>
 
 <asp:GridView runat="server" SkinId="gridviewSkinSmall" AutoGenerateColumns="False" RowStyle-HorizontalAlign="Left"
     ForeColor="Black" PageSize="5" BackColor="#EAEAEA" Width="100%" FooterStyle-Wrap="false">
-    <EmptyDataRowStyle BackColor="#233D63" ForeColor="White" Font-Size="11pt" />
+    <EmptyDataRowStyle BackColor="#233D63" ForeColor="White" Font-Size="13px" />
     <FooterStyle BackColor="Tan" />
     <PagerStyle BackColor="#2C486E" ForeColor="White" HorizontalAlign="Center" />
     <PagerSettings Mode="NumericFirstLast" />
@@ -54,10 +54,10 @@
     <AlternatingRowStyle BackColor="#D3D3D3" />    
 </asp:GridView>
 
-<asp:Calendar SkinId="clndMain" runat="server" BackColor="#7593B9" DayNameFormat="Shortest" ForeColor="Black" Width="150px" Font-Size="8pt" >
+<asp:Calendar SkinId="clndMain" runat="server" BackColor="#7593B9" DayNameFormat="Shortest" ForeColor="Black" Width="150px" Font-Size="10px" >
     <SelectedDayStyle BackColor="#7593B9" Font-Bold="True" ForeColor="White" />
     <DayHeaderStyle BackColor="Tan" ForeColor="Black" />
-    <TitleStyle BackColor="#2C486E" Font-Bold="True" Font-Size="10pt" ForeColor="White" />
+    <TitleStyle BackColor="#2C486E" Font-Bold="True" Font-Size="12px" ForeColor="White" />
     <WeekendDayStyle BackColor="LightGray" ForeColor="Black" />
 </asp:Calendar>
 

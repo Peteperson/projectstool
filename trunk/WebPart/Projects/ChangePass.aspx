@@ -16,10 +16,6 @@
                     <br />
                     <table id="tblCngPass">
                         <tr>
-                            <td colspan="4" style="font-weight:bold; color:White; text-align:center">Συμπληρώστε 
-                                τα παρακάτω πεδία</td>
-                        </tr>
-                        <tr style="background-color:#dddddd">
                             <td rowspan="3">
                                     <img alt="lockimage" src="Images/LoginLock.png" 
                                         style="width: 112px; height: 112px" /></td>
@@ -29,14 +25,14 @@
                                     ControlToValidate="txtOldPass" ErrorMessage="*" ValidationGroup="CngPass"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
-                        <tr style="background-color:#dddddd">
+                        <tr>
                             <td align="right">Νέος κωδικός:</td>
                             <td><asp:TextBox ID="txtNewPass" runat="server" TextMode="Password"></asp:TextBox></td>
                             <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                     ControlToValidate="txtNewPass" ErrorMessage="*" ValidationGroup="CngPass"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
-                        <tr style="background-color:#dddddd">
+                        <tr>
                             <td align="right">Επαλήθευση νέου κωδικού:</td>
                             <td>
                                 <asp:TextBox ID="txtReNewPass" runat="server" TextMode="Password"></asp:TextBox></td>

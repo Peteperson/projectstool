@@ -136,6 +136,7 @@ Partial Class SystemDesign
     End Sub
 
     Protected Sub btnPrint_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnPrint.Click
+        btnInsert.Visible = False
         CType(Me.Master, Main).HideAndPrint()
     End Sub
 
