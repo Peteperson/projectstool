@@ -18,6 +18,6 @@ AS
     SELECT [Messages].*, Users.LastName + ' ' + users.FirstName AS Fullname
     FROM webuser.Messages
     INNER JOIN webuser.Users ON [Messages].Writer = Users.id
-    WHERE (ToUserId = @UserId OR ToCompanyId in (SELECT id FROM [@CompanyIds]) OR ToEveryone = 1) AND writer <> @UserId
+    WHERE (ToUserId = @UserId OR ToCompanyId in (SELECT id FROM @CompanyIds) OR ToEveryone = 1) AND writer <> @UserId
     ORDER BY id DESC 
 GO
