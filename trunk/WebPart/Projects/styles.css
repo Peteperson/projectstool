@@ -76,7 +76,7 @@ a:hover {
     background-image: -moz-linear-gradient(center bottom, #B45859 10%, #842829 66%, #943839 80%, #E48889 92%);
     border: solid 2px #842829;
     text-align:center;
-    font: normal 16px 'Lucida Calligraphy';
+    font-size: 14px;
 }
 
 .FormTitle {
