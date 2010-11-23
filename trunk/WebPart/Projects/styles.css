@@ -85,7 +85,7 @@ a:hover {
     background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.1, #B45859), color-stop(0.66, #842829), color-stop(0.80, #943839), color-stop(0.92, #F49899));
     background-image: -moz-linear-gradient(center bottom, #B45859 10%, #842829 66%, #943839 80%, #F49899 92%);
 	padding: 5px 0px 5px 0px;
-	font-size:28px;
+	font-size:20px;
 	font-weight:bolder;
 	border-top-left-radius: 15px;
 	border-bottom-right-radius: 15px;
@@ -100,9 +100,8 @@ a:hover {
 	-webkit-border-top-right-radius: 0px;
 	-webkit-border-bottom-left-radius: 0px;
 	box-shadow: 5px 5px 5px #000000;
-    -moz-box-shadow: 5px 5px 5px #000000;
+	-moz-box-shadow: 5px 5px 5px #000000;
     -webkit-box-shadow: 5px 5px 5px #000000;
-    font-family: Mistral;
 }
 
 .centered {
