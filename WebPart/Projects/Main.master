@@ -10,32 +10,159 @@
     <link href="styles.css" rel="stylesheet" type="text/css" />
     <script language="javascript" type="text/javascript">
 
-function ConfirmDelete() {
-    if (!confirm('Να διαγράψω την εγγραφή;')) return false;
-}    
-        
-function ShowPleaseWait() {
-    document.getElementById("dvPleaseWait").style.display = "block";
-}
+        function ConfirmDelete() {
+            if (!confirm('Να διαγράψω την εγγραφή;')) return false;
+        }
 
-function HidePleaseWait() {
-    document.getElementById("dvPleaseWait").style.display = "none";
-}
+        function ConfirmLogoff() {
+            if (!confirm('Έξοδος από την εφαρμογή;')) return false;
+        }
 
-CurrentLocation = document.location
-function PrintPage() {
-    document.getElementById("subPageMainTable").rows[1].style.display = "none";
-    document.getElementById("trHeaderLogo").style.display = "None";
-    document.getElementById("tblFooterLogo").style.display = "None";
-    print();
-    setTimeout("ReloadPage()", 500);
-}
+        function ShowPleaseWait() {
+            document.getElementById("dvPleaseWait").style.display = "block";
+        }
 
-function ReloadPage() {
-    document.location = CurrentLocation;
-}
+        function HidePleaseWait() {
+            document.getElementById("dvPleaseWait").style.display = "none";
+        }
 
-</script>
+        CurrentLocation = document.location
+        function PrintPage() {
+            document.getElementById("subPageMainTable").rows[1].style.display = "None";
+            document.getElementById("trHeaderLogo").style.display = "None";
+            document.getElementById("tblFooterLogo").style.display = "None";
+            if (document.getElementById("tdPrint") != null) {
+                document.getElementById("tdPrint").style.display = "None";
+            }
+            window.print();
+            if (BrowserDetect.browser == "Chrome" || BrowserDetect.browser == "Opera") {
+                alert("Πιέστε 'ctrl + P' για να εκτυπώσετε. Κατόπιν πιέστε back για να επιστρέψετε στην κανονική σελίδα.");
+            } else {
+                setTimeout("ReloadPage()", 500);
+            }
+        }
+
+        function ReloadPage() {
+            document.location = CurrentLocation;
+        }
+
+        var BrowserDetect = {
+            init: function() {
+                this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
+                this.version = this.searchVersion(navigator.userAgent)
+			|| this.searchVersion(navigator.appVersion)
+			|| "an unknown version";
+                this.OS = this.searchString(this.dataOS) || "an unknown OS";
+            },
+            searchString: function(data) {
+                for (var i = 0; i < data.length; i++) {
+                    var dataString = data[i].string;
+                    var dataProp = data[i].prop;
+                    this.versionSearchString = data[i].versionSearch || data[i].identity;
+                    if (dataString) {
+                        if (dataString.indexOf(data[i].subString) != -1)
+                            return data[i].identity;
+                    }
+                    else if (dataProp)
+                        return data[i].identity;
+                }
+            },
+            searchVersion: function(dataString) {
+                var index = dataString.indexOf(this.versionSearchString);
+                if (index == -1) return;
+                return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
+            },
+            dataBrowser: [
+		{
+		    string: navigator.userAgent,
+		    subString: "Chrome",
+		    identity: "Chrome"
+		},
+		{ string: navigator.userAgent,
+		    subString: "OmniWeb",
+		    versionSearch: "OmniWeb/",
+		    identity: "OmniWeb"
+		},
+		{
+		    string: navigator.vendor,
+		    subString: "Apple",
+		    identity: "Safari",
+		    versionSearch: "Version"
+		},
+		{
+		    prop: window.opera,
+		    identity: "Opera"
+		},
+		{
+		    string: navigator.vendor,
+		    subString: "iCab",
+		    identity: "iCab"
+		},
+		{
+		    string: navigator.vendor,
+		    subString: "KDE",
+		    identity: "Konqueror"
+		},
+		{
+		    string: navigator.userAgent,
+		    subString: "Firefox",
+		    identity: "Firefox"
+		},
+		{
+		    string: navigator.vendor,
+		    subString: "Camino",
+		    identity: "Camino"
+		},
+		{		// for newer Netscapes (6+)
+		    string: navigator.userAgent,
+		    subString: "Netscape",
+		    identity: "Netscape"
+		},
+		{
+		    string: navigator.userAgent,
+		    subString: "MSIE",
+		    identity: "Explorer",
+		    versionSearch: "MSIE"
+		},
+		{
+		    string: navigator.userAgent,
+		    subString: "Gecko",
+		    identity: "Mozilla",
+		    versionSearch: "rv"
+		},
+		{ 		// for older Netscapes (4-)
+		    string: navigator.userAgent,
+		    subString: "Mozilla",
+		    identity: "Netscape",
+		    versionSearch: "Mozilla"
+		}
+	],
+            dataOS: [
+		{
+		    string: navigator.platform,
+		    subString: "Win",
+		    identity: "Windows"
+		},
+		{
+		    string: navigator.platform,
+		    subString: "Mac",
+		    identity: "Mac"
+		},
+		{
+		    string: navigator.userAgent,
+		    subString: "iPhone",
+		    identity: "iPhone/iPod"
+		},
+		{
+		    string: navigator.platform,
+		    subString: "Linux",
+		    identity: "Linux"
+		}
+	]
+
+        };
+        BrowserDetect.init();
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -64,7 +191,7 @@ function ReloadPage() {
                                     </tr>
                                     <tr>
                                         <td style="width:100%; vertical-align: bottom"><asp:Literal ID="ltrMessage" runat="server"></asp:Literal></td>
-                                        <td><asp:ImageButton ID="btnLogoff" runat="server" ImageUrl="~/Images/logout.png" ToolTip="Έξοδος" /></td>
+                                        <td><asp:ImageButton ID="btnLogoff" OnClientClick="return ConfirmLogoff()" runat="server" ImageUrl="~/Images/logout.png" ToolTip="Έξοδος" /></td>
                                     </tr>
                                 </table>
                             </td>
@@ -77,15 +204,15 @@ function ReloadPage() {
         <tr>
             <td id="tdMenu" runat="server" style="vertical-align: top">
                 <div id="dvMenu">
-                    <div id="mnuHeader"><font class="Yellow">User:</font>&nbsp;<asp:Label ID="lblUser" Font-Size="9pt" runat="server" Text="user"></asp:Label><br />
-                      <font class="Yellow">Last&nbsp;Login:</font>&nbsp;<asp:Label ID="lblLogin" Font-Size="9pt" runat="server" Text="login"></asp:Label></div>
+                    <div id="mnuHeader"><font class="Yellow">User:</font>&nbsp;<asp:Label ID="lblUser" Font-Size="11px" runat="server" Text="user"></asp:Label><br />
+                      <font class="Yellow">Last&nbsp;Login:</font>&nbsp;<asp:Label ID="lblLogin" Font-Size="11px" runat="server" Text="login"></asp:Label></div>
                     <div id="mnuInterMediate"><br /><br /></div>
                     <div id="mnuMain">
                         <table id="tblMenu">
                             <asp:Repeater ID="rptMenu" runat="server" DataSourceID="sqldsMenu">
                             <HeaderTemplate>
                                 <tr>
-                                    <td colspan="2" class="gvMnuHeader">Menu:</td>
+                                    <td colspan="2" class="gvMnuHeader">Menu :</td>
                                 </tr>
                             </HeaderTemplate>
                             <ItemTemplate>
@@ -112,12 +239,10 @@ function ReloadPage() {
         </tr>
         </table>
         <br />
-        <table style="width:100%">
+        <table id="tblFooterLogo" style="width:100%">
             <tr>
                 <td id="tdBottomLogo"><div><a href="http://advent.com.gr">&copy; AG ADVENT <%=DateTime.Today.Year%></a></div></td>
             </tr>
-        </table>
-        <table>
             <tr>
                 <td>
                     <asp:SqlDataSource ID="sqldsMenu" runat="server" 
