@@ -7,7 +7,8 @@
     <link rel="shortcut icon" href="Images/Icons/favicon.ico" />
     <title>AG ADVENT - Project management tool</title>
     <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
-    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <link href="styles.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="Print.css" media="print" rel="stylesheet" type="text/css" />
     <script language="javascript" type="text/javascript">
 
         function ConfirmDelete() {
