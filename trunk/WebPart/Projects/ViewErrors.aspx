@@ -15,6 +15,7 @@
                     <tr>
                         <td>From</td>
                         <td>To</td>
+                        <td rowspan="2"><div style="overflow: auto; height: 100px;"><asp:Literal ID="litInfo" runat="server"></asp:Literal></div></td>
                     </tr>
                     <tr>
                         <td>
