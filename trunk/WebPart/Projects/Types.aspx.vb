@@ -48,8 +48,4 @@ Partial Class Types
     Protected Sub btnRemovePaging_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging.Click
         gvTypes.AllowPaging = Not gvTypes.AllowPaging
     End Sub
-
-    Protected Sub btnPrint_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnPrint.Click
-        CType(Me.Master, Main).HideAndPrint()
-    End Sub
 End Class

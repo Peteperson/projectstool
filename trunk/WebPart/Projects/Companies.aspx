@@ -13,7 +13,7 @@
                         <td><asp:ImageButton ID="btnRemovePaging" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
                         <td style="width:100%" align="center">Διαχείριση πελατών</td>
                         <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
-                                ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
+                                ImageUrl="~/Images/Icons/Print1_32x32.png" OnClientClick="return PrintWithoutPostback()" /></td>
                     </tr>
                 </table>
             </td>
@@ -157,7 +157,7 @@
             </td>
         </tr>
         <tr>
-            <td class="tdBelowTitle">
+            <td class="tdBelowTitle2">
                 <asp:GridView ID="gvCompEmpl" runat="server" AutoGenerateColumns="False"
                     DataKeyNames="Id" DataSourceID="sqldsCompEmployees" AllowPaging="True" 
                     AllowSorting="True" SkinID="gridviewSkin" Visible="False" ShowFooter="true">

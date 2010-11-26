@@ -9,22 +9,13 @@
 	color: #FFFFFF;	
 }
 
-textarea:focus {
-    background-color: #FFFFDD;
-}
+textarea:focus {background-color: #FFFFDD;}
 
-input[type=text]:focus {
-    background-color: #FFFFDD;
-}
+input[type=text]:focus {background-color: #FFFFDD;}
 
-input[type=password]:focus {
-    background-color: #FFFFDD;
-}
+input[type=password]:focus {background-color: #FFFFDD;}
 
-select:focus {
-    background-color: #FFFFEE;
-    border: solid 1px #355379;
-}
+select:focus {background-color: #FFFFEE; border: solid 1px #355379;}
 
 input[type=text] {
     background-color: White;
@@ -50,25 +41,15 @@ input[type=password] {
 	-webkit-border-radius: 5px;
 }
 
-select:disabled {
-    color: #666666;
-}
+select:disabled {color: #666666;}
 
-span[id*=lblActual] {
-    color: #0000CC;
-}
+span[id*=lblActual] {color: #0000CC;}
 
-table {
-    border-collapse:collapse;
-}
+table {border-collapse:collapse;}
 
-a {
-	color: #EEEEEE;
-}
+a {color: #EEEEEE;}
 
-a:hover {
-    color: White;
-}
+a:hover {color: White;}
 
 .gvMnuHeader {
     background:#842829;
@@ -95,18 +76,7 @@ a:hover {
     -webkit-box-shadow: 3px 3px 3px #000000;
 }
 
-.centered {
-    text-align:center;
-}
-
-.smalltitle {
-    text-align: center;
-    background-color:#788CA5;
-	padding: 5px 0px 5px 0px;
-	border: 1px solid #FFFFFF;
-	color: white;
-	font-weight:bold;
-}
+.centered {text-align:center;}
 
 .message {
     font-size: 13px;
@@ -114,9 +84,7 @@ a:hover {
     text-align:center;
 }
 
-#dvMenu {
-    width:200px;
-}
+#dvMenu {width:200px;}
 
 .MenuItem {
     background-color: #DDDDDD;
@@ -137,10 +105,7 @@ a:hover {
     color: Black;
 }
 
-.MenuItem:hover a {
-    margin-left: 10px;
-    color: White;
-}
+.MenuItem:hover a {margin-left: 10px; color: White;}
 
 .MenuItemSelected {
     background-color: Transparent;
@@ -149,13 +114,9 @@ a:hover {
     border-bottom: solid 2px #999999;
 }
 
-.MenuItemSelected a {
-    color: White;
-}
+.MenuItemSelected a {color: White;}
 
 .TabMenuItem {
-    /*background: url(Images/GrayButton.png) repeat-x;
-    background: url(Images/TabBackImage.png) repeat-x;*/
     border: none 0px;
     padding: 0px 2px 0px 0px;
 }
@@ -168,51 +129,27 @@ a:hover {
     padding: 0px 20px 0px 0px;
 }
 
-#mnuHeader {
-    vertical-align:bottom;
-    width: 100%;
-}
+#mnuHeader {vertical-align:bottom; width: 100%;}
 
-.tblInset{
-    border: inset 2px white; 
-    background-color: #586C85;
-}
+.Yellow {color:Yellow;}
 
-.Yellow {
-    color:Yellow;
-}
+#mnuMain {border-bottom: solid 10px #842829;}
 
-#mnuMain {
- /*   border-left: solid 2px white;
-    border-top: solid 1px white;*/
-    border-bottom: solid 10px #842829;
-}
+#mnuInterMediate {width: 100%;}
 
-#mnuInterMediate {
-/*    border-right: solid 2px white;
-    border-bottom: solid 1px white;*/
-    width: 100%;
-}
-
-#tdMessage
-{
+#tdMessage {
     font-size:large;
     color:Yellow;
     text-align:center;
 }
 
-#subPageMainTable {
-    width:95%;
-    border-collapse:separate;
-}
+#subPageMainTable {width:95%; border-collapse:separate;}
 
-.ErrorMessage {
-    color: Yellow;
-}
+#subPageMainTablePrj {width:95%; border-collapse:separate;}
 
-.InsertRow {
-    background-color: #D2B48C; /*This is the colour 'Tan'*/
-}
+.ErrorMessage {color: Yellow;}
+
+.InsertRow {background-color: #D2B48C; /*This is the colour 'Tan'*/}
 
 .InsertHeader {
     background-color: #355379;
@@ -226,34 +163,19 @@ a:hover {
     font-weight:bold;
 }
 
-.gvRow {
-	height:30px;
-}
+.gvRow {height:30px;}
 
-.gvRow2 {
-	height:24px;
-}
+.gvRow2 {height:24px;}
 
-#tdSubMenu{
-	text-align:left;
-}
+#tdSubMenu {text-align:left;}
 
-#tdSubMenu a {
-    color: #AAAAAA;
-}
+#tdSubMenu a {color: #AAAAAA;}
 
-#tdSubMenu a:hover {
-    color:White;
-}
+#tdSubMenu a:hover {color:White;}
 
+#tdSubMenu table {width:0%;}
 
-#tdSubMenu table {
-    width:0%;
-}
-
-#tblDetails{
-	 width:100%;
-}
+#tblDetails {width:100%;}
 
 .tblDetailsHeader {
 	background-color: #EAEAEA;
@@ -273,74 +195,37 @@ a:hover {
 	border:solid 1px #2C486E;
 }
 
-#tdAttachments a{
-    color:black;
-}
+#tdAttachments a{color:black;}
 
-#tdAttachments a:hover{
-    color:#842829;
-}
+#tdAttachments a:hover{color:#842829;}
 
-#tdMeetings a{
-    color:black;
-}
+#tdMeetings a{color:black;}
 
-#tdMeetings a:hover{
-    color:#842829;
-}
+#tdMeetings a:hover{color:#842829;}
 
-#tdAP a{
-    color:black;
-}
+#tdAP a{color:black;}
 
-#tdAP a:hover{
-    color:#842829;
-}
+#tdAP a:hover{color:#842829;}
 
-#tdProgress a{
-    color:black;
-}
+#tdProgress a{color:black;}
 
-#tdProgress a:hover{
-    color:#842829;
-}
+#tdProgress a:hover{color:#842829;}
 
-#tblCngPass {
-    width:400px;
-}
+#tblCngPass {width:400px;}
 
-#tblCngPass td {
-    vertical-align:middle;    
-    padding: 3px;
-}
+#tblCngPass td {vertical-align:middle; padding: 3px;}
 
-.RedDate {
-    color: Red;
-    font-weight:bold;
-}
+.RedDate {color: Red; font-weight:bold;}
 
-.BoldDate {
-    font-weight:bold;
-}
+.BoldDate {font-weight:bold;}
 
-.CommentsCol {
-    text-align:center;
-    width: 250px;
-}
+.CommentsCol {text-align:center; width: 250px;}
 
-.MessageCol {
-    text-align:center;
-    width: 100%;
-}
+.MessageCol {text-align:center; width: 100%;}
 
-.DetFormView{
-    border: solid 1px white;
-}
+.DetFormView{border: solid 1px white;}
 
-.TblEmptyData {
-	border: solid 1px white;
-	width:100%;
-}
+.TblEmptyData {border: solid 1px white; width:100%;}
 
 #dvPleaseWait {
     position:absolute; 
@@ -353,23 +238,13 @@ a:hover {
     display:none;
 }
 
-.ShowStatus{
-    text-align: left;
-    font-weight: bold;    
-}
+.ShowStatus{text-align: left; font-weight: bold;    }
 
-.MinWidth {
-    width:0%;
-}
+.MinWidth {width:0%;}
 
-#tdPrint {
-    text-align: right;
-}
+#tdPrint {text-align: right;}
 
-#tdInfo {
-    text-align:center;
-    width: 30%;
-}
+#tdInfo {text-align:center; width: 30%;}
 
 .tdBelowTitle {
     text-align:center;
@@ -377,13 +252,15 @@ a:hover {
     padding-bottom: 6px;
 }
 
-#tblStatus {
-    border: solid 1px #CCCCCC;
+.tdBelowTitle2 {
+    text-align:center;
+    padding-top: 8px;
+    padding-bottom: 6px;
 }
 
-#tblStatus td {
-    text-align:left;
-}
+#tblStatus {border: solid 1px #CCCCCC;}
+
+#tblStatus td {text-align:left;}
 
 .btnUpdStatus {
     background: url(Images/icons/Update1_16x16.png);
@@ -401,10 +278,7 @@ a:hover {
     height:21px;
 }
 
-.txtMassiveImport {
-    height:200px;
-    width:98%;
-}
+.txtMassiveImport {height:200px; width:98%;}
 
 .lblHelpIds {
     border: none;
@@ -428,10 +302,7 @@ a:hover {
     background-image:-moz-linear-gradient(bottom, #943839 90%, #F49899);*/
 }
 
-#LoginSecondTable {
-    color: White;
-    width: 400px;
-}
+#LoginSecondTable {color: White; width: 400px;}
 
 #tdError1 {
     background-image: -webkit-gradient(linear, left center, right center, from(#355379), to(#943839));
@@ -450,57 +321,21 @@ a:hover {
     background-image:-moz-linear-gradient(right center, #456389, #943839);
 }
 
-.MaxWidth80px{
-    max-width: 80px;
-}
+.MaxWidth80px{max-width: 80px;}
 
-.MaxWidth120px{
-    max-width: 120px;
-}
+.MaxWidth120px{max-width: 120px;}
 
-#dvTransTest {
-    background-color: Gray;
-    color: white;
-    height: 30px;
-    width: 200px;
-    -webkit-transition: all 1000ms ease-in-out;
-}
+#LoginFrame {width: 800px; height: 550px;}
 
-#dvTransTest:hover {
-    background-color: white;
-}
+#tblUsrPass {height:80px;}
 
-#dvTransTest:hover a{
-    color: Black;
-}
+#tblUsrPass td {vertical-align: bottom;}
 
-#LoginFrame {
-    width: 800px;
-    height: 550px;
-}
+#tblUsrPass input[type=text] {background-color: White; border: groove 3px #CCCCCC;}
 
-#tblUsrPass {
-    height:80px;
-}
+#tblUsrPass input[type=password] {background-color: White; border: groove 3px #CCCCCC;}
 
-#tblUsrPass td {
-    vertical-align: bottom;
-}
-
-#tblUsrPass input[type=text] {
-    background-color: White;
-    border: groove 3px #CCCCCC;
-}
-
-#tblUsrPass input[type=password] {
-    background-color: White;
-    border: groove 3px #CCCCCC;
-}
-
-#LoginSecondTable input[type=text] {
-    background-color: White;
-    border: groove 3px #CCCCCC;
-}
+#LoginSecondTable input[type=text] {background-color: White; border: groove 3px #CCCCCC;}
 
 #tdBottomLogo {
     text-align:right; 
@@ -517,19 +352,13 @@ a:hover {
     -moz-box-shadow: 1px 1px 1px #000000;
 }
 
-#tdBottomLogo div {
-    -webkit-box-reflect: below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, 0.25)));
-}
+#tdBottomLogo div {-webkit-box-reflect: below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, 0.25)));}
 
-#tdBottomLogo a {
-    font-weight: bold;
-    text-decoration: none;
-}
+#tdBottomLogo a {font-weight: bold; text-decoration: none;}
 
 #tdLogoff {
     width:100%; 
     text-align: right; 
     vertical-align: bottom; 
     background-color: White;
-    /*background-image: -webkit-gradient(linear, left bottom, right bottom, color-stop(0.1, white), color-stop(0.9, #355379), color-stop(0.9, transparent));*/
 }

@@ -418,10 +418,6 @@ Partial Class Projects
         gvProgress.AllowPaging = Not gvProgress.AllowPaging
     End Sub
 
-    Protected Sub btnPrint_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnPrint.Click
-        CType(Me.Master, Main).HideAndPrint()
-    End Sub
-
     Protected Sub Page_PreInit(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreInit
         If InStr(Request.ServerVariables("http_user_agent"), "Safari") Then Page.ClientTarget = "uplevel"
     End Sub

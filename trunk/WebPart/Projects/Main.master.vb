@@ -49,13 +49,12 @@
     End Sub
 
     Public Sub HideAndPrint()
-        tdMenu.Style.Add("display", "none")
+        'tdMenu.Style.Add("display", "none")
         'CType(FindControlRecursively(form1, id), GridView).AllowPaging = False
-        FindControlRecursively(form1, "btnPrint").Visible = False
-        FindControlRecursively(form1, "btnRemovePaging").Visible = False
-        form1.Style.Add("background-color", "white")
-
-        Page.ClientScript.RegisterStartupScript(Me.GetType(), "Javascript", "javascript: PrintPage(); ", True)
+        'FindControlRecursively(form1, "btnPrint").Visible = False
+        'FindControlRecursively(form1, "btnRemovePaging").Visible = False
+        'form1.Style.Add("background-color", "white")
+        'Page.ClientScript.RegisterStartupScript(Me.GetType(), "Javascript", "javascript: PrintPage(); ", True)
     End Sub
 
     Public Function FindControlRecursively(ByVal ParentControl As Control, ByVal ControlTobeSearched As String) As Control

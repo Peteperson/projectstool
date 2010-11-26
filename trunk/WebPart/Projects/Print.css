@@ -1,5 +1,243 @@
 ﻿body {
-	background-color: #FFFFCC;
-	font: normal 13px Mistral;
+	background-color: White;
+	font: normal 13px Tahoma, Calibri, Verdana;
 	color: Black;	
 }
+
+table {border-collapse:collapse;}
+
+a {color: #EEEEEE;}
+
+.FormTitle {
+    text-align: center;
+	padding: 5px 0px 5px 0px;
+	font-size:18px;
+	font-weight:bolder;
+}
+
+.centered {text-align:center;}
+
+.smalltitle {
+    text-align: center;
+    background-color:#788CA5;
+	padding: 5px 0px 5px 0px;
+	border: 1px solid #FFFFFF;
+	color: white;
+	font-weight:bold;
+}
+
+.message {
+    font-size: 13px;
+    color: Yellow;
+    text-align:center;
+}
+
+#dvMenu {display: none;}
+
+.TabMenuItem {border: none 0px; padding: 0px 2px 0px 0px;}
+
+.TabMenuItemSelected {
+    height:25px;
+    background-color:#355379;
+    color: black;
+    border: none 0px;   
+    padding: 0px 20px 0px 0px;
+}
+
+.Yellow {color:Yellow;}
+
+#tdMessage {
+    font-size:large;
+    color:Yellow;
+    text-align:center;
+}
+
+#subPageMainTable {width:95%; border-collapse:separate;}
+
+#subPageMainTable table {border: none;}
+
+#subPageMainTable table td {
+    border-left: solid 1px #CCCCCC;
+    border-right: none;
+    border-bottom: solid 1px #CCCCCC;
+    border-top: none;
+    color: black;
+}
+
+#subPageMainTable .FormTitle table td {border: none;}
+
+#subPageMainTable table th td {border: none;}
+
+#subPageMainTable input {display: none;}
+
+#subPageMainTable select {display: none;}
+
+#subPageMainTable textarea {display: none;}
+
+#subPageMainTable span[id*=lblActual] {color: #0000CC;}
+
+#subPageMainTablePrj {width:95%; border-collapse:separate;}
+
+#subPageMainTablePrj table {border: none;}
+
+#subPageMainTablePrj table td {
+    border-left: solid 1px #CCCCCC;
+    border-right: none;
+    border-bottom: solid 1px #CCCCCC;
+    border-top: none;
+    color: black;
+}
+
+#subPageMainTablePrj .FormTitle table td {border: none;}
+
+#subPageMainTablePrj .tblDetailsItem table td {border: none;}
+
+#subPageMainTablePrj input {
+    background-color: White;
+    color: Black;
+}
+
+#subPageMainTablePrj input[type=image] {
+    display: none;
+}
+
+#subPageMainTablePrj textarea {
+    background-color: White;
+    color: Black;
+}
+
+#subPageMainTablePrj select {
+    background-color: White;
+    border: solid 1px #CCCCCC;
+    color: Black;
+}
+
+.ErrorMessage {color: Yellow;}
+
+.InsertRow {background-color: #D2B48C;}
+
+.InsertHeader {
+    background-color: #355379;
+    color:White;
+    font-weight:bold;
+}
+
+.InsertTabHeader {
+    background-color: #233D63;
+    color:White;
+    font-weight:bold;
+}
+
+.gvRow {height:30px;}
+
+.gvRow2 {height:24px;}
+
+#tdSubMenu{text-align:left;}
+
+#tdSubMenu a {color: #AAAAAA;}
+
+#tdSubMenu a:hover {color:White;}
+
+#tdSubMenu table {width:0%;}
+
+#tblDetails {width:100%;}
+
+.tblDetailsHeader {
+	background-color: #EAEAEA;
+	color: Black;
+	text-align:left;
+	width:0%;
+	white-space:nowrap;
+	border:solid 1px #2C486E;
+}
+
+.tblDetailsItem {
+	background-color: white;
+	color: Black;
+	width:50%;
+	padding-left: 10px;
+	text-align:left;
+	border:solid 1px #2C486E;
+}
+
+#tdAttachments a{color:black;}
+
+#tdAttachments a:hover{color:#842829;}
+
+#tdMeetings a{color:black;}
+
+#tdMeetings a:hover {color:#842829;}
+
+#tdAP a {color:black;}
+
+#tdAP a:hover {color:#842829;}
+
+#tdProgress a{color:black;}
+
+#tdProgress a:hover{color:#842829;}
+
+#tblCngPass {width:400px;}
+
+#tblCngPass td {vertical-align:middle; padding: 3px;}
+
+.RedDate {color: Red; font-weight:bold;}
+
+.BoldDate {font-weight:bold;}
+
+.CommentsCol {text-align:center; width: 250px;}
+
+.MessageCol {text-align:center; width: 100%;}
+
+.DetFormView {border: solid 1px white;}
+
+.TblEmptyData {border: solid 1px white; width:100%;}
+
+.ShowStatus {text-align: left; font-weight: bold;}
+
+.MinWidth {width:0%;}
+
+#tdPrint {display: none;}
+
+#tdInfo {display: none;}
+
+.tdBelowTitle {display: none;}
+
+#tblStatus {border: solid 1px #CCCCCC;}
+
+#tblStatus td {text-align:left;}
+
+.btnUpdStatus {
+    background: url(Images/icons/Update1_16x16.png);
+    background-repeat:no-repeat;
+    background-color: #DDDDDD;
+    width:21px;
+    height:21px;
+}
+
+.btnCheckAll {
+    background: url(Images/icons/Approve2_16x16.png);
+    background-repeat:no-repeat;
+    background-color: #DDDDDD;
+    width:21px;
+    height:21px;
+}
+
+.txtMassiveImport {height:200px; width:98%;}
+
+.lblHelpIds {
+    border: none;
+    width:30px;
+    text-align:center;
+}
+
+#dvPleaseWait {display:none;}
+
+.MaxWidth80px{max-width: 80px;}
+
+.MaxWidth120px{max-width: 120px;}
+
+#tdBottomLogo {width: 100%; text-align:right; }
+
+#trHeaderLogo {display: none;}
+
+#tblFooterLogo {border-bottom: solid 1px #CCCCCC;}
