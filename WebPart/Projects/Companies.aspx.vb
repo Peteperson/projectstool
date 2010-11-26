@@ -99,10 +99,6 @@ Partial Class Companies
         End Select
     End Sub
 
-    Protected Sub btnPrint_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnPrint.Click
-        CType(Me.Master, Main).HideAndPrint()
-    End Sub
-
     Protected Sub btnRemovePaging_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging.Click
         gvCompanies.AllowPaging = Not gvCompanies.AllowPaging
     End Sub

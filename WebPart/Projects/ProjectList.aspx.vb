@@ -64,10 +64,6 @@ Partial Class ProjectList
         gvProjects.AllowPaging = Not gvProjects.AllowPaging
     End Sub
 
-    Protected Sub btnPrint_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnPrint.Click
-        CType(Me.Master, Main).HideAndPrint()
-    End Sub
-
     Protected Sub btnFindPrj_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnFindPrj.Click
         gvProjects.DataBind()
     End Sub

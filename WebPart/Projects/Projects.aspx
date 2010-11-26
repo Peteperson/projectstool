@@ -6,7 +6,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
-    <table id="subPageMainTable" cellpadding="0" cellspacing="0">
+    <table id="subPageMainTablePrj" cellpadding="0" cellspacing="0">
         <tr>
             <td class="FormTitle">
                 <table style="width:100%">
@@ -14,7 +14,7 @@
                         <td><asp:ImageButton ID="btnRemovePaging" ImageUrl="~/Images/Paging3_32x32.png" runat="server" ToolTip="Ενεργοποίηση/Απενεργοποίηση σελιδοποίησης" /></td>
                         <td style="width:100%" align="center">Διαχείριση έργων</td>
                         <td><asp:ImageButton ID="btnPrint" runat="server" ToolTip="Εκτύπωση σελίδας" 
-                                ImageUrl="~/Images/Icons/Print1_32x32.png" /></td>
+                                ImageUrl="~/Images/Icons/Print1_32x32.png" OnClientClick="return PrintWithoutPostback()" /></td>
                     </tr>
                 </table>
             </td>
