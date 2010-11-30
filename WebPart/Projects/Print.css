@@ -1,19 +1,16 @@
-﻿body {
-	background-color: White;
-	font: normal 13px Tahoma, Calibri, Verdana;
-	color: Black;	
-}
+﻿body {background-color: White; font: normal 13px Tahoma, Calibri, Verdana; color: Black;}
 
 table {border-collapse:collapse;}
 
 a {color: #EEEEEE;}
 
-.FormTitle {
-    text-align: center;
-	padding: 5px 0px 5px 0px;
-	font-size:18px;
-	font-weight:bolder;
-}
+.FormTitle {text-align: center; padding: 5px 0px 5px 0px; font-size:18px; font-weight:bolder;}
+
+input[type=button], input[type=submit], input[type=file] {display:none;}
+
+input[type=image] {display: none;}
+
+*[printed=no] {display: none;}
 
 .centered {text-align:center;}
 
@@ -26,53 +23,25 @@ a {color: #EEEEEE;}
 	font-weight:bold;
 }
 
-.message {
-    font-size: 13px;
-    color: Yellow;
-    text-align:center;
-}
+.message {font-size: 13px; color: Yellow; text-align:center;}
 
 #dvMenu {display: none;}
 
 .TabMenuItem {border: none 0px; padding: 0px 2px 0px 0px;}
 
-.TabMenuItemSelected {
-    height:25px;
-    background-color:#355379;
-    color: black;
-    border: none 0px;   
-    padding: 0px 20px 0px 0px;
-}
-
 .Yellow {color:Yellow;}
 
-#tdMessage {
-    font-size:large;
-    color:Yellow;
-    text-align:center;
-}
+#tdMessage {font-size:large; color:Yellow; text-align:center;}
 
 #subPageMainTable {width:95%; border-collapse:separate;}
 
 #subPageMainTable table {border: none;}
 
-#subPageMainTable table td {
-    border-left: solid 1px #CCCCCC;
-    border-right: none;
-    border-bottom: solid 1px #CCCCCC;
-    border-top: none;
-    color: black;
-}
+#subPageMainTable table td {border: solid 1px #CCCCCC; color: black;}
 
 #subPageMainTable .FormTitle table td {border: none;}
 
 #subPageMainTable table th td {border: none;}
-
-#subPageMainTable input {display: none;}
-
-#subPageMainTable select {display: none;}
-
-#subPageMainTable textarea {display: none;}
 
 #subPageMainTable span[id*=lblActual] {color: #0000CC;}
 
@@ -80,65 +49,39 @@ a {color: #EEEEEE;}
 
 #subPageMainTablePrj table {border: none;}
 
-#subPageMainTablePrj table td {
-    border-left: solid 1px #CCCCCC;
-    border-right: none;
-    border-bottom: solid 1px #CCCCCC;
-    border-top: none;
-    color: black;
-}
+#subPageMainTablePrj table td {border: solid 1px #CCCCCC; color: black;}
 
 #subPageMainTablePrj .FormTitle table td {border: none;}
 
 #subPageMainTablePrj .tblDetailsItem table td {border: none;}
 
-#subPageMainTablePrj input {
-    background-color: White;
-    color: Black;
-}
+#subPageMainTablePrj input {background-color: White;color: Black;}
 
-#subPageMainTablePrj input[type=image] {
-    display: none;
-}
+#subPageMainTablePrj textarea {background-color: White; color: Black;}
 
-#subPageMainTablePrj textarea {
-    background-color: White;
-    color: Black;
-}
-
-#subPageMainTablePrj select {
-    background-color: White;
-    border: solid 1px #CCCCCC;
-    color: Black;
-}
+#subPageMainTablePrj select {background-color: White; border: solid 1px #CCCCCC; color: Black;}
 
 .ErrorMessage {color: Yellow;}
 
 .InsertRow {background-color: #D2B48C;}
 
-.InsertHeader {
-    background-color: #355379;
-    color:White;
-    font-weight:bold;
-}
+.InsertHeader {background-color: #355379; color:White; font-weight:bold;}
 
-.InsertTabHeader {
-    background-color: #233D63;
-    color:White;
-    font-weight:bold;
-}
+.InsertTabHeader {background-color: #233D63; color:White; font-weight:bold;}
 
 .gvRow {height:30px;}
 
 .gvRow2 {height:24px;}
 
+#tdProject {border: solid 3px #CCCCCC;}
+
 #tdSubMenu{text-align:left;}
 
 #tdSubMenu a {color: #AAAAAA;}
 
-#tdSubMenu a:hover {color:White;}
-
 #tdSubMenu table {width:0%;}
+
+#tdSubMenu table td {border: none;}
 
 #tblDetails {width:100%;}
 
@@ -224,11 +167,7 @@ a {color: #EEEEEE;}
 
 .txtMassiveImport {height:200px; width:98%;}
 
-.lblHelpIds {
-    border: none;
-    width:30px;
-    text-align:center;
-}
+.lblHelpIds {border: none; width:30px; text-align:center;}
 
 #dvPleaseWait {display:none;}
 
@@ -236,8 +175,6 @@ a {color: #EEEEEE;}
 
 .MaxWidth120px{max-width: 120px;}
 
-#tdBottomLogo {width: 100%; text-align:right; }
+#tdBottomLogo {text-align:right; border-bottom: solid 1px #CCCCCC}
 
 #trHeaderLogo {display: none;}
-
-#tblFooterLogo {border-bottom: solid 1px #CCCCCC;}

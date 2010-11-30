@@ -31,7 +31,7 @@
             <td class="FormTitle">Processes</td>
         </tr>
         <tr>
-            <td class="tdBelowTitle">
+            <td class="tdBelowTitle2">
                 <asp:GridView ID="gvProcesses" runat="server" AllowSorting="True" 
                     AutoGenerateColumns="False" DataKeyNames="id" 
                     DataSourceID="sqldsProcesses" SkinID="gridviewSkin">

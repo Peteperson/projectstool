@@ -32,7 +32,7 @@
             <td>
                 <table style="width:100%">
                     <tr>
-                        <td style="border: inset 5px white;"> <!--  style="width:70%; background-color: #788CA5; padding: 6px;"-->
+                        <td id="tdProject">
                             <asp:DetailsView ID="dvProject" runat="server" AutoGenerateRows="False"
                                 DataKeyNames="id" DataSourceID="sqldsProjects" Width="100%" BorderStyle="None">
                                 <Fields>
@@ -814,7 +814,7 @@
             </td>
         </tr>
     </table>
-    <table>
+    <table id="subPageDetTablePrj">
         <tr>
             <td>
                 <asp:SqlDataSource ID="sqldsPrjCodes" runat="server" 

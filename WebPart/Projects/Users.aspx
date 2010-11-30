@@ -1,6 +1,19 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Main.master" AutoEventWireup="false" CodeFile="Users.aspx.vb" Inherits="Users" Theme="MainSkin" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<script language="javascript" type="text/javascript">
+    function CheckUserName(source, clientside_arguments) {
+        //GetClientId("txtInsUserName");
+        var ddl = document.getElementById(GetClientId("ddlInsUserType"));
+        var idx = ddl.selectedIndex;
+        if (ddl.options[idx].text.toLowerCase() == "client") {
+            clientside_arguments.IsValid = true;
+        } else {
+            clientside_arguments.IsValid = false;
+        }
+    }
+</script>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
     <table id="subPageMainTable">
@@ -29,7 +42,7 @@
         </tr>
         <tr>
             <td>
-                <asp:GridView ID="gvUsers" runat="server" AllowPaging="True" ShowFooter="true"
+                <asp:GridView ID="gvUsers" runat="server" AllowPaging="True" ShowFooter="True"
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id"
                     DataSourceID="sqldsUsers" SkinID="gridviewSkinMainTbl">
                     <Columns>
@@ -55,6 +68,21 @@
                                     ImageUrl="~/images/icons/add16_16.png" ToolTip="Εισαγωγή εγγραφής" ValidationGroup="InsGroup" />
                             </FooterTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="User Type" SortExpression="UserType">
+                            <ItemTemplate>
+                                <asp:Label ID="Label12" runat="server" Text='<%# Bind("UserTypeText") %>'></asp:Label>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                    <asp:DropDownList ID="ddlUserType" runat="server" DataSourceID="objdsUserType" 
+                                        selectedvalue=<%# Bind("UserType") %> DataTextField="Description" DataValueField="id">
+                                    </asp:DropDownList>
+                            </EditItemTemplate>
+                            <FooterTemplate>
+                                    <asp:DropDownList ID="ddlInsUserType" runat="server" DataSourceID="objdsUserType" 
+                                        DataTextField="Description" DataValueField="id">
+                                    </asp:DropDownList>
+                            </FooterTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField>
                             <HeaderStyle HorizontalAlign="Center" />
                             <HeaderTemplate>
@@ -76,23 +104,9 @@
                                 <asp:TextBox ID="TextBox1" SkinID="txtDef" runat="server" Text='<%# Bind("UserName") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <FooterTemplate>
-                                <asp:RequiredFieldValidator SkinID="rfvDef" ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtInsUserName" ValidationGroup="InsGroup" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                <asp:CustomValidator ID="CustomValidator4" runat="server" ClientValidationFunction="CheckUserName" ValidateEmptyText = "true"
+                                    ControlToValidate="txtInsUserName" ErrorMessage="*" ValidationGroup="InsGroup" SkinID="csvDef"></asp:CustomValidator>
                                 <asp:TextBox ID="txtInsUserName" SkinID="txtReqFld" runat="server"></asp:TextBox>
-                            </FooterTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="User Type" SortExpression="UserType">
-                            <ItemTemplate>
-                                <asp:Label ID="Label12" runat="server" Text='<%# Bind("UserTypeText") %>'></asp:Label>
-                            </ItemTemplate>
-                            <EditItemTemplate>
-                                    <asp:DropDownList ID="ddlUserType" runat="server" DataSourceID="objdsUserType" 
-                                        selectedvalue=<%# Bind("UserType") %> DataTextField="Description" DataValueField="id">
-                                    </asp:DropDownList>
-                            </EditItemTemplate>
-                            <FooterTemplate>
-                                    <asp:DropDownList ID="ddlInsUserType" runat="server" DataSourceID="objdsUserType" 
-                                        DataTextField="Description" DataValueField="id">
-                                    </asp:DropDownList>
                             </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>

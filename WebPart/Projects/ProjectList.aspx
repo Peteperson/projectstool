@@ -105,7 +105,7 @@
                             </HeaderTemplate>
                             <ItemStyle HorizontalAlign="Center" />
                             <ItemTemplate>
-                                <asp:CheckBox id="chkSelected" runat="server"></asp:CheckBox>
+                                <asp:CheckBox id="chkSelected" runat="server" printed="no"></asp:CheckBox>
                                 <asp:Label ID="lblId" runat="server" Text='<%# Bind("ProjectId") %>' Visible="false"></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>

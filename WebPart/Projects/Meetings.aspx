@@ -133,7 +133,7 @@
                             </HeaderTemplate>
                             <ItemStyle HorizontalAlign="Center" />
                             <ItemTemplate>
-                                <asp:CheckBox id="chkSelected" runat="server"></asp:CheckBox>
+                                <asp:CheckBox id="chkSelected" runat="server" printed="no"></asp:CheckBox>
                                 <asp:Label ID="lblId" runat="server" Text='<%# Bind("id") %>' Visible="false"></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
@@ -156,7 +156,7 @@
             <td class="FormTitle">Λεπτομέρειες</td>
         </tr>
         <tr>
-            <td class="tdBelowTitle">
+            <td class="tdBelowTitle2">
                 <asp:FormView ID="fvMeetings" runat="server" DataKeyNames="id" 
                     DataSourceID="sqldsMeetingsDet" DefaultMode="Edit" Width="100%">
                     <EditRowStyle CssClass="centered" />

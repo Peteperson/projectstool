@@ -42,7 +42,7 @@
             <td class="FormTitle">Processes - <asp:Label ID="lblCompany" runat="server"></asp:Label></td>
         </tr>
         <tr>
-            <td class="tdBelowTitle">
+            <td class="tdBelowTitle2">
                 <asp:GridView ID="gvProcesses" runat="server" AllowPaging="True" ShowFooter="true"
                     AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" 
                     DataSourceID="sqldsProcesses" SkinID="gridviewSkin">

@@ -82,3 +82,4 @@
 
 <asp:RequiredFieldValidator SkinId="rfvDef" ForeColor="Black" runat="server"></asp:RequiredFieldValidator>
 <asp:RegularExpressionValidator SkinId="revDef" ForeColor="Black" runat="server" ></asp:RegularExpressionValidator>
+<asp:CustomValidator SkinId="csvDef" ForeColor="Black" runat="server"></asp:CustomValidator>
