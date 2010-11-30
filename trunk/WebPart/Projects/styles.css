@@ -121,14 +121,6 @@ a:hover {color: White;}
     padding: 0px 2px 0px 0px;
 }
 
-.TabMenuItemSelected {
-    height:25px;
-    background-color:#355379;
-    color: black;
-    border: none 0px;   
-    padding: 0px 20px 0px 0px;
-}
-
 #mnuHeader {vertical-align:bottom; width: 100%;}
 
 .Yellow {color:Yellow;}
@@ -166,6 +158,8 @@ a:hover {color: White;}
 .gvRow {height:30px;}
 
 .gvRow2 {height:24px;}
+
+#tdProject {border: inset 3px white;}
 
 #tdSubMenu {text-align:left;}
 

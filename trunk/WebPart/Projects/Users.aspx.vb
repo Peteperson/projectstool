@@ -38,9 +38,11 @@ Partial Class Users
 
     Protected Sub sqldsUser_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsUsers.Inserting
         Password = SecCrypto.GeneratePassword(8)
-        e.Command.Parameters("@UserName").Value = CType(gvUsers.FooterRow.FindControl("txtInsUserName"), TextBox).Text
+        Dim un As String = CType(gvUsers.FooterRow.FindControl("txtInsUserName"), TextBox).Text
+        Dim ut = CType(gvUsers.FooterRow.FindControl("ddlInsUserType"), DropDownList)
+        e.Command.Parameters("@UserName").Value = IIf(un = "" And ut.SelectedItem.Text.ToLower = "client", "emp_" & SecCrypto.GeneratePasswordNoSpecialChrs(10), un)
         e.Command.Parameters("@Password").Value = SecCrypto.Hash(Password)
-        e.Command.Parameters("@UserType").Value = CType(gvUsers.FooterRow.FindControl("ddlInsUserType"), DropDownList).SelectedValue
+        e.Command.Parameters("@UserType").Value = ut.SelectedValue
         e.Command.Parameters("@FirstName").Value = CType(gvUsers.FooterRow.FindControl("txtInsFirstName"), TextBox).Text
         e.Command.Parameters("@LastName").Value = CType(gvUsers.FooterRow.FindControl("txtInsLastName"), TextBox).Text
         e.Command.Parameters("@Telephone").Value = CType(gvUsers.FooterRow.FindControl("txtInsTelephone"), TextBox).Text

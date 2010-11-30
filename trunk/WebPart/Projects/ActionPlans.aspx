@@ -179,7 +179,7 @@
                             </HeaderTemplate>
                             <ItemStyle HorizontalAlign="Center" />
                             <ItemTemplate>
-                                <asp:CheckBox id="chkSelected" runat="server"></asp:CheckBox>
+                                <asp:CheckBox id="chkSelected" runat="server" printed="no"></asp:CheckBox>
                                 <asp:Label ID="lblId" runat="server" Text='<%# Bind("id") %>' Visible="false"></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
@@ -202,7 +202,7 @@
             <td class="FormTitle">Λεπτομέρειες επιλεγμένης ενέργειας</td>
         </tr>
         <tr>
-            <td class="tdBelowTitle">
+            <td class="tdBelowTitle2">
                 <asp:FormView ID="fvAction" runat="server" DataKeyNames="id"
                     DataSourceID="sqldsAPdet" DefaultMode="Edit" Width="100%">
                     <EditRowStyle CssClass="centered" />
