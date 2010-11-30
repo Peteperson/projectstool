@@ -164,76 +164,100 @@
                     <EmptyDataTemplate>
                         Δεν υπάρχουν καταγεγραμμένοι υπάλληλοι.<br />
                         <br />
+                        <div class="InsertRow">
+                            <table>
+                                <tr class="InsertHeader">
+                                    <td>Action</td>
+                                    <td>LastName</td>
+                                    <td>FirstName</td>
+                                    <td>Position</td>
+                                    <td>Telephone</td>
+                                    <td>Mobile</td>
+                                    <td>Email</td>
+                                </tr>
+                                <tr>
+                                    <td><asp:ImageButton ID="btnInsEmpl" CausesValidation="true" ValidationGroup="InsEmp1st" runat="server" CommandName="Insert"
+                                            ImageUrl="~/images/icons/add16_16.png" ToolTip="Εισαγωγή υπαλλήλου" />
+                                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" SkinID="rfvDef" runat="server" ControlToValidate="txt1LastName" ValidationGroup="InsEmp1st" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox ID="txt1LastName" MaxLength="50" SkinID="txtReqFld" runat="server"></asp:TextBox></td>
+                                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator2" SkinID="rfvDef" runat="server" ControlToValidate="txt1FirstName" ValidationGroup="InsEmp1st" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox ID="txt1FirstName" MaxLength="50" SkinID="txtReqFld" runat="server"></asp:TextBox></td>
+                                    <td><asp:DropDownList SkinId="ddlDef" ID="ddl1Position" runat="server" DataSourceID="objdsEmplType" 
+                                            DataTextField="Description" DataValueField="id">
+                                        </asp:DropDownList></td>
+                                    <td><asp:TextBox ID="txt1Tel" MaxLength="12" runat="server"></asp:TextBox></td>
+                                    <td><asp:TextBox ID="txt1MobTel" MaxLength="12" runat="server"></asp:TextBox></td>
+                                    <td><asp:TextBox ID="txt1email" MaxLength="50" runat="server"></asp:TextBox></td>
+                                </tr>
+                            </table>
+                        </div>
                     </EmptyDataTemplate>
                     <Columns>
+                        <asp:TemplateField ShowHeader="False">
+                            <FooterStyle HorizontalAlign="Center" />
+                            <FooterTemplate>
+                                <asp:ImageButton ID="btnInsert" runat="server" CommandName="Insert" CausesValidation="true" ValidationGroup="InsEmp"
+                                    ImageUrl="~/images/icons/add16_16.png" ToolTip="Εισαγωγή υπαλλήλου" />
+                            </FooterTemplate>
+                        </asp:TemplateField>                        
                         <asp:TemplateField HeaderText="Ημ/νία" SortExpression="Datestamp">
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Datestamp", "{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
-                            <FooterTemplate>
-                                <asp:Image ID="Image2" runat="server" ImageUrl="~/images/icons/add16_16.png" />
-                                <asp:ImageButton ID="btnInsert" runat="server" CommandName="InsertEmpl"
-                                    ImageUrl="~/Images/LeftMenu/Users4_24x24.png" ToolTip="Εισαγωγή υπαλλήλου" />
-                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Επίθετο" SortExpression="LastName">
-                            <EditItemTemplate>
-                                <asp:TextBox SkinID="txtDef" MaxLength="50" ID="TextBox3" runat="server" Text='<%# Bind("LastName") %>'></asp:TextBox>
-                            </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label4" runat="server" Text='<%# Bind("LastName") %>'></asp:Label>
                             </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" SkinID="rfvDef" runat="server" ControlToValidate="txt2LastName" ValidationGroup="InsEmp" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox SkinID="txtDef" CssClass="MaxWidth120px" ID="txt2LastName" MaxLength="50" runat="server"></asp:TextBox>
+                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Όνομα" SortExpression="FirstName">
-                            <EditItemTemplate>
-                                <asp:TextBox SkinID="txtDef" MaxLength="50" ID="TextBox4" runat="server" Text='<%# Bind("FirstName") %>'></asp:TextBox>
-                            </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label5" runat="server" Text='<%# Bind("FirstName") %>'></asp:Label>
                             </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" SkinID="rfvDef" runat="server" ControlToValidate="txt2FirstName" ValidationGroup="InsEmp" ErrorMessage="*"></asp:RequiredFieldValidator><asp:TextBox SkinID="txtDef" MaxLength="50" ID="txt2FirstName" CssClass="MaxWidth120px" runat="server"></asp:TextBox>
+                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Θέση" SortExpression="Position">
-                            <EditItemTemplate>
-                                <asp:DropDownList SkinId="ddlDef" ID="ddl2Position" runat="server" DataSourceID="sqldsEmplType" 
-                                    selectedvalue=<%# Bind("Position") %> DataTextField="Description" DataValueField="id">
-                                </asp:DropDownList>
-                            </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label15" runat="server" Text='<%# Bind("PositionText") %>'></asp:Label>
                             </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:DropDownList SkinId="ddlDef" ID="ddl2Position" runat="server" DataSourceID="objdsEmplType" 
+                                    DataTextField="Description" DataValueField="id">
+                                </asp:DropDownList>
+                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Τηλέφωνο" SortExpression="Telephone">
-                            <EditItemTemplate>
-                                <asp:TextBox SkinID="txtDef" MaxLength="12" ID="TextBox6" runat="server" Text='<%# Bind("Telephone") %>'></asp:TextBox>
-                            </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label7" runat="server" Text='<%# Bind("Telephone") %>'></asp:Label>
                             </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:TextBox SkinID="txtDef" CssClass="MaxWidth80px" MaxLength="12" ID="txt2Tel" runat="server"></asp:TextBox>
+                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Κινητό" SortExpression="Mobile">
-                            <EditItemTemplate>
-                                <asp:TextBox SkinID="txtDef" ID="TextBox7" MaxLength="12" runat="server" Text='<%# Bind("Mobile") %>'></asp:TextBox>
-                            </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label8" runat="server" Text='<%# Bind("Mobile") %>'></asp:Label>
                             </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:TextBox SkinID="txtDef" MaxLength="12" CssClass="MaxWidth80px" ID="txt2MobTel" runat="server"></asp:TextBox>
+                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Email" SortExpression="Email">
-                            <EditItemTemplate>
-                                <asp:TextBox SkinID="txtDef" MaxLength="50" ID="TextBox8" runat="server" Text='<%# Bind("Email") %>'></asp:TextBox>
-                            </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label9" runat="server" Text='<%# Bind("Email") %>'></asp:Label>
                             </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:TextBox SkinID="txtDef" MaxLength="50" ID="txt2Email" runat="server"></asp:TextBox>
+                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Είναι<br/>χρήστης" SortExpression="IsUser">
                             <ItemTemplate>
                                 <asp:CheckBox ID="CheckBox2" runat="server" Checked='<%# Bind("IsUser") %>' 
                                     Enabled="false" />
                             </ItemTemplate>
-                            <EditItemTemplate>
-                                <asp:CheckBox ID="CheckBox2" runat="server" Checked='<%# Bind("IsUser") %>' />
-                            </EditItemTemplate>
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
@@ -269,11 +293,22 @@
             <td>
                 <asp:SqlDataSource ID="sqldsCompEmployees" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="CmpEmplList" SelectCommandType="StoredProcedure">
+                    SelectCommand="CmpEmplList" SelectCommandType="StoredProcedure"
+                    InsertCommand="CmpInsEmployee" InsertCommandType="StoredProcedure">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="gvCompanies" Name="CompanyId" 
                             PropertyName="SelectedValue" Type="Int32" />
                     </SelectParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="UserName" Type="String" />
+                        <asp:Parameter Name="CompanyId" Type="Int32" />
+                        <asp:Parameter Name="LastName" Type="String" />
+                        <asp:Parameter Name="FirstName" Type="String" />
+                        <asp:Parameter Name="Position" Type="Byte" />
+                        <asp:Parameter Name="Telephone" Type="String" />
+                        <asp:Parameter Name="Mobile" Type="String" />
+                        <asp:Parameter Name="Email" Type="String" />
+                    </InsertParameters>
                 </asp:SqlDataSource>
             </td>
             <td>
@@ -281,7 +316,6 @@
             <td>
                 <asp:SqlDataSource ID="sqldsUsers" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    
                     SelectCommand="SELECT [UserName], [id] FROM [Users] WHERE ([Company] = @Company) ORDER BY [UserName]">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="gvCompanies" Name="Company" 
@@ -292,13 +326,13 @@
         </tr>
         <tr>
             <td>
-                <asp:SqlDataSource ID="sqldsEmplType" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="SELECT [id], [Description] FROM [VariousTypes] WHERE ([Category] = @Category) ORDER BY [id]">
+                <asp:ObjectDataSource ID="objdsEmplType" runat="server" 
+                    SelectMethod="VariousTypes" TypeName="Database">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="EmployeeType" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Category ='EmployeeType'" Name="Category" Type="String" />
+                        <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
                     </SelectParameters>
-                </asp:SqlDataSource>
+                </asp:ObjectDataSource>
             </td>
             <td>
                 <asp:SqlDataSource ID="sqldsProjects" runat="server" 
