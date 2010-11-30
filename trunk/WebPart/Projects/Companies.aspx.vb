@@ -49,9 +49,9 @@ Partial Class Companies
 
     Protected Sub gvCompEmpl_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvCompEmpl.RowCommand
         Select Case e.CommandName
-            Case "InsertEmpl"
-                Response.Clear()
-                Response.Redirect("~/Users.aspx?Company=" & lblCompName2.Text)
+            Case "Insert"
+                sqldsCompEmployees.Insert()
+                gvCompEmpl.DataBind()
         End Select
     End Sub
 
@@ -105,5 +105,27 @@ Partial Class Companies
 
     Protected Sub btnRemovePaging2_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging2.Click
         gvCompEmpl.AllowPaging = Not gvCompEmpl.AllowPaging
+    End Sub
+
+    Protected Sub sqldsCompEmployees_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsCompEmployees.Inserting
+        If gvCompEmpl.Rows.Count > 0 Then
+            e.Command.Parameters("@UserName").Value = "emp_" & SecCrypto.GeneratePasswordNoSpecialChrs(10)
+            e.Command.Parameters("@CompanyId").Value = gvCompanies.SelectedValue
+            e.Command.Parameters("@LastName").Value = CType(gvCompEmpl.FooterRow.FindControl("txt2LastName"), TextBox).Text
+            e.Command.Parameters("@FirstName").Value = CType(gvCompEmpl.FooterRow.FindControl("txt2FirstName"), TextBox).Text
+            e.Command.Parameters("@Position").Value = CType(gvCompEmpl.FooterRow.FindControl("ddl2Position"), DropDownList).SelectedValue
+            e.Command.Parameters("@Telephone").Value = CType(gvCompEmpl.FooterRow.FindControl("txt2Tel"), TextBox).Text
+            e.Command.Parameters("@Mobile").Value = CType(gvCompEmpl.FooterRow.FindControl("txt2MobTel"), TextBox).Text
+            e.Command.Parameters("@Email").Value = CType(gvCompEmpl.FooterRow.FindControl("txt2Email"), TextBox).Text
+        Else
+            e.Command.Parameters("@UserName").Value = "emp_" & SecCrypto.GeneratePasswordNoSpecialChrs(10)
+            e.Command.Parameters("@CompanyId").Value = gvCompanies.SelectedValue
+            e.Command.Parameters("@LastName").Value = CType(gvCompEmpl.Controls(0).Controls(0).Controls(0).FindControl("txt1LastName"), TextBox).Text
+            e.Command.Parameters("@FirstName").Value = CType(gvCompEmpl.Controls(0).Controls(0).Controls(0).FindControl("txt1FirstName"), TextBox).Text
+            e.Command.Parameters("@Position").Value = CType(gvCompEmpl.Controls(0).Controls(0).Controls(0).FindControl("ddl1Position"), DropDownList).SelectedValue
+            e.Command.Parameters("@Telephone").Value = CType(gvCompEmpl.Controls(0).Controls(0).Controls(0).FindControl("txt1Tel"), TextBox).Text
+            e.Command.Parameters("@Mobile").Value = CType(gvCompEmpl.Controls(0).Controls(0).Controls(0).FindControl("txt1MobTel"), TextBox).Text
+            e.Command.Parameters("@Email").Value = CType(gvCompEmpl.Controls(0).Controls(0).Controls(0).FindControl("txt1email"), TextBox).Text
+        End If
     End Sub
 End Class
