@@ -140,7 +140,7 @@
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Message") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox2" SkinID="txtText" runat="server" Text='<%# Bind("Message") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBox2" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text='<%# Bind("Message") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <FooterTemplate>
                                 <asp:TextBox ID="txtMessage" TextMode="MultiLine" SkinID="txtTextLong" runat="server" Text=''></asp:TextBox>
