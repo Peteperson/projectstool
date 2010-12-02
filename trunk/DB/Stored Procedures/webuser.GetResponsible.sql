@@ -8,7 +8,7 @@ CREATE PROCEDURE [webuser].[GetResponsible]
 AS 
     SET NOCOUNT ON
 
-	SELECT usr.id, usr.LastName + ' ' + usr.FirstName AS FullName FROM webuser.Users usr
+	SELECT DISTINCT usr.id, usr.LastName + ' ' + usr.FirstName AS FullName FROM webuser.Users usr
 	INNER JOIN webuser.UsersCompanies ucmp ON usr.id = ucmp.UserId
 	INNER JOIN VariousTypes ON usr.UserType = VariousTypes.id
 	WHERE ucmp.CompanyId = (SELECT CustomerId FROM Projects WHERE id = @ProjectId) 
