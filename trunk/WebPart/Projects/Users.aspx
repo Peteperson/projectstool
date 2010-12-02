@@ -3,10 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <script language="javascript" type="text/javascript">
     function CheckUserName(source, clientside_arguments) {
-        //GetClientId("txtInsUserName");
+        var un =  document.getElementById(GetClientId("txtInsUserName")).value;
         var ddl = document.getElementById(GetClientId("ddlInsUserType"));
         var idx = ddl.selectedIndex;
-        if (ddl.options[idx].text.toLowerCase() == "client") {
+        if (ddl.options[idx].text.toLowerCase() == "client" || un != "") {
             clientside_arguments.IsValid = true;
         } else {
             clientside_arguments.IsValid = false;
