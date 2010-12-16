@@ -60,6 +60,15 @@ AS
 		BEGIN
 			SELECT id, SubProject FROM webuser.Projects ORDER BY SubProject
 		END
+	ELSE IF @UserType = 'Partner' 
+		BEGIN
+			SELECT id, SubProject FROM webuser.Projects WHERE Consultant2 = @UserId
+			UNION
+			SELECT Projects.id, SubProject FROM webuser.Projects 
+			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
+			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId)
+			ORDER BY SubProject
+		END
 	ELSE 
 		BEGIN
 			SELECT id, SubProject FROM webuser.Projects 
