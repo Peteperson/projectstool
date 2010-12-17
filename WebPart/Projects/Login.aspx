@@ -108,8 +108,8 @@
                 <table id="tblBrowsers">
                     <tr>
                         <td>Best viewed in:&nbsp;</td>
-                        <td><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/chrome.png" PostBackUrl="http://www.google.com/chrome" /></td>
-                        <td><asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Images/safari.png" PostBackUrl="http://www.apple.com/safari/" /></td>
+                        <td><asp:ImageButton ID="ImageButton1" runat="server" ToolTip="Chrome" ImageUrl="~/Images/chrome.png" PostBackUrl="http://www.google.com/chrome" /></td>
+                        <td><asp:ImageButton ID="ImageButton2" runat="server" ToolTip="Safari" ImageUrl="~/Images/safari.png" PostBackUrl="http://www.apple.com/safari/" /></td>
                     </tr>
                 </table>
             </td>
