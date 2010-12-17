@@ -18,10 +18,7 @@ AS
 			WHERE (Consultant1 = @UserId OR Consultant2 = @UserId OR Creator = @UserId)  
 				OR CustomerId IN (SELECT Companyid FROM webuser.UsersCompanies WHERE userid = @userId)
 			UNION
-			SELECT Projects.id, SubProject FROM webuser.Projects 
-			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
-			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId)
-			ORDER BY SubProject
+			SELECT * FROM webuser.ProjectListSup(@UserId) ORDER BY SubProject
 		END
 	ELSE IF @UserType = 'ProjectManager' 
 		BEGIN
@@ -29,10 +26,7 @@ AS
 			WHERE (Consultant1 = @UserId OR Consultant2 = @UserId OR ProjectManager = @userId OR Creator = @UserId) 
 				OR CustomerId IN (SELECT Companyid FROM webuser.UsersCompanies WHERE userid = @userId)
 			UNION
-			SELECT Projects.id, SubProject FROM webuser.Projects 
-			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
-			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId)
-			ORDER BY SubProject
+			SELECT * FROM webuser.ProjectListSup(@UserId) ORDER BY SubProject
 		END
 	ELSE IF @UserType = 'FoodDirector' 
 		BEGIN
@@ -40,10 +34,7 @@ AS
 			WHERE [Type] = (SELECT id FROM webuser.VariousTypes WHERE [Description] = (N'Τρόφιμα')) 
 				OR CustomerId IN (SELECT Companyid FROM webuser.UsersCompanies WHERE userid = @userId)
 			UNION
-			SELECT Projects.id, SubProject FROM webuser.Projects 
-			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
-			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId)
-			ORDER BY SubProject
+			SELECT * FROM webuser.ProjectListSup(@UserId) ORDER BY SubProject
 		END
 	ELSE IF @UserType = 'OrgDirector' 
 		BEGIN
@@ -51,10 +42,7 @@ AS
 			WHERE [Type] = (SELECT id FROM webuser.VariousTypes WHERE [Description] = (N'Οργάνωση')) 
 				OR CustomerId IN (SELECT Companyid FROM webuser.UsersCompanies WHERE userid = @userId)
 			UNION
-			SELECT Projects.id, SubProject FROM webuser.Projects 
-			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
-			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId)  
-			ORDER BY SubProject
+			SELECT * FROM webuser.ProjectListSup(@UserId) ORDER BY SubProject
 		END
 	ELSE IF @UserType = 'Admin' OR @UserType = 'DataEntry' OR @UserType = 'ITDirector'
 		BEGIN
@@ -64,19 +52,13 @@ AS
 		BEGIN
 			SELECT id, SubProject FROM webuser.Projects WHERE Consultant2 = @UserId
 			UNION
-			SELECT Projects.id, SubProject FROM webuser.Projects 
-			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
-			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId)
-			ORDER BY SubProject
+			SELECT * FROM webuser.ProjectListSup(@UserId) ORDER BY SubProject
 		END
 	ELSE 
 		BEGIN
 			SELECT id, SubProject FROM webuser.Projects 
 			WHERE CustomerId IN (SELECT CompanyId FROM webuser.UsersCompanies WHERE userid = @userId)
 			UNION
-			SELECT Projects.id, SubProject FROM webuser.Projects 
-			INNER JOIN ActionPlans ON ActionPlans.ProjectId = Projects.id
-			WHERE (Responsible1 = @UserId OR Responsible2 = @UserId) 
-			ORDER BY SubProject
+			SELECT * FROM webuser.ProjectListSup(@UserId) ORDER BY SubProject
 		END
 GO
