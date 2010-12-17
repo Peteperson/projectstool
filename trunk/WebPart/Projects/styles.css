@@ -15,30 +15,30 @@ input[type=text]:focus {background-color: #FFFFDD;}
 
 input[type=password]:focus {background-color: #FFFFDD;}
 
-select:focus {background-color: #FFFFEE; border: solid 1px #355379;}
+select:focus {background-color: #FFFFEE; border: solid 1px #AAAAAA;}
 
 input[type=text] {
     background-color: White;
-    border: solid 1px #355379;
-    border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
+    border: solid 1px #AAAAAA;
+    border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
 }
 
 textarea {
     background-color: White;
-    border: solid 1px #355379;
-    border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
+    border: solid 1px #AAAAAA;
+    border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
 }
 
 input[type=password] {
     background-color: White;
-    border: solid 1px #355379;
-    border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
+    border: solid 1px #AAAAAA;
+    border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
 }
 
 select:disabled {color: #666666;}
@@ -61,11 +61,12 @@ a:hover {color: White;}
 }
 
 .FormTitle {
+    height: 30px;
     text-align: center;
     background-color:#842829;
     background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.1, #B45859), color-stop(0.66, #842829), color-stop(0.80, #943839), color-stop(0.92, #F49899));
     background-image: -moz-linear-gradient(center bottom, #B45859 10%, #842829 66%, #943839 80%, #F49899 92%);
-	padding: 5px 0px 5px 0px;
+	padding: 1px 0px 1px 0px;
 	font-size:20px;
 	font-weight:bolder;
 	border-radius: 15px;
@@ -74,6 +75,10 @@ a:hover {color: White;}
 	box-shadow: 3px 3px 3px #000000;
 	-moz-box-shadow: 3px 3px 3px #000000;
     -webkit-box-shadow: 3px 3px 3px #000000;
+}
+
+.FormTitle table td{
+    padding: 0px 10px 0px 10px;
 }
 
 .centered {text-align:center;}
@@ -232,7 +237,7 @@ a:hover {color: White;}
     display:none;
 }
 
-.ShowStatus{text-align: left; font-weight: bold;    }
+.ShowStatus{text-align: left; font-weight: bold;}
 
 .MinWidth {width:0%;}
 
@@ -283,17 +288,6 @@ a:hover {color: White;}
 #LoginFirstTable {
     color: White;
     width: 460px;
-    /*border: solid 1px black;
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-collapse: separate;
-    background-color: #943839;
-    box-shadow: 10px 10px 10px #000000;
-    -moz-box-shadow: 10px 10px 10px #000000;
-    -webkit-box-shadow: 10px 10px 10px #000000;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 10%, from(#F49899), to(#943839));
-    background-image:-moz-linear-gradient(bottom, #943839 90%, #F49899);*/
 }
 
 #LoginSecondTable {color: White; width: 400px;}
@@ -355,4 +349,19 @@ a:hover {color: White;}
     text-align: right; 
     vertical-align: bottom; 
     background-color: White;
+}
+
+#tblBrowsers {
+    /*border : solid 1px black;
+    padding-left: 5px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-collapse: separate;
+    background-color: #943839;
+    box-shadow: 5px 5px 5px #000000;
+    -moz-box-shadow: 5px 5px 5px #000000;
+    -webkit-box-shadow: 5px 5px 5px #000000;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 10%, from(#F49899), to(#943839));
+    background-image:-moz-linear-gradient(bottom, #943839 90%, #F49899);*/
 }
