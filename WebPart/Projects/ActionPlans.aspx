@@ -404,15 +404,7 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
             </td>
-            <td>
-                <asp:SqlDataSource ID="sqldsPrjCodes" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cnMain %>" 
-                    SelectCommand="ProjectList" SelectCommandType="StoredProcedure">
-                    <SelectParameters>
-                        <asp:SessionParameter Name="UserId" SessionField="UserId" Type="Int32" />
-                    </SelectParameters>
-                </asp:SqlDataSource>
-            </td>
+            <td></td>
             <td>
                 <asp:SqlDataSource ID="sqldsUsers" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" SelectCommand="UsersByType" 

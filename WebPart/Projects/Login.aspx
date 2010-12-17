@@ -14,69 +14,69 @@
     <form id="form1" runat="server">
       <table>
         <tr>
-            <td style="background-color:white">
+            <td style="background-color:white" colspan="2">
                 <asp:Image ID="Image1" ImageUrl="~/Images/AdvLogoWhiteBack.png" runat="server" Height="71px" />
             </td>
         </tr>
         <tr>
-            <td align="center">
+            <td align="center" colspan="2">
                 <asp:Login ID="ctrlLogin" runat="server" DisplayRememberMe="False" 
                     BorderPadding="4" BorderStyle="None"
                     BorderWidth="0px" Font-Names="Tahoma, Calibri, Verdana" ForeColor="#333333" Width="0%"
                     TextLayout="TextOnTop">
                 <LoginButtonStyle BackColor="White" BorderColor="#CC9966" BorderStyle="Solid" 
-                    BorderWidth="1px" Font-Names="Tahoma, Calibri, Verdana" ForeColor="#990000" />
-        <LayoutTemplate>
-            <table id="LoginFrame">
-                <tr>
-                    <td align="center">
-                        <table id="LoginFirstTable">
-                            <tr>
-                                <td rowspan="3">
-                                    <img alt="lockimage" src="Images/LoginLock.png" 
-                                        style="width: 112px; height: 112px" /></td>
-                                <td>
-                                    <table id="tblUsrPass">
-                                        <tr>
-                                            <td style="padding-bottom:9px;">Username:&nbsp;</td>
-                                            <td style="padding-bottom:3px;"><asp:TextBox ID="UserName" runat="server" Width="130px"></asp:TextBox></td>
-                                            <td><asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
-                                                    ControlToValidate="UserName" 
-                                                    ErrorMessage="Το πεδίο Username είναι υποχρεωτικό." 
-                                                    ToolTip="Το πεδίο Username είναι υποχρεωτικό." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding-bottom:9px;">Password:&nbsp;</td>
-                                            <td style="padding-bottom:3px;"><asp:TextBox ID="Password" runat="server" TextMode="Password" Width="130px"></asp:TextBox></td>
-                                            <td><asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
-                                                    ControlToValidate="Password" 
-                                                    ErrorMessage="Το πεδίο Password είναι υποχρεωτικό." 
-                                                    ToolTip="Το πεδίο Password είναι υποχρεωτικό." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td align="left" valign="bottom" style="width:100%">
-                                    <asp:ImageButton ID="btnLoginButton" runat="server" CommandName="Login" 
-                                        Font-Names="Tahoma, Calibri, Verdana" ToolTip="Είσοδος" 
-                                        ValidationGroup="Login1" ImageUrl="~/Images/ArrowNext.png" />    
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" style="color: Yellow; font-weight: bold;"><br />
-                                    <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
-                                </td>
-                            </tr>
-                        </table>
-                        <br /><br /><br /><br />
-                    </td>
-                </tr>            
-            </table>
-        </LayoutTemplate>
-        <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
-        <TitleTextStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-        </asp:Login>
+                            BorderWidth="1px" Font-Names="Tahoma, Calibri, Verdana" ForeColor="#990000" />
+                <LayoutTemplate>
+                    <table id="LoginFrame">
+                        <tr>
+                            <td align="center">
+                                <table id="LoginFirstTable">
+                                    <tr>
+                                        <td rowspan="3">
+                                            <img alt="lockimage" src="Images/LoginLock.png" 
+                                                style="width: 112px; height: 112px" /></td>
+                                        <td>
+                                            <table id="tblUsrPass">
+                                                <tr>
+                                                    <td style="padding-bottom:9px;">Username:&nbsp;</td>
+                                                    <td style="padding-bottom:3px;"><asp:TextBox ID="UserName" runat="server" Width="130px"></asp:TextBox></td>
+                                                    <td><asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
+                                                            ControlToValidate="UserName" 
+                                                            ErrorMessage="Το πεδίο Username είναι υποχρεωτικό." 
+                                                            ToolTip="Το πεδίο Username είναι υποχρεωτικό." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding-bottom:9px;">Password:&nbsp;</td>
+                                                    <td style="padding-bottom:3px;"><asp:TextBox ID="Password" runat="server" TextMode="Password" Width="130px"></asp:TextBox></td>
+                                                    <td><asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
+                                                            ControlToValidate="Password" 
+                                                            ErrorMessage="Το πεδίο Password είναι υποχρεωτικό." 
+                                                            ToolTip="Το πεδίο Password είναι υποχρεωτικό." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td align="left" valign="bottom" style="width:100%">
+                                            <asp:ImageButton ID="btnLoginButton" runat="server" CommandName="Login" 
+                                                Font-Names="Tahoma, Calibri, Verdana" ToolTip="Είσοδος" 
+                                                ValidationGroup="Login1" ImageUrl="~/Images/ArrowNext.png" />    
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="color: Yellow; font-weight: bold;"><br />
+                                            <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br /><br /><br /><br />
+                            </td>
+                        </tr>            
+                    </table>
+                </LayoutTemplate>
+                <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
+                <TitleTextStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                </asp:Login>
             </td>
         </tr>
         <tr>
@@ -104,15 +104,24 @@
                     </tr>
                 </table>
             </td>
+            <td align="right">
+                <table id="tblBrowsers">
+                    <tr>
+                        <td>Best viewed in:&nbsp;</td>
+                        <td><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/chrome.png" PostBackUrl="http://www.google.com/chrome" /></td>
+                        <td><asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Images/safari.png" PostBackUrl="http://www.apple.com/safari/" /></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
         <tr>
-            <td align="center">
+            <td align="center" colspan="2">
                 <asp:Label ID="lblMessage" Visible="false" runat="server" CssClass="ErrorMessage" Text="Label"></asp:Label>
                 <br />
             </td>
         </tr>
         <tr>
-            <td style="border-top: solid 3px white">Legal Notice. <br />
+            <td style="border-top: solid 3px white" colspan="2">Legal Notice. <br />
                 Application can be used only by an authorized person with preservation of 
                 binding procedures ... Obtaining or attempt of obtaining an unauthorized access to the application can cause bearing criminal responsibility or civil liability.</td>
         </tr>
@@ -120,7 +129,7 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td id="tdBottomLogo"><div><a href="http://advent.com.gr">&copy; AG ADVENT <%=DateTime.Today.Year%></a></div></td>
+            <td id="tdBottomLogo" colspan="2"><div><a href="http://advent.com.gr">&copy; AG ADVENT <%=DateTime.Today.Year%></a></div></td>
         </tr>
       </table>
     </form>    
