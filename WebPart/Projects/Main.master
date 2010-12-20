@@ -46,7 +46,7 @@
     </script>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" style="height:91%" runat="server">
         <div id="dvPleaseWait">
             <table style="width: 100%; height: 100%">
                 <tr>                
@@ -81,7 +81,7 @@
                 </td>
             </tr>
         </table>
-        <table cellpadding="0" cellspacing="0">
+        <table id="tblForm" cellpadding="0" cellspacing="0">
         <tr>
             <td id="tdMenu" runat="server" style="vertical-align: top">
                 <div id="dvMenu">
