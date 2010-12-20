@@ -11,9 +11,7 @@
                 <td class="FormTitle">Αλλαγή κωδικού</td>
             </tr>
             <tr>
-                <td align="center">
-                    <br />
-                    <br />
+                <td align="center" style="padding-top:100px;">
                     <table id="tblCngPass">
                         <tr>
                             <td rowspan="3">

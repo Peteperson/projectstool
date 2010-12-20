@@ -1,13 +1,17 @@
-﻿body {
-	/*background-color: #355379;*/
+﻿html {height: 99%;}
+
+body {
 	background-color: #2C486E;
     /*background-image: -moz-linear-gradient(60% 100% 315deg, #2C486E, #5C789E);
-    background-image: -webkit-gradient(linear, left top, right bottom, to(#2C486E), from(#8CA8CE));	
+    background-image: -webkit-gradient(linear, right bottom, left top, color-stop(0, #4C688E), color-stop(0.2, #2C486E), color-stop(0.8, #2C486E), color-stop(1, #4C688E));
     background: url(Images/Background2.png) repeat-y;
     background-repeat: no-repeat;*/
 	font: normal 13px Tahoma, Calibri, Verdana;
 	color: #FFFFFF;	
+	height: 99%;
 }
+
+#tblForm{height: 99%;}
 
 textarea:focus {background-color: #FFFFDD;}
 
@@ -210,7 +214,7 @@ a:hover {color: White;}
 
 #tdProgress a:hover{color:#842829;}
 
-#tblCngPass {width:400px;}
+#tblCngPass {width: 400px;}
 
 #tblCngPass td {vertical-align:middle; padding: 3px;}
 
@@ -279,22 +283,15 @@ a:hover {color: White;}
 
 .txtMassiveImport {height:200px; width:98%;}
 
-.lblHelpIds {
-    border: none;
-    width:30px;
-    text-align:center;
-}
+.lblHelpIds {border: none; width:30px; text-align:center;}
 
-#LoginFirstTable {
-    color: White;
-    width: 460px;
-}
+#LoginFirstTable {color: White; width: 400px;}
 
 #LoginSecondTable {color: White; width: 400px;}
 
 #tdError1 {
     background-image: -webkit-gradient(linear, left center, right center, from(#355379), to(#943839));
-    background-image:-moz-linear-gradient(left center, #355379, #943839);
+    background-image: -moz-linear-gradient(left center, #355379, #943839);
 }
 
 .tdError2 {
@@ -312,8 +309,6 @@ a:hover {color: White;}
 .MaxWidth80px{max-width: 80px;}
 
 .MaxWidth120px{max-width: 120px;}
-
-#LoginFrame {width: 800px; height: 550px;}
 
 #tblUsrPass {height:80px;}
 
@@ -338,18 +333,14 @@ a:hover {color: White;}
     box-shadow: 1px 1px 1px #000000;
     -webkit-box-shadow: 1px 1px 1px #000000;
     -moz-box-shadow: 1px 1px 1px #000000;
+    height: 20px;
 }
 
 #tdBottomLogo div {-webkit-box-reflect: below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, 0.25)));}
 
 #tdBottomLogo a {font-weight: bold; text-decoration: none;}
 
-#tdLogoff {
-    width:100%; 
-    text-align: right; 
-    vertical-align: bottom; 
-    background-color: White;
-}
+#tdLogoff {width:100%; text-align: right; vertical-align: bottom; background-color: White;}
 
 #tblBrowsers {
     /*border : solid 1px black;
