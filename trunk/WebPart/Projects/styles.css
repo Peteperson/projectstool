@@ -333,7 +333,7 @@ a:hover {color: White;}
     box-shadow: 1px 1px 1px #000000;
     -webkit-box-shadow: 1px 1px 1px #000000;
     -moz-box-shadow: 1px 1px 1px #000000;
-    height: 20px;
+    height: 18px;
 }
 
 #tdBottomLogo div {-webkit-box-reflect: below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, 0.25)));}
@@ -356,3 +356,5 @@ a:hover {color: White;}
     background-image: -webkit-gradient(linear, 0% 0%, 0% 10%, from(#F49899), to(#943839));
     background-image:-moz-linear-gradient(bottom, #943839 90%, #F49899);*/
 }
+
+#AdventLink {color: #FFFFEE;}
