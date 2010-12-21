@@ -108,8 +108,8 @@
                 <table id="tblBrowsers">
                     <tr>
                         <td>Best viewed in:&nbsp;</td>
-                        <td><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/chrome.png" ToolTip="Chrome" PostBackUrl="http://www.google.com/chrome" /></td>
-                        <td><asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Images/safari.png" ToolTip="Safari" PostBackUrl="http://www.apple.com/safari/" /></td>
+                        <td><asp:HyperLink ID="HyperLink1" ImageUrl="~/Images/chrome.png" ToolTip="Chrome" NavigateUrl="http://www.google.com/chrome" runat="server"></asp:HyperLink></td>
+                        <td><asp:HyperLink ID="HyperLink2" ImageUrl="~/Images/safari.png" ToolTip="Safari" NavigateUrl="http://www.apple.com/safari/" runat="server"/></td>
                     </tr>
                 </table>
             </td>
@@ -129,7 +129,7 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td id="tdBottomLogo" colspan="2"><div><a href="http://advent.com.gr">&copy; AG ADVENT <%=DateTime.Today.Year%></a></div></td>
+            <td id="tdBottomLogo" colspan="2"><div><a id="AdventLink" href="http://advent.com.gr">&copy; AG ADVENT <%=DateTime.Today.Year%></a></div></td>
         </tr>
       </table>
     </form>    
