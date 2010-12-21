@@ -108,8 +108,8 @@
                 <table id="tblBrowsers">
                     <tr>
                         <td>Best viewed in:&nbsp;</td>
-                        <td><asp:HyperLink ID="HyperLink1" ImageUrl="~/Images/chrome.png" ToolTip="Chrome" NavigateUrl="http://www.google.com/chrome" runat="server"></asp:HyperLink></td>
-                        <td><asp:HyperLink ID="HyperLink2" ImageUrl="~/Images/safari.png" ToolTip="Safari" NavigateUrl="http://www.apple.com/safari/" runat="server"/></td>
+                        <td><asp:HyperLink ID="HyperLink1" ImageUrl="~/Images/chrome.png" Target="_blank" ToolTip="Chrome" NavigateUrl="http://www.google.com/chrome" runat="server"></asp:HyperLink></td>
+                        <td><asp:HyperLink ID="HyperLink2" ImageUrl="~/Images/safari.png" Target="_blank" ToolTip="Safari" NavigateUrl="http://www.apple.com/safari/" runat="server"/></td>
                     </tr>
                 </table>
             </td>
