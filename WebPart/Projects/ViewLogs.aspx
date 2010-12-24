@@ -23,8 +23,16 @@
                         </td>
                         <td>
                             <asp:Calendar ID="clndTo" runat="server" SkinID="clndMain"></asp:Calendar>
-                        </td>                        
+                        </td>
+                        <td>
+                            From: <asp:TextBox ID="txtEmailFrom" runat="server"></asp:TextBox><br />
+                            To: <asp:TextBox ID="txtEmailTo" runat="server"></asp:TextBox><br />
+                            Subject: <asp:TextBox ID="txtEmailSbj" runat="server"></asp:TextBox><br />
+                            Body: <asp:TextBox ID="txtEmailBody" runat="server"></asp:TextBox><br />
+                            <asp:Button ID="btnEmail" runat="server" Text="Send" />
+                        </td>
                     </tr>
+                    
                 </table>
             </td>
         </tr>
