@@ -4,57 +4,7 @@
 
 <%@ Register src="DateBox.ascx" tagname="DateBox" tagprefix="uc2" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-
-    <script language="javascript" type="text/javascript">
-    function setCaretPosition(elemId, caretPos) {
-        var elem = document.getElementById(elemId);
-
-        if (elem != null) {
-            if (elem.createTextRange) {
-                var range = elem.createTextRange();
-                range.move('character', caretPos);
-                range.select();
-            }
-            else {
-                if (elem.selectionStart) {
-                    elem.focus();
-                    elem.setSelectionRange(caretPos, caretPos);
-                }
-                else
-                    elem.focus();
-            }
-        }
-    }
-
-    function TestFunc(obj) {
-        var mask = "__/__/____";
-        var str
-        if (obj.value.length > 10) {
-            obj.value = obj.value.substring(0, 10);
-            return
-        }
-        myRegExp = /[^0-9]+/g;
-        str = obj.value.replace(myRegExp, "");
-        var sc
-        debugger        
-        if (str.length < 3) {
-            sc = str.length;
-            str = str + mask.substring(str.length);
-        } else if (str.length < 5) {
-            sc = str.length + 1;
-            str = str.substring(0, 2) + "/" + str.substring(2) + mask.substring(str.length + 1);
-        } else {
-            sc = str.length + 2;
-            str = str.substring(0, 2) + "/" + str.substring(2, 4) + "/" + str.substring(4) + mask.substring(str.length + 2);
-        }
-        document.getElementById("inpMT").value = str;
-        //obj.value = str;
-        //setCaretPosition(obj.id, sc)
-        setCaretPosition("inpMT", sc)
-    }
-</script>
-</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
     <br />
     <table id="subPageMainTable">
@@ -300,14 +250,6 @@
                             CommandName="Cancel" ImageUrl="~/Images/Icons/Cancel32_32.png" ToolTip="Ακύρωση" />
                     </InsertItemTemplate>
                 </asp:FormView>
-            </td>
-        </tr>
-        <tr>
-            <td align="center">
-                <!--
-                <asp:TextBox ID="txtMaskedText" onkeyup="TestFunc(this)" runat="server"></asp:TextBox>
-                <input id="inpMT" type="text" /> 
-                -->
             </td>
         </tr>
     </table>
