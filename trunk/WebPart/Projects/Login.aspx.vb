@@ -39,7 +39,7 @@
         ctrlLogin.Focus()
     End Sub
 
-    Protected Sub btnResetMail_Click(ByVal sender As Object, ByVal e As System.EventArgs)
+    Protected Sub btnResetMail_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnResetMail.Click
         Dim res As ChkEmailResult = Database.CheckEmail(txtemail.Text)
         lblMessage.Visible = True
         If res.UserId = 0 Then
