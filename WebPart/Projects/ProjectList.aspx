@@ -81,9 +81,9 @@
                             SortExpression="ProjectManager" />
                         <asp:BoundField DataField="Consultant" HeaderText="Σύμβουλος" 
                             SortExpression="Consultant" ReadOnly="True" />
-                        <asp:TemplateField HeaderText="Λήξη" SortExpression="InitialEndDate">
+                        <asp:TemplateField HeaderText="Λήξη ®" SortExpression="EndDate">
                             <ItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("InitialEndDate", "{0:dd/MM/yyyy}") %>' ToolTip='<%# Bind("EndDate", "Πραγματική ημ/νία λήξης: {0:dd/MM/yyyy}") %>'></asp:Label>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("EndDate", "{0:dd/MM/yyyy}") %>' ToolTip='<%# Bind("InitialEndDate", "Συμβατική ημ/νία λήξης: {0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Status" SortExpression="Status">
