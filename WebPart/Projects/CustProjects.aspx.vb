@@ -105,9 +105,12 @@ Partial Class CustProjects
     End Sub
 
     Protected Sub btnRemovePaging_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles btnRemovePaging.Click
-        gvAP.AllowPaging = Not gvAP.AllowPaging
-        gvAttachments.AllowPaging = Not gvAttachments.AllowPaging
-        gvMeetings.AllowPaging = Not gvMeetings.AllowPaging
+        Select Case mnuProjects.SelectedValue
+            Case 0 : gvAP.AllowPaging = Not gvAP.AllowPaging
+            Case 1 : gvMeetings.AllowPaging = Not gvMeetings.AllowPaging
+            Case 2 : gvAttachments.AllowPaging = Not gvAttachments.AllowPaging
+        End Select
+        ShowTab(mnuProjects.SelectedValue)
     End Sub
 
     Protected Sub Page_PreInit(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreInit
