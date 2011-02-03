@@ -50,7 +50,7 @@
             </td>
         </tr>
         <tr>
-            <td><br /><br /><br /><br /><br /></td>
+            <td><br /></td>
         </tr>
         <tr>
             <td id="tdSubMenu">
@@ -71,7 +71,7 @@
                 <table cellpadding="0" cellspacing="0" style="width:100%">
                     <tr>
                         <td id="tdAP">
-                            <asp:GridView ID="gvAP" runat="server" AllowPaging="True" SkinID="gridviewSkinSmall"
+                            <asp:GridView ID="gvAP" runat="server" AllowPaging="True" SkinID="gridviewSkinList"
                                 AllowSorting="True" AutoGenerateColumns="False" DataSourceID="sqldsAP">
                                 <Columns>
                                     <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
@@ -98,7 +98,7 @@
                     </tr>
                     <tr>
                         <td id="tdMeetings">
-                            <asp:GridView ID="gvMeetings" runat="server" AllowPaging="True" SkinID="gridviewSkinList" 
+                            <asp:GridView ID="gvMeetings" runat="server" AllowPaging="True" SkinID="gridviewSkinList"
                                 AllowSorting="True" AutoGenerateColumns="False" DataSourceID="sqldsMeetings">
                                 <Columns>
                                     <asp:BoundField DataField="A/A" HeaderText="A/A" ReadOnly="True" 
@@ -109,7 +109,6 @@
                                         SortExpression="From" />
                                     <asp:BoundField DataField="To" DataFormatString="{0:HH:mm}" HeaderText="Λήξη" 
                                         SortExpression="To" />
-                                    <asp:BoundField DataField="Kind" HeaderText="Τύπος" SortExpression="Kind" />
                                     <asp:BoundField DataField="Subject" HeaderText="Θέμα" 
                                         SortExpression="Subject" />
                                     <asp:BoundField DataField="Consultant" HeaderText="Σύμβουλος" ReadOnly="True" 
