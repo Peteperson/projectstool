@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Main.master" AutoEventWireup="false" CodeFile="SystemDesign.aspx.vb" Inherits="SystemDesign" Theme="MainSkin" %>
 <%@ Register src="DateBox.ascx" tagname="DateBox" tagprefix="uc1" %>
 
+<%@ Register assembly="DevExpress.Web.ASPxEditors.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
@@ -20,14 +22,21 @@
             </td>
         </tr>
         <tr>
-            <td class="tdBelowTitle"> <asp:Panel ID="pnl1" runat="server" DefaultButton="btnFindPrj">
-                <img alt="info" src="Images/Icons/Logs_24x24.png" />: Επιλέξτε subproject από τη 
-                λίστα:
-                <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
-                    DataTextField="SubProject" DataValueField="id" AutoPostBack="True">
-                </asp:DropDownList>&nbsp;ή συμπληρώστε το στο ακόλουθο πεδίο και πατήστε &quot;Αναζήτηση&quot;
-                <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
-                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /></asp:Panel> 
+            <td class="tdBelowTitle"> 
+                <table>
+                    <tr>
+                        <td><img alt="info" src="Images/Icons/Logs_24x24.png" />: Επιλέξτε subproject από τη λίστα:</td>
+                        <td><dx:ASPxComboBox ID="dxPrjCode" runat="server" TextFormatString="{0}: {1}" AutoPostBack="true" ValueField="id" Width="400px"
+                                DataSourceID="sqldsPrjCodes" ValueType="System.Int32" FilterMinLength="1" IncrementalFilteringMode="Contains">
+                                <Columns>
+                                    <dx:ListBoxColumn FieldName="id" Visible="False" />
+                                    <dx:ListBoxColumn FieldName="SubProject" Width="30px" />
+                                    <dx:ListBoxColumn FieldName="Title" />
+                                </Columns>
+                            </dx:ASPxComboBox>
+                        </td>
+                    </tr>
+                </table>
                 Διαθέσιμες εκδόσεις:&nbsp;
                 <asp:DropDownList ID="ddlSysVersions" runat="server" 
                     DataSourceID="sqldsSysVersions" DataTextField="VersionNo" 
@@ -238,11 +247,11 @@
                     UpdateCommand="InsertVersion" UpdateCommandType="StoredProcedure"
                     DeleteCommand="DeleteVersion" DeleteCommandType="StoredProcedure">
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="dxPrjCode" Name="ProjectId" PropertyName="Value" Type="Int32" />
                     </SelectParameters>
                     <InsertParameters>
                         <asp:ControlParameter ControlID="ddlSysVersions" Name="VersionId" PropertyName="SelectedValue" Type="Int32" />
-                        <asp:ControlParameter ControlID="ddlPrjCode" Name="ToProjectId" PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="dxPrjCode" Name="ToProjectId" PropertyName="Value" Type="Int32" />
                     </InsertParameters>
                     <UpdateParameters>
                         <asp:ControlParameter ControlID="ddlSysVersions" Name="VersionId" PropertyName="SelectedValue" Type="Int32" />
@@ -310,8 +319,7 @@
                     SelectCommand="GetResponsible" SelectCommandType="StoredProcedure"
                     UpdateCommand="UPDATE Processes SET [Responsible] = @Responsible WHERE id = @id">
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
-                            PropertyName="SelectedValue" Type="Int16" />
+                        <asp:ControlParameter ControlID="dxPrjCode" Name="ProjectId" PropertyName="Value" Type="Int16" />
                     </SelectParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="Responsible" Type="Int16" />
