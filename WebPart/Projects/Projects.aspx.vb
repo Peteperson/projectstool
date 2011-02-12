@@ -60,31 +60,26 @@ Partial Class Projects
         End Select
     End Sub
 
-    Protected Sub btnFindPrj_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnFindPrj.Click
-        dvProject.ChangeMode(DetailsViewMode.ReadOnly)
-        If Not (ddlPrjCode.Items.FindByText(txtPrjId.Text)) Is Nothing Then
-            ddlPrjCode.SelectedValue = ddlPrjCode.Items.FindByText(txtPrjId.Text).Value
-            SetTabImage(0)
-        Else
-            With CType(Master.FindControl("lblMessage"), Label)
-                .Visible = True
-                .Text = "The project does not exist!"
-            End With
-        End If
+    Protected Sub Page_InitComplete(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.InitComplete
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        gvAP.Visible = True
-        gvMeetings.Visible = False
-        gvFiles.Visible = False
-        gvProgress.Visible = False
-        btnAPins.Visible = True
-        btnFlsIns.Visible = False
-        btnMTins.Visible = False
-        If Not Session("ProjectId") Is Nothing AndAlso Session("ProjectId") > -1 Then
-            ddlPrjCode.SelectedValue = Session("ProjectId")
-            Session("ProjectId") = -1
+        If Not IsPostBack Then
+            gvAP.Visible = True
+            gvMeetings.Visible = False
+            gvFiles.Visible = False
+            gvProgress.Visible = False
+            btnAPins.Visible = True
+            btnFlsIns.Visible = False
+            btnMTins.Visible = False
+            If Not Session("ProjectId") Is Nothing AndAlso Session("ProjectId") > -1 Then
+                dxPrjCode.Value = Session("ProjectId")
+                Session("ProjectId") = -1
+            Else
+                dxPrjCode.SelectedIndex = 0
+            End If
         End If
+        dxPrjCode.Focus()
     End Sub
 
     Protected Sub gvFiles_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvFiles.DataBound
@@ -110,12 +105,12 @@ Partial Class Projects
 
     Protected Sub sqldsAttachments_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAttachments.Inserting
         If gvFiles.Rows.Count > 0 Then
-            e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+            e.Command.Parameters("@ProjectId").Value = dxPrjCode.Value
             e.Command.Parameters("@AttachmentName").Value = CType(gvFiles.FooterRow.FindControl("fuCtrl"), FileUpload).FileName.Replace(" ", "_")
             e.Command.Parameters("@Attachment").Value = CType(gvFiles.FooterRow.FindControl("fuCtrl"), FileUpload).FileBytes
             e.Command.Parameters("@Comments").Value = CType(gvFiles.FooterRow.FindControl("txtAttachComment"), TextBox).Text
         Else
-            e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+            e.Command.Parameters("@ProjectId").Value = dxPrjCode.Value
             e.Command.Parameters("@AttachmentName").Value = CType(gvFiles.Controls(0).Controls(0).Controls(0).FindControl("fuCtrl"), FileUpload).FileName.Replace(" ", "_")
             e.Command.Parameters("@Attachment").Value = CType(gvFiles.Controls(0).Controls(0).Controls(0).FindControl("fuCtrl"), FileUpload).FileBytes
             e.Command.Parameters("@Comments").Value = CType(gvFiles.Controls(0).Controls(0).Controls(0).FindControl("txtAttachComment"), TextBox).Text
@@ -137,16 +132,16 @@ Partial Class Projects
 
     Protected Sub sqldsProjects_Inserted(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles sqldsProjects.Inserted
         If e.AffectedRows > 0 Then
-            ddlPrjCode.DataBind()
+            dxPrjCode.DataBind()
             SetDdlValue(e.Command.Parameters("@SubProject").Value)
             sqldsSysVer.Insert()
         End If
     End Sub
 
     Private Sub SetDdlValue(ByVal text As String)
-        For i As Byte = 0 To ddlPrjCode.Items.Count - 1
-            If ddlPrjCode.Items(i).Text = text Then
-                ddlPrjCode.SelectedIndex = i
+        For i As Byte = 0 To dxPrjCode.Items.Count - 1
+            If dxPrjCode.Items(i).Text = text Then
+                dxPrjCode.SelectedIndex = i
                 Exit For
             End If
         Next
@@ -177,7 +172,7 @@ Partial Class Projects
     Protected Sub sqldsAP_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsAP.Inserting
         Dim resp As Integer
         If gvAP.Rows.Count > 0 Then
-            e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+            e.Command.Parameters("@ProjectId").Value = dxPrjCode.Value
             resp = CType(gvAP.FooterRow.FindControl("ddlResp1"), DropDownList).SelectedValue
             e.Command.Parameters("@Responsible1").Value = IIf(resp = 0, DBNull.Value, resp)
             resp = CType(gvAP.FooterRow.FindControl("ddlResp2"), DropDownList).SelectedValue
@@ -188,7 +183,7 @@ Partial Class Projects
             e.Command.Parameters("@Deadline").Value = CType(gvAP.FooterRow.FindControl("dbDeadline"), DateBox).Value
             e.Command.Parameters("@Status").Value = CType(gvAP.FooterRow.FindControl("ddlActionStatus"), DropDownList).SelectedValue
         Else
-            e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+            e.Command.Parameters("@ProjectId").Value = dxPrjCode.Value
             resp = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("ddlResp1"), DropDownList).SelectedValue
             e.Command.Parameters("@Responsible1").Value = IIf(resp = 0, DBNull.Value, resp)
             resp = CType(gvAP.Controls(0).Controls(0).Controls(0).FindControl("ddlResp2"), DropDownList).SelectedValue
@@ -300,7 +295,7 @@ Partial Class Projects
     Protected Sub sqldsMeetings_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsMeetings.Inserting
         Dim tf, tt As DateTime
         If gvMeetings.Rows.Count > 0 Then
-            e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+            e.Command.Parameters("@ProjectId").Value = dxPrjCode.Value
             tf = CType(gvMeetings.FooterRow.FindControl("dbTimeFrom"), DateBox).Value
             tt = CType(gvMeetings.FooterRow.FindControl("dbTimeTo"), DateBox).Value
             e.Command.Parameters("@TimeFrom").Value = tf
@@ -311,7 +306,7 @@ Partial Class Projects
             e.Command.Parameters("@Attachment").Value = CType(gvMeetings.FooterRow.FindControl("fuAttachment"), FileUpload).FileBytes
             e.Command.Parameters("@Status").Value = CType(gvMeetings.FooterRow.FindControl("ddlMeetStat"), DropDownList).SelectedValue
         Else
-            e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+            e.Command.Parameters("@ProjectId").Value = dxPrjCode.Value
             tf = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("dbTimeFrom"), DateBox).Value
             tt = CType(gvMeetings.Controls(0).Controls(0).Controls(0).FindControl("dbTimeTo"), DateBox).Value
             e.Command.Parameters("@TimeFrom").Value = tf
@@ -343,7 +338,7 @@ Partial Class Projects
         End If
     End Sub
 
-    Protected Sub ddlPrjCode_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlPrjCode.SelectedIndexChanged
+    Protected Sub dxPrjCode_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles dxPrjCode.SelectedIndexChanged
         SetTabImage(0)
     End Sub
 
@@ -378,12 +373,12 @@ Partial Class Projects
                 Response.Redirect("~/Companies.aspx?Company=" & CType(dvProject.FindControl("ddlCompanies"), DropDownList).SelectedItem.Text)
             Case "SysDesign"
                 Response.Clear()
-                Response.Redirect("~/SystemDesign.aspx?Project=" & ddlPrjCode.SelectedValue)
+                Response.Redirect("~/SystemDesign.aspx?Project=" & dxPrjCode.Value)
         End Select
     End Sub
 
     Protected Sub sqldsSysVer_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsSysVer.Inserting
-        e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+        e.Command.Parameters("@ProjectId").Value = dxPrjCode.Value
     End Sub
 
     Protected Sub gvProgress_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvProgress.RowCommand
@@ -396,11 +391,11 @@ Partial Class Projects
 
     Protected Sub sqldsProgress_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsProgress.Inserting
         If gvProgress.Rows.Count > 0 Then
-            e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+            e.Command.Parameters("@ProjectId").Value = dxPrjCode.Value
             e.Command.Parameters("@Writer").Value = CType(gvProgress.FooterRow.FindControl("ddlWriter"), DropDownList).SelectedValue
             e.Command.Parameters("@Comments").Value = CType(gvProgress.FooterRow.FindControl("txtComments"), TextBox).Text
         Else
-            e.Command.Parameters("@ProjectId").Value = ddlPrjCode.SelectedValue
+            e.Command.Parameters("@ProjectId").Value = dxPrjCode.Value
             e.Command.Parameters("@Writer").Value = CType(gvProgress.Controls(0).Controls(0).Controls(0).FindControl("ddlWriter"), DropDownList).SelectedValue
             e.Command.Parameters("@Comments").Value = CType(gvProgress.Controls(0).Controls(0).Controls(0).FindControl("txtComments"), TextBox).Text
         End If

@@ -1,4 +1,7 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Main.master" AutoEventWireup="false" CodeFile="Projects.aspx.vb" Inherits="Projects" Theme="MainSkin" %>
+
+<%@ Register Assembly="DevExpress.Web.ASPxEditors.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 <%@ Register src="DateBox.ascx" tagname="DateBox" tagprefix="uc1" %>
 
 <%@ Register assembly="System.Web.Entity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" namespace="System.Web.UI.WebControls" tagprefix="asp" %>
@@ -20,12 +23,21 @@
             </td>
         </tr>
         <tr>
-            <td class="tdBelowTitle"><asp:Panel runat="server" ID="pnl1" DefaultButton="btnFindPrj">Επιλέξτε subproject από τη λίστα:
-                <asp:DropDownList ID="ddlPrjCode" runat="server" DataSourceID="sqldsPrjCodes" 
-                    DataTextField="SubProject" DataValueField="id" AutoPostBack="True">
-                </asp:DropDownList>&nbsp;ή συμπληρώστε το στο ακόλουθο πεδίο και πατήστε &quot;Αναζήτηση&quot;
-                <asp:TextBox ID="txtPrjId" runat="server" SkinID="txtTextCenter"></asp:TextBox>
-                &nbsp;<asp:Button ID="btnFindPrj" runat="server" Text="Αναζήτηση" /></asp:Panel> 
+            <td class="tdBelowTitle">
+                <table>
+                    <tr>
+                        <td>Επιλέξτε subproject από τη λίστα:</td>
+                        <td><dx:ASPxComboBox ID="dxPrjCode" runat="server" TextFormatString="{0}: {1}" AutoPostBack="true" ValueField="id" Width="400px"
+                                DataSourceID="sqldsPrjCodes" ValueType="System.Int32" FilterMinLength="1" IncrementalFilteringMode="Contains">
+                                <Columns>
+                                    <dx:ListBoxColumn FieldName="id" Visible="False" />
+                                    <dx:ListBoxColumn FieldName="SubProject" Width="30px" />
+                                    <dx:ListBoxColumn FieldName="Title" />
+                                </Columns>
+                            </dx:ASPxComboBox>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
         <tr>
@@ -351,7 +363,7 @@
                     StaticEnableDefaultPopOutImage="False" OnMenuItemClick="mnuProjects_MenuItemClick" 
                     StaticMenuItemStyle-CssClass="TabMenuItem">
                     <Items>
-                        <asp:MenuItem ImageUrl="~/Images/ActionPlanSelected5.png" Text="" Value="0"></asp:MenuItem>
+                        <asp:MenuItem ImageUrl="~/Images/ActionPlanSelected5.png" Text="" Selected="true" Value="0"></asp:MenuItem>
                         <asp:MenuItem ImageUrl="~/Images/MeetingsUnselected5.png" Text="" Value="1"></asp:MenuItem>
                         <asp:MenuItem ImageUrl="~/Images/AttachmentsUnselected5.png" Text="" Value="2"></asp:MenuItem>
                         <asp:MenuItem ImageUrl="~/Images/ProgressUnselected.png" Text="" Value="3"></asp:MenuItem>
@@ -830,10 +842,10 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     DeleteCommand="DELETE FROM [Projects] WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [Projects] ([Code], [SubProject], [Creator], [Type], [CustomerId], [InitialStartDate], [StartDate], [InitialEndDate], [EndDate], [Title], [Description], [ProjectManager], [Consultant1], [Consultant2], [InitialMeetingsNo], [CriticalIssues], [DesiredOrganization], [CertificationField], [CompletionPercentage], [Status]) VALUES (@Code, @SubProject, @Creator, @Type, @CustomerId, @InitialStartDate, @InitialStartDate, @InitialEndDate, @InitialEndDate, @Title, @Description, @ProjectManager, @Consultant1, @Consultant2, @InitialMeetingsNo, @CriticalIssues, @DesiredOrganization, @CertificationField, @CompletionPercentage, @Status)" 
-                    SelectCommand="SELECT [id], [Code], [Type], [SubProject], [DateStamp], [Creator], [ModificationDate], [CustomerId], [InitialStartDate], [StartDate], [InitialEndDate], [EndDate], [Title], [Description], [ProjectManager], [Consultant1], ISNULL([Consultant2], 0) AS Consultant2, [InitialMeetingsNo], [CriticalIssues], [DesiredOrganization], [CertificationField], [CompletionPercentage], [Status]  FROM [Projects] WHERE ([id] = @id)" 
+                    SelectCommand="SELECT [id], [Code], [Type], [SubProject], [DateStamp], [Creator], [ModificationDate], [CustomerId], [InitialStartDate], [StartDate], [InitialEndDate], [EndDate], [Title], [Description], [ProjectManager], [Consultant1], ISNULL([Consultant2], 0) AS Consultant2, [InitialMeetingsNo], [CriticalIssues], [DesiredOrganization], [CertificationField], [CompletionPercentage], [Status] FROM [Projects] WHERE ([id] = @id)" 
                     UpdateCommand="UPDATE [Projects] SET [Code] = @Code, [Type] = @Type, [SubProject] = @SubProject, [Creator] = @Creator, [ModificationDate] = @ModificationDate, [CustomerId] = @CustomerId, [InitialStartDate] = @InitialStartDate, [StartDate] = @StartDate, [InitialEndDate] = @InitialEndDate, [EndDate] = @EndDate, [Title] = @Title, [Description] = @Description, [ProjectManager] = @ProjectManager, [Consultant1] = @Consultant1, [Consultant2] = @Consultant2, [InitialMeetingsNo] = @InitialMeetingsNo, [CriticalIssues] = @CriticalIssues, [DesiredOrganization] = @DesiredOrganization, [CertificationField] = @CertificationField, [CompletionPercentage] = @CompletionPercentage, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="ddlPrjCode" Name="id" PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="dxPrjCode" Name="id" PropertyName="Value" Type="Int32" />
                     </SelectParameters>
                     <DeleteParameters>
                         <asp:Parameter Name="id" Type="Int32" />
@@ -892,8 +904,8 @@
                     InsertCommand="INSERT INTO [ActionPlans] ([ProjectId], [ActionId], [Responsible1], [Responsible2], [Description], [AttachmentName], [Attachment], [Deadline], [Status], [MeetingDate]) VALUES (@ProjectId, 5, @Responsible1, @Responsible2, @Description, @AttachmentName, @Attachment, @Deadline, @Status, GetDate())" 
                     UpdateCommand="UPDATE [ActionPlans] SET [Responsible1] = @Responsible1, [Responsible2] = @Responsible2, [Description] = @Description, [Deadline] = @Deadline, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
-                            PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="dxPrjCode" Name="ProjectId" 
+                            PropertyName="Value" Type="Int32" />
                     </SelectParameters>
                     <DeleteParameters>
                         <asp:Parameter Name="id" Type="Int32" />
@@ -927,8 +939,8 @@
                     InsertCommand="INSERT INTO [Meetings] ([ProjectId], [TimeFrom], [TimeTo], [Kind], [Subject], [Consultant], [Comments], [NewBusiness], [AttachmentName], [Attachment], [Status]) VALUES (@ProjectId, @TimeFrom, @TimeTo, 13, @Subject, @Consultant, '', '', @AttachmentName, @Attachment, @Status)" 
                     UpdateCommand="UPDATE [Meetings] SET [TimeFrom] = @TimeFrom, [TimeTo] = @TimeTo, [Subject] = @Subject, [Consultant] = @Consultant, [Status] = @Status WHERE [id] = @id">
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
-                            PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="dxPrjCode" Name="ProjectId" 
+                            PropertyName="Value" Type="Int32" />
                     </SelectParameters>
                     <DeleteParameters>
                         <asp:Parameter Name="id" Type="Int32" />
@@ -963,8 +975,8 @@
                     UpdateCommand="UPDATE [ProjectFiles] SET [Comments] = @Comments WHERE [id] = @id"
                     InsertCommand="INSERT INTO [ProjectFiles] ([ProjectId], [AttachmentName], [Attachment], [Comments]) VALUES (@ProjectId, @AttachmentName, @Attachment, @Comments)" >
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
-                            PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="dxPrjCode" Name="ProjectId" 
+                            PropertyName="Value" Type="Int32" />
                     </SelectParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="id" Type="Int32" />
@@ -990,7 +1002,7 @@
                         <asp:Parameter Name="ProjectId" Type="Int32" />
                     </InsertParameters>
                     <DeleteParameters>
-                        <asp:ControlParameter Name="ProjectId" Type="Int32" ControlID="ddlPrjCode" PropertyName="SelectedValue" />
+                        <asp:ControlParameter Name="ProjectId" Type="Int32" ControlID="dxPrjCode" PropertyName="Value" />
                     </DeleteParameters>
                 </asp:SqlDataSource>
             </td>
@@ -1008,8 +1020,8 @@
                     ConnectionString="<%$ ConnectionStrings:cnMain %>" 
                     SelectCommand="GetResponsible" SelectCommandType="StoredProcedure">
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
-                            PropertyName="SelectedValue" Type="Int16" />
+                        <asp:ControlParameter ControlID="dxPrjCode" Name="ProjectId" 
+                            PropertyName="Value" Type="Int16" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
@@ -1081,8 +1093,8 @@
                     SelectCommand="SELECT [id], [Datestamp], [ProjectId], [Writer], [Comments] FROM [Progress] WHERE ([ProjectId] = @ProjectId) ORDER BY [Datestamp] DESC" 
                     UpdateCommand="UPDATE [Progress] SET [Writer] = @Writer, [Comments] = @Comments WHERE [id] = @id">
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="ddlPrjCode" Name="ProjectId" 
-                            PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="dxPrjCode" Name="ProjectId" 
+                            PropertyName="Value" Type="Int32" />
                     </SelectParameters>
                     <DeleteParameters>
                         <asp:Parameter Name="id" Type="Int32" />

@@ -3,6 +3,8 @@
 <%@ Register src="ctrlDateTime.ascx" tagname="ctrlDateTime" tagprefix="uc1" %>
 <%@ Register src="DateBox.ascx" tagname="DateBox" tagprefix="uc2" %>
 
+<%@ Register assembly="DevExpress.Web.ASPxEditors.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
@@ -88,6 +90,14 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Status" SortExpression="Status">
                             <ItemTemplate>
+                                <dx:ASPxComboBox ID="ASPxDropDownEdit1" runat="server" DataSourceID="objdsPrjStatus" 
+                                value='<%# Bind("StatusNo") %>' ValueField="id" ToolTip='<%# Bind("ProjectId") %>'
+                                OnSelectedIndexChanged="ddlPrjStatusOne_IndexChanged">
+                                <Columns>
+                                    <dx:ListBoxColumn FieldName="id" Visible="False" />
+                                    <dx:ListBoxColumn FieldName="Description"/>
+                                </Columns>
+                                </dx:ASPxComboBox>
                                 <asp:DropDownList ID="ddlPrjStatusOne" Font-Size="8pt" runat="server" DataSourceID="objdsPrjStatus" 
                                     selectedvalue='<%# Bind("StatusNo") %>' DataTextField="Description" DataValueField="id"
                                     AutoPostBack="true" OnSelectedIndexChanged="ddlPrjStatusOne_IndexChanged" ToolTip='<%# Bind("ProjectId") %>' >
@@ -154,8 +164,7 @@
                 </asp:SqlDataSource>
             </td>
             <td>
-                <asp:ObjectDataSource ID="objdsPrjStatus" runat="server" 
-                    SelectMethod="VariousTypes" TypeName="Database">
+                <asp:ObjectDataSource ID="objdsPrjStatus" runat="server" SelectMethod="VariousTypes" TypeName="Database">
                     <SelectParameters>
                         <asp:Parameter DefaultValue="Category = 'ProjectStatus'" Name="Category" Type="String" />
                         <asp:Parameter DefaultValue="Description" Name="OrderBy" Type="String" />
