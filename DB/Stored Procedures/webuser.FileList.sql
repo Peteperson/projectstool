@@ -1,3 +1,4 @@
+
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
@@ -11,7 +12,8 @@ AS
 
 	DECLARE @tmp TABLE (
 		id int,
-		SubProject NVARCHAR(15)
+		SubProject NVARCHAR(15), 
+		Title NVARCHAR(50)
 	)
 
 	INSERT INTO @tmp
