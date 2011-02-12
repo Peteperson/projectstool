@@ -14,7 +14,7 @@ AS
 
 	IF @UserType = 'Consultant' 
 		Begin
-			SELECT id, SubProject FROM webuser.Projects 
+			SELECT id, SubProject, Title FROM webuser.Projects 
 			WHERE (Consultant1 = @UserId OR Consultant2 = @UserId OR Creator = @UserId)  
 				OR CustomerId IN (SELECT Companyid FROM webuser.UsersCompanies WHERE userid = @userId)
 			UNION
@@ -22,7 +22,7 @@ AS
 		END
 	ELSE IF @UserType = 'ProjectManager' 
 		BEGIN
-			SELECT id, SubProject FROM webuser.Projects 
+			SELECT id, SubProject, Title FROM webuser.Projects 
 			WHERE (Consultant1 = @UserId OR Consultant2 = @UserId OR ProjectManager = @userId OR Creator = @UserId) 
 				OR CustomerId IN (SELECT Companyid FROM webuser.UsersCompanies WHERE userid = @userId)
 			UNION
@@ -30,7 +30,7 @@ AS
 		END
 	ELSE IF @UserType = 'FoodDirector' 
 		BEGIN
-			SELECT id, SubProject FROM webuser.Projects 
+			SELECT id, SubProject, Title FROM webuser.Projects 
 			WHERE [Type] = (SELECT id FROM webuser.VariousTypes WHERE [Description] = (N'Τρόφιμα')) 
 				OR CustomerId IN (SELECT Companyid FROM webuser.UsersCompanies WHERE userid = @userId)
 			UNION
@@ -38,7 +38,7 @@ AS
 		END
 	ELSE IF @UserType = 'OrgDirector' 
 		BEGIN
-			SELECT id, SubProject FROM webuser.Projects 
+			SELECT id, SubProject, Title FROM webuser.Projects 
 			WHERE [Type] = (SELECT id FROM webuser.VariousTypes WHERE [Description] = (N'Οργάνωση')) 
 				OR CustomerId IN (SELECT Companyid FROM webuser.UsersCompanies WHERE userid = @userId)
 			UNION
@@ -46,17 +46,17 @@ AS
 		END
 	ELSE IF @UserType = 'Admin' OR @UserType = 'DataEntry' OR @UserType = 'ITDirector'
 		BEGIN
-			SELECT id, SubProject FROM webuser.Projects ORDER BY SubProject
+			SELECT id, SubProject, Title FROM webuser.Projects ORDER BY SubProject
 		END
 	ELSE IF @UserType = 'Partner' 
 		BEGIN
-			SELECT id, SubProject FROM webuser.Projects WHERE Consultant2 = @UserId
+			SELECT id, SubProject, Title FROM webuser.Projects WHERE Consultant2 = @UserId
 			UNION
 			SELECT * FROM webuser.ProjectListSup(@UserId) ORDER BY SubProject
 		END
 	ELSE 
 		BEGIN
-			SELECT id, SubProject FROM webuser.Projects 
+			SELECT id, SubProject, Title FROM webuser.Projects 
 			WHERE CustomerId IN (SELECT CompanyId FROM webuser.UsersCompanies WHERE userid = @userId)
 			UNION
 			SELECT * FROM webuser.ProjectListSup(@UserId) ORDER BY SubProject
