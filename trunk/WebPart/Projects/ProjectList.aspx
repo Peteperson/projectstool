@@ -90,14 +90,6 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Status" SortExpression="Status">
                             <ItemTemplate>
-                                <dx:ASPxComboBox ID="ASPxDropDownEdit1" runat="server" DataSourceID="objdsPrjStatus" 
-                                value='<%# Bind("StatusNo") %>' ValueField="id" ToolTip='<%# Bind("ProjectId") %>'
-                                OnSelectedIndexChanged="ddlPrjStatusOne_IndexChanged">
-                                <Columns>
-                                    <dx:ListBoxColumn FieldName="id" Visible="False" />
-                                    <dx:ListBoxColumn FieldName="Description"/>
-                                </Columns>
-                                </dx:ASPxComboBox>
                                 <asp:DropDownList ID="ddlPrjStatusOne" Font-Size="8pt" runat="server" DataSourceID="objdsPrjStatus" 
                                     selectedvalue='<%# Bind("StatusNo") %>' DataTextField="Description" DataValueField="id"
                                     AutoPostBack="true" OnSelectedIndexChanged="ddlPrjStatusOne_IndexChanged" ToolTip='<%# Bind("ProjectId") %>' >
