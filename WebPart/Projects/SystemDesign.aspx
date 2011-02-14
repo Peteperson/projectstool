@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <td class="tdBelowTitle"> 
-                <table>
+                <table style="margin: auto">
                     <tr>
                         <td><img alt="info" src="Images/Icons/Logs_24x24.png" />: Επιλέξτε subproject από τη λίστα:</td>
                         <td><dx:ASPxComboBox ID="dxPrjCode" runat="server" TextFormatString="{0}: {1}" AutoPostBack="true" ValueField="id" Width="400px"
@@ -36,15 +36,18 @@
                             </dx:ASPxComboBox>
                         </td>
                     </tr>
+                    <tr>
+                        <td colspan="2">Διαθέσιμες εκδόσεις:&nbsp;
+                            <asp:DropDownList ID="ddlSysVersions" runat="server" 
+                                DataSourceID="sqldsSysVersions" DataTextField="VersionNo" 
+                                DataValueField="id" AutoPostBack="True">
+                            </asp:DropDownList>
+                             - Ενέργειες έκδοσης:&nbsp;
+                            <asp:ImageButton ID="btnAddVersion" runat="server" ImageUrl="~/Images/Icons/add_24x24.png" ToolTip="Προσθήκη νέας έκδοσης" />
+                            <asp:ImageButton ID="btnDelVersion" runat="server" ImageUrl="~/Images/Icons/Delete_24x24.png" ToolTip="Διαγραφή τρέχουσας έκδοσης" />
+                        </td>
+                    </tr>
                 </table>
-                Διαθέσιμες εκδόσεις:&nbsp;
-                <asp:DropDownList ID="ddlSysVersions" runat="server" 
-                    DataSourceID="sqldsSysVersions" DataTextField="VersionNo" 
-                    DataValueField="id" AutoPostBack="True">
-                </asp:DropDownList>
-                 - Ενέργειες έκδοσης:&nbsp;
-                <asp:ImageButton ID="btnAddVersion" runat="server" ImageUrl="~/Images/Icons/add_24x24.png" ToolTip="Προσθήκη νέας έκδοσης" />
-                <asp:ImageButton ID="btnDelVersion" runat="server" ImageUrl="~/Images/Icons/Delete_24x24.png" ToolTip="Διαγραφή τρέχουσας έκδοσης" />
             </td>
         </tr>
         <tr>
@@ -220,9 +223,22 @@
                         <td align="center"><img alt="info" src="Images/Icons/Logs_24x24.png" />: Μπορείτε να αντιγράψετε τις παραπάνω διαδικασίες επιλέγοντας το έργο στο οποίο θέλετε να αντιγραφούν από την παρακάτω λίστα και πατώντας &quot;Αντιγραφή&quot;</td>
                     </tr>
                     <tr>
-                        <td align="center"><asp:DropDownList ID="ddlCopyProjects" runat="server" 
-                                DataSourceID="sqldsPrjCodes" DataTextField="SubProject" DataValueField="id">
-                            </asp:DropDownList>&nbsp;<asp:Button ID="Button1" runat="server" Text="Αντιγραφή" /></td>
+                        <td align="center">
+                            <table>
+                                <tr>
+                                    <td><dx:ASPxComboBox ID="dxCopyProjects" runat="server" TextFormatString="{0}: {1}" ValueField="id" Width="400px"
+                                            DataSourceID="sqldsPrjCodes" ValueType="System.Int32" FilterMinLength="1" IncrementalFilteringMode="Contains">
+                                            <Columns>
+                                                <dx:ListBoxColumn FieldName="id" Visible="False" />
+                                                <dx:ListBoxColumn FieldName="SubProject" Width="30px" />
+                                                <dx:ListBoxColumn FieldName="Title" />
+                                            </Columns>
+                                        </dx:ASPxComboBox>
+                                    </td>
+                                    <td>&nbsp;<asp:Button ID="Button1" runat="server" Text="Αντιγραφή" /></td>
+                                </tr>
+                            </table>
+                        </td>
                     </tr>
                 </table>
             </td>
@@ -255,7 +271,7 @@
                     </InsertParameters>
                     <UpdateParameters>
                         <asp:ControlParameter ControlID="ddlSysVersions" Name="VersionId" PropertyName="SelectedValue" Type="Int32" />
-                        <asp:ControlParameter ControlID="ddlCopyProjects" Name="ToProjectId" PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="dxCopyProjects" Name="ToProjectId" PropertyName="Value" Type="Int32" />
                     </UpdateParameters>
                     <DeleteParameters>
                         <asp:ControlParameter ControlID="ddlSysVersions" Name="VersionId" PropertyName="SelectedValue" Type="Int32" />
