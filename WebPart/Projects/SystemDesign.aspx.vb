@@ -2,6 +2,17 @@
 Partial Class SystemDesign
     Inherits System.Web.UI.Page
 
+    Protected Sub btnFindPrj_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnFindPrj.Click
+        If Not (ddlPrjCode.Items.FindByText(txtPrjId.Text)) Is Nothing Then
+            ddlPrjCode.SelectedValue = ddlPrjCode.Items.FindByText(txtPrjId.Text).Value
+        Else
+            With CType(Master.FindControl("lblMessage"), Label)
+                .Visible = True
+                .Text = "The project does not exist!"
+            End With
+        End If
+    End Sub
+
     Protected Sub sqldsProcesses_Inserting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.SqlDataSourceCommandEventArgs) Handles sqldsProcesses.Inserting
         If gvProcesses.Rows.Count > 0 Then
             e.Command.Parameters("@SystemVersionId").Value = ddlSysVersions.SelectedValue
@@ -32,7 +43,7 @@ Partial Class SystemDesign
 
     Protected Sub gvProcesses_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles gvProcesses.DataBound
         If Not gvProcesses.Rows.Count > 0 Then btnAddVersion.Enabled = False Else btnAddVersion.Enabled = True
-        lblCompany.Text = Database.CompanyName(dxPrjCode.Value)
+        lblCompany.Text = Database.CompanyName(ddlPrjCode.SelectedValue)
     End Sub
 
     Protected Sub gvProcesses_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvProcesses.RowCommand
@@ -86,7 +97,7 @@ Partial Class SystemDesign
         End If
     End Sub
 
-    Protected Sub dxPrjCode_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles dxPrjCode.SelectedIndexChanged
+    Protected Sub ddlPrjCode_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlPrjCode.SelectedIndexChanged
         ddlSysVersions.DataBind()
     End Sub
 
@@ -99,13 +110,8 @@ Partial Class SystemDesign
         btnAddVersion.Attributes("onclick") = "if(!confirm('Θέλετε να δημιουργήσετε νέα έκδοση με τις παρακάτω διαδικασίες;'))return   false;"
         btnDelVersion.Attributes("onclick") = "if(!confirm('Θέλετε να διαγράψετε την παρακάτω έκδοση;'))return   false;"
         If Not IsPostBack Then
-            If Request.Params("Project") <> "" Then
-                dxPrjCode.Value = Request.Params("Project")
-            Else
-                dxPrjCode.SelectedIndex = 0
-            End If
+            If Request.Params("Project") <> "" Then ddlPrjCode.SelectedValue = Request.Params("Project")
         End If
-        dxPrjCode.Focus()
     End Sub
 
     Private StatusChanged As Boolean
@@ -125,7 +131,7 @@ Partial Class SystemDesign
 
     Protected Sub Button1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Button1.Click
         sqldsSysVersions.Update()
-        dxPrjCode.SelectedIndex = dxCopyProjects.SelectedIndex
+        ddlPrjCode.SelectedIndex = ddlCopyProjects.SelectedIndex
         ddlSysVersions.DataBind()
     End Sub
 
