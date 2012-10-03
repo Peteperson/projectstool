@@ -11,6 +11,6 @@ Public Class LgnResult
 End Class
 
 Public Class ChkEmailResult
-    Public UserId As Int16
+	Public UserId As Integer
     Public Username As String
 End Class

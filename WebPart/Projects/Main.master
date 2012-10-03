@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link rel="shortcut icon" href="Images/Icons/favicon.ico" />
-    <title>AG ADVENT - Project management tool</title>
+    <title>Peteperson deadly software - Project management tool</title>
     <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
     <link href="styles.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="Print.css" media="print" rel="stylesheet" type="text/css" />
@@ -59,7 +59,7 @@
         <table cellpadding="0" cellspacing="0">
             <tr id="trHeaderLogo">
                 <td style="background-color:white">
-                    <asp:Image ID="Image1" ImageUrl="~/Images/AdvLogoWhiteBack.png" runat="server" Height="70px" />
+                    <asp:Image ID="Image1" ImageUrl="~/Images/PeteFlag.png" runat="server" Height="70px" />
                 </td>
                 <td id="tdLogoff">
                     <table style="width:100%">
@@ -122,7 +122,7 @@
             <td colspan="2">&nbsp;</td>
         </tr>
         <tr>
-            <td colspan="2" id="tdBottomLogo"><div><a id="AdventLink" href="http://advent.com.gr">&copy; AG ADVENT <%=DateTime.Today.Year%></a></div></td>
+            <td colspan="2" id="tdBottomLogo"><div><a id="PetepersonLink" href="http://peteperson.homeip.net">&copy; Peteperson deadly software <%=DateTime.Today.Year%></a></div></td>
         </tr>
         </table>
         <br />
