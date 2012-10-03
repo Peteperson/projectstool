@@ -15,7 +15,7 @@
       <table style="height:99%">
         <tr>
             <td style="background-color:white" colspan="2">
-                <asp:Image ID="Image1" ImageUrl="~/Images/AdvLogoWhiteBack.png" runat="server" Height="71px" />
+                <asp:Image ID="Image1" ImageUrl="~/Images/PeteFlag.png" runat="server" Height="71px" />
             </td>
         </tr>
         <tr style="height:100%">
@@ -129,7 +129,7 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td id="tdBottomLogo" colspan="2"><div><a id="AdventLink" href="http://advent.com.gr">&copy; AG ADVENT <%=DateTime.Today.Year%></a></div></td>
+            <td id="tdBottomLogo" colspan="2"><div><a id="PetepersonLink" href="http://peteperson.homeip.net">&copy; Peteperson deadly software <%=DateTime.Today.Year%></a></div></td>
         </tr>
       </table>
     </form>    
